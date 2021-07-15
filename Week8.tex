@@ -1,0 +1,269 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 8--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, March 1: Primality testing and Carmichael Numbers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primality Testing (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We have seen a lot of places where it is useful to have prime numbers. We need to be able to determine if a number is prime or composite. Factoring is slow, so we would like a better algorithm. 
+
+\begin{defn}
+ If $a^{n-1}\not\equiv 1 \pmod n$, we know that $n$ is composite. In this case, we say that $a$ is a \emph{Fermat witness to the compositeness of $n$.}
+\end{defn}
+
+\begin{cb}
+Using this test, $2^{340} \equiv 1 \pmod{341}$. What can we conclude?
+\end{cb}
+\begin{solution}
+That 2 is not a Fermat witness for 341. However, $341=11*31$, so it is composite. 
+\end{solution}
+
+
+
+
+\begin{br}[5 minutes]A \emph{nontrivial} factor of a number $n$ is a factor that is not equal to $\pm 1$ or $\pm n$. It is nontrivial because all numbers $n$ have $\pm 1$ and $\pm n$ as factors. 
+Are all \emph{nontrivial} factors of positive composite integers $n$ Fermat witnesses to the compositeness of $n$? Prove or provide counterexample.
+\end{br}
+\begin{solution}
+ %Let $a$ be a factor of $n$. If $a^{n-1}\equiv 1 \pmod n$, then $n\mid a^{n-1}-1$. Since division is transitive, $a\mid a^{n-1}-1$. Since $a\mid a^{n-1}$, we must have that $a\mid 1$. Thus, the only factor of $n$ that is not a Fermat witness is $\pm 1$.
+ \end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Carmichael Numbers (25 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ A \emph{Carmichael number} is a composite integer where for every integer $a$ where $\gcd(a,n)=1$ implies $a^{n-1}\equiv 1 \pmod n$. 
+\end{defn}
+
+The smallest Carmichael number is $561=3*11*17$. There are only 43 Carmichael numbers less than 1 million, but Alford, Granville, and Pomerance proved that there are infinitely many in 1994.
+
+\begin{thm}
+ Let $n$ be a positive composite integer. Then $n$ is a Carmichael number if and only if 
+\begin{enumerate}
+ \item For every prime $p$ such that $p\mid n$, we have $p-1\mid n-1$.
+ \item $n$ is the product of distinct primes (ie, $n$ is \emph{square free} meaning no prime is raised to a power higher than 1).
+\end{enumerate}
+\end{thm}
+\begin{proof}
+ ($\Leftarrow$) Let $n$ be composite and assume (1) and (2) are true. Then $n=p_1p_2\dots p_s$ where the $p_j$ are distinct and $p_j-1\mid n-1$. 
+ 
+ In order to show that $n$ is a Carmichael number, we need to show that $a^{n-1}\equiv 1 \pmod n$ for every integer $a$ where $(a,n)=1$. If $\gcd(a,n)=1$, then $a^{p_j-1}\equiv 1 \pmod{p_j}$ by Fermat's Little Theorem. Since $p_j-1\mid n-1$, there exists a positive integer $k_j$ such that $(p_j-1)k_j=n-1$. Thus, $a^{n-1}\equiv a^{(p_j-1)k_j}\equiv 1\equiv 1^{k_j}\equiv 1 \equiv \pmod{p_j}$. Thus, we have a system of congruences 
+ 
+\begin{align*}
+ x&=a^{n-1}\equiv 1 \pmod{p_1}\\
+ x&=a^{n-1}\equiv 1 \pmod{p_2}\\
+& \vdots\\
+ x&=a^{n-1}\equiv 1 \pmod{p_s}.
+\end{align*}
+By the Chinese remainder theorem, there exists a unique solution to this system of congruences modulo $n$, we want to show that the solution is $1 \pmod n$. There is a one-to-one correspondence between systems of congruences modulo $p_1,p_2,\dots, p_s$ and possible solutions modulo $n$. 
+By the corollary to the Chinese remainder theorem, there is a unique system of congruences modulo $p_1,p_2,\dots, p_s$ with solution $x\equiv 1 \pmod n$. By Theorem 2.1 part 4, since each $p_j\mid n$, if $x\equiv 1 \pmod n$, then $x\equiv 1 \pmod{p_j}$. Thus, $x=a^{n-1}\equiv 1 \pmod n$.
+
+($\Rightarrow$) This is much harder. More primality testing and proving this theorem is a possible optional topic.
+\end{proof}
+
+We have a related test:
+\begin{thm}
+ Let $n$ be a positive integer. If an integer $a$ exists such that $a^{n-1} \equiv 1 \pmod n$ and $a^{(n-1)/q}\not\equiv 1\pmod n$ for all prime divisors $q$ of $n-1$, then $n$ is prime.
+\end{thm}
+\begin{proof}
+ Since $a^{n-1} \equiv 1 \pmod n$, we have that $\ord_n(a)\mid n-1$, so there exists positive integer $k$ such that $n-1=k \ord_n(1)$. We want to show that $k=1$. In order to get a contradiction, assume that $\ord_n(1)\neq n-1$, so $k>1$. Let $q$ be a prime divisor of $k$, and thus $n-1$. Thus,  \[a^{(n-1)/q}=a^{k(\ord_n(a))/q}=(a^{\ord_n(a)})^{k/q}\equiv 1 \pmod n.\] This is a contradiction. Now, $\ord_n(a)\leq \phi(n)\leq n-1$. Since $ \ord_n(a)=n-1$, we have that $\phi(n)=n-1$ and thus $n$ is prime.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 3: Primality testing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+A code is a system that substitutes prescribed sets of characters for other sets of characters. To encode a message is to replace its elements by a different combination of characters or figures. A cipher is a system where individual letters are replaced by other letters, either individually or in blocks.
+One famous example is the cipher Julius Caesar used to send letters to his army. He would take each letter and replace it with the one three places later in the alphabet. Here we say that the original message is the plaintext, the message that gets passed to the troops is the “ciphertext,” and the key is $k=3$, since you shift forward 3 letters in the alphabet. We can translate this to modular arithmetic with the following chart:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
+ a&b&c&d&e&f&g&h&i&j&k&l&m\\\hline
+ 1&2&3&4&5&6&7&8&9&10&11&12&13\\\hline\hline
+ n&o&p&q&r&s&t&u&v&w&x&y&z\\\hline
+ 14&15&16&17&18&19&20&21&22&23&24&25&26\\\hline\hline
+\end{tabular}
+\end{center}
+
+\noindent Then the Caesar shift translates to adding 3 mod 26. We call this an \emph{additive cipher} when we use $x+k$ to encrypt $x$ with key $k$. You can also use multiplication to define a \emph{multiplicative cipher} when we use $xk$ to encrypt to encrypt $x$ with key $k$.
+
+{\bf Turn in:} Keep in mind that a cipher must be able to be encrypted and decrypted. It is not useful to use a cipher were $a$ and $b$ both get encrypted as $c$, since we would not know how to decrypt $c$.
+
+\begin{enumerate}
+\item  How many additive ciphers are there mod 26?
+\item How many multiplicative ciphers are there mod 26? (\emph{Hint:} this is not the same as your previous answer)
+\item What equivalence classes do not work as multiplicative ciphers mod 26? Why?
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Computational Complexity of Factoring (50 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+The day was spent on the following problems from Homework 8. More details on their solutions on the Zoom recording 
+
+\url{https://osu.zoom.us/rec/share/E1e9R0E9n7qqX6i3YsQPLrmo9CJ9i9UUMM8aOOlZ-8GMbFrms7bdCjY8R4oTGQZV.8JbC7d4O9bTiLF32}
+\begin{br}[Rest of class]
+ \begin{enumerate}
+ \item\label{factoring} Let $n$ be a positive integer, and suppose $x$ and $y$ are integers such that $x^2\equiv y^2\pmod n$ but $x\not\equiv \pm y \pmod n$. Prove that $d=\gcd(x-y,n)$ and $e=\gcd(x+y,n)$ are factors of $n$ that are not equal to $\pm 1$ or $\pm n$.
+
+	\item  We are going to use problem \ref{factoring} to explore how finding the order of an integer modulo $n$ is at least as computationally complex as factoring.
+\begin{enumerate}
+\item Suppose you wish to factor $713$. Use that $3$ has order $330$ modulo $713$, $330=2(165)$, and $3^{165}\equiv 185 \pmod{713}$. Let $x=185$. How do you know that $x^2\equiv 1 \pmod{713}$? Use the previous problem to find a factor of $n$ using the Euclidean algorithm to find the greatest common divisor.
+\item Suppose $a$ is an integer where $(a,n)=1$ and $\ord_n(a)=r$. Assume that $r$ is even, and let $x=a^{r/2}$. Show that $x^2\equiv 1 \pmod n$, but $x\not\equiv 1 \pmod n$.  
+\item Now assume that $x$ in the previous problem is not equivalent to $-1$ modulo $n$. How does this help find a factor of $n$?
+\end{enumerate}
+\end{enumerate}
+
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, March 5: Practice with additive ciphers, Diffie-Hellman, and RSA}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+No reading, Projects due.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Creating algorithms with something other than numbers (25 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ The \emph{Euler $\phi$ function $\phi(n)$} gives the number of relatively prime positive integers less that $n$.
+\end{defn}
+\begin{br}[1 minute]
+ Why can we conclude $n$ is prime when $\phi(n)=n-1$?
+\end{br}
+\begin{solution}
+ For all integers $n$, there are $n-1$ positive integers less than $n$. Thus, $\phi(n)\leq n-1$. If the exists some other factor of $n$, then it is not relatively prime to $n$, and thus $\phi(n)\leq n-2$.
+\end{solution}
+
+In the reading for Wednesdays assignment, we saw some basics of encrypting secret messages: translate the alphabet into the integers 1-26, pick an encryption scheme and an encryption key. With the Caesar shift, we add 3. We can actually avoid the modular arithmetic by using this decoder wheel. 
+
+The word DOG becomes GRJ, and we can undo this by applying -3. There are many problems with this encryption scheme, including that it's not hard for a computer to check all 25 additive schemes, or really even all 26! possible schemes that send one letter of the English alphabet to another.  However, for any encryption scheme, there is an issue of communicating sharing both the encryption rules and the key. If you know how to encrypt a message, then in theory you know how to decrypt it. We need to come up with a way to share keys and rules that does not give away how to decrypt the message.
+
+We are going to do a thought experiment. 
+
+\begin{br}[15 minutes]
+ Alice wants to buy something from Bob. She has to put her credit card into his website, so she wants to make sure it is encrypted. They have some sort of magical encryption device where they can use the content of these envelopes to encrypt and decrypt her credit card number, but only if the content of both envelopes is identical. The eavesdroppers (Eve) cannot see the content of the envelopes when they are closed, or when Alice or Bob are putting pieces in, but she can see inside if either Alice or Bob looks. Also, anyone holding the envelope can magically duplicate the contents and use it for encryption and decryption...
+ 
+ The tricky part is for Alice and Bob to obtain identical envelopes to begin with, without anyone else obtaining copies of those envelopes or guessing their contents (knowledge of the contents would allow someone else to create an identical envelope thus defeating the purpose of encrypting the message.) 
+ 
+ Now, we are going to try an online version of this, but instead of the colorful squares I used last year, we will use shapes on the slide. (Go over how to draw on Jamboard) \url{https://jamboard.google.com/d/1H0kyHuasytbRryUBVbnD8E8qW8jV-InmCoMNDs642Y4/edit?usp=sharing}
+
+ 
+Alice wants to buy something from Bob and wants to make sure her credit card information is encrypted. They have a magic encryption device that uses the number of circles, triangles squares, diamonds, etc on the "Alice" slide to encrypt this information, and the same information on the "Bob" slide to decrypt. 
+
+In order to work correctly, the information on both slides must match. Alice and Bob cannot see what the other person input (although you can, you need to pretend you cannot). Alice puts information on her slide, sends it to Bob and waits for him to send back his slide. Bob puts information on his slide, and sends it to Alice. At this point, anyone else in the group can duplicate the slides (again, pretend that you cannot see the contents, but could copy/paste without reading it).
+
+How can Alice and Bob guarantee the slides have the same information without communicating or letting the other people in the other group know what is on the slides?
+
+
+The first person alphabetically is Alice, second is Bob. If someone is having technical difficulties accessing the slides, go to the next person alphabetically.
+
+Find your breakout room number, probably at the top of your Zoom Window.
+
+Alice puts some number of circles, triangles, etc on the slide labeled "Alice Breakout Room [your room number]" and Bob puts some number on "Bob Breakout Room [your room number]" . 
+
+Before exchanging slides, determine the next step as a group:
+
+BEFORE looking at the other person's slides and without telling anyone what you put on the slides, make a plan for how to make the two slides match. (Remember, we are simulating hiding the encryption method without knowing what the other person contributed).
+\end{br}
+
+\begin{solution}
+ Alice and Bob both put pieces in their envelope, remember what they did, then switch envelopes and put the same pieces in.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Diffie-Hellman Key Exchange (25 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+How does this relate to real world encryption algorithms? Diffie-Hellman key exchange works by exchanging encryption keys modulo a prime $p$. One difficult step of this is finding a primitive root modulo $p$. 
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
+ a&b&c&d&e&f&g&h&i&j&k&l&m\\\hline
+ 01&02&03&04&05&06&07&08&09&10&11&12&13\\\hline\hline
+ n&o&p&q&r&s&t&u&v&w&x&y&z\\\hline
+ 14&15&16&17&18&19&20&21&22&23&24&25&26\\\hline
+ space&.&,\\\hline
+ 27&28&00\\\hline
+\end{tabular}
+\end{center}
+
+In order to send encrypted messages, we must convert to numbers. To get a feel for how these encryption rules work, we are going to work with small numbers.
+
+To convert the word CAT to numbers, we use this chart: 03 01 20. First, we are going to work modulo 29. Using additive key $3$, the encrypted message is 06 04 23.
+
+If we know that the message 07 18 10 was encrypted with additive key 3 modulo 29, we can decrypt by subtracting 3 to get 04 15 07, then convert to letters to get DOG.
+
+We are going to start with Diffie-Hellman key exchange to get an additive key modulo 29. $29=2*14+1$ and 14 is not prime, so it is not quite as easy to find a primitive root. 
+
+\begin{thm}
+ If $\gcd(a,n)=1$, then $a^{\phi(n)}\equiv 1 \pmod n.$
+\end{thm}
+
+
+
+\begin{example}
+\begin{itemize}
+ \item  Public knowledge: working modulo $p=29$ with primitive root $a=2$.
+\item Private knowledge: Alice randomly generates $m=3$ and Bob randomly generates $n=8$.
+\end{itemize}
+\begin{enumerate}
+ \item Calculate the publicly published $a^m\pmod p$ and $a^n\pmod p$.
+ \item Calculate the privately known $(a^m)^n\equiv (a^n)^m \pmod p$.
+ %\item Use the table and additive key $a^{mn}$ to encrypt the message ``CAT AND DOG".
+\end{enumerate}
+\end{example}
+\begin{solution}
+ 
+\begin{enumerate}
+ \item $2^{3} \equiv 8\pmod 29$ and $2^8 \equiv 24\pmod 29$
+ \item $24^3\equiv (-5)^3\equiv -25*5\equiv 4*5\equiv 20 \pmod 29$.
+% \item Translate to numbers: 03 01 20 27 01 14 04 27 04 15 07. Add 20 modulo 29: 23 21 11 18 21 05 11 06 27\qedhere
+\end{enumerate}
+\end{solution}
+\end{document}
+
+We can also look at messages for RSA. The person decrypting the message:
+\begin{itemize}
+ \item Calculates $n=pq$ for distinct primes $p, q$. The smallest such $n$ greater than 26 is $n=7*5=35$.                                                                                                                                                                                                                                                                                                   
+\item Calculates $\phi(n)$.
+\item Choses $e$ such that $\gcd(e, \phi(n))=1$. 
+\item Use the Euclidean algorithm (or some other method) to find $d$ such that $ed\equiv 1 \pmod {\phi(n)}$.
+\item Publishes $n$ and $e$ so that anyone can encrypt a message $m$ modulo $e$.
+\end{itemize}
+The person decrypting the message:
+\begin{itemize}
+ \item Converts the message to numbers.
+ \item Calculates $m^e \pmod n$.
+ \item Publishes/sends the message.
+\end{itemize}
+The person decrypting now calculates $(m^e)^d\equiv m^{k\phi(n)+1}\equiv m \pmod n$.
+
+
+
+\begin{lem}
+Let $n$ be a positive integer. If $\gcd(e, \phi(n))=1$ for some integer $e$, then there exists an integer $d$ such that $ed\equiv 1 \pmod{\phi(n)}$ by Theorem 3.7/Corollary 3.8. For any positive integer $m$, $m^{ed}\equiv m\pmod n$.
+\end{lem}
+\begin{proof}
+ If $m\equiv 0 \pmod n$, we are done, since $0^{a}\equiv 0\pmod n$ for any nonzero integer $a$. Otherwise, we use the fact that $ed\equiv 1 \pmod{\phi(n)}$ means there exists an integer $k$ such that $k\phi(n)=ed-1$. Thus, $m^{ed}\equiv m^{k\phi(n)+1}\equiv m\pmod n$.
+\end{proof}
+
+\begin{thm}[Theorem 5.6]
+ If $n=pq$ for distinct primes $p$ and $q$, $\phi(n)=(p-1)(q-1)$.
+\end{thm}
+\begin{proof}
+ There are $n-1=pq-1$ positive integers less that $n$. Now, we need to determine how many are relatively prime to $n$. We do this by subtracting off those that are not relatively prime. Here, we have $p,2p,\dots,(q-1)p$ are $q-1$ distinct positive integers less that $n$ that are not relatively prime to $n$. Now we can say $\phi(n)\leq n-1-(q-1)=pq-q$. We repeat this process for $q$: $q,2q,\dots, (p-1)q$. This list is disjoint from the other since $p$ and $q$ are relatively prime. Thus $\phi(n)\leq pq-q-p+1$. Since $p$ and $q$ are the only prime factors of $n$, these two lists give all possible numbers less that $n$ that are not relatively prime to $n$. Thus, $\phi(n)=pq-q-p+1=(p-1)(q-1)$.
+\end{proof}
+
+If we use $n=12$, this theorem breaks down for factors $2,6$, since they are not relatively prime. We would get the lists $2,2(2), 3(2), 4(2), 5(2)$ and $6$. Notice that $6$ is on both lists, but $3$ and $9$ are not on either list. We will prove that $\phi(12)=\phi(3)\phi(4)$, although this counting method does not work ($2$ and $10$ will not be on either list).
+
+\end{document}

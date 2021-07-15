@@ -1,0 +1,229 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 10--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, March 15: Primitive roots, rings, fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primitive roots (50 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thm}[Primitive root theorem, rephrased Corollary 6.6]
+ Let $p$ be prime. Then there exists a primitive root modulo $p$.
+\end{thm}
+\begin{proof}
+ Let $p$ be prime. If $p=2$, then $1\pmod2$ is a primitive root.
+ 
+ Assume that $p>2$. First, we are going to factor $p-1=q_1^{a_1}q_2^{a_2}\cdots q_m^{a_m}$. By Lemma 10.3.4 in the reading, for each $k=1,2,\dots,m$ there exists an element $x_k\in \Z_p$ where the $\ord_p(x_k)=q_k^{a_k}.$ Let \[x\equiv x_1 x_2 \cdots x_m \pmod p.\]
+ By repeatedly applying Lemma 10.3.5 from last class, we find that 
+ \begin{align*}
+ \ord_p(x)&=  \ord_p(x_1) \ord_p( x_2 )\cdots  \ord_p(x_m )\\
+ &=q_1^{a_1}q_2^{a_2}\cdots q_m^{a_m}\\
+ &=p-1.
+ \end{align*}
+Therefore, $x$ is a primitive room $\pmod p$.
+\end{proof}
+
+\begin{lem}[Lemma 10.3.6 from reading]
+ Let $p$ be prime, and let $a\in\Z_p$ be a primitive root. Then for any $j\in\Z$, $a^j$ is a primitive root if and only if $\gcd(j,p-1)=1$.
+\end{lem}
+See corrected statement re: Lemma 6.4 at the beginning of class Wednesday. 
+
+\begin{br}[10 minutes]
+Let $a\in\Z_n$ for a nonnegative integer $n$ and $\gcd(a,n)=1$. Let $s=\ord_n(a)$. For any $j\in\Z^+$, \[\ord_n(a^j)=\frac{s}{\gcd(j,s)}.\]
+\end{br}
+\begin{solution}
+ Homework 10, Problem 1. See class recording. Note that $\frac{s}{\gcd(j,s)}$ and $\frac{j}{\gcd(j,s)}$ are relatively prime.
+\end{solution}
+\begin{proof}[Proof of Lemma 10.3.6 from reading]
+ Let $p$ be prime, and let $a\in\Z_p$ be a primitive root modulo p. By the breakout room problem, 
+ \[\ord_p(a^j)=\frac{p-1}{\gcd(j,p-1)}.\]
+ Thus, $\ord_p(a^j)=p-1$ if and only if $\gcd(j,p-1)=1.$
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 17: Primitive roots, rings, fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Corrections (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+I have fixed the grading on Quiz 9. The person decrypting the message:
+\begin{itemize}
+ \item Calculates $n=pq$ for distinct primes $p=5, q=11$. So $n=55$.                                                                                                                                                                                                                                                                                                   
+\item Calculates $\phi(n)=\phi(p)\phi(q)=40$.
+\item Choses $e$ such that $\gcd(e, \phi(n))=1$. 
+\item Use the Euclidean algorithm (or some other method) to find $d$ such that $ed\equiv 1 \pmod {\phi(n)}$.
+\item Publishes $n$ and $e$ so that anyone can encrypt a message $m$ modulo $n$.
+\end{itemize}
+
+Fixing a statement from Monday: Lemma 6.4 in the textbook is a consequence of Lemma 10.3.6 from the reading, but it is not equivalent. Lemma 10.3.6 is finding all 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Group Isomorphisms, Cyclic Groups, equivalences with the textbook (40 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn}
+ Two groups $(G,+)$ and $(H,*)$ are \emph{isomorphic} if there exists a bijective map $F:G\to H$ such that $f(a+b)=f(a)*f(b)$ for all $a,b\in G$.
+\end{defn}
+
+\begin{prop}
+ Any two complete residue systems mod $m$ are isomorphic as additive groups.
+\end{prop}
+\begin{proof}
+ Let $\{a_1,a_2,\dots,a_m\}$ and $\{b_1,b_2,\dots, b_m\}$ be complete residue systems mod $m$. Then for each $a_i$, there exists a unique $b_j$ where $a_i\equiv b_j \pmod m$. Define $f$ to be that map $f(a_i)=b_j$ where $a_i\equiv b_j$. By the definition of complete residue system, this map is injective and surjective. By Lemma 3.3, $f(a_i+a_k)=f(a_i)+f(a_k)$ since $a_i\equiv f(a_i)\pmod m$ and $a_k\equiv f(a_k)\pmod m$.
+\end{proof}
+
+\begin{br}[2 min]
+ The complete residue systems $\{1,2,3,4,5\}$ and $\{2,4,6,8,10\}$ are isomorphic as representations of $\Z_5$.
+ 
+ Define the map $f$ to be that map $f(a_i)=b_j$ where $a_i\equiv b_j \pmod 5$. You can define it element by element, not looking for some arithmetic/algebraic function.
+\end{br}
+\begin{solution} One option is $f(a)=2a$. Another option is
+ $f(1)=6, f(2)=2, f(3)=8, f(4)=4, f(5)=10$.
+\end{solution}
+
+Now, we see that $f(1+3)=f(4)=4$ and $f(1)+f(3)=6+8\equiv 4 \pmod 5.$
+
+\begin{defn}
+ A group $(G, *)$ is \emph{cyclic} if there exists some element $a\in G$ such that every element of $G$ can be written as $a^n$ for some integer $n$. The element $a$ is called a \emph{generator} for $(G,*)$.
+ \end{defn}
+\begin{example}
+ Let's consider $U_5$, the group of units modulo 5. $1\equiv 2^4 \pmod 5, 2\equiv 2^1 \pmod 5, 3\equiv 2^3 \pmod 5$ and $4\equiv 2^2 \pmod 5.$ So $U_5$ is cyclic with generator $2$. 
+ 
+ Homework: Show that $3$ is also generators for $U_5$.
+\end{example}
+
+\begin{cor}[Corollary 6.6]
+ If $p$ is prime, then the group $U_p$ is cyclic.
+\end{cor}
+\begin{proof}
+ Reading Proposition 10.3.2, says:
+ 
+ Let $p$ be prime and let $a\in\Z_p$ be a primitive root. Then every nonzero element of $\Z_p$ (that is, every congruence class that is not congruent to $0\pmod p$) appears exactly once on the list \[a^0, a^1, \dots a^{p-2}.\]
+ Thus, any primitive root is a generator for $U_p$.
+\end{proof}
+
+Our textbook uses the following definition: 
+\begin{defn}
+ If $U_n$ is cyclic then any generator $g$ for $U_n$ is called a\emph{ primitive root mod ($n$)}. This means that $g$ has order equal to the order $\phi(n)$ of $U_n$, so that the powers of $g$ yield all the elements of $U_n$. 
+\end{defn}
+
+\begin{br}[1 min]
+We saw last week that the number of units in $\Z_n$ is $\phi(n)$. That is, there are $\phi(n)$ elements in $U_n$. If every element in $U_n$ can be represented by $g^r$ for some $r\in \Z$, then it must be that $\ord_n(g)=\phi(n)$.
+
+Why? 
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, March 19: Other common number theory functions, start of quadratic residues}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Read Sections 7.1 and 7.2 
+
+{\bf Turn in:} Exercise 7.1. Find all the solutions in $\Z_{15}$ of the congruence $x^2- 3x+2\equiv 0 \pmod{15}.$
+
+Why does this not contradict our earlier results?
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Proving that $\Z_p$ is a field if and only if $p$ is prime is moved to Homework 10.
+
+Another reminder, since it came up in office hours, that you are not expected to have seen the group theory material before. Some students have seen it in other classes, but that is not the expectation.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Group Isomorphisms, Cyclic Groups, equivalences with the textbook (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Now we are going to finish translating back to the book's definitions. From the reading assignment Wednesday, it looks like people were a fuzzy on the translations. Hopefully class Wednesday helped, but here is my list:
+
+No equivalents to Section 6.1. This is because we are not going to use that framing, so I did not want to focus on it.
+
+In class Wednesday, we finished connecting the Jones and Jones definition of primitive roots and $\phi(n)$ to the one we'd been using in class.
+
+Lemma 6.4 is related to Lemma 10.3.4 and 10.3.5 in the reading, but for prime and composite moduli.
+
+We are about to state Theorem 6.5, but the ``modifying proofs" version is on Homework 10.
+
+We did Corollary 6.6 on Wednesday.
+
+
+\begin{thm}[Theorem 6.5]
+ If $p$ is prime, then the group $U_p$ has $\phi(d)$ element of order $d$ for each $d$ dividing $p-1$.
+\end{thm}
+\begin{proof}
+ The $p=7$ case is on Homework 10.
+\end{proof}
+
+\begin{thm}[Theorem 6.11]
+The group $U_n$ is cyclic if and only if \[n=1,2,4,p^e,\textrm{ or } 2p^e,\]
+where p is an odd prime.
+
+That is, a primitive root exists modulo $n$ if and only if \[n=1,2,4,p^e,\textrm{ or } 2p^e,\]
+where p is an odd prime.
+\end{thm}
+
+Proving the ``only if" direction is one of the Project 3 options.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rings and fields (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ A \emph{ring} is a nonempty set, $R$, together with a two binary operations on $R$(which we will denote by the symbols, $+$ and $*$), where:
+\begin{itemize}
+\item $R$ is a commutative group under $+$.
+ \item If $a,b\in R$, then $a*b\in R$ (we say $R$ is \emph{closed under multiplication}).
+ \item If $a,b, c\in R$, then $a*(b*c)=(a*b)*c$ (we say multiplication are \emph{associative}).
+ \item There is some $e\in R$ where $a*e=e*a=a$ for all $a\in R$ (we say $e$ is the \emph{multiplicative identity}). *Some sources leave off this requirement and say a ring with a multiplicative identity is a \emph{ring with unity}. We are going to include it.
+ \item For ever $a,b,c\in R$, $a*(b+c)=a*b+a*c$ (we say \emph{multiplication distributes}).
+\end{itemize}
+\end{defn}
+
+\begin{br}[5 minutes] Let $\Z_m$ be the set of integers $\{0,1,\dots,m-1\}$ along with addition and multiplication modulo $m$. That is, $\Z_m$ is the least nonnegative complete residue system modulo $m$.  Prove that $\Z_m$ is a ring. 
+
+Two elements $a,b\in \Z_m$ where $a\equiv b \pmod m$ are said to be \emph{representatives of the same congruence class $\pmod m$}.
+\end{br}
+
+Any two complete residue systems mod $m$ are also isomorphic as rings.
+
+\begin{defn}
+ A \emph{field} is a nonempty set, $F$, together with two binary operations $+$ and $*$ where:
+ 
+\begin{enumerate}
+ \item $F$ is a ring.
+ \item $a*b=b*a$ for all $a,b,\in F$. 
+ \item For all $a\in F, a\neq 0$, there exists $a^{-1}\in F$ where $a*a^{-1}=a^{-1}a=1$. Here 0 is the additive identity and 1 is the multiplicative identity.
+\end{enumerate}
+ 
+\end{defn}
+
+Proving that $\Z_p$ is a field if and only if $p$ is prime is on Homework 10.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Other common number theory functions (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+We are going to look at some other functions that show up in analytic number theory. Some of these also show up in the proofs in section 6.2
+
+\begin{itemize}
+ \item $d(n)$ is the number of positive divisors of $n$. For example, $d(12)=  
+ $. We introduce the notation $\displaystyle\sum_{d\mid n}$ as ``the sum over the divisors of $n$,'' called the \emph{divisor sum}. For the normal sum: $\displaystyle\sum_{i=1}^n 1= {n}
+ $. Then, $\displaystyle\sum_{d\mid n}1= {d(n)}
+$.
+ 
+ \item In the proof of Theorem 6.5, textbook defines $\Omega_d=\{a\in U_p: a\textrm{ has order } d\}, \omega(d)=!\Omega_d|$, and $\displaystyle\sum_{d\mid n} \omega(d)$. For $p=7,$ this would be $\omega(1)+\omega(2)+\omega(3)+\omega(6).$
+ 
+ 
+ 
+\end{itemize}
+
+
+\end{document}

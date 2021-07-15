@@ -1,0 +1,499 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 11--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, March 22: Quadratic residues}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ An element $a\in U_n$ is a quadratic residue $\pmod n$ if $a= s^2 $ for some $s\in U_n$.
+
+That is, $a\in \Z$ such that $\gcd(a,n)$ is a quadratic residue if there exists $s\in \Z$ such that $a\equiv s^2 \pmod n$.
+
+The set of such quadratic residues is denoted by $Q_n$. For small $n$, one can determine $Q_n$ simply by squaring all the elements $s\in U_n.$
+
+If there exists no such $x$ then we say that a is a quadratic non-residue.
+
+\end{defn}
+
+This is the modular arithmetic of perfect squares.
+
+\begin{example}[Example 7.1]
+ $Q_7 = \{1,2,4\} \subset U_7\subset \Z_7$ , while $Q_8= \{1\} \subset U_8\subset \Z_8$·
+\end{example}
+\begin{br}[5 min, Exercise 7.3]
+ Find $Q_n$ for each $n\leq 12$
+ 
+ Hint: write out $1^2=(-1)^2, 2^2=(-2)^2, 3^2=(-3)^2, 4^2=(-4)^2, 5^2=(-5)^2, 6^2=(-6)^2$ first.
+\end{br}
+
+
+\begin{lem}[Lemma 7.2]
+$Q_n$ is a subgroup of $U_n$. That is, $Q_n\subset U_n$ is a group under multiplication $\pmod n$.
+\end{lem}
+
+\begin{br}[5 min]
+ Prove Lemma 7.2
+\end{br}
+
+What could go wrong: 
+Closed: The odd integers are a subset of the integers, but not closed under addition
+
+Identity: The odd integers are a subset of the integers, but do not contain the additive identity (0)
+
+Inverses: $\Q\backslash\{0\}=\{\textrm{rationals that are not 0}\}$ are a group under multiplication. $\Z\backslash\{0\}=\{\textrm{integer that are not 0}\}$, $\Z\subset\Q$ but does not have multiplicative inverses.
+
+\begin{proof}
+ %
+ $a=s^2, b=t^2, ab=(st)^2$
+ 
+We need to show that $Q_n$ contains the identity element of $U_n$, and is closed under taking products and inverses. 
+
+Firstly, $1 \in Q_n$ since $1 = 1^2$ with $1 \in U_n$. 
+
+If $a,b\in Q_n$ then $a=s^2$ and $b=t^2$ for some, $t\in U_n$, so $ab=(st)^2$ with $s,t \in U_n$, giving $ab \in Q_n$. 
+
+Finally, if $a\in Q_n$ then $a = s^2$ for some $s \in U_n$; since $a$ and $s$ are are units mod $(n)$ they have inverses $a^{-1}$ and $s^{-1}$ in $U_n$, and $a^{-1} = (s^{-1})^2$ so that $a^{-1}\in Q_n$.
+\end{proof}
+
+\begin{thm}[Theorem 3.11] 
+Let $n = n_1 \dots n_k$ where the integers $n_i$ are mutually coprime, and let $f(x)$ be a polynomial with integer coefficients. Suppose that for each $i = 1, \dots , k$ there are $N_i$ congruence classes $x \in\Z_{n_i}$ such that $f(x) \equiv 0 \pmod{n_i}$. Then there are $N = N_1 \dots N_k$ classes $x \in \Z_n$ such that $f(x) \equiv0\pmod n.$
+\end{thm}
+
+\begin{example} Let's find solutions to
+$x^2+5x+6\equiv0 \pmod{60}$. Now, $60=2^2(3)(5)$, so we can find solutions modulo 3, 4, and 5.
+
+On Wednesday, we will see that there are 2 solutions mod 3, 2 solutions mod 4, and 2 solutions mod 5 for $2(2)(2)=8$ total solutions.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 24: Quadratic reciprocity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Read section 7.3 on the Legendre symbol. 
+
+Turn in: Exercise 7.8 
+
+Determine whether 3 and 5 are quadratic residues mod (29).
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example} Let's find solutions to
+$x^2+5x+6\equiv0 \pmod{60}$. Now, $60=2^2(3)(5)$, so we can find solutions modulo 3, 4, and 5.
+
+\begin{align*}
+ x^2+5x+6 \equiv0 \pmod{3}\\
+ x^2+2x\equiv0 \pmod{3}\\
+ x(x+2)\equiv0 \pmod{3}
+\end{align*}
+Thus, $x\equiv 0 \pmod 3$ or $x\equiv -2\equiv 1 \pmod 3$.
+
+\begin{align*}
+ x^2+5x+6 \equiv0 \pmod{4}\\
+ x^2+x+2\equiv0 \pmod{3}\\
+\end{align*}
+Thus, $x\equiv 1 \pmod 4$ or $x\equiv 2 \pmod 4$.
+
+\begin{align*}
+ x^2+5x+6 \equiv0 \pmod{5}\\
+ x^2+1\equiv0 \pmod{5}\\
+ x^2\equiv-1\equiv 4 \pmod{5}
+\end{align*}
+Thus, $x \equiv 2\pmod 5$ or $x\equiv -2\equiv 3 \pmod 5$.
+\end{example}
+
+\begin{br}[10 min]
+ Set up the systems of congruences necessary to find the roots using the Chinese remainder thm. Then start to solve these congruences.
+\end{br}
+\begin{solution}
+\begin{align*}
+x\equiv 0 \pmod 3, x\equiv 1 \pmod 4, x\equiv 3 \pmod 5, \textrm{ thus $x\equiv 33 \pmod{60}$}\\
+x\equiv 0 \pmod 3, x\equiv 1 \pmod 4, x\equiv 2 \pmod 5, \textrm{ thus $x\equiv 57 \pmod{60}$}\\
+x\equiv 1 \pmod 3, x\equiv 1 \pmod 4, x\equiv 3 \pmod 5, \textrm{ thus $x\equiv 13 \pmod{60}$}\\
+x\equiv 1 \pmod 3, x\equiv 1 \pmod 4, x\equiv 2 \pmod 5, \textrm{ thus $x\equiv 37 \pmod{60}$}\\
+x\equiv 0 \pmod 3, x\equiv 2 \pmod 4, x\equiv 3 \pmod 5, \textrm{ thus $x\equiv 18 \pmod{60}$}\\
+x\equiv 0 \pmod 3, x\equiv 2 \pmod 4, x\equiv 2 \pmod 5, \textrm{ thus $x\equiv 42 \pmod{60}$}\\
+x\equiv 1 \pmod 3, x\equiv 2 \pmod 4, x\equiv 3 \pmod 5, \textrm{ thus $x\equiv 58 \pmod{60}$}\\
+x\equiv 1 \pmod 3, x\equiv 2 \pmod 4, x\equiv 2 \pmod 5, \textrm{ thus $x\equiv 22 \pmod{60}$}\\
+\end{align*}
+\end{solution}
+
+
+See recording for more details, or notes uploaded to participation assignment. For a reminder about the Chinese Remainder Theorem, see Chapter 3, Week 5 notes, or \url{https://youtu.be/zIFehsBHB8o}
+
+\begin{example}[Example 3.18]
+ Wish to find solutions to $f(x)=x^2-1$ modulo $n$. Now, we know that when $n$ is prime, there are at most $2$ solutions. We also know that $x\equiv \pm 1 \pmod n$ is always a solution. 
+ 
+ If we factor $n$ into its prime power factorization, we can then use the Chinese remainder theorem to find the number of solutions modulo $N$. We count solutions to $x^2\equiv 1 \pmod{p^e}$ where $p$ is prime and $e$ is a positive integer.
+ 
+ If $p$ is odd, then there are just two classes of solutions: $x\equiv \pm1 \pmod{p^e}$ are always solutions, since $(\pm1)^2=1$. To show there are no other solutions, consider that $0\equiv x^2-1\equiv (x+1)(x-1) \pmod{p^e}$.  Thus, $p^e\mid  (x+1)(x-1) $. Thus, $p^e\mid x+1$ or $p^e \mid x-1$. If $p\mid (x+1)$ and $p\mid (x-1)$, then by linear combinations, $p\mid x+1+x-1=2x$. Since $p$ is odd, this would mean $x\equiv 0 \pmod p$.
+ 
+ Now we need to consider $p=2$. If $p^e=2$, then by inspection the solution is $x\equiv 1 \pmod 2$. Similarly, for $p^e=4,$ the solutions are $x\equiv \pm 1\pmod 4$. For $2^e\geq 8$, we see that $x\equiv \pm 1\pmod{2^e}$, but also that $x\equiv 2^{e-1}\pm 1 \pmod{2^e}$. This comes from the fact that $2^e\mid  (x+1)(x-1) $. Thus, $2^e\mid x+1$ or $2^e \mid x-1$. Since $2\mid 2x$, we do not get the contradiction from the previous case. 
+ 
+ \end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, March 26: Quadratic reciprocity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Turn in} Compare and contrast the proofs of Corollary 7.8 (infinitely many primes of the form 1 mod 4), Theorem 2.9 (infinitely many primes of the form 4q + 3), and Exercise 2.6 (infinitely many primes of the form 3q+2).
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Announcements/reminders (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Next week has a very weird schedule. We do not have class next Wednesday, but we are to treat Friday as a Wednesday. For this class, this means:
+
+\begin{itemize}
+ \item Office hours will be on Friday at 2 pm or by appointment. The department is using the instructional break to schedule a bunch of meetings, so I will not have normal office hours Wednesday and Thursday.
+ \item Homework 11 is actually due on April 9, along with Homework 12. This is correct in Carmen, but in Gradescope it means the ``late" deadline is April 10 instead on April 3.
+ \item {\bf Added during class} I will do the same thing for Project 2.
+ \item No quiz next week.
+\item For the sake of simplicity, the revise and resubmit deadlines will still be the same.
+\end{itemize}
+
+Homework 11 is short since we are going pretty slowly this week, with 1) review of the Chinese remainder theorem, 2) problems and proofs in class that are long. Homework 12 will also be shorter, since it only covers two days of class. However, the material is a bit more conducive to short calculation problems.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finishing review of Chapter 3 (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thm}[Theorem 3.11] 
+Let $n = n_1 \dots n_k$ where the integers $n_i$ are mutually coprime, and let $f(x)$ be a polynomial with integer coefficients. Suppose that for each $i = 1, \dots , k$ there are $N_i$ congruence classes $x \in\Z_{n_i}$ such that $f(x) \equiv 0 \pmod{n_i}$. Then there are $N = N_1 \dots N_k$ classes $x \in \Z_n$ such that $f(x) \equiv0\pmod n.$
+\end{thm}
+
+\begin{proof}
+We will start with $n=p^\alpha q^\beta$ for primes $p,q$, then apply the same technique to generalize. Let $a_1, a_2,\dots, a_{N_{p^\alpha}}$ be the solutions to $f(x)\equiv 0 \pmod{p^\alpha}$, and $b_1, b_2,\dots, b_{N_{q^\beta}}$ be the solutions to $f(x)\equiv 0\pmod{b^\beta}$. From the fact that $n\mid f(x)$ and $n=p^\alpha q^\beta$, we know that a solution to $f(x)\equiv 0\pmod m$ is also a solution to $f(x)\equiv 0 \pmod{p^\alpha}$ and $f(x)\equiv 0 \pmod{q^\beta}$. So we are looking for solutions that work modulo $p^\alpha$ and $q^\beta$. Then for each pair $x \equiv a_i \pmod{p^\alpha}, x\equiv b_j \pmod{q^\beta}$, the Chinese remainder theorem tells us that there exists a unique solution modulo $n$. There are $N(p^\alpha) N(q^\beta)$ such pairs, so there are at most $N_{p^\alpha} N_{q^\beta}$ solutions to $f(x)\equiv 0 \pmod m$.
+
+We can also say that for each $a_i, b_j$, there is a $0\leq x_{ij}\leq m$ where $f(x_{ij})\equiv 0\pmod{p^\alpha}$ and $f(x_{ij})\equiv0\pmod{q^\beta}$. The Theorem 2.3 part 3 gives us $f(x_{ij})\equiv 0 \pmod m$. Thus, all possible $N_{p^\alpha} N_{q^\beta}$ solutions to $f(x)\equiv 0 \pmod m$ are solutions.
+
+Since the Chinese remainder thm and Theorem 2.3 part 3 apply to arbitrarily many factors, this proof holds with more prime power factors.
+\end{proof}
+
+Thus, Example 3.18 from last class shows that for $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$, $x^2-1\equiv 0 \pmod n$ has $N$ incongruent solutions, where \[N=
+\begin{cases}
+ 2^{k+1} &\textrm{ if $n\equiv 0 \pmod 8$}\\
+  2^{k-1} &\textrm{ if $n\equiv 2 \pmod 4$}\\
+  2^{k} &\textrm{ otherwise},
+\end{cases}\]
+where $k$ is the number of distinct primes dividing $n$. For instance, if $n = 60 = 2^2(3)(5)$ then $k = 3$ and there are $2^k = 8$ classes of solutions, namely $x \equiv \pm1, \pm11, \pm19, \pm29 \pmod{60}.$
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Connecting results from Chapter 3 and Homework 6 to Quadratic residues (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lem}[Lemma 7.1] Let $k$ denote the number of distinct primes dividing $n$. If $a\in Q_n$, then the number $N$ of elements $t\in U_n$ such that $t^2=a$ (that is, the number of incongruent solutions to $t^2\equiv a \pmod n$) is given by
+\[N=
+\begin{cases}
+ 2^{k+1} &\textrm{ if $n\equiv 0 \pmod 8$}\\
+  2^{k-1} &\textrm{ if $n\equiv 2 \pmod 4$}\\
+  2^{k} &\textrm{ otherwise}.
+\end{cases}\]
+\end{lem}
+\begin{proof}
+ If $a\in Q_n$ then $s^2=a$ for some $s\in U_n$. Any element $t\in U_n$ has the form $t\equiv sx \pmod n$ for some unique $x\in U_n$. To see this, note that by the definition of $U_n$, there exists a unique $s^{-1}\in U_n$ where $s s^{-1}\equiv 1 \pmod n$. Thus, $x\equiv s^{-1}t\pmod n$.
+ 
+ Thus, $t^2\equiv a \pmod n$ if and only if $x^2\equiv 1 \pmod n$. By Example 3.18, this means that $N$ has the desired form.
+\end{proof}
+
+ On Homework 6, we saw that for an odd prime $p$:
+\begin{itemize}
+ 		\item If $p\equiv1$ mod 4, $\left(\frac{p-1}{2}\right)!$ is a solution of the quadratic congruence $x^2\equiv -1$ mod $p$.
+		\item If $p\equiv3$ mod 4, $\left(\frac{p-1}{2}\right)!$ is a solution of the quadratic congruence $x^2\equiv 1$ mod $p$.
+\end{itemize}
+
+Now, $1^2\equiv (-1)^2\equiv 1 \pmod n$ means that $1$ is always a quadratic residue, so the second statement is not particularly helpful. 
+
+But if $p$ is prime such that $p \equiv 1 \pmod 4$, then $-1$ is a quadratic residue $\pmod p$. One goal is to show that for an odd prime $p$, if $-1$ is a quadratic residue $\pmod p$, then $p\equiv 1 \pmod 4$. (Corollary 7.7).
+
+\end{document}
+   Let $p>2$ be a prime, and let $a$ be an integer between $0$ and $p-1$. We have three options: 
+ 
+\begin{itemize}
+ \item If $a$ is a unit, and a ``perfect square", then $a$ is a quadratic residue
+ \item If $a$ is a unit but not a square, then $a$ is a quadratic nonresidue
+ \item if $a$ is not a unit, then $\gcd(a,p)\neq 1$. Since $p$ is prime, this means $p\mid a$.
+\end{itemize}
+
+\begin{br}[1 min]
+ What happens with $a^\frac{p-1}{2} \pmod p$ in each case?
+\end{br}
+\begin{itemize}
+ \item If $a$ is a quadratic residue modulo $p$, then $a^{\frac{p-1}{2}}=  {1}
+ $.
+ \item If $a$ is a quadratic nonresidue modulo $p$, then $a^{\frac{p-1}{2}}=  {-1}
+ $.
+ \item Otherwise, $a^{\frac{p-1}{2}}=  {0}
+ $.
+\end{itemize}
+  
+  
+ 
+\begin{defn}
+ We define the \emph{Legendre symbol} for a prime $p$ and integer $a$ to be \[\left(\frac{a}{p}\right)
+=\begin{cases}
+ 1 & \textrm{ if $a$ is a quadratic residue modulo $p$}\\
+ -1 & \textrm{ if $a$ is a quadratic nonresidue modulo $p$}\\
+ 0&  \textrm{ if $p\mid a$}
+ \end{cases}
+\]
+\end{defn}
+   Euler's identity:  Let $p>2$ be a prime, and let $a$ be an integer. Then $\left(  {\frac{a}{p}}
+ \right)\equiv a^{\frac{p-1}{2}} \pmod p$.
+  
+\begin{thm}
+ Let $p>2$ be prime.
+\begin{itemize}
+ \item If $p\equiv 1 \pmod 4$, then $-1$ is a quadratic residue modulo $p$.
+ \item If $p\equiv 3 \pmod 4$, then $-1$ is a quadratic nonresidue modulo $p$.
+\end{itemize}
+\end{thm}
+\begin{proof}
+ For an arbitrary prime $p>2$, Euler's identity tells us that $\left(\frac{-1}{p}\right)\equiv (-1)^{\frac{p-1}{2}} \pmod p$. Note that, we have that $\left(\frac{-1}{p}\right)$ is either $+1$ or $-1$ by definition, and $(-1)^{\frac{p-1}{2}}$ is also either $+1$ or $-1$. Since $1\not\equiv -1 \pmod p$, the two sides of the congruence are actually equal. That is, $\left(\frac{-1}{p}\right)= (-1)^{\frac{p-1}{2}} $.
+ 
+ The completion of the proof is on Homework 11.
+ \end{proof}
+ 
+  Let $p>2$ be prime, and let $a$ and $b$ be integers between $1$ and $p-1$.
+\begin{itemize}
+\item If $ab$ is a quadratic residue, then what do we know about $a$ and $b$?
+ \item If $ab$ is a quadratic nonresidue, then what do we know about $a$ and $b$?
+\end{itemize}
+ 
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic reciprocity}
+We are going to explore the relationship between $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$. Let's look at an example:
+   We want to know if $3$ is a quadratic residue modulo $107$. It would be a lot easier to check if $107$ is a quadratic residue modulo $3$. We know that $107\equiv   {2}
+ \pmod 3$, so $\left(\frac{107}{3}\right)=  {-1}
+ $. It would be nice if this also gave us $\left(\frac{3}{107}\right)$.
+  
+   Another example: Find $\left(\frac{p}{5}\right)$ and $\left(\frac{5}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{5}\right)$&$  {-1}$&$  {0}$&$  {-1}$&$  {1}$&$  {-1}$\\\hline
+$\left(\frac{5}{p}\right)$&-1&0&-1&1&-1\\\hline
+\end{tabular}
+  
+   Another example: Find $\left(\frac{p}{7}\right)$ and $\left(\frac{7}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{7}\right)$&$  {-1}$&$  {-1}$&0&$  {1}$&$  {-1}$\\\hline
+$\left(\frac{7}{p}\right)$&$  {1}$&$  {-1}$&0&-1&-1\\\hline
+\end{tabular}
+  
+This gives some evidence for our thm:
+\begin{thm}
+ Let $p$ and $q$ be odd primes with $p\neq q$. 
+\begin{itemize}
+ \item if $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right)=\left(\frac{q}{p}\right)$
+ \item if $p\equiv q\equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right)=-\left(\frac{q}{p}\right)$
+\end{itemize}
+\end{thm}
+
+Our goal for Monday is to prove this.
+
+
+We want to prove 
+\begin{thm}[Quadratic reciprocity]
+ Let $p$ and $q$ be primes with $p\neq q$, then 
+\begin{itemize}
+ \item if $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right)=\left(\frac{q}{p}\right)$.
+ \item if $p\equiv q \equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right)=-\left(\frac{q}{p}\right)$.
+\end{itemize}
+\end{thm}
+
+Let's try some examples: 
+\begin{poll}
+ $\left(\frac{11}{47}\right)= {-1}
+* \left(\frac{47}{11}\right)$. We can reduce $47\equiv {3}
+ \pmod{11}$, which 
+\begin{itemize}
+ \item  {is}
+ \item {is not}
+\end{itemize}
+a quadratic residue modulo 11. Thus,  $\left(\frac{11}{47}\right)= {-1}
+$ and $ \left(\frac{47}{11}\right)= {1}
+.$ 
+\end{poll}
+
+\begin{poll}
+ $\left(\frac{3}{107}\right)= {-1}
+* \left(\frac{107}{3}\right)$. We can reduce $107\equiv {2}
+ \pmod{3}$, which 
+\begin{itemize}
+ \item{is}
+ \item   {is not}
+\end{itemize}
+a quadratic residue modulo 3. Thus,  $\left(\frac{107}{3}\right)= {-1}
+$ and $ \left(\frac{3}{107}\right)= {1}
+.$ 
+\end{poll}
+
+We are going to restate quadratic reciprocity as
+\begin{thm}[Restatement of quadratic reciprocity]
+ Let $p$ and $a$ be odd primes with $p\neq q$. Then \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}.\]
+\end{thm}
+
+\begin{prop}The restatement of quadratic reciprocity implies quadratic reciprocity.
+\end{prop}
+\begin{proof}
+ Let $p$ and $q$ be odd primes with $p\neq q$. We assume that $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ is true. Then we have two cases:
+ 
+\begin{itemize}
+ \item $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$ [To show $\left(\frac{p}{q}\right)= {1}
+* \left(\frac{q}{p}\right)$.]
+
+Without loss of generality, we assume $p\equiv 1 \pmod 4$. Then there exists a $k\in\mathbb{Z}$ such that $p=4k+1$. This implies that $\frac{p-1}{2}=2k$. Thus, \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}=1^\frac{q-1}{2}=1.\]
+Thus, we have that $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$ must either both be $+1$ or both be $-1$.
+
+\item $p\equiv q\equiv 3 \pmod 4$[To show $\left(\frac{p}{q}\right)= {-1}
+* \left(\frac{q}{p}\right)$.]
+ There exists $k,m\in\mathbb{Z}$ such that $p=4k+3$ and $q=4m+3$. This implies that $\frac{p-1}{2}=2k+1$ and $\frac{q-1}{2}=2k+1$. Thus, \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}=(-1)^\frac{q-1}{2}=-1.\]
+Thus, we have that exactly one of $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$ is $+1$ and the other is $-1$. \qedhere
+\end{itemize}
+\end{proof}
+
+In order to prove this, we first need to prove two rather technical lemmas. Then we will use a geometric proof to finish.
+
+\begin{lem}[Gauss's lemma]
+Let $p$ be an odd prime number and let $a\in\mathbb{Z}$ with $p\nmid a$. Let $n$ be the number of least positive residues of the integers $a,2a,\dots, \frac{p-1}{2} a$ that are greater than $\frac{p}{2}$. Then 
+\[\left(\frac{a}{p}\right)=(-1)^n.\]
+\end{lem}
+
+\begin{poll}
+ Use Gauss's lemma to find $\left(\frac{6}{11}\right)$. We need to find $n$, the number of least nonnegative positive residues of the integers $6,2*6,3*6,4*6,5*6$ greater that $ {5.5}
+ $
+ We have 
+ 
+\begin{align*}
+ 6\equiv  {6}
+ \pmod{11}\\
+ 2*6\equiv {1}
+ \pmod{11}\\
+ 3*6\equiv {7}
+ \pmod{11}\\
+ 4*6\equiv {2}
+ \pmod{11}\\
+ 5*6\equiv {8}
+ \pmod{11}
+\end{align*}
+Thus, $n= {3}
+$ and $(-1)^n= {-1}
+$.
+\end{poll}
+
+We now prove Gauss's lemma.
+\begin{proof}
+ Let $r_1,r_2,\dots r_n$ be the least nonnegative residues of the integers $a,2a,\dots,\frac{p-1}{2}a$ that are greater than $\frac{p}{2}$ and $s_1,s_2,\dots,s_m$ be the least nonnegative residues that are less that $\frac{p}{2}$. Note that no $r_i$ or $s_j$ is 0, since $p$ does not divide any of $a,2a,\dots \frac{p-1}{2}$. Consider the $\frac{p-1}{2}$ integers given by \[p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m.\]
+ We want to show that these integers are the integers from $1$ to $\frac{p-1}{2}$ inclusive in some order. Since each integer is less than or equal to $\frac{p-1}{2}$, it suffices to show that no two of these integers are congruent modulo $p$. 
+ 
+If $p-r_i\equiv p-r_j \pmod p$ for some $i\neq j$, then $r_i\equiv r_j \pmod p$, but this implies that there exists some $k_i,k_j\in\mathbb{Z}$ such that $r_i=k_ia\equiv k_ja=r_j\pmod p$ with $k_i\neq k_j$ and $1\leq k_i,k_j\leq {\frac{p-1}{2}}
+$. Since 
+\begin{itemize}
+ \item  {$p\nmid a$}
+ \item {$p\mid a$}
+\end{itemize}
+ we know that the multiplicative inverse of $a$ modulo $p$ 
+\begin{itemize}
+ \item  {exists}
+ \item {does not exist}
+\end{itemize}
+ and thus $k_i\equiv k_j \pmod p$, a contradiction. Thus, no two of the first $n$ integers are congruent modulo $p$. 
+ 
+ Similarly, no two of the second $m$ integers are congruent. Now, if $p-r_i\equiv s_j \pmod p$, for some $i$ and $j$, then $-r_i\equiv s_j \pmod p$. Thus, there exists $k_i,k_j\in\mathbb{Z}$ such that $-r_i=-k_ia\equiv k_ja=s_j\pmod p$ with $k_i\neq k_j$ and $1\leq k_i,k_j\leq\frac{p-1}{2}$. Since $p\nmid a$, we know that the multiplicative inverse of $a$ modulo $p$ exists, and thus $-k_i\equiv k_j \pmod p$, a contradiction.
+Thus, the $\frac{p-1}{2}$ integers $p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m$ are the integers $1,2,\dots,\frac{p-1}{2}$ in some order. 
+
+Then, \[(p-r_1)(p-r_2)\cdots(p-r_n)s_1s_2\cdots s_m\equiv\frac{p-1}{2}! \pmod p\]
+implies that \[(-1)^nr_1r_2\cdots r_ns-1s_2\cdots s_m\equiv\frac{p-1}{2}! \pmod p.\]
+By the definition of $r_i$ and $s_j$, we have 
+\[(-1)^na(2a)(3a)\cdots(\frac{p-1}{2}a)\equiv\frac{p-1}{2}! \pmod p.\]
+By reordering, we have 
+\[(-1)^na^{\frac{p-1}{2}}\frac{p-1}{2}!\equiv\frac{p-1}{2}! \pmod p.\]
+Thus, $(-1)^na^{\frac{p-1}{2}}\equiv 1 \pmod p$, and $a^{\frac{p-1}{2}}\equiv (-1)^n \pmod p$. By Euler's criterion, we get that $\left(\frac{a}{p}\right)\equiv(-1)^n \pmod p$. Since both sides of the congruence must be $\pm1,$ we have $\left(\frac{a}{p}\right)=(-1)^n $.
+\end{proof}
+
+We are going to prove a result about $\left(\frac{2}{p}\right)$ before our next technical lemma.
+
+\begin{thm}
+ Let $p$ be an odd prime. Then 
+\begin{equation*}
+ \left(\frac{2}{p}\right)=(-1)^{\frac{p^2-1}{8}}=
+\begin{cases}
+ 1& if\ p\equiv 1,7 \pmod 8\\
+ -1 & if\ p\equiv 3,5 \pmod 8.
+\end{cases}
+\end{equation*}
+\end{thm}
+\begin{proof}
+ By Gauss's Lemma, we have that $\left(\frac{2}{p}\right)=(-1)^n,$ where $n$ is the number of least positive residues of the integers $2,2*2,2*3,\dots,\frac{p-1}{2}$ that are greater than $\frac{p}{2}$. Let $k\in\mathbb{Z}$ with $1\leq k\leq \frac{p-1}{2}$. Then $2k< {\frac{p}{2}}
+ $ if and only  if $k<\frac{p}{4};$ so $\left\lfloor {\frac{p}{4}}
+ \right\rfloor$ of the integers $2,2*2,2*3,\dots,\frac{p-1}{2}$ that are less than $\frac{p}{2}$, where $\lfloor\cdot\rfloor$ is the greatest integer (or floor) function. So, $\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor$  of these integers are greater than $\frac{p}{2}$, from which 
+ \[\left(\frac{2}{p}\right)=(-1)^{\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor}\] by Gauss's Lemma. For the first equality, it suffices to show that 
+ \[\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor\equiv \frac{p^2-1}{8} \pmod 2.\]
+ 
+ If $p\equiv 1 \pmod 8$, the $p=8k+1$ for some $k\in\mathbb{Z}$. That gives us
+ \[\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor=\frac{(8k+1)-1}{2}--\left\lfloor\frac{8k+1}{4}\right\rfloor=4k-2k=2k\equiv 0 \pmod 2\] and
+ \[\frac{p^2-1}{8}=\frac{8k+1)^2-1}{8}=8k^2+2k\equiv 0\pmod 2.\]
+ Thus,  holds when $p\equiv 1 \pmod 8$. The rest of the cases are part of homework 9.
+\end{proof}
+
+\begin{lem}
+ Let $p$ be an odd prime number and let $a\in\mathbb{Z}$ with $p\nmid a$ and $a$ odd. If \[N=\sum_{j=1}^{\frac{p-1}{2}}\left\lfloor\frac{ja}{p}\right\rfloor,\] then \[\left(\frac{a}{p}\right)=(-1)^N.\]
+\end{lem}
+Where $\lfloor\cdot\rfloor$ is the greatest integer (or floor) function. This gives us another way of computing Legendre symbols. Let's look at an example before diving into the technical proof.
+
+\begin{poll}
+ Use this lemma to find $\left(\frac{7}{11}\right)$. We have
+ \begin{align*}
+ N&=\sum_{j=1}^{ {5}
+ }
+ \left\lfloor\frac{j7}{11}\right\rfloor= \left\lfloor\frac{7}{11}\right\rfloor+ \left\lfloor\frac{14}{11}\right\rfloor+\left\lfloor\frac{21}{11}\right\rfloor+ \left\lfloor\frac{28}{11}\right\rfloor+\left\lfloor\frac{35}{11}\right\rfloor\\
+ &= {0}
+ + {1}
+ + {1}
+ + {2}
+ + {3}
+ \\&=
+  {7}
+ \end{align*}
+ So $\left(\frac{7}{11}\right)=(-1)^{ {7}
+ }= {-1}
+ .$
+\end{poll}
+
+\begin{proof}
+ Let $r_1,r_2,\dots,r_n$ are the least nonnegative representatives of $a,2a,3a,\dots,\frac{p-1}{2}a$ modulo $p$ which are greater than $\frac{p}{2}$ and $s_1,s_2,\dots,s_m$ be the least nonnegative representatives of $a,2a,3a,\dots,\frac{p-1}{2}a$ modulo $p$ which are less than $\frac{p}{2}$.  Then for each $j=1,2, \dots, \frac{p-1}{2}$ we have that \[ja=p\left\lfloor\frac{ja}{p}\right\rfloor+\textrm{(remainder depending on $j$)}\]
+ where each of $r_1,r_2, \dots, r_n,s_1,s_2,\dots,s_m$ appears exactly once as a remainder. 
+ 
+By adding the $\frac{p-1}{2}$ equations above, we get
+\begin{equation}\label{sumja}\sum_{j=1}^{\frac{p-1}{2} }ja=\sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor+\sum_{j=1}^n r_j+\sum_{j=1}^m s_j
+\end{equation}
+
+The integers $p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m$ are precisely the integers from $1$ to $\frac{p-1}{2}$ in some order, so we have 
+\begin{equation}\label{sumj}
+ \sum_{j=1}^{\frac{p-1}{2}} j=\sum_{j=1}^n (p-r_j)+\sum_{j=1}^m s_j=pn-\sum_{j=1}^n r_j+\sum_{j=1}^m s_j
+\end{equation}
+
+We subtract \eqref{sumj} from \eqref{sumja} to get 
+\begin{align*}
+ \sum_{j=1}^{\frac{p-1}{2} }ja- \sum_{j=1}^{\frac{p-1}{2}} j&=\sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor+\sum_{j=1}^n r_j+\sum_{j=1}^m s_j -\left( pn-\sum_{j=1}^n r_j+\sum_{j=1}^m s_j \right)\\
+ &=\sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor -pn +2\sum_{j=1}^n r_j.
+\end{align*}
+Now, we can factor the left hand side to get 
+\[( {a-1}
+)\sum_{j=1}^{\frac{p-1}{2}} j=\sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor -pn +2\sum_{j=1}^n r_j.\]
+Reducing both sides of the equation modulo 2 gives
+\[0\equiv \sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor -n \pmod 2\] since $p\equiv  {1}
+\pmod 2$. Equivalently $n\equiv \sum_{j=1}^{\frac{p-1}{2}}p\left\lfloor\frac{ja}{p}\right\rfloor\pmod 2$.
+
+Thus, $n\equiv N \pmod 2$, thus $\left(\frac{a}{p}\right)=(-1)^n=(-1)^N$.
+
+\end{proof}
+\end{document}

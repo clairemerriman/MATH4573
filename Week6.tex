@@ -1,0 +1,332 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 6--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, February 15: Applications of the Chinese Remainder Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Section 3.5 of Jones and Jones, An extension of the Chinese Remainder Theorem
+
+Turn in: Exercise 3.14
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Applications of the Chinese Remainder Theorem (55 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thm}[Corollary to the Chinese Remainder Theorem]
+ Let $m=p_1^{e_1}p_2^{e_2}\cdots p_k^{e^k}$ be the prime factorization of $m$. For each element $y$ of the complete residue system $\{0,1,\dots,m-1\}$, there exists a system of congruences 
+ \begin{align*}
+ x&\equiv a_1 \pmod{p_1^{e_1}}\\
+ x&\equiv a_2 \pmod{p_2^{e_2}}\\
+    &\vdots\\
+  x&\equiv a_k \pmod{p_r^{e_k}}
+\end{align*}
+where $y$ is a solution modulo $m$. The same is true for any pairwise relatively prime $m_i$ where $m=\prod m_i$.
+\end{thm}
+\begin{solution}
+There are $p_1^{e_1}$ choices for $a_1$, $p_2^{e_2}$ choices for $a_2$, etc, thus there are $p_1^{e_1}p_2^{e_2}\cdots p_k^{e^k}$ such systems of congruences. From the Chinese remainder theorem, there exists a unique solution modulo $m$. Since the solution to two distinct systems of congruences are incongruent for some mod $p_i^{\alpha_i}$, they are distinct mod $m$ by the contrapositive of Theorem 2.1 part 5. The same proof holds for  any pairwise relatively prime $m_i$ where $m=\prod m_i$.
+\end{solution}
+
+\begin{thm}
+ If $p$ is prime, then $ax\equiv 0 \pmod p$ implies either $a\equiv 0 \pmod p$ or $x\equiv 0 \pmod p$. If $m$ is a positive composite integer, then there is a solution to $ax\equiv 0 \pmod m$ where both $a \not\equiv 0 \pmod m$ and $x\not\equiv 0 \pmod m$.
+\end{thm}
+\begin{proof} Theorem 3.7 says that $ay\equiv 1 \pmod p$ has a solution if and only if $\gcd(a,p)$ divides $1$. That is, if and only if $\gcd(a,p)=1$. In this case the solution is unique. This allow us to cancel terms by using $ay\equiv 1 \pmod p.$
+
+For $p$ prime, $\{0,1,\dots, p-1\}$ is a complete residue class mod $p$, so either $a\equiv 0 \pmod p$ or $\gcd(a,p)=1$.
+If $a\equiv 0 \pmod p$, then $ax\equiv 0 \pmod p$.
+
+If $a\not\equiv 0 \pmod p, a$ has a multiplicative inverse $\overline{a}$ mod $p$ for all $1\leq a \leq p-1$. Returning to our congruence $ax\equiv 0 \pmod p$, either $a\equiv 0 \pmod p$ or $\overline{a}ax\equiv x\equiv 0\pmod p$.
+ 
+For the case where $m$ is composite, then there exist integers $1<a,x<m$ where $m=ax$. Then $ax\equiv 0 \pmod m$ but $a\not\equiv 0 \pmod m$ and $x\not\equiv 0 \pmod m$.
+\end{proof}
+
+\begin{example}
+ Let's look at two examples:
+\begin{align*}
+ x^3+2x-3\equiv 0 \pmod{5}\\
+ x^3+2x-3\equiv 0 \pmod{4}
+\end{align*}
+One has 0 divisors and the other does not. Both of these are small enough to guess-and-check
+\begin{br}[10 minutes]
+ Find all solutions 
+\end{br}
+
+Let's try a technique that is going to generalize a bit better.
+Although cubics are hard to factor, we can quickly guess-and-check that $x=1$ is solution over the integers, so $x^3+2x-3=(x-1)(x^2+x+3)$.
+\begin{description}
+ \item[(mod 5)] Let's start modulo $5$. Then $(x-1)(x^2+x+3)\equiv 0 \pmod 5$ when either \[x-1\equiv 0 \pmod 5\quad or \quad x^2+x+3\equiv 0\pmod 5,\] since 5 is prime. Then one solution is $x\equiv 1 \pmod 5$, which is good since $x=1\equiv 1 \pmod m$ for any integer $m$. \\
+ We are going to do something a bit funny for the other equivalence. We rewrite 
+\begin{align*}
+x^2+x+3&\equiv 0 \pmod 5\\
+ x^2+x+3+2&\equiv 2 \pmod 5 &\textrm{ so that we will be able to factor out an $x$}\\
+ x^2+x&\equiv 2 \pmod 5\\
+ x(x+1)&\equiv 2 \pmod 5.
+\end{align*}
+Then we have a slightly faster time checking $1(1+1), 2(2+1), 3(3+1), 4(4+1)$. The only solutions are $x\equiv 1 \pmod5 $ (which we already found) and $x\equiv 3\pmod 5$.
+
+This allows us to factor (and double check that): \begin{align*}
+(x-1)(x-1)(x-3)&\equiv x^3-5x^2+7x-3\\&\equiv  x^3+2x-3\pmod 5.
+\end{align*}
+
+\item[(mod 4)] 
+ Now we do  modulo $4$. Then $(x-1)(x^2+x+3)\equiv 0 \pmod 4$ when  
+ \begin{align*}
+ x-1\equiv 0 \pmod 4, \quad &or \quad
+ x^2+x+3\equiv 0\pmod 4,\quad \\or \quad 
+ x-1\equiv x^2+x+3&\equiv 2\pmod 4. \end{align*}
+ We start with $x-1\equiv 0 \pmod $, so $x\equiv 1 \pmod 4$ as expected. \\
+ We rewrite \begin{align*}
+x^2+x+3&\equiv 0 \pmod 4\\
+ x^2+x+3+1&\equiv 1 \pmod 4 &\textrm{ so that we will be able to factor out an $x$}\\
+ x^2+x&\equiv 1 \pmod 5\\
+ x(x+1)&\equiv 1 \pmod 5.
+\end{align*}
+ This means that both $x$ and $x+1$ are odd, so there are no solutions $\pmod 4$.\\
+Finally, we check $x-1\equiv x^2+x+3\equiv 2\pmod 4$. The only possible solution to $x-1\equiv 2\pmod 4$ is $x\equiv 3 \pmod 4$, but $3^2+3+3\equiv 3 \pmod 4$, so it is not a solution.
+
+Thus, $x\equiv 1\pmod 4$ is the only solution $\mod 4$.
+\end{description}
+\end{example}
+
+\begin{example}
+Solve $x^3+2x-3\equiv 0 \pmod{20}$. It would be tempting to try to factor this, although cubics are hard to factor, but 
+\begin{align*}5*4&\equiv 5*8\equiv 5*10\equiv 5*16\equiv 10*2\equiv 10*4\equiv 10*6\equiv 10*8\\&\equiv 10*10\equiv 10*12\equiv10*14\equiv10*16\equiv10*18\equiv 0 \pmod{20}.
+ \end{align*}
+ ($5*4k\equiv 10*2\equiv 0\pmod{25}, k=1,2,3,4, j=1,2,3,\dots,9$ for 13 total options).
+Checking each option is going to be really time consuming. 
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday: Order of elements $\Z_p$, quadratic polynomials mod $n$, polynomials mod $p$.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: None.
+
+{\bf Turn in:}
+ Look at the chart of $a^n \pmod{11}$. The first column is $1^n$, the second column is $2^n$, etc. That is, the top of the column is the base, the left gives the exponent, all are reduced mod 11.
+ 
+\begin{enumerate}
+ \item  For each $a\in\Z_{11}$, what is the smallest $n$ such that $a^n= 1$ (ie, what is the smallest $n$ such that $a^n\equiv 1 \pmod{11}$?
+ 
+\item  What patterns do you notice?
+\end{enumerate}
+\begin{tabular}{|l||l|l|l|l|l|l|l|l|l|l|}\hline%that is HORRENDOUS to read
+$a^1$  & 1 & 2  & 3 & 4 & 5 & 6  & 7  & 8  & 9 & 10  \\ \hline\hline
+$a^2 $ & 1 & 4  & 9 & 5 & 3 & 3  & 5  & 9  & 4 & 1   \\\hline
+$a^3 $ & 1 & 8  & 5 & 9 & 4 & 7  & 2  & 6  & 3 & 10  \\\hline
+$a^4 $ & 1 & 5  & 4 & 3 & 9 & 9  & 3  & 4  & 5 & 1   \\\hline
+$a^5 $ & 1 & 10 & 1 & 1 & 1 & 10 & 10 & 10 & 1 & 10  \\\hline
+$a^6 $ & 1 & 9  & 3 & 4 & 5 & 5  & 4  & 3  & 9 & 1   \\\hline
+$a^7 $ & 1 & 7  & 9 & 5 & 3 & 8  & 6  & 2  & 4 & 10  \\\hline
+$a^8 $ & 1 & 3  & 5 & 9 & 4 & 4  & 9  & 5  & 3 & 1   \\\hline
+$a^9 $ & 1 & 6  & 4 & 3 & 9 & 2  & 7  & 7  & 5 & 10  \\\hline
+$a^{10}$ & 1 & 1  & 1 & 1 & 1 & 1  & 1  & 1  & 1 & 1   \\\hline
+$a^{11}$ & 1 & 2  & 3 & 4 & 5 & 6  & 7  & 8  & 9 & 10 \\\hline
+\end{tabular}
+\begin{solution}
+ Posted after class
+%\begin{enumerate}
+% \item $1^1\equiv 2^{10}\equiv 3^5\equiv4^5\equiv5^5\equiv6^{10}\equiv7^{10}\equiv8^{10}\equiv9^5\equiv10^2 \equiv1 \pmod{11}$
+% \item Some patterns people found were: for every number, the smallest $n$ where $a^n\equiv 1 \pmod{11}$ is 1,2,5, or 10. The even power rows are symmetric.\footnote{We will prove this Wednesday, I was not expecting this pattern} \qedhere
+%\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Project 2 description is up. This one is to be turned in on Carmen. If you are doing something that involves video or audio editing, keep in mind it will probably take longer than you expect! Carmen has very low storage limits, so you will probably need to link to BuckeyeBox, OneDrive, or Google Drive (or YouTube).
+
+There are a few videos on the Chinese remainder theorem linked on the class playlist. You can access this playlist from the main course page or Modules. The link says ``Video examples from the book," although these are not from the book.
+
+Reminder that your homework feedback is on Gradescope. I also added the Gradescope guide for students to the playlist. Revising and resubmitting is an opportunity for you to learn from the feedback and improve your grade. You only need to submit the problems which you would like regraded.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Roots of a cubic (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example}
+Solve $x^3+2x-3\equiv 0 \pmod{20}$. It would be tempting to try to factor this, although cubics are hard to factor, but 
+\begin{align*}5*4&\equiv 5*8\equiv 5*10\equiv 5*16\equiv 10*2\equiv 10*4\equiv 10*6\equiv 10*8\\&\equiv 10*10\equiv 10*12\equiv10*14\equiv10*16\equiv10*18\equiv 0 \pmod{20}.
+ \end{align*}
+ ($5*4k\equiv 10*2\equiv 0\pmod{25}, k=1,2,3,4, j=1,2,3,\dots,9$ for 13 total options).
+Checking each option is going to be really time consuming. Let's reduce the modulus to reduce this list.
+
+\begin{br}[5 minutes]
+ If $d\mid m, d>0$, and $u$ is a solution to $f(x)\equiv 0 \pmod m$, then $u$ is a solution to $f(x)\equiv 0 \pmod d$.
+\end{br}
+\begin{solution}
+ From the definition of a solution $f(x)\equiv 0 \pmod m$, $f(u)\equiv 0\pmod m$. Then from Lemma 3.3, we have that $f(u)\equiv 0 \pmod d$, meaning  $u$ is a solution to $f(x)\equiv 0 \pmod d$.
+\end{solution}
+
+
+One way to try to find solutions to congruences is to reduce the modulus. 
+However, we do have a powerful tool from the contrapositive. If $d\mid m, d>0$ and $u$ is not a solution to $f(x)\equiv 0 \pmod d$, then $u$ is not a solution to $f(x)\equiv 0 \pmod m$. This means that we can make a list of possible solutions to $f(x)\equiv 0 \pmod m$.
+
+
+Returning to $x^3+2x-3\equiv 0 \pmod{20}$,
+we already found that the possible solutions are $x\equiv 1 \pmod 5, x\equiv 3\pmod 5$, and $x\equiv 1 \pmod 4$. In fact, we need a solution that works both modulo 5 and modulo 4. Then we are looking for a solution to the system of congruences $x\equiv 1 \pmod 5$ and $x\equiv 1 \pmod 4$ and a solution to the congruence $x\equiv 3\pmod 5$, and $x\equiv 1 \pmod 4$.
+\begin{description}
+ \item [Case $x\equiv 1 \pmod 5$:] By the Chinese remainder theorem, there is a unique solution modulo 20. We have that $a_1=1, M_1=4,$ and $x_1*4\equiv 1 \pmod 5$, so $x_1\equiv 4 \pmod 5$. Notice that we can find this using the Euclidean algorithm:\[5=4+1,\quad 5-4=1,\] so $-1$ is the multiplicative inverse of $4 \mod 5$. It is easier to do arithmetic with $-1$ that $4$, so we will use that representative of the congruence class.
+ 
+ 
+ We also have that $a_2=1, M_2=5,$ and $x_2*5\equiv x_2\equiv1\pmod 4$, so $x_2\equiv 1 \pmod 4$.
+ 
+ This solution is $1*4*(-1)+1*5*1\equiv 1 \pmod {20}$.
+ \item [Case $x\equiv 3 \pmod 5$:] By the Chinese remainder theorem, there is a unique solution modulo 20. $a_1=3, M_1=4,$ and $x_1*4\equiv 1 \pmod 5$, so $x_1\equiv -1 \pmod 5$, and $a_2=1, M_2=5, x_2=1$ as before. This solution is $3*4*(-1)+1*5*1\equiv 13 \pmod {20}$.
+\end{description}
+Now we check: $1^2+2*1-3\equiv 0\pmod{20}$ (again, we expect this since $x=1$ is a solution to the equation $x^2+2x-3=0$), and $13^2+2*13-3\equiv 0\pmod{20}$.
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Order of elements $\Z_p$ (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{poll}
+For each $a\in \Z_{11}$, what are all of the values of $n$ where $a^n\equiv 1 \pmod{11}$?
+\end{poll}
+\begin{solution}
+ 1,2,5 or 10.
+\end{solution}
+\begin{br}[5 minutes]
+ Make a similar chart for $\Z_3$ and $\Z_4$. What patterns do you notice?
+\end{br}
+\begin{solution}
+ 
+\begin{tabular}{|c||c|c|}\hline
+ $a^1$ & 1& 2\\\hline\hline
+ $a^2$ & 1 & 1\\\hline
+ $a^3$ & 1 & 2\\\hline
+\end{tabular}
+\quad\quad
+\begin{tabular}{|c||c|c|c|}\hline
+ $a^1$ & 1& 2 & 3\\\hline\hline
+ $a^2$ & 1 & 0 & 1\\\hline
+ $a^3$ & 1 & 0 & 3\\\hline
+ $a^4$ & 1 & 0 & 1\\\hline
+\end{tabular}
+\end{solution}
+
+\begin{defn}
+ Let $a\in\Z_n$ be a reduced residue (ie, $\gcd(a,n)=1$). The \emph{order of $a$ in $\Z_n$} is the smallest positive integer $r$ such that $a^r\equiv 1 \pmod{n}$. Our textbook just gives the order a name (often $k$) when it is notationally useful, but the standard notation is $\operatorname{ord}_n(a)$. 
+\end{defn}
+
+From the previous exercise, what can you guess about $\ord_n(a)$?
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday: Polynomials mod $p$.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Scanned notes, Section 10.2 of \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Pommershiem, Marks, and Flapan.
+
+{\bf Turn in:}
+ How many incongruent solutions are there to $x^2\equiv 1 \pmod 8$? Why does this not violate Theorem 10.2.1 in the reading? What part of the proof of Theorem 10.2.1 no longer holds?
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finishing order of elements (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[5 minutes]
+ Let $n\in\Z, n>0, a\in\Z_n$ where $\gcd(a,n)=1$, and $r=\ord_n(a)$.
+ For an integer $e$, $a^e\equiv 1 \pmod n$ (or $a^e=1$ in $\Z_n$) if and only if $r\mid e$.
+\end{br}
+
+\begin{proof}
+($\Leftarrow$) Assume $r\mid e$. Then there exists an integer $k$ where $e=rk$. By exponent rules, \[a^e\equiv a^{rk}\equiv(a^r)^k\equiv 1^k\equiv 1 \pmod n.\]
+
+($\Rightarrow$)
+(\emph{Proof by contradiction}) Assume $a^e\equiv 1 \pmod n$. To get a contradiction, assume that $r\nmid e$. By the division algorithm, there exist $q,b$ where $e=rq+b$ and $0< b<r$. By assumption, we have $1\equiv a^e\equiv a^{rq+b}\equiv a^{rq}a^b\equiv a^b \pmod n$. By assumption, $r$ is the smallest positive integer where $a^r\equiv 1 \pmod n$, we have a contradiction. Thus, $r\mid e$.
+
+(\emph{Direct proof}) Assume $a^e\equiv 1 \pmod n$. Then by the division algorithm, there exist $q,b$ where $e=rq+b$ and $0\leq b<r$. By assumption, we have $1\equiv a^e\equiv a^{rq+b}\equiv a^{rq}a^b\equiv a^b \pmod n$. By assumption, $r$ is the smallest positive integer where $a^r\equiv 1 \pmod n$, we have that $b=0$. Thus, $r\mid e$.
+\end{proof}
+
+\begin{thm}
+ Let $p$ be prime and $a\in\Z_p, a\neq0$. Then $\ord_p(a)\mid p-1$. 
+ \end{thm}
+ 
+\begin{proof}
+ By Fermat's Little Theorem, $a^{p-1}\equiv 1 \pmod p$. Then from the previous theorem, $\ord_p(a)\mid p-1$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let's return to the pattern in the exponent table: that the even exponent rows are symmetric mod 11. It turns out that this is true for all mods, not just prime. We need to translate this into a math statement that we can prove:
+\begin{thm} For positive integers $m$ and $k$ and any integer $a$, 
+ $a^{2k}\equiv (m-a)^{2k} \pmod m$.
+\end{thm}
+\begin{proof}
+ First we note that $-a\equiv m-a \pmod m$ for any integer $a$ and positive integer $n$. By repeated applications of modular multiplication (or induction), we have seen that $(-a)^n\equiv (m-a)^n \pmod m$ for any nonnegative integer $n$. Then $(m-a)^{2k}\equiv (-a)^{2k}\equiv (-1)^{2k}a^{2k}\equiv a^{2k}\pmod m$.
+\end{proof}
+
+We will finish the discussion of order of an element (for now).
+\begin{thm}
+ Let $a,m\in\Z, m>0$, and $(a,m)=1$. Then for any positive integer $k$, $\ord_m(a^k)=\dfrac{\ord_m(a)}{(k,\ord_m(a))}$.
+\end{thm}
+\begin{proof}
+From the breakout room problem, $(a^k)^{\ord_m(a^k)}\equiv 1 \pmod m$ if and only if $\ord_m(a)\mid k\ord_m(a^k)$. We also have that this is true if and only if $\frac{\ord(a)}{(k, \ord(a))}\mid\frac{k}{(k,\ord(a))}\ord(a^k)$. Now we have that $\left(\frac{\ord(a)}{(k, \ord(a))},\frac{k}{(k,\ord(a))}\right)=1$, so $\frac{\ord(a)}{(k, \ord(a))}\mid\ord(a^k)$. Thus, the smallest integer where this is true is $\frac{\ord(a)}{(k, \ord(a))}$.
+\end{proof}
+Alternate proof with names for $\ord_m(a)$ and $\ord_m(a^k)$:
+\begin{proof} Let $\ord_m(a)=h$ and $\ord_m(a^k)=j$.
+From the breakout room problem, $(a^k)^{j}\equiv 1 \pmod m$ if and only if $h\mid kj$. We also have that this is true if and only if $\frac{h}{(k, h)}\mid\frac{k}{(k,h)}j$. Now we have that $\left(\frac{h}{(k, h)},\frac{k}{(k,h)}\right)=1$, so $\frac{h}{(k,h)}\mid j)$. Thus, the smallest integer $j$ where $(a^k)^j\equiv 1 \pmod m$ is $\frac{h}{(k,h)}$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic polynomials mod $n$ (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Let's take a minute go back to the integers. For integers $a,b$ and $c$, we have a formula for when $ax^2+bx+c=0$. We are going to start with this familiar case.
+
+\begin{thm}
+ Let $a,b,c\in\Z$ where $a\neq 0$. Consider the polynomial equation \[ax^2+bx+c=0.\tag{$\bigstar$}\] Let $d=b^2-4ac$. 
+\begin{enumerate}
+ \item If there exists $s\in\Z$ such that $s^2=d$, then the rational solutions to $\bigstar$ are \[x=(-b+s)(2a)^{-1}\quad\textnormal{and}\quad x=(-b-s)(2a)^{-1}.\] If $2a\mid -b-s$ or $2a\mid -b+s$, there are integer solutions.
+ \item If no such $s$ exists, there is no rational solution. If $d<0$, no real solution exists.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+ We are going to derive the quadratic formula. Since we have an idea of where we are going, we start with multiplying through by $4a$.
+ 
+\begin{align}
+ 4a^2x^2+4abc+4ac&=0\\
+ 4a^2x^x+4abx&=-4ac\\
+ 4a^2x+4abx+b^2&=b^2-4ac\\
+ (2ax+b)^2&=d\\
+ 2ax+b&=\pm\sqrt{d}\\
+ x&=\frac{-b\pm\sqrt{d}}{2a}.
+\end{align}
+Thus, if there exists an integer $s$ where $s^2=d$, $x$ is rational. Otherwise, there are no rational solutions, and if $d<0$ there are no real solutions.
+\end{proof}
+
+\begin{poll}
+Which steps might not work for modular arithmetic. Think to yourself, this is a quick gut-check.
+\end{poll}
+\begin{solution}
+ Step 5 does not always exist in the integers (or real numbers), and this is also true mod $p$. Step 6 also might not work.
+\end{solution}
+
+For modular arithmetic, we do not have square roots and may not have multiplicative inverses. We may also have zero divisors. We can avoid some of these problems by working modulo a prime.
+
+\begin{thm}
+ Let $p>2$ be prime, and $a,b,c\in\Z_p$ where $a\not\equiv 0$. Consider the polynomial congruence \[ax^2+bx+c\equiv0\pmod p.\tag{$\bigstar\bigstar$}\] Let $d\in \Z_p$ where $d\equiv b^2-4ac \pmod p$. 
+\begin{enumerate}
+ \item If there exists $s\in\Z_p$ such that $s^2=d$ (ie, $s^2\equiv d\pmod p$), then the rational solutions to $\bigstar\bigstar$ are \[x\equiv(-b+s)(2a)^{-1}\pmod p\quad\textnormal{and}\quad x\equiv(-b-s)(2a)^{-1}\pmod p,\] where $(2a)^{-1}$ denotes the multiplicative inverse of $2a \pmod p$.% If $2a\mid -b-s$ or $2a\mid -b+s$, there are integer solutions.
+ \item If no such $s$ exists, there is no solution in $\Z_p$.
+\end{enumerate}
+\end{thm}
+\begin{proof} Homework 6, Problem 7\end{proof}
+
+\begin{br}[3 minute, group of 3]
+ Why do we need $p>2$? How many different quadratic polynomials are there mod 2? What are their roots?
+\end{br}
+\begin{solution}
+$2a\equiv 0 \pmod 2$ for every integer $a$. 
+
+There are four polynomials: $x^2+x+1$ with no roots, $x^2+x$ with roots $0,1$, $x^2+1$ with root $1$, and $x^2$ with root $0$. 
+\end{solution}
+\end{document}

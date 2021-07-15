@@ -1,0 +1,278 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+
+\title{Week 1--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, January 11: Introduction and Divisibility}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{obj}Students will
+%\begin{itemize}
+%\item  Understand the course structure and grading rubric
+%\item  Formally define divisibility
+%\end{itemize}
+%\end{obj}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Introduction (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+What is number theory?
+
+Elementary number theory is the study of integers, especially the positive integers. A lot of the course focuses on prime numbers, which are the multiplicative building blocks of the integers. Another big topic in number theory is integer solutions to equations such as the Pythagorean triples $x^2+y^2=z^2$ or the generalization $x^n+y^n=z^n$. Proving that there are no integer solutions when $n>2$ was an open problem for close to 400 years.
+
+The first part of this course reproves facts about divisibility and prime numbers that you are probably familiar with. There are two purposes to this: 1) formalizing definitions and 2) starting with the situation you understand before moving to the new material.
+
+Go over syllabus
+
+\subsection{What is group work (10 minutes, breakout rooms)}
+
+Random breakout rooms to discuss good group work, using Google
+sheets to track conversations. \url{https://docs.google.com/spreadsheets/d/12eFSXAICNphMIVtMB4hgQb7h3jvkysvcFQ0mtikx980/edit?usp=sharing}
+Each group will have someone in charge of recording in the Google sheet, someone in charge summarizing the conversation, and someone in charge reporting back to the class. Groups of 4 will also have someone in charge of time keeping and facilitating conversation.
+
+Have 1 minute to think before going to breakout rooms. 4 minutes of discussion in the breakout rooms (remind them to introduce themselves!) while watching the Google sheet to see if they are still discussing. 2-3 minutes of whole class discussion after the breakout rooms with instructor recording.
+
+%\subsection{Classroom norms (10 minutes, breakout rooms)}
+%Using the same breakout groups as before, discuss classroom norms in the virtual environment. Change the rules for who facilitates, records, summarizes, and reports.
+%
+%Have 1 minute to think before going to breakout rooms. 4 minutes of discussion in the breakout rooms while watching the Google sheet to see if they are still discussing. 2-3 minutes of whole class discussion after the breakout rooms with instructor recording.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Divisibility (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The goal of this chapter is to review basic facts about divisibility, get comfortable with the new notation, and solve some basic linear equations.
+
+Ask: what is a definition for ``a divides b''?
+
+\begin{defn}
+ Let $a,b\in \Z$. If there is an integer $x$ such that $b=ax$, and we write $a\mid b$. int he case $b$ is not divisible by $a$, we write $a\nmid b$.
+
+ If $a\mid b$ we say that $a$ is a divisor of $b$.
+\end{defn}
+Note that 0 is not a divisor of any integer other than itself. Also all integers are divisors of 0, as odd as that sounds at first.
+
+
+
+%\begin{proof}
+% Since $a\mid b$ and $b \mid c$, there exist $e,f\in\Z$ such that $b=ae$ and $c=bf$. Then $c=(ae)f=a(ef)$, so $a \mid c$.
+%\end{proof}
+
+Finish with a group sharing their proof, and reminding students about the reading for Wednesday.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, January 13: Division algorithm, divisibility}%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{obj}
+%\begin{itemize}
+%\item Use the greatest integer function
+% \item Use the division algorithm
+% \item Prove basic facts about the greatest common divisor of two numbers
+%\end{itemize}
+%\end{obj}
+ 
+ Reading assignment: Section 1.1 of Jones \& Jones
+ 
+ {\bf Reading assignment:} Exercise 1.4, If $a$ divides $b$, and $c$ divides $d$, must $a +c$ divide $b+d$?
+
+
+
+\subsection{Review of reading assignment (5 minutes)}
+Section 1.1 introduces the division algorithm, which will come up repeatedly throughout the semester, as well as the definition of divisors from last class, and the greatest common multiple.
+
+\begin{poll}
+ If $a$ divides $b$, and $c$ divides $d$, must $a +c$ divide $b+d$?
+\end{poll}
+
+\begin{solution} Posted after class.
+ No. For example, if $a=b=c=1$ and $d=2$, then $a\mid b, c\mid d,$ but $a+c=2$ does not divide $b+d=3$. This can also be written $2\nmid 3$.
+\end{solution}
+
+\subsection{Division Algorithm (40 minutes)}
+\begin{br}[5 minutes] Prove: 
+$a\mid b$ and $b\mid c$ imply $a\mid c$, (that is, division is \emph{transitive}).
+\end{br}
+\begin{solution}
+ Homework problem 1a.
+\end{solution}
+
+\begin{br}(5 minutes)
+ Prove: If $x\in\R$, then $x-1<\lfloor x\rfloor \leq x$.
+\end{br}
+\begin{solution}
+ Homework problem 7.
+\end{solution}
+ Example from class: If $x=7$, then $7-1<\lfloor 7\rfloor=7$.
+ 
+Now I will give a slightly different proof of the division algorithm than the one from the reading.
+
+\begin{thm}[The Division Algorithm, Textbook Theorem 1.1]
+ Let $a,b\in\Z$ with $b>0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <b.\]
+\end{thm}
+\begin{proof}
+Let $q=\left\lfloor\frac{a}{b}\right\rfloor$ and $r=a-b\left\lfloor\frac{a}{b}\right\rfloor$. Then $a=bq+r$ by rearranging the equation. 
+Now we need to show $0\leq r<b$. 
+
+Since $x-1<\lfloor x\rfloor\leq x$, we have \[\frac{a}{b}-1<\left\lfloor\frac{a}{b}\right\rfloor\leq\frac{a}{b}.\] 
+Multiplying all terms by $-b$, we get 
+ \[-a+b>-b\left\lfloor\frac{a}{b}\right\rfloor\geq-a.\]
+ Adding $a$ to every term gives \[b>a-b\left\lfloor\frac{a}{b}\right\rfloor\geq 0.\] 
+By the definition of $r$, we have shown $0\leq r <b$.
+
+Finally, we need to show that $q$ and $r$ are unique.
+Assume \[a=bq_1+r_1, \quad 0\leq r_1<b\]
+ \[a=bq_2+r_2, \quad 0\leq r_2<b.\]
+ We need to show $q_1=q_2$ and $r_1=r_2$. We can subtract the two equations from each other. 
+ 
+\begin{align*}
+  a&=bq_1+r_1, \\
+ \underline{ -(a}&\underline{=bq_2+r_2)}, \\
+ 0&=bq_1+r_1-bq_2-r_2=b(q_1-q_2)+(r_1-r_2) . 
+\end{align*}
+
+Rearranging, we get $b(q_1-q_2)=r_2-r_1$. Thus, $b\mid r_2-r_1$. From rearranging the inequalities:
+\begin{align*}
+ & 0\leq r_2<b\\
+- & \underline{b< -r_1\leq 0}\\
+ -&b<r_2-r_1<b.
+\end{align*}
+Thus, the only way $b\mid r_2-r_1$ is that $r_2-r_1=0$ and thus $r_1=r_2$. Now, $0=b(q_1-q_2)+(r_1-r_2)$ becomes $0=b(q_1-q_2)$. Since we assumed $b>0$, we have that $q_1-q_2=0$. 
+\end{proof}
+
+\begin{cor}[Corollary 1.2]
+ Let $a,b\in\Z$ with $b\neq0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <|b|.\]
+\end{cor}
+ 
+
+
+ \subsection{Divisibility (10 minutes)}
+ Recall the definition of divisibility from last class and the reading. We will now do exercise 1.3 in breakout rooms.
+ 
+\begin{br}[Exercise 1.3, 15 minutes or end with 5 minutes left in class]
+Prove that for integers $a,b,c,d$ and $m$
+\begin{enumerate}[(a)]
+\item if $a\mid b$ and $b\mid d$, then $ac\mid bd$;
+\item if $m\neq 0$, then $a\mid b$ if and only if $ma\mid mb$;
+\item if $d\mid a$ and $a\neq 0$, then $|d|\leq|a|$.
+\end{enumerate}
+ \end{br}
+ 
+\begin{solution}
+ Homework problem 1.
+\end{solution}
+ 
+ 
+Finish class with having different groups present the set up for different proofs. 10 minutes is not enough for full proofs. 
+
+Remind them about the course survey.
+
+
+%%%%%%%%Writing takes longer than expected, but they went faster than expected in groups
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, January 15: Greatest Common Divisor, Bezout's identity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Reading assignment: Section 1.2 of Jones \& Jones
+ 
+ {\bf Turn in:} 
+\begin{enumerate}
+ \item In the calculation before the statement of Theorem 1.6, the text says ``since $b>r_1>r_2>\dots\geq0$, we must eventually get a remainder $r_n=0$ (after at most $b$ steps)." Why is this true?
+ \item Exercise 1.7, Express $\gcd(1485, 1745)$ in the form $1485u+1745v$.
+\end{enumerate}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finishing divisibility (15 minutes)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[Part of Exercise 1.22, 10 minutes]
+ Show that if $a$ and $b$ are integers with $b\neq 0$, then there is a unique pair of integers $q$ and $r$ such that $a=qb+r$ and $\frac{-|b|}{2}<r\leq \frac{|b|}{2}$.
+\end{br}
+\begin{solution}
+ Homework problem 2.
+\end{solution}
+\begin{thm}[Theorem 1.3]
+ 
+\begin{enumerate}[(a)]
+ \item If $c$ divides $a_1,\dots, a_k$, then $c$ divides $a_1u_1+\cdots+a_ku_k$ for all integers $u_1,\dots,u_k$.
+ \item $a\mid b$ and $b\mid a$ if and only if $a=\pm b$.
+\end{enumerate}
+\end{thm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reading review (5 minutes)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Very quick breakout room (2 minutes) how does the reading relate to your previous understanding of greatest common divisor?
+
+\begin{poll}
+ Which of the following is a way to represent $\gcd(1485, 1745)$ in the form $1485u+1745v$?
+\end{poll}
+\begin{solution}
+ Choices and solution posted after class
+ 
+ $u=-47,v=40$
+ 
+ $u=337, v=-396$
+ 
+ $u=-257, v=302$
+ 
+All are correct!
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Greatest common divisor (35 minutes)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn} If $a\mid b$ and $a\mid c$ then $a$ is a \emph{common divisor} of $b$ and $c$.
+
+ If at least one of $b$ and $c$ is not $0$, the greatest (positive) number among their common divisors  is called the \emph{greatest common divisor of $a$ and $b$} and is denoted $gcd(a,b)$ or just $(a,b)$. 
+ 
+ If $gcd(a,b)=1$, we say that $a$ and $b$ are \emph{relatively prime}.
+
+If we want the greatest common divisor of several integers at once we denote that by $(b_1,b_2,b_3,\dots,b_n)$.
+\end{defn}
+
+For example, $(4,8)$ is $4$ but $(4,6,8)$ is $2$.
+
+The GCD always exists. How to show this: $1$ is always a divisor, and no divisor can be larger than the maximum of $|a|,|b|$. So there is a finite number of divisors, thus there is a maximum.
+
+\begin{br}[Exercise 1.8, 15 minutes] 
+Show that $c|a$ and $c|b$ if and only if $c|\gcd(a,b)$. 
+\end{br}
+
+Instead of doing this problem for homework, go over the solution in class.
+\begin{solution} Posted after class.
+
+ In one direction, assume that $c|a$ and $c|b$. By definition, $c$ is a common divisor of $a$ and $b$. By Corollary 1.4, for any integers $u$ and $v$, $c\mid(au+bv)$. By Theorem 1.7 (Bezout's identity), there exist $u,v\in\Z$ such that $\gcd(a,b)=au+bv$. Thus, $c\mid\gcd(a,b)$.
+
+In the other direction, assume that $c\mid\gcd(a,b)$. Then $c\mid a$ and $c\mid b$ by the transitivity of division.
+\end{solution}
+
+\begin{lem}[Lemma 1.5]
+ If $a,b\in\Z, a\geq b>0,$ and $a=bq+r$ with $q,r\in\Z$, then $\gcd(a,b)=\gcd(b,r)$. 
+\end{lem}
+\begin{proof}
+Let $c$ be a common divisor of $a$ and $b$. Then $c\mid a$ and $c\mid b$ implies $c\mid a-bq$ by Corollary 1.4. By definition, $a-bq=r$. That is, $c\mid r$. 
+
+Since $c$ is any common divisor of $a$ and $b$, we find that the greatest common divisor $\gcd(a,b)$ is also a common divisor of $b$ and $r$. If we can show any common divisor of $b$ and $r$ is a common divisor of $a$ and $b$, we are done.
+
+Let $d$ be a common divisor of $b$ and $r$. Then we have that $d\mid bq+r$, so $d\mid a$. 
+
+Thus, every common divisor of $a$ and $b$ is a common divisor of $b$ and $r$ and vice versa. Since the common divisors are the same, the greatest common divisors are also the same.
+\end{proof}
+
+
+\end{document}

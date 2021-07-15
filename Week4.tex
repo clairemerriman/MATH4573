@@ -1,0 +1,328 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\title{Week 4--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, February 1: Modular arithmetic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Section 3.1 through the paragraph after Exercise 3.3 (page 43) of Jones and Jones, Modular arithmetic
+
+{\bf Turn in}: Exercise 3.2, Without using a calculator, find: 
+\begin{enumerate}[(a)]
+ 	\item the least non-negative residue of $34*17 \pmod{29}$; 
+	\item the least absolute residue of $19*14 \pmod{23}$;
+	\item the remainder when 510 is divided by 19;
+	\item the final decimal digit of $1!+2!+3!+...+10!$
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primality testing and factorization (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+We will spend more time on divisibility testing when we talk about cryptography. 
+
+\begin{lem}[Lemma 2.14]
+ An integer $n>1$ is composite if and only if it is divisible by some prime $p\leq\sqrt{n}$.
+\end{lem}
+\begin{proof} In one direction, assume that $p\mid n$ for some prime $p\leq \sqrt{n}$.
+Then since $1<p\leq \sqrt{n}<n$, $n$ must be composite by definition.
+
+In the other direction, assume that $n$ is composite. Then $n=ab$ for some positive integers $1<a,b<n$. If both $a$ and $b$ are greater than $\sqrt{n}$, then $ab>n$. Thus, at least one of $a$ or $b$ is less than the $\sqrt{n}$. Without loss of generality, say that $a\leq \sqrt{n}$. By the Fundamental Theorem of Arithmetic, there exists a prime $p$ that divides $a$. Thus, $p\leq \sqrt{n}$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Review of Reading (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Congruences generalize the concept of evenness and oddness. We typically think of even and odd as ``divisible by 2'' and ``not divisible by 2'', but a more useful interpretation is even means ``there is no remainder when divided by 2'' and ``there is a remainder of 1 when divided by 2''. This interpretation gives us more flexibility when replacing $2$ by larger numbers. Instead of ``divisible'' or ``not divisible'' we have several gradations.
+
+
+For example, we have the sets ``remainder of 0 when divided by 3," ``remainder of 1 when divided by 3," and ``remainder of 2 when divided by 3."
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modular arithmetic (40 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{defn} We say that $a$ is congruent to $b$ modulo $m$ and write $a \equiv b \pmod{m}$ if $a$ and $b$ have the same remainder when divided by $m$. We generally apply this for $a,b\in \mathbb{Z}$ and an  integer $m \geq 2$. 
+
+If $a$ and $b$ are not equivalent $\!\pmod{m}$, we write $a\nequiv b\pmod{m}$.
+\end{defn}
+
+\begin{poll}
+ Select all numbers that are congruent to:
+ 
+Question 1: $5 \pmod 2$
+ 
+\begin{itemize}
+\item Answer 1: -1
+\item Answer 2: 3
+\item Answer 3: 6
+\item Answer 4: -10
+\end{itemize}
+Question 2: $10\pmod{4}$
+ \begin{itemize}
+\item Answer 1: -6
+\item Answer 2: -2
+\item Answer 3: 0
+\item Answer 4: 5
+\end{itemize}
+
+Question 3: $100 \pmod 9$
+\begin{itemize}
+\item Answer 1: -8
+\item Answer 2: -17
+\item Answer 3: 1
+\item Answer 4: 10
+\end{itemize}
+\end{poll}
+
+\begin{solution}
+ Options and answers posted after class.
+ 
+ Question 1: $-1\equiv 3\equiv 5 \pmod 2$
+ Question 2: $-6\equiv-2\equiv 10 \pmod 4$
+ Question 3: $-8\equiv -17\equiv 1\equiv 10 \pmod 9$
+\end{solution}
+
+Be careful with this idea and negative values. Make sure you understand why $-2\equiv 1\pmod{3}$ or $-10\equiv 4\pmod{7}$.
+
+Sometimes it will be helpful to think of congruences one way, sometimes the other. The latter is helpful for understanding why $-2$, $1$, $4$, and $7$ are all equivalent modulo $3$.
+
+While this is a useful starting point for understanding congruences, it's only a starting point. Here's are two alternate definitions: 
+\begin{lem}\label{moddefs}[Lemma 3.1 expanded]
+\begin{enumerate}
+\item $a$ and $b$ are equivalent modulo $m$ if and only if $m$ divides $a-b$.
+\item $a$ and $b$ are equivalent modulo $m$ if and only if they differ by a multiple of $m$.
+\end{enumerate}
+\end{lem}
+\begin{br}[Lemma 3.1 expanded, 5 minutes]
+ Prove that 
+\begin{enumerate}
+	\item $a$ and $b$ are equivalent modulo $m$ if and only if $m$ divides $a-b$.
+	\item $a$ and $b$ are equivalent modulo $m$ if and only if they differ by a multiple of $m$.
+\end{enumerate}
+\end{br}
+This is why it is helpful to know that every integer $m$ divides $0$.
+
+We can use the idea of congruences to simplify some of the arguments from section 2.5. First, let's prove Lemma 3.3
+
+\begin{br}[Lemma 3.3 expanded, 5 minutes]
+ Let $a,b,c,d$ denote integers, then:
+\begin{enumerate}[(a)]
+\item $a\equiv b \pmod{m}$ and $b\equiv c \pmod{m}$ implies $a\equiv c \pmod{m}$
+\item\label{add} $a\equiv b \pmod{m}$ and $c\equiv d \pmod{m}$ implies $a+c \equiv b+d \pmod{m}$ 
+\item\label{multiply} $a\equiv b\pmod{m}$ and $c\equiv d \pmod{m}$ implies $ac\equiv bd \pmod{m}$.
+\item $a\equiv b \pmod{m}$ and $d\mid m$, $d>0$ implies $a\equiv b \pmod{d}$
+\item $a\equiv b \pmod{m}$ implies $ac\equiv bc \pmod{mc}$ for $c>0$.
+\end{enumerate}
+Parts \eqref{add}, \eqref{multiply} are proved in the book.
+\end{br}
+
+Let's look at the various parts of this expanded Lemma 3.3 and see what they tell us about how congruences and moduli work.
+
+The first two parts tell us that congruences behave a lot like equality. 
+
+The last two parts tell us how we can manipulate the modulus $m$. We can replace the modulus with a divisor of it at any time. We can replace the modulus with a multiple of it, provided we multiply $a$ and $b$ by the same multiple.
+
+The remaining two parts are perhaps the most useful: they let us do arithmetic with congruences. In particular, they imply that whenever I'm adding or multiplying numbers, I can replace the numbers I have with any equivalent number that is more convenient to use. So for example, $37*210\equiv 1*0 \pmod{2}$ or $651262*697016 \equiv 2*6 \pmod{10}$.
+
+Note that this doesn't work for powers. It is not the case that $2^{20} \equiv 2^0 \pmod{2}$. Also, unlike for regular equality, we cannot cancel a common factor of both sides unless it is relatively prime to $m$. That is to say $ac \equiv bc \pmod{m}$ implies $a\equiv b \pmod{m}$ if $gcd(c,m)=1$. (If $gcd(c,m)>1$ we'll talk more on this later.)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, February 3: Modular arithmetic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: The rest of Section 3.1 of Jones and Jones, Modular arithmetic
+
+{\bf Turn in}: Part of Exercise 3.4,
+Prove that the following polynomials have no integer roots:
+\begin{enumerate}[(a)]
+\item $x^3-x+1$
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Student questions (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Question of how to prove that $5$ is irreducible in $\Z[\sqrt{-6}]$.
+
+Notes from class linked from the Participation assignment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finish material from Monday (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{prop} A natural number is divisible by $3$ if and only if the sum of its (base $10$) digits is divisible by $3$.
+\end{prop}
+\begin{proof} Let a  number $n\in \mathbb{N}$ have base $10$ expansion $a_ka_{k-1}a_{k-2}\dots a_1a_0$ so that $n=\sum_{i\le k} a_i 10^i$.  By the definition of congruences, we have that $3\mid n$ if and only if $n\equiv 0 \pmod{3}$. Using the fact that $10\equiv 1 \pmod{3}$, we know by Lemma 3.3 that any time we multiply by $10$ (modulo $3$) we could instead just multiply by $1$ (modulo $3$). So,
+\[
+n \equiv \sum_{i\le k} a_i 10^i \equiv \sum_{i\le k} a_i 1^i \equiv \sum_{i\le k} a_i \pmod{3}.
+\]
+Therefore $n\equiv 0\pmod{3}$ if and only if the sum of the digits of $n$ is $0\pmod{3}$. 
+\end{proof}
+
+\begin{br}[5 minutes]
+ List all integers in the range 1 to 100 that are congruent to 7 mod 17. 
+\end{br}
+
+Go over this as a class. 
+
+
+\begin{br}[5 minutes, with previous problem]
+ Find all positive integers $m$ for which the following statements are true:
+\begin{enumerate}
+ \item $13\equiv 5 \pmod m$
+ \item $10\equiv 9 \pmod m$
+ \item $-7\equiv 6 \pmod m$.
+\end{enumerate}
+\end{br}
+
+Why study congruence relations? Why not stick to good old integers all the time? 
+
+There's two major reasons. As we've already seen, calculations get simplified for modular arithmetic. We'll see later that taking MASSIVE powers of MASSIVE numbers is a fairly doable feat in modular arithmetic. The second reason is that by reducing a question from all integers to modular arithmetic, we often have an easier time seeing what is not allowed. 
+
+Here's an example of this second phenomenon. Consider $a^2+b^2=c^2$, the Pythagorean relation. Suppose we have a solution to this. Since equality holds, then the weaker fact of congruence modulo 3 must also hold. So $a^2+b^2\equiv c^2\pmod{3}$. Because of what we said before about multiplication, we can reduce all the values here to either $0$, $1$, or $2$. But $0^2\equiv 0 \pmod{3}$, $1^2\equiv 1 \pmod{3}$, and $2^2\equiv 4 \equiv 1 \pmod{3}$.  Since it is impossible to have $c^2\equiv 2 \pmod{3}$, we cannot have that $a^2+b^2\equiv 2 \pmod{3}$. Thus at least one of $a$ or $b$ must be $0\pmod{3}$. We have learned something about what the possible solutions to $a^2+b^2=c^2$ look like by studying a congruence.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{More on basics of modular arithmetic (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+The point of the next theorem is to say that DIVISION is different and we must be careful with it. Here's the special rule.
+
+\begin{thm}
+\begin{enumerate}
+\item $ax\equiv ay \pmod{m}$ if and only if $x\equiv y \pmod{\frac{m}{\gcd(a,m)}}$.
+\item If $ax \equiv ay \pmod{m}$ and $(a,m)=1$ then $x\equiv y \pmod{m}$.
+\item $x\equiv y \pmod{m_i}$ for $i=1,2,\dots, r$ if and only if $x\equiv y \pmod{[m_1,m_2,\dots,m_r]}$.
+\end{enumerate}
+\end{thm}
+
+This second part gives an idea of why prime values of $m$ are so helpful!
+
+
+The proof of the lemma is left for homework.
+
+I will prove the first part for $a=6, m=8$, and the third part for $i=2$. The general proof is left for homework.
+\begin{proof} 
+\begin{enumerate}
+ \item (Proof for $a=6, m=8$, and $\gcd(a,m)=2$) If $6x\equiv 6y \pmod 8$, then $6y-6x=8z$ for some integer $z$. Thus, 
+ 
+ \[
+\frac{6}{2}(y-x) = \frac{8}{2}z,
+\]
+and so $\frac{8}{2}=4$ divides $3 (y-x)$.  Rewriting Corollary 10, we get $\gcd(6,8)=2*\gcd(3,4)$.
+ Therefore, the only way $4$ divides $3 (y-x)$ is if it divides $y-x$. Then by definition $x\equiv y \pmod{4}$.
+
+In the direction, suppose $x\equiv y \pmod{\frac{8}{2}}$. Then $4\mid (x-y)$. Multiplying through by $\gcd(6,8)=2$ gives $8\mid 2x-2y$. Since $\frac{6}{2}\in\Z$, we have $8\mid 3(2x-2y)$. Thus, $6x\equiv 6y \pmod 8$.
+
+\item Left for homework
+
+\item (Proof for $i=2$). If $x\equiv y \pmod{m_1}$ and $x\equiv y \pmod{m_2}$, then $m_i\mid (y-x)$ for $i=1,2$. That is, $y-x$ is a common multiple of $m_1$ and $m_2$. Therefore, by Exercise 1.14, $[m_1,m_2]\mid (y-x)$. This implies $x\equiv y \pmod{[m_1,m_2]}$
+
+In the other direction, if  $x\equiv y \pmod{[m_1,m_2]}$, then $x\equiv y \pmod{m_i}$ by expanded Lemma 3.3 part 4, since $m_i\mid [m_1,m_2]$. \qedhere
+\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, February 5: Modular arithmetic with polynomials}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: No reading. Projects due.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Questions from students (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modular arithmetic with polynomials (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+We are going to look at polynomials, we will look at some very basic results now and then go into specific cases.
+
+\begin{lem}[Lemma 3.5]
+ Let $f$ denote a polynomial with integer coefficients. If $a\equiv b \pmod m$ then $f(a)=f(b) \pmod m$.
+\end{lem}
+
+\begin{example}
+ Let $f(x)=x^2+1$. Then if $a\equiv b\pmod 5$, then $f(a)\equiv f(b) \pmod 5$. That is, $a^2+1\equiv b^2 +1 \pmod 5$. If $a=3, b=8$, then this means $3^2+1\equiv 10\equiv 65 \equiv 8^2+1\pmod 5$.
+\end{example}
+
+\begin{proof}
+ We can write $f(x)=c_nx^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0$ for some integers $c_i$. Then by Theorem 2.1 part 4, we have that $a\equiv b\pmod m$ implies $a^2\equiv b^2\pmod m, a^3\equiv b^3 \pmod m, \dots, a^n\equiv b^n\pmod m$. Also by Theorem 2.1 part 4, we have $c_i a^i\equiv c_i b^i \pmod m$. Finally, putting everything together with Theorem 2.1 part 3, we have that $c_na^n+c_{n-1}a^{n-1}+\cdots+c_1a+c_0\equiv c_nb^n+c_{n-1}b^{n-1}+\cdots+c_1b+c_0 \pmod m$.
+\end{proof}
+
+\subsection{Residue classes, lots of definitions (40 minutes)}
+
+\begin{defn}
+  If $x\equiv y \pmod{m}$ then $y$ is called a residue of $x\pmod{m}$. 
+  
+ A set $x_1,x_2,\dots, x_m$ is called a \emph{complete residue system modulo $m$} if every integer $y$ there exists exactly one $x_j$ such that $y\equiv x_j \pmod{m}$. 
+ \end{defn}
+ 
+ Implication: If you have a complete residue system $\pmod m$, then $x_i\not\equiv x_j \pmod m$ if $i\neq j$.
+
+
+
+\begin{defn}
+ Let $r_1,r_2,\dots, r_m$ denote a complete residue system modulo $m$. The \emph{number of solutions of $f(x)=0 \pmod m$} is the number of $r_i$ such that $f(r_i)=0 \pmod m$. That is, each solution $r_1$ is the representative of a congruence class of solutions, and we only count the number of congruence classes. This agrees with asking for the number of incongruent solutions (why?).
+\end{defn}
+
+Answer ``why" as a class.
+
+\begin{defn}
+ Let $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$. The \emph{degree of the polynomial $\!\pmod m$} is the largest integer $j$ such that $a_j\not\equiv 0 \pmod m$. If all of the $a_i\equiv 0 \pmod m$, then the degree is 0.
+\end{defn}
+
+
+\begin{defn}
+ 
+ The set of all numbers $x$ satisfying $x\equiv a \pmod{m}$ is the \emph{arithmetic progression} $\dots, a-m , a, a+m, a+2m, \dots$ and this is called a \emph{residue class or congruence class modulo $m$}. 
+\end{defn}
+
+\begin{br}[2 minutes]
+ Find a complete residue system mod 17 where every number is a multiple of 3.
+\end{br}
+
+Discussion as a class: The congruence classes of 17 are: 
+\begin{align*}
+ \dots, -34, -17, 0, 17, 34, \dots\\
+ \dots, -33, -16, 1, 18, 35, \dots\\
+ \dots, -32, -15, 2, 19, 36, \dots\\
+ \dots, -31, -14, 3, 20, 37, \dots\\
+ \dots, -30, -13, 4, 21, 38, \dots\\
+ \dots, -29, -12, 5, 22, 39, \dots\\
+ \dots, -28, -11, 6, 23, 40, \dots\\
+ \dots, -27, -10, 7, 24, 41, \dots\\
+ \dots, -26, -9, 8, 25, 42, \dots\\
+ \dots, -25, -8, 9, 26, 43, \dots\\
+ \dots, -24, -7, 10, 27, 44, \dots\\
+ \dots, -23, -6, 11, 28, 45, \dots\\
+ \dots, -22, -5, 12, 29, 46, \dots\\
+ \dots, -21, -4, 13, 30, 47, \dots\\
+ \dots, -20, -3, 14, 31, 48, \dots\\
+ \dots, -19, -2, 15, 32, 49, \dots\\
+ \dots, -18, -1, 16, 33, 50, \dots\\
+\end{align*}
+
+Each infinite list is one congruence class. To get a complete residue system, pick exactly one element from each list.
+
+\begin{defn}
+  A \emph{reduced residue system modulo $m$} is a set of integers $r_i$ such that $\gcd(r_i,m)=1$, and for every $x$ coprime to $m$ is congruent modulo $m$ to exactly one member $r_i$ of the set. 
+\end{defn}
+
+Now we need to know if this is well defined. How do we know if $\gcd(r,m)=1$ is something that is preserved over a given residue class? By the following result:
+
+\begin{prop} If $b\equiv c \pmod{m}$ then $\gcd(b,m)=\gcd(c,m)$. \end{prop}
+\begin{br}[5 minutes] Prove that
+if $b\equiv c \pmod{m}$, then $\gcd(b,m)=\gcd(c,m)$. 
+\end{br}
+
+Finally, we want to look out for some weird behavior in with modular arithmetic.
+\begin{br}[5 minutes]
+ Find $a,b,m\in\Z$ such that $ab\equiv 0 \pmod m$ but $a\nequiv0\pmod m$ and $b\nequiv 0 \pmod n$.
+\end{br}
+
+Go over as a class.
+
+\end{document}
+

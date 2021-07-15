@@ -1,0 +1,314 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 9--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, March 8: Practice Diffie-Hellman, RSA}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+If you have not taken an abstract algebra course or need a refresher, read Appendix B in Jones and Jones.
+
+{\bf Turn in:} Look at Chapter 5 in Jones and Jones. What parts have we already covered?
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Diffie-Hellamn (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[10 minutes]
+\begin{itemize}
+ \item  Public knowledge: working modulo $p=29$ with primitive root $a=2$.
+\item Private knowledge: Alice randomly generates $m=3$ and Bob randomly generates $n=4$.
+\end{itemize}
+\begin{enumerate}
+ \item Calculate the publicly published $a^m\pmod p$ and $a^n\pmod p$.
+ \item Calculate the privately known $(a^m)^n\equiv (a^n)^m \pmod p$.
+ \item Use the table and additive key $a^{mn}$ to encrypt the message ``DOG AND CAT".
+\end{enumerate}
+\end{br}
+This means anyone can know $p,a,a^m\pmod p,$ and $a^n\pmod p$. This could include publishing the information on the internet (assuming you are using very large numbers and something more secure than an additive cipher).
+
+Only Alice knows her exponent $m$, and only Bob knows his exponent $n$. Only Alice and Bob know $a^{mn}\pmod p$. This method guarantees they end up with the same result without knowing each other's exponent (secret key).
+
+\begin{solution}
+ 
+\begin{enumerate}
+ \item $2^{3} \equiv 8\pmod 29$ and $2^4 \equiv 16\pmod 29$
+ \item $16^3\equiv 8^4\equiv 64^2\equiv 6^2 \equiv 36\equiv 7 \pmod 29$.
+ \item Translate to numbers: 04 15 07 27 01 14 04 27 03 01 20. Add 7 modulo 29: 11 22 14 05 08 21 11 05 10 08 27\qedhere
+\end{enumerate}
+\end{solution}
+
+Homework 9 problem 3: $n=8$, see class from Friday, March 8. Message is ``CAT AND DOG"
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{RSA (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can also look at messages for RSA. The person decrypting the message:
+\begin{itemize}
+ \item Calculates $n=pq$ for distinct primes $p, q$. The smallest such $n$ greater than 26 is $n=7*5=35$.                                                                                                                                                                                                                                                                                                   
+\item Calculates $\phi(n)$.
+\item Choses $e$ such that $\gcd(e, \phi(n))=1$. 
+\item Use the Euclidean algorithm (or some other method) to find $d$ such that $ed\equiv 1 \pmod {\phi(n)}$.
+\item Publishes $n$ and $e$ so that anyone can encrypt a message $m$ modulo $n$.
+\end{itemize}
+The person encrypting the message:
+\begin{itemize}
+ \item Converts the message to numbers.
+ \item Calculates $m^e \pmod n$.
+ \item Publishes/sends the message.
+\end{itemize}
+The person decrypting now calculates $(m^e)^d\equiv m^{k\phi(n)+1}\equiv m \pmod n$.
+
+\begin{thm}[Theorem 5.3]
+ If $\gcd(a,n)=1$, then $a^{\phi(n)}\equiv 1 \pmod n$.
+\end{thm}
+\begin{proof}
+ We follow closely the proof of Fermat's Little Theorem. Recall that $a,2a,3a,\dots, (n-1)a$ is a set of incongruent integers $\pmod n$, none of which are $0$. Thus, this is a complete set of integers $\pmod n$. 
+ 
+ Let $R=\{r_1,r_2,\dots,r_{\phi(n)}\}$ be the set of positive integers less than $n$ that are relatively prime to $n$. Then $\{ar_1,ar_2,\dots,ar_{\phi(n)}\}$ is a set of integers that are relatively prime to $n$ and distinct $\pmod n$. Now 
+ \[ar_1ar_2\cdots ar_{\phi(n)}\equiv a^{\phi(n)}r_1r_2\cdots r_{\phi(n)}\equiv r_1r_2\cdots r_{\phi(n)} \pmod n.\]
+ 
+ Since each $r_i$ has a multiplicative inverse $\pmod n$, we can cancel out terms on both sides of the congruence.
+ 
+ Thus $a^{\phi(n)}\equiv 1 \pmod n$.
+\end{proof}
+
+\begin{lem}
+Let $n$ be a positive integer. If $\gcd(e, \phi(n))=1$ for some integer $e$, then there exists an integer $d$ such that $ed\equiv 1 \pmod{\phi(n)}$ by Theorem 3.7/Corollary 3.8. For any positive integer $m$, $m^{ed}\equiv m\pmod n$.
+\end{lem}
+\begin{proof}
+ If $m\equiv 0 \pmod n$, we are done, since $0^{a}\equiv 0\pmod n$ for any nonzero integer $a$. Otherwise, we use the fact that $ed\equiv 1 \pmod{\phi(n)}$ means there exists an integer $k$ such that $k\phi(n)=ed-1$. Thus, $m^{ed}\equiv m^{k\phi(n)+1}\equiv m\pmod n$.
+\end{proof}
+
+\begin{thm}[Theorem 5.6]
+ If $n=pq$ for distinct primes $p$ and $q$, $\phi(n)=(p-1)(q-1)$.
+\end{thm}
+\begin{proof}
+ There are $n-1=pq-1$ positive integers less that $n$. Now, we need to determine how many are relatively prime to $n$. We do this by subtracting off those that are not relatively prime. Here, we have $p,2p,\dots,(q-1)p$ are $q-1$ distinct positive integers less that $n$ that are not relatively prime to $n$. Now we can say $\phi(n)\leq n-1-(q-1)=pq-q$. We repeat this process for $q$: $q,2q,\dots, (p-1)q$. This list is disjoint from the other since $p$ and $q$ are relatively prime. Thus $\phi(n)\leq pq-q-p+1$. Since $p$ and $q$ are the only prime factors of $n$, these two lists give all possible numbers less that $n$ that are not relatively prime to $n$. Thus, $\phi(n)=pq-q-p+1=(p-1)(q-1)$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 10: Logarithms, groups, rings, and fields}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Turn in:} Show that addition on the integers modulo $m$ is closed, commutative, has an identity, and every element $a$ has an additive inverse.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If we use $n=12$, this theorem breaks down for factors $2,6$, since they are not relatively prime. We would get the lists $2,2(2), 3(2), 4(2), 5(2)$ and $6$. Notice that $6$ is on both lists, but $3$ and $9$ are not on either list. We will prove that $\phi(12)=\phi(3)\phi(4)$, although this counting method does not work ($2$ and $10$ will not be on either list).
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Logarithms (40 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ Let $p$ be a prime, and let $a\in \Z_p$ with $a\neq 0$ (ie, $0<a\leq p-1 \pmod p$). Then $a$ is a \emph{primitive root} in $\Z_p$ if $\ord_p(a)=p-1$. We can also say that \emph{$a$ is a primitive root mod $p$.}
+\end{defn}
+
+Now, we have been doing a lot of exponentiation. Let's look at a logarithms
+\begin{defn} For real numbers $a$ and $x$, the logarithm (base $a$) of $x$ is a real number $y$ such that $a^y=x$.
+We also have that for real numbers, $\log(xy)=\log(x)+\log(y)$. 
+Let $p$ be a prime and $a,x$ positive integers such that $a$ is a primitive root modulo $p$ and $x$ is nonzero modulo $p$. The \emph{discrete logarithm (base $a$) of $x$ modulo $p$} is a positive integer $y$ such that $a^y\equiv x \pmod p$.
+\end{defn}
+\begin{br}[10 min, a lemma]
+Show that for a prime $p$, $a^m\equiv a^n \pmod p$ if and only if $m\equiv n \pmod{p-1}$.)
+\end{br}
+\begin{br}[5 minutes]
+ Let $x,y\in \Z_p$ and let $a$ be a primitive root modulo $a$. Let $l_x$ be the discrete logarithm base $a$ of $x$, $l_y$ be the discrete logarithm base $a$ of $y$, and $l_{xy}$ be the discrete logarithm base $a$ of $xy$.  Prove that $l_{xy}\equiv l_x+l_y \pmod{p-1}$. 
+\end{br}
+\begin{solution}
+ Homework 9, problem 1
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Groups, rings, and fields (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{defn}
+ An \emph{equivalence relation }on a set $A$ is denoted $a\sim b$ where:
+ \begin{enumerate}
+ \item $a\sim a$ is defined for all $a\in A$. Then we say that $\sim$ is \emph{reflexive}.
+ \item $a\sim b$ implies $b\sim a$ for all $a,b\in A$. Then we say that $\sim$ is \emph{symmetric}.
+ \item If $a\sim b$ and $b\sim c$, then $a\sim c$ for all $a,b,c\in A$. Then we say that $\sim$ is \emph{transitive}.
+\end{enumerate}
+\end{defn}
+
+Since congruence is an equivalence relation, we can talk about the congruence classes $\{a+mn:a,n\in\Z\}$ modulo $m$ as one element mod $m$. We will formalize this statement in a bit.
+
+\begin{defn}
+A \emph{group} is a set $A$ along with a binary operation $*$ where:
+\begin{enumerate}
+ \item $a*b\in A$ for all $a, b\in A$. We say $A$ is \emph{closed} under the operation.
+ \item there exists an element $e\in A$ such that $e*a=a*e=a$ for all $a\in A$. We call $e$ the \emph{identity element}.
+ \item for each $a\in A$, there exists $\overline{a}\in A$ where $a\overline{a}=\overline{a}a=e$. We call $\overline{a}$ the \emph{inverse}. Another way to phrase this requirement is to say that every element $a\in A$ is \emph{invertible under the binary operation}.
+ \item $a*(b*c)=(a*b)*c$ for all $a,b,c\in A$ (we say the binary operation is \emph{associative})
+\end{enumerate}
+If $a*b=b*a$, we say \emph{$a$ and $b$ commute}. If $a*b=b*a$ for all $a,b\in A$, then we say the group is \emph{commutative}.
+\end{defn}
+
+On the reading assignment we saw that the integers under addition is a group. Show that the even integers under addition is a group, but the odd integers under addition are not.
+ 
+\begin{defn}
+ A \emph{ring} is a nonempty set, $R$, together with a two binary operations on $R$(which we will denote by the symbols, $+$ and $*$), where:
+\begin{itemize}
+ \item If $a,b\in R$, then $a+b\in R$ and $a*b\in R$ (we say $R$ is \emph{closed under addition and multiplication}).
+ \item If $a,b, c\in R$, then $(a+b)+c=a+(b+c)$ and $a*(b*c)=(a*b)*c$ (we say addition and multiplication are \emph{associative}).
+ \item There is some $e\in R$ where $a+e=e+a=a$ for all $a\in R$ (we say $e$ is the \emph{additive identity}).
+ \item For every $a\in R$, there is some $b\in R$ where $a+b=e$ (we say $b$ is the \emph{additive inverse of $a$}). 
+ \item For every $a,b\in R$, $a+b=b+a$ (we say addition is \emph{commutative}).
+ \item For ever $a,b,c\in R$, $a*(b+c)=a*b+a*c$ (we say \emph{multiplication distributes}).
+ \item *There is a multiplicative identity. Some sources leave off this requirement and say a ring with a multiplicative identity is a \emph{ring with unity}. We are going to include it.
+\end{itemize}
+\end{defn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, March 12: Primitive roots}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Read: LivelyIntroductionPrimitiveRoots.pdf
+
+Note that this book uses slightly different notation. It states $\Z_p$ at the beginning of a problem or theorem, then works $\mod p$ without writing the congruence. It also uses the bar over a number to indicate that it is the representative of the congruence class.
+
+{\bf Turn in:} The check for understanding questions on page 3.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Homework related announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On Homework 8, Problem 5, the summation should be to $m-1$, not $mn-1$. It is fine if $i$ starts at 1 or 0, since $s_0=0$.
+
+A note about the problems with exponents. We know that $(a^2)^{\frac{k}{2}}=a^k$ by exponent rules, but it is not always the case that $k/2$ is an integer.
+
+Prove that $\Z_p$ is a field if and only if $p$ is prime. Look at proofs that $\Z_n$ is a ring as a guide.
+
+Moved to HW 10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Groups, rings, and fields (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+The reading uses $\bar a\in\Z_p$ to denote the congruence class of $a \pmod p$. Our textbook uses $[a]$. I will continue to use $a\pmod p$, but you should know the book's notation.
+
+\begin{defn}
+ A multiplicative inverse for a class $[a]\in\Z_n$ is a class $[b]\in\Z_n$ such that $[a][b] = [1]$. A class $[a]\in\Z_n$ is a unit if it has a multiplicative inverse in $Z_n$. (In this case, we sometimes say that the integer $a$ is a \emph{unit $\pmod n$}, meaning that $ab \equiv 1 \pmod n$ for some integer $b.$)
+\end{defn}
+
+\begin{lem}[Lemma 5.1]
+ $[a]$ is a unit in $\Z_n$ if and only if $\gcd(a,b)=1$.
+\end{lem}
+\begin{proof}
+ This is equivalent to saying that $a \pmod n$ has a multiplicative inverse if and only if $\gcd(a,n)=1$. That is, there exists some $b\in \Z_n$ such that $ab\equiv 1\pmod n$ if and only if $\gcd(a,n)=1$, by Theorem 3.7/Corollary 3.8.
+\end{proof}
+The addition on the integers modulo $m$ is also commutative, which we say the ``inherit" from the regular integers, so we have a commutative group.
+  
+   Since an integer $a$ has a multiplicative inverse modulo $m$ if and only if $\gcd(a,m)=1$ by Theorem 3.7/Corollary 3.8, multiplication on the nonzero integers modulo $m$ is a group precisely when $m$ is prime. Associativity also comes from the integers and the multiplicative identity is 1. Multiplication is also commutative. 
+      
+\begin{br}[5 minutes]
+ The number of units in $\Z_n$ is $\phi(n)$.
+\end{br}
+ Therefore, our definition of $\phi(n)$ matches with the one in the book.
+\begin{solution}
+ Our definition of $\phi(n)$ is the number of positive integers less than $n$ that are coprime to $n$. By the previous lemma, this is the number of units in $\Z_n$.
+\end{solution}
+
+%\begin{defn}
+% Two groups $(G,+)$ and $(H,*)$ are \emph{isomorphic} if there exists a bijective map $F:G\to H$ such that $f(a+b)=f(a)*f(b)$ for all $a,b\in G$.
+%\end{defn}
+
+%\begin{prop}
+% Any two complete residue systems mod $m$ are isomorphic as additive groups.
+%\end{prop}
+%\begin{proof}
+% Let $\{a_1,a_2,\dots,a_m\}$ and $\{b_1,b_2,\dots, b_m\}$ be complete residue systems mod $m$. Then for each $a_i$, there exists a unique $b_j$ where $a_i\equiv b_j \pmod m$. Define $f$ to be that map $f(a_i)=b_j$ where $a_i\equiv b_j$. By the definition of complete residue system, this map is injective and surjective. By Theorem 2.1 part 3, $f(a_i+a_k)=f(a_i)+f(a_k)$ since $a_i\equiv f(a_i)\pmod m$ and $a_k\equiv f(a_k)\pmod m$.
+%\end{proof}
+
+
+
+%\begin{defn}
+% A \emph{ring} is a nonempty set, $R$, together with a two binary operations on $R$(which we will denote by the symbols, $+$ and $*$), where:
+%\begin{itemize}
+%\item $R$ is a commutative group under $+$.
+% \item If $a,b\in R$, then $a*b\in R$ (we say $R$ is \emph{closed under multiplication}).
+% \item If $a,b, c\in R$, then $a*(b*c)=(a*b)*c$ (we say multiplication are \emph{associative}).
+% \item There is some $e\in R$ where $a*e=e*a=a$ for all $a\in R$ (we say $e$ is the \emph{multiplicative identity}). *Some sources leave off this requirement and say a ring with a multiplicative identity is a \emph{ring with unity}. We are going to include it.
+% \item For ever $a,b,c\in R$, $a*(b+c)=a*b+a*c$ (we say \emph{multiplication distributes}).
+%\end{itemize}
+%\end{defn}
+%
+%\begin{br}[5 minutes] Proving that addition and multiplication on the integers modulo $m$ is a ring is part of . We call this ring $\Z_m$ and use the complete congruence class $\{0,1,2,\dots, m-1\}$. Two elements $a,b\in \Z_m$ where $a\equiv b \pmod m$ are said to be \emph{representatives of the same congruence class $\pmod m$}.
+%\end{br}
+%
+%Any two complete residue systems mod $m$ are also isomorphic as rings.
+%
+%\begin{defn}
+% A \emph{field} is a nonempty set, $F$, together with two binary operations $+$ and $*$ where:
+% 
+%\begin{enumerate}
+% \item $F$ is a ring.
+% \item $a*b=b*a$ for all $a,b,\in F$. 
+% \item For all $a\in F, a\neq 0$, there exists $a^{-1}\in F$ where $a*a^{-1}=a^{-1}a=1$. Here 0 is the additive identity and 1 is the multiplicative identity.
+%\end{enumerate}
+% 
+%\end{defn}
+%
+%Proving that $\Z_p$ is a field if and only if $p$ is prime is on Homework 9.
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primitive roots (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Today we are going to follow the notation and definitions from the reading. On Monday and probably Wednesday we will spend some time proving that the definitions from the reading are equivalent to the more group theoretic (or ring theoretic) definitions in our book. That is, we will do a lot of ``if and only if" proofs like the one where we proved the number of units in $\Z_n$ is $\phi(n)$.
+
+We looked at powers modulo 11 a while ago.  As a review, we have 
+\begin{align*}
+& \ord_{11}(1)=1,\\
+ &\ord_{11}(10)=2,\\
+ &\ord_{11}(3)=\ord_{11}(4)=\ord_{11}(5)=\ord_{11}(9)=5,\\ 
+& \ord_{11}(2)=\ord_{11}(6)=\ord_{11}(7)=\ord_{11}(8)=10. 
+\end{align*}
+Thus, the primitive roots modulo 11 are 2,6,7, and 8.
+
+\begin{thm}[Reading Proposition 10.3.2, Textbook definition of a primitive root when $p$ is prime] 
+ Let $p$ be prime and let $a\in\Z_p$ be a primitive root. Then every nonzero element of $\Z_p$ (that is, every congruence class that is not congruent to $0\pmod p$) appears exactly once on the list \[a^0, a^1, \dots a^{p-2}.\]
+\end{thm}
+Instead of following the proof from the reading, here is how we can use the Lemma from last class: Homework 9, Problem 1a.
+\begin{proof}
+Let $p$ be prime and let $a\in\Z_p$ be a primitive root. Then $a^m\equiv a^n \pmod n$ if and only if $m\equiv n \pmod{p-1}$.
+
+Since the exponents of the list \[a^0, a^1, \dots a^{p-2}\] are not equivalent $\pmod{p-1}$, the elements fo the list are distinct.
+
+There are $p-1$ distinct elements on the list, and none of them are $0\pmod p$. There are also $p-1$ distinct nonzero elements of $\Z_p$. Thus, each element appears exactly once on the list.
+\end{proof}
+For help proving the Lemma from last class, see the note or recording from class or the proof of this statement in the reading.
+
+\begin{thm}[Primitive root theorem]
+ Let $p$ be prime. Then there exists a primitive root modulo $p$.
+\end{thm}
+
+\begin{lem}[Lemma 10.3.4]
+ Let $p$ be a prime, and let $q^s$ be a prime power divisor of $p-1$. That is, $q$ is prime and $q^s\mid p-1$. Then there exists an element of order $q^s$ in $\Z_p$.
+\end{lem}
+Example when $p=101$ in the reading. We will not go over this proof in class.
+
+\begin{lem}[Lemma 10.3.5]
+ Let $n\in \Z^+$ and let $a,b\in\Z$ be reduced residues $\pmod n$ (that is, relatively prime to $n$). If $\ord_n(a)$ and $\ord_n(b)$ are relatively prime, then \[\ord_n(ab)=\ord_n(a)\ord_n(b).\]
+\end{lem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+\begin{defn} We use the standard convention that $a$ multiplied by itself $n$ times is $a^n$ and $a$ added to itself $n$ times is $na$.
+A group is cyclic is a group where every element can be written as $a^n$ (for multiplication) for some integer $n$. (For addition, it makes sense to write $na$ instead of $a^n$). The element $a$ is called the \emph{generator}
+\end{defn}
+
+\begin{br}
+ Show that addition mod $m$ is a cyclic group.
+\end{br}
+
+\begin{br}
+Is multiplication of nonzero integers mod 5 cyclic?
+\end{br}
+
+

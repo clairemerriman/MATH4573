@@ -1,0 +1,294 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\title{Week 5--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, February 8: Linear Congruences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading assignment: Section 3.2 of Jones \& Jones.
+
+{\bf Turn in:}  The proof of Theorem 3.7 starts ``Apart from a slight change of notation (n and b replacing b and c), the only part of this which is not a direct translation of Theorem 1.13 is...". Translate the statement of Theorem 3.7 to the statement of Theorem 1.13. In other words, provide the omitted steps of the proof of Theorem 3.7.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Questions about reading, announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Zero Divisors (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defn}
+ Let $m$ be a positive integer. We denote the set of equivalence classes $\pmod m$ as $\Z_m$.
+\end{defn}
+
+Consider the $\!\!\pmod8$ multiplication chart: 
+
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|}\hline
+$x_8$ & 1& 2&3&4&5&6&7&8\\\hline\hline
+ 1 & 1&2&3&4&5&6&7&8\\\hline
+ 2&2&4&6&0&2&4&6&0\\\hline
+ 3&3&6&1&4&7&2&5&0\\\hline
+ 4&4&0&4&0&4&0&4&0\\\hline
+ 5&5&2&7&4&1&6&3&0\\\hline
+ 6&6&4&2&0&6&4&2&0\\\hline
+ 7&7&6&5&4&3&2&1&0\\\hline
+ 8&0&0&0&0&0&0&0&0\\\hline
+\end{tabular}
+
+\begin{example}
+ Write every combination $a,b$ in the chart where $ab\equiv 0 \!\pmod 8$ and neither $a$ or $b$ is $8\equiv 0 \!\pmod8$. Write every combination $ab\equiv 1 \!\pmod 8$.
+\end{example}
+\begin{solution}
+$ 2(4)\equiv4(2)\equiv4(4)\equiv4(6)\equiv6(4) \equiv 0\!\pmod8$. $1(1)\equiv 3(3)\equiv5(5)\equiv7(7)\equiv 1 \!\pmod8$.
+\end{solution}
+
+Right away, we can see things are weird. We have that $ab\equiv 0 \!\pmod 8$ does not imply either $a$ or $b$ is 0. This means that our proof of the division algorithm (theorem 1.2) falls apart at the step where $0=b(q_1-q_2), b>0$ implies $q_1=q_2$ if we try to use the division algorithm mod $m$. That means that every proof that relies on the division algorithm, including the gcd results and the fundamental theorem of arithmetic, either fall apart or require new proofs. However, it is ok to use these as proven, we just can't say that they are true for modular arithmetic.
+
+Another thing that is unusual is that $ab\equiv 1 \mod8$ does not imply that $a=b=\pm1$. This is a little less unusual, since this is true for rational numbers, just not integers.
+\begin{defn}
+ A number $a\in\Z$ is \emph{invertible $\!\pmod m$} if there exists $b\in\Z$ such that $ab\equiv 1\!\pmod m$. Another way to say this is \emph{$a$ has a multiplicative inverse in $\Z_m$}.
+\end{defn}
+
+In other words, $a\in\Z_m$ is invertible if there is a solution to $ax\equiv 1 \pmod m$. In this section, we will find to  solutions to $ax\equiv b \pmod m$.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Linear Congruences (25 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thm}[Theorem 3.7]
+ If $d=\gcd(a,n)$, then the linear congruence \[ax\equiv b \pmod n\] has a solution if and only if $d$ divides $b$. If $d$ divides $b$, then there are exactly $d$ incongruent solutions of the form \[x=x_0,x_0+\frac{n}{d},x_0+\frac{2n}{d},\dots,x_0+\frac{(d-1)n}{d},\] where $x_0$ is a particular solution.
+\end{thm}
+\begin{proof}
+(Solution to the reading assignment question posted after class)
+A solution to $ax\equiv b \pmod n$ exists if and only if there exists $y$ such that $ax-b=ny$. That is, if and only if $ax-ny=b$ has solutions. From Theorem 1.13, this equation has a solution if and only if $d\mid b$.
+
+Note that \[x_0+\frac{nt}{d}\equiv x_0+\frac{nu}{d}\pmod n\] if and only if  \[\frac{nt}{d}\equiv \frac{nu}{d}\pmod n.\] This congruence is true if and only if $n$ divides $\frac{n(t-u)}{d}$, which in turn is true if and only if $\frac{t-u}{d}$ is an integer. Thus the $d$ solutions of the form \[x=x_0,x_0+\frac{n}{d},x_0+\frac{2n}{d},\dots,x_0+\frac{(d-1)n}{d}\] represent different congruence classes. 
+\end{proof}
+
+\begin{cor}[Corollary 3.8]
+ If $\gcd(a,n)=1$, then the solutions to $ax\equiv b \pmod n$ form a single congruence class $\pmod n$. In other words, there is a unique solution to $[a][x]=[b]$ in $\Z_n$.
+\end{cor}
+
+\begin{br}[Exercise 3.7, 15 minutes] Using the algorithm given in Section 3.2, on page 51 and 52, for each of the following congruences, decide whether a solution exists and if it does exist, find the general solution:
+\begin{enumerate}[(a)]
+ \item $3x \equiv 5 \pmod 7$,
+ \item $12x\equiv 15 \pmod{22}$,
+ \item $19x\equiv 42 \pmod{50}$,
+ \item $18x\equiv 42 \pmod{50}$.
+\end{enumerate}
+\end{br}
+
+
+For two of these equivalences can also do this slightly differently, using multiplicative inverses. By a quick check, we see that $3(5)\equiv 1\pmod 7$ and $19(29)\equiv 1\pmod{50}$. Thus, \[x\equiv5(3x)\equiv 5(5)\equiv 4 \pmod 7,\] and \[x\equiv 29(19x)\equiv 29(42) \equiv 18\pmod{50}.\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, February 10: Chinese remainder theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Scanned notes on the Chinese Remainder Theorem. NOTE: The scanned notes only prove the $k=2$ case of the Chinese Remainder Theorem, with the ``multiple congruences extension of the Chinese Remainder Theorem" left as an exercise. The Chinese Remainder Theorem is typically stated for $k$ congruences, as in Theorem 3.10 in Jones and Jones.
+
+{\bf Turn in:} In the proof of the Chinese Remainder Theorem in the scanned notes, it says ``In Exercise 23, you will complete the proof of the theorem by showing that this solution is unique modulo $ab$." Complete the proof.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Revisiting infinitude of primes (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Revisiting the proof that there are infinitely many primes of the form $4n+3$.}
+
+From the division algorithm, we know that all integers can be written as $4n, 4n+1, 4n+2,$ or $4n+3$. 
+\\All integers of the form $4n$ are composite, since they are divisible by $4$.
+\\All integers of the form $4n+2$ are even, since they can be written $2(2n+1)$. When $n\neq0$, integers of this form are composite. 
+
+When seeking a contradiction, the book says ``Suppose that there are only finitely many primes of this [$4n+3$] form, say $p_1,\dots, p_k$. Let $m=4p_1\cdots p_k -1$...Since $m$ is odd..." The fact that $m$ is odd comes from the fact that $4n$ is always even, so $4n-1$ is always odd. It also means that there are no factors of the form $4n+2$ or $4n$. Thus, the only options are $4n+1$ and $4n+3$. From there, the proof shows that one of the factors must have the form $4n+3$ and not be on the list $p_1,\dots, p_k$.
+
+{\bf Proof that there are infinitely many primes of the form $3n+2$.} 
+
+From the division algorithm, we know that all integers can be written as $3n, 3n+1$, or $3n+2.$ 
+\\For $n\neq 1$, all integers of the form $3n$ are composite.
+
+When seeking a contradiction, Suppose that there are only finitely many primes of the form  $3n+2$, say $q_1,\dots, q_j$. Let $k=3q_1\cdots q_k -1$. By construction, $k$ is not of the form $3n$, so none of the prime factors are, either.
+
+In the $4n+3$ case, we had to eliminate factors of the form $4n+2$, but there is no analogous step here. The options are already only $3n+1$ and $3n+2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Chinese Remainder Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[Exercise 3.15, 5 minutes] As a party trick, you ask a friend to choose an integer from 1 to 100, and to tell you its remainders on division by 3,5 and 7. How can you instantly identify the chosen number?
+
+Breakout room: First person alphabetically by Zoom display name picks a number from 1 to 100 and tells the group the remainders when divisible by 3,5, and 7. The rest of the group then determines the number.
+\end{br}
+
+We are going to go through the proof of the Chinese remainder theorem. 
+\begin{thm}[Chinese remainder theorem, Theorem 3.10]
+ Let $m_1,m_2,\dots m_r$ be pairwise relatively prime positive integers (that is, any pair $\gcd(m_i,m_j)=1$ when $i\neq j$). Let $a_1, a_2,\dots, a_r$ be integers. Then the system of congruences 
+\begin{align*}
+ x&\equiv a_1 \pmod{m_1}\\
+ x&\equiv a_2 \pmod{m_2}\\
+    &\vdots\\
+  x&\equiv a_n \pmod{m_r}
+\end{align*}
+has a unique solution modulo $M=m_1m_2\dotsm_r$. This solution has the form 
+\[x_0=\sum_{i=1}^r \frac{M}{m_i}b_ia_i,\] where $b_i(\frac{M}{m_i})\equiv 1 \pmod{m_i}$.
+\end{thm}
+\begin{proof}
+ We start by constructing a solution mod $M=m_1m_2\dotsm_r$. By construction, $\frac{M}{m_i}$ is an integer. Since each the $m_i$ are pairwise relatively prime, $\gcd(\frac{M}{m_i}, m_i)=1$. Thus, by Corollary 3.8, for each $i$ there is an integer $b_i$ where $\frac{M}{m_i}b_i\equiv 1 \pmod{m_i}$. We also have that $(\frac{M}{m_i}, m_j)=m_j$ when $i\neq j$, so $\frac{M}{m_i}b_i\equiv 0 \pmod{m_j}$ when $i\neq j$.  Let 
+ \[x_0=\sum_{i=1}^r \frac{M}{m_i}b_ia_i.\] 
+ Then $x_0\equiv \frac{M}{m_i}b_ia_i\equiv a_i\pmod{m_i}$ for each $i=1,2,\dots,r$. We have found a solution to the system of equivalences.
+ 
+ If we have some other solution $x_1$, we have that $x_0\equiv x_1\pmod{m_i}$ for all $i=1,2,\dots, r$. Then $m_i\mid x_0- x_1$ for all $i=1,2,\dots,r$ and $M\mid x_0-x_1$. Thus, $x_0\equiv x_1\pmod{M}$.
+\end{proof}
+
+
+However, we don't have to work with relatively prime moduli.
+
+\begin{example}
+ Solve the system of equivalences
+\begin{align*}
+ x\equiv 2 \pmod 6\\
+ x\equiv 8 \pmod 9\\
+\end{align*}
+and find a (possible) modulus $m$ where solutions are congruent $\pmod m$.
+\end{example}
+\begin{solution}
+One thing we can do is list possible solutions.
+\begin{align*}
+ x&\equiv 2 \pmod 6, \quad x=2,8,14,20, 26, \dots, 2+6j,\dots\\
+ x&\equiv 8 \pmod 9, \quad x=8,17, 26,\dots,\dots 8+9k,\dots
+\end{align*}
+We see that $8$ and $26$ are solutions. We have $26-8=18$, so $m=18$. 
+
+There are no smaller moduli that work, since that would introduce options that do not work. For example $x\equiv 2 \pmod 3$ includes $2$ and $5$ which are not solutions $\pmod 9$.
+\end{solution}
+
+\begin{thm}[Generalized Chinese Remainder Theorem]
+ Let $m_1,m_2,\dots m_r$ be positive integers, and let $a_1, a_2,\dots, a_r$ be integers. Then the system of congruences 
+\begin{align*}
+ x&\equiv a_1 \pmod{m_1}\\
+ x&\equiv a_2 \pmod{m_2}\\
+    &\vdots\\
+  x&\equiv a_r \pmod{m_r}
+\end{align*}
+has a solution if and only if $\gcd(m_i,m_j)\mid a_i-a_j$ for all $i\neq j$. In this case, the solution is unique modulo $M=\lcm[m_1,m_2,\dots,m_r]$.
+\end{thm}
+\begin{proof}
+Homework 5, also textbook Theorem 3.12.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, February 12: Fermat's Little Theorem and Euler's generalization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Scanned notes on Wilson's theorem and Fermat's Little Theorem.
+
+{\bf Turn in:} Prove that $9^{10} = 1 \pmod{11}$ by following the steps in the proof of Fermat's Little Theorem (Theorem 2.13 in the reading, Theorem 4.3 in Jones \& Jones).
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fermat's Little Theorem and Euler's generalization (25 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[10 minutes]
+ Prove the Generalized Chinese Remainder Theorem for $r=2$.
+ 	Let $m_1,m_2$ be positive integers, and let $a_1, a_2$ be integers. Then the system of congruences 
+	\begin{align*}
+ 		x&\equiv a_1 \pmod{m_1}\\
+ 		x&\equiv a_2 \pmod{m_2}
+	\end{align*}
+	has a solution if and only if $\gcd(m_i,m_j)\mid a_i-a_j$ for all $i\neq j$. In this case, the solution is unique modulo $\lcm[m_1,m_2]$.
+\end{br}
+\begin{thm}Let $p$ be a prime number and $a$ be an integer not divisible by $p$. Then the numbers $a,2a,3a,\dots,(p-1)a \pmod{p}$ are the same as the numbers $1,2,3,\dots,(p-1)$, but may be in a different order. 
+\end{thm}
+\begin{proof} The list $a,2a,\dots, (p-1)a$ contains $p-1$ numbers. Each takes the form $ka$ for some $1\le k \le p-1$, and thus, since neither $k$ nor $a$ is divisible by $p$, we have that nothing in this list is divisible by $p$ either.  Now we want to show the elements of this list are distinct. Let $1\le j < k \le p-1$ and suppose $ja \equiv ka \pmod{p}$. Then $p\mid (k-j)a$, or, since $p\nmid a$, we have $p\mid (k-j)$. So $k-j = px$ for some integer $x$. But we divide by $p$ and see that $(k-j)/p$ is an integer between $0$ and $1$ again, thus a contradiction. 
+
+So $a,2a,3a,\dots,(p-1)a$ is a list of $p-1$ distinct elements from the set $1,2,3,\dots,(p-1)$, thus it must be the list $1,2,3,\dots,(p-1)$, just possibly rearranged.
+\end{proof}
+
+\begin{br}[5 minutes] For $p=7,$ pick an $a$ and show that this theorem really does work. That is, show that  $a,2a,\dots, (p-1)a$ 
+ 
+\end{br}
+
+\begin{br}[5 minutes]
+ Fill in the table with the values of $a^m \!\pmod m$. The values of $a$ are in the first column, the values of $m$ are in the first row. Use a value between $0$ and $m-1$ (inclusive).
+
+\begin{tabular}{|c|p{3cm}|p{3cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}\hline
+$a\backslash m$ & 1& 2& 3& 4&5&6 \\\hline
+ 2 &$2^1 \pmod 1$&$2^2 \pmod 2$&&&&\\\hline
+ 3 &$3^1\pmod 1$&&&&&\\\hline
+ 4 &&&&&&\\\hline
+ 5 &&&&&&\\\hline
+ 6 &&&&&&\\\hline
+\end{tabular}
+\end{br}
+
+\begin{thm}[Theorem 4.3, Fermat's Little Theorem] Let $p$ be a prime and let $a$ be any number with $a \not\equiv 0 \pmod{p}$. Then $a^{p-1} \equiv 1 \pmod{p}$.\end{thm}
+
+In other words, this equivalence has LOTS of solutions, it has as many as it possibly could. This is also a somewhat peculiar result. This says, for instance that if you take ANY number that is not a multiple of $5$, raise it to the fourth power and subtract one, you get a multiple of $5$, every single time. 
+
+\emph{Note} This allows us to simplify calculations another way. If $b_1\equiv b_2 \pmod{p-1}$ then $a^{b_1} \equiv a^{k(p-1) +b_2} \equiv (a^{p-1})^k \cdot a^{b_2} \equiv a^{b_2} \pmod{p}$. This works even if $a\equiv 0 \pmod{p}$. This also means that it doesn't make sense to look at polynomials modulo $p$ with degree greater than $p-1$, as you can always reduce to a polynomial of at most degree $p-1$.
+
+
+\begin{proof}[Proof of Fermat's Little Theorem] Since $a$ is not divisible by $p$ by assumption, we have that the lists
+\[
+a,2a,\dots,(p-1)a \pmod{p} \text{ and } 1,2,\dots,(p-1) \pmod{p}
+\]
+are the same, and thus
+\[
+a\cdot (2a) \cdot (3a) \cdots ((p-1)a) \equiv 1\cdot 2 \cdots (p-1) \pmod{p},
+\]
+or, after rearranging both sides
+\[
+a^{p-1} ((p-1)!) \equiv (p-1)! \pmod{p}
+\]
+Now $p$ does not divide $(p-1)!$, so it can be canceled from both sides, leaving the modulus alone. Thus we have the desired relation $a^{p-1} \equiv 1 \pmod{p}$.
+\end{proof}
+
+
+Fermat's little theorem can be greatly extended to cases where things aren't prime moduli. 
+
+\begin{defn}Given $m\ge 1$, let $\phi(m)$ denote the number of positive integers less than or equal to $m$ that are relatively prime to $m$. %Equivalently, $\phi(m)$ is the number of reduced residue classes for $m$. 
+\end{defn}
+
+\begin{thm}[Theorem 5.3] Euler's generalized of Fermat's Theorem. If $(a,m)=1$, then $a^{\phi(m)} \equiv 1 \!\pmod{m}$. \end{thm}
+
+The proof of this follows almost identically to the proof of Fermat's little theorem, just that one has to care about only counting things that are reduced residue classes.
+
+\vspace{1cm}
+
+Now here is one fact about the phi-function: The question is about what values can $\phi(m)$ take? Well let $V$ be the set of all values $\phi(m)$ can take for some $m$. Note that $2\in V$ because $\phi(3)=2$, but you cannot find an $m$ so that $\phi(m)=3$, so $3\not \in V$. 
+\end{document}
+This gives us some powerful tools to do computations in modular arithmetic. Whenever we are adding or multiplying numbers, we can always reduce them modulo $m$, and we can reduce any exponents modulo $\phi(m)$ because $a^{0} \equiv a^{\phi(m)} \!\pmod{m}$. (Note, this does require that $\gcd(a,m)=1$). For example $500^{100} \!\pmod{3}$ is just $2^{0} \equiv 1 \!\pmod{3}$.
+
+\begin{example}
+ Reduce $6^{4162} \!\pmod{41}$
+\end{example}
+\begin{solution}
+$ 6^{4162}\equiv 6^{4000+160+2}\equiv 6^{4000}6^{160}6^2\equiv(6^{40})^{10}(6^{40})^4 6^2\equiv 1^{10}1^4 36\equiv 36 \!\pmod{41}$.
+\end{solution}
+
+
+
+So that we do not have to deal with the infinitely many integers $a+km\equiv a \pmod m$, we tend to talk about \emph{equivalences classes}. 
+\begin{defn}An \emph{equivalence class} is the set $\{a+km:k\in \Z\}$. A \emph{representative of an equivalence class} is a number $a+km$. There are infinitely many representatives of each equivalence class, but there are $m$ equivalence classes $\!\pmod m$.
+\end{defn}
+
+When we talk about the solutions to an equivalence $\pmod m$, we are talking about which equivalence classes are solutions. Since $a\equiv a+m\equiv a+2m\equiv a+3m\equiv \cdots \pmod m$, it is not necessary to consider each a separate solution. Since there are $p-1$ equivalence classes where to $a^{p-1} \equiv 1 \pmod p$, there are $p-1$ solutions to $x^{p-1} \equiv 1 \pmod m$.
+
+Returning to our $\!\pmod8$ chart, we have that $1, 3, 5$ and $7$ are invertible $\!\pmod 8$. 
+
+Let's summarize what we know: if $\gcd(a,m)=1$ then:
+\begin{itemize}
+ \item $a^{\phi(m)}\equiv 1 \pmod m$. In other words, there are solutions to the equivalence $x^{\phi(m)}\equiv 1\pmod m$, and the solutions are precisely the integers the $\phi(m)$ integers $0\leq a\leq m-1$ where $(a,m)=1$.
+ \item There is exactly one solution to $ax\equiv 1 \pmod m$.
+\end{itemize}
+
+
+
+
+
+\end{document}

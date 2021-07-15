@@ -1,0 +1,346 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{Week 12--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, March 29: Quadratic reciprocity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+If you did not submit March 24 Participation or March 26 Participation, you can do that here.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic residues and the Legendre symbol (10 minutes)}
+
+   Let $p>2$ be a prime, and let $a$ be an integer between $0$ and $p-1$. We have three options: 
+ 
+\begin{itemize}
+ \item If $a$ is a unit, and a ``perfect square", then $a$ is a quadratic residue
+ \item If $a$ is a unit but not a square, then $a$ is a quadratic nonresidue
+ \item if $a$ is not a unit, then $\gcd(a,p)\neq 1$. Since $p$ is prime, this means $p\mid a$.
+\end{itemize}
+
+\begin{br}[1 min]
+ What happens with $a^\frac{p-1}{2} \pmod p$ in each case?
+\end{br}
+\begin{itemize}
+ \item If $a$ is a quadratic residue modulo $p$, then $a^{(p-1)/2}=  {1}
+ $.
+ \item If $a$ is a quadratic nonresidue modulo $p$, then $a^{(p-1)/2}=  {-1}
+ $.
+ \item Otherwise, $a^{(p-1)/2}=  {0}
+ $.
+\end{itemize}
+  
+  
+  Proof at the end of class.
+
+\begin{defn}
+ We define the \emph{Legendre symbol} for a prime $p$ and integer $a$ to be \[\left(\frac{a}{p}\right)
+=\begin{cases}
+ 1 & \textrm{ if $a$ is a quadratic residue modulo $p$}\\
+ -1 & \textrm{ if $a$ is a quadratic nonresidue modulo $p$}\\
+ 0&  \textrm{ if $p\mid a$}
+ \end{cases}
+\]
+\end{defn}
+   Euler's identity:  Let $p>2$ be a prime, and let $a$ be an integer. Then $\left(  {\frac{a}{p}}
+ \right)\equiv a^{(p-1)/2} \pmod p$.
+ 
+ Proof at the end of class.
+  
+\begin{thm}
+ Let $p>2$ be prime.
+\begin{itemize}
+ \item If $p\equiv 1 \pmod 4$, then $-1$ is a quadratic residue modulo $p$.
+ \item If $p\equiv 3 \pmod 4$, then $-1$ is a quadratic nonresidue modulo $p$.
+\end{itemize}
+\end{thm}
+\begin{proof}
+We know that $(-1)^{(p-1)/2}\equiv (-1)^{(4k+1-1)/2}\equiv 1 \pmod p$ if $p\equiv 1 \pmod 4$, and $(-1)^{(p-1)/2}\equiv (-1)^{(4k+3-1)/2}\equiv 1 \pmod p$ if $p\equiv 3 \pmod 4$. Since $p>1$, $-1$ is a unit modulo $p$.
+
+Euler's identity tells us that $\left(\frac{-1}{p}\right)\equiv (-1)^{(p-1)/2} \pmod p$. Thus, we get \[\left(\frac{-1}{p}\right)=
+\begin{cases}
+ 1 & p\equiv 1 \pmod 4\\
+ -1 & p \equiv 3 \pmod 4.
+\end{cases}\qedhere\]
+\end{proof}
+
+ 
+  Let $p>2$ be prime, and let $a$ and $b$ be integers that are not congruent to $0\pmod p$.
+\begin{itemize}
+\item If $ab$ is a quadratic residue, then what do we know about $a$ and $b$?
+ \item If $ab$ is a quadratic nonresidue, then what do we know about $a$ and $b$?
+\end{itemize}
+ 
+ One approach is to consider the three options:
+ 
+\begin{itemize}
+ \item both $a$ and $b$ are quadratic residues
+ \item both $a$ and $b$ are quadratic nonresidues
+ \item one is a quadratic residue and one is a quadratic nonresidue
+\end{itemize}
+
+Let's go through case by case:
+\begin{itemize}
+ \item If $s,t\in\Z$ exist such that $a\equiv s^2 \mod p$ and $b\equiv t^2 \pmod p$, then $ab\equiv (st)^2 \pmod p$.
+ \item If $a^{(p-1)/2}\equiv b^{(p-1)/2}\equiv -1\pmod p$, then $(ab)^{(p-1)/2}\equiv (-1)^2\equiv 1\pmod p$. So $ab$ is a quadratic residue.
+ 
+ This may seem surprising, but think about $36=6^2=6(6)=4(9)-=3(12)$.
+ 
+ \item If $a^{(p-1)/2}\equiv 1\pmod p$ and $b^{(p-1)/2}\equiv -1\pmod p$, then $(ab)^{(p-1)/2}\equiv 1(-1)\equiv -1\pmod p$. So $ab$ is a quadratic nonresidue.
+\end{itemize}
+  
+  
+\begin{proof}[Proof of Euler's Criterion]  Let $p>2$ be a prime, and let $a$ be an integer between $0$ and $p-1$. 
+
+If $\gcd(a,p)=1$, the $a^{p-1}\equiv 1 \pmod p$ by Fermat's Little Theorem. Thus, $(a^{(p-1)/2})^2\equiv 1 \pmod p.$ Since $p$ is an odd prime, we know that $\frac{p-1}{2}$ is an integer and the solutions to $x^2\equiv 1 \pmod p$ are $x\equiv \pm 1\pmod p$. We need to determine when we have $1$ and when we have $-1$.
+ 
+ If $a$ is a quadratic residue, then there exists $s$ where $a\equiv s^2\pmod p$. Thus, we also know $s^{-1}\equiv 1 \pmod p$ by the Fermat's Little Theorem. Thus, $a^{(p-1)/2}\equiv (s^2)^{(p-1)/2}\equiv 1 \pmod p$.
+ 
+ If $a$ is a quadratic nonresidue, for each $i=1,2,\dots, p-1$ there exists a unique $j$ such that $ij\equiv a \pmod p$ by Corollary 3.8. We know that $i\neq j$, since that would mean $i^2\equiv a\pmod p$. 
+ 
+ Thus, we can write $(p-1)!=1(2)(3)\cdots(p-1)\pmod p$ by pairing these integers $i$ and $j$. There are $\frac{p-1}{2}$ pairings. Thus, 
+\begin{align*}
+ (p-1)!&\equiv-1\pmod p &\textrm{by Wilson's Theorem}\\
+ a^{(p-1)/2}&\equiv(p-1)! &textrm{by the preceding argument}
+\end{align*}
+so $a^{(p-1)/2}\equiv -1 \pmod p$.
+
+If $a\equiv 0\pmod p,$ then $a^{(p-1)/2}\equiv 0\pmod p$. 
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, April 2: Quadratic reciprocity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic reciprocity}
+We are going to explore the relationship between $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$. Let's look at an example:
+   We want to know if $3$ is a quadratic residue modulo $107$. It would be a lot easier to check if $107$ is a quadratic residue modulo $3$. We know that $107\equiv   {2}
+ \pmod 3$, so $\left(\frac{107}{3}\right)=  {-1}
+ $. It would be nice if this also gave us $\left(\frac{3}{107}\right)$.
+  
+   
+\begin{br}[5 minutes]
+ 
+   Another example: Find $\left(\frac{p}{5}\right)$ and $\left(\frac{5}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{5}\right)$&$  {-1}$&$  {0}$&$  {-1}$&$  {1}$&$  {-1}$
+\\\hline
+$\left(\frac{5}{p}\right)$&-1&0&-1&1&-1\\\hline
+\end{tabular}
+  
+   Another example: Find $\left(\frac{p}{7}\right)$ and $\left(\frac{7}{p}\right)$.
+
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{7}\right)$&$  {-1}$&$  {-1}$&0&$  {1}$&$  {-1}$
+\\\hline
+$\left(\frac{7}{p}\right)$&$  {1}$&$  {-1}$&0&-1&-1\\\hline
+\end{tabular}
+
+  \end{br}
+This gives some evidence for our thm:
+\begin{thm}
+ Let $p$ and $q$ be odd primes with $p\neq q$. 
+\begin{itemize}
+ \item if $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right)=\left(\frac{q}{p}\right)$
+ \item if $p\equiv q\equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right)=-\left(\frac{q}{p}\right)$
+\end{itemize}
+\end{thm}
+
+Our goal for this week is to prove this.
+
+Let's try some examples: 
+\begin{poll}
+ $\left(\frac{11}{47}\right)= {-1}
+* \left(\frac{47}{11}\right)$. We can reduce $47\equiv {3}
+ \pmod{11}$, which 
+\begin{itemize}
+ \item  {is}
+ \item {is not}
+\end{itemize}
+a quadratic residue modulo 11. %Thus,  $\left(\frac{11}{47}\right)= {-1}$ and $ \left(\frac{47}{11}\right)= {1}.$ 
+\end{poll}
+
+\begin{poll}
+ $\left(\frac{3}{107}\right)= {-1}
+* \left(\frac{107}{3}\right)$. We can reduce $107\equiv {2}
+ \pmod{3}$, which 
+\begin{itemize}
+ \item{is}
+ \item   {is not}
+\end{itemize}
+a quadratic residue modulo 3. %Thus,  $\left(\frac{107}{3}\right)= {-1}$ and $ \left(\frac{3}{107}\right)= {1}.$ 
+\end{poll}
+
+We are going to restate quadratic reciprocity as
+\begin{thm}[Restatement of quadratic reciprocity]
+ Let $p$ and $a$ be odd primes with $p\neq q$. Then \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}.\]
+\end{thm}
+
+\begin{prop}The restatement of quadratic reciprocity implies quadratic reciprocity.
+\end{prop}
+\begin{proof}
+ Let $p$ and $q$ be odd primes with $p\neq q$. We assume that $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ is true. Then we have two cases:
+ 
+\begin{itemize}
+ \item $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$ [To show $\left(\frac{p}{q}\right)= {1}
+* \left(\frac{q}{p}\right)$.]
+
+Without loss of generality, we assume $p\equiv 1 \pmod 4$. Then there exists a $k\in\mathbb{Z}$ such that $p=4k+1$. This implies that $\frac{p-1}{2}=2k$. Thus, \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}=1^\frac{q-1}{2}=1.\]
+Thus, we have that $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$ must either both be $+1$ or both be $-1$.
+
+\item $p\equiv q\equiv 3 \pmod 4$[To show $\left(\frac{p}{q}\right)= {-1}
+* \left(\frac{q}{p}\right)$.]
+ There exists $k,m\in\mathbb{Z}$ such that $p=4k+3$ and $q=4m+3$. This implies that $\frac{p-1}{2}=2k+1$ and $\frac{q-1}{2}=2k+1$. Thus, \[\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}=(-1)^\frac{q-1}{2}=-1.\]
+Thus, we have that exactly one of $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$ is $+1$ and the other is $-1$. \qedhere
+\end{itemize}
+\end{proof}
+
+In order to prove this, we first need to prove two rather technical lemmas. Then we will use a geometric proof to finish.
+
+
+\begin{lem}[Gauss's lemma]
+Let $p$ be an odd prime number and let $a\in\mathbb{Z}$ with $p\nmid a$. Let $n$ be the number of least positive residues of the integers $a,2a,\dots, \frac{p-1}{2} a$ that are greater than $\frac{p}{2}$. Then 
+\[\left(\frac{a}{p}\right)=(-1)^n.\]
+\end{lem}
+
+
+ Use Gauss's lemma to find $\left(\frac{6}{11}\right)$. We need to find $n$, the number of least nonnegative positive residues of the integers $6,2*6,3*6,4*6,5*6$ greater that $ {5.5}
+ $
+ We have 
+ 
+\begin{align*}
+ 6\equiv  {6}
+ \pmod{11}\\
+ 2*6\equiv {1}
+ \pmod{11}\\
+ 3*6\equiv {7}
+ \pmod{11}\\
+ 4*6\equiv {2}
+ \pmod{11}\\
+ 5*6\equiv {8}
+ \pmod{11}
+\end{align*}
+Thus, $n= {3}
+$ and $(-1)^n= {-1}
+$.
+
+\end{document}
+
+We now prove Gauss's lemma.
+\begin{proof}
+ Let $r_1,r_2,\dots r_n$ be the least nonnegative residues of the integers $a,2a,\dots,\frac{p-1}{2}a$ that are greater than $\frac{p}{2}$ and $s_1,s_2,\dots,s_m$ be the least nonnegative residues that are less that $\frac{p}{2}$. Note that no $r_i$ or $s_j$ is 0, since $p$ does not divide any of $a,2a,\dots \frac{p-1}{2}$. Consider the $\frac{p-1}{2}$ integers given by \[p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m.\]
+ We want to show that these integers are the integers from $1$ to $\frac{p-1}{2}$ inclusive in some order. Since each integer is less than or equal to $\frac{p-1}{2}$, it suffices to show that no two of these integers are congruent modulo $p$. 
+ 
+If $p-r_i\equiv p-r_j \pmod p$ for some $i\neq j$, then $r_i\equiv r_j \pmod p$, but this implies that there exists some $k_i,k_j\in\mathbb{Z}$ such that $r_i=k_ia\equiv k_ja=r_j\pmod p$ with $k_i\neq k_j$ and $1\leq k_i,k_j\leq {\frac{p-1}{2}}
+$. Since 
+\begin{itemize}
+ \item  {$p\nmid a$}
+ \item {$p\mid a$}
+\end{itemize}
+ we know that the multiplicative inverse of $a$ modulo $p$ 
+\begin{itemize}
+ \item  {exists}
+ \item {does not exist}
+\end{itemize}
+ and thus $k_i\equiv k_j \pmod p$, a contradiction. Thus, no two of the first $n$ integers are congruent modulo $p$. 
+ 
+ Similarly, no two of the second $m$ integers are congruent. Now, if $p-r_i\equiv s_j \pmod p$, for some $i$ and $j$, then $-r_i\equiv s_j \pmod p$. Thus, there exists $k_i,k_j\in\mathbb{Z}$ such that $-r_i=-k_ia\equiv k_ja=s_j\pmod p$ with $k_i\neq k_j$ and $1\leq k_i,k_j\leq\frac{p-1}{2}$. Since $p\nmid a$, we know that the multiplicative inverse of $a$ modulo $p$ exists, and thus $-k_i\equiv k_j \pmod p$, a contradiction.
+Thus, the $\frac{p-1}{2}$ integers $p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m$ are the integers $1,2,\dots,\frac{p-1}{2}$ in some order. 
+
+Then, \[(p-r_1)(p-r_2)\cdots(p-r_n)s_1s_2\cdots s_m\equiv\frac{p-1}{2}! \pmod p\]
+implies that \[(-1)^nr_1r_2\cdots r_ns-1s_2\cdots s_m\equiv\frac{p-1}{2}! \pmod p.\]
+By the definition of $r_i$ and $s_j$, we have 
+\[(-1)^na(2a)(3a)\cdots(\frac{p-1}{2}a)\equiv\frac{p-1}{2}! \pmod p.\]
+By reordering, we have 
+\[(-1)^na^{(p-1)/2}\frac{p-1}{2}!\equiv\frac{p-1}{2}! \pmod p.\]
+Thus, $(-1)^na^{(p-1)/2}\equiv 1 \pmod p$, and $a^{(p-1)/2}\equiv (-1)^n \pmod p$. By Euler's criterion, we get that $\left(\frac{a}{p}\right)\equiv(-1)^n \pmod p$. Since both sides of the congruence must be $\pm1,$ we have $\left(\frac{a}{p}\right)=(-1)^n $.
+\end{proof}
+
+We are going to prove a result about $\left(\frac{2}{p}\right)$ before our next technical lemma.
+
+\begin{thm}
+ Let $p$ be an odd prime. Then 
+\begin{equation*}
+ \left(\frac{2}{p}\right)=(-1)^{\frac{p^2-1}{8}}=
+\begin{cases}
+ 1& if\ p\equiv 1,7 \pmod 8\\
+ -1 & if\ p\equiv 3,5 \pmod 8.
+\end{cases}
+\end{equation*}
+\end{thm}
+\begin{proof}
+ By Gauss's Lemma, we have that $\left(\frac{2}{p}\right)=(-1)^n,$ where $n$ is the number of least positive residues of the integers $2,2*2,2*3,\dots,\frac{p-1}{2}$ that are greater than $\frac{p}{2}$. Let $k\in\mathbb{Z}$ with $1\leq k\leq \frac{p-1}{2}$. Then $2k< {\frac{p}{2}}
+ $ if and only  if $k<\frac{p}{4};$ so $\left\lfloor {\frac{p}{4}}
+ \right\rfloor$ of the integers $2,2*2,2*3,\dots,\frac{p-1}{2}$ that are less than $\frac{p}{2}$, where $\lfloor\cdot\rfloor$ is the greatest integer (or floor) function. So, $\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor$  of these integers are greater than $\frac{p}{2}$, from which 
+ \[\left(\frac{2}{p}\right)=(-1)^{\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor}\] by Gauss's Lemma. For the first equality, it suffices to show that 
+ \[\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor\equiv \frac{p^2-1}{8} \pmod 2.\]
+ 
+ If $p\equiv 1 \pmod 8$, the $p=8k+1$ for some $k\in\mathbb{Z}$. That gives us
+ \[\frac{p-1}{2}-\left\lfloor\frac{p}{4}\right\rfloor=\frac{(8k+1)-1}{2}--\left\lfloor\frac{8k+1}{4}\right\rfloor=4k-2k=2k\equiv 0 \pmod 2\] and
+ \[\frac{p^2-1}{8}=\frac{8k+1)^2-1}{8}=8k^2+2k\equiv 0\pmod 2.\]
+ Thus,  holds when $p\equiv 1 \pmod 8$. The rest of the cases are part of homework 9.
+\end{proof}
+
+\begin{lem}
+ Let $p$ be an odd prime number and let $a\in\mathbb{Z}$ with $p\nmid a$ and $a$ odd. If \[N=\sum_{j=1}^{(p-1)/2}\left\lfloor\frac{ja}{p}\right\rfloor,\] then \[\left(\frac{a}{p}\right)=(-1)^N.\]
+\end{lem}
+Where $\lfloor\cdot\rfloor$ is the greatest integer (or floor) function. This gives us another way of computing Legendre symbols. Let's look at an example before diving into the technical proof.
+
+\begin{poll}
+ Use this lemma to find $\left(\frac{7}{11}\right)$. We have
+ \begin{align*}
+ N&=\sum_{j=1}^{ {5}
+ }
+ \left\lfloor\frac{j7}{11}\right\rfloor= \left\lfloor\frac{7}{11}\right\rfloor+ \left\lfloor\frac{14}{11}\right\rfloor+\left\lfloor\frac{21}{11}\right\rfloor+ \left\lfloor\frac{28}{11}\right\rfloor+\left\lfloor\frac{35}{11}\right\rfloor\\
+ &= {0}
+ + {1}
+ + {1}
+ + {2}
+ + {3}
+ \\&=
+  {7}
+ \end{align*}
+ So $\left(\frac{7}{11}\right)=(-1)^{ {7}
+ }= {-1}
+ .$
+\end{poll}
+
+\begin{proof}
+ Let $r_1,r_2,\dots,r_n$ are the least nonnegative representatives of $a,2a,3a,\dots,\frac{p-1}{2}a$ modulo $p$ which are greater than $\frac{p}{2}$ and $s_1,s_2,\dots,s_m$ be the least nonnegative representatives of $a,2a,3a,\dots,\frac{p-1}{2}a$ modulo $p$ which are less than $\frac{p}{2}$.  Then for each $j=1,2, \dots, \frac{p-1}{2}$ we have that \[ja=p\left\lfloor\frac{ja}{p}\right\rfloor+\textrm{(remainder depending on $j$)}\]
+ where each of $r_1,r_2, \dots, r_n,s_1,s_2,\dots,s_m$ appears exactly once as a remainder. 
+ 
+By adding the $\frac{p-1}{2}$ equations above, we get
+\begin{equation}\label{sumja}\sum_{j=1}^{\frac{p-1}{2} }ja=\sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor+\sum_{j=1}^n r_j+\sum_{j=1}^m s_j
+\end{equation}
+
+The integers $p-r_1,p-r_2,\dots,p-r_n,s_1,s_2,\dots,s_m$ are precisely the integers from $1$ to $\frac{p-1}{2}$ in some order, so we have 
+\begin{equation}\label{sumj}
+ \sum_{j=1}^{(p-1)/2} j=\sum_{j=1}^n (p-r_j)+\sum_{j=1}^m s_j=pn-\sum_{j=1}^n r_j+\sum_{j=1}^m s_j
+\end{equation}
+
+We subtract \eqref{sumj} from \eqref{sumja} to get 
+\begin{align*}
+ \sum_{j=1}^{\frac{p-1}{2} }ja- \sum_{j=1}^{(p-1)/2} j&=\sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor+\sum_{j=1}^n r_j+\sum_{j=1}^m s_j -\left( pn-\sum_{j=1}^n r_j+\sum_{j=1}^m s_j \right)\\
+ &=\sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor -pn +2\sum_{j=1}^n r_j.
+\end{align*}
+Now, we can factor the left hand side to get 
+\[( {a-1}
+)\sum_{j=1}^{(p-1)/2} j=\sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor -pn +2\sum_{j=1}^n r_j.\]
+Reducing both sides of the equation modulo 2 gives
+\[0\equiv \sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor -n \pmod 2\] since $p\equiv  {1}
+\pmod 2$. Equivalently $n\equiv \sum_{j=1}^{(p-1)/2}p\left\lfloor\frac{ja}{p}\right\rfloor\pmod 2$.
+
+Thus, $n\equiv N \pmod 2$, thus $\left(\frac{a}{p}\right)=(-1)^n=(-1)^N$.
+
+\end{proof}

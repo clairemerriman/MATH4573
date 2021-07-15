@@ -1,0 +1,65 @@
+\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings, enumerate,multicol,hyperref}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage[,margin=0.7in]{geometry}
+\setlength{\textheight}{8.5in}
+
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\newcounter{includepdfpage}
+
+
+\lhead{\large{Elementary Number Theory: MATH 4573}}
+%Put your Document Title (Camp: Topic) Here
+\chead{}
+\rhead{Spring 2021}
+\lfoot{}
+\cfoot{}
+\rfoot{Page \thepage}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+
+\headheight 50pt
+\headsep 30pt
+
+
+
+\author{Spring 2021}
+\date{}
+ \theoremstyle{plain}
+ 
+\newtheorem{thm}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem*{thm*}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\newtheorem*{nmthm}{Theorem}
+\newtheorem*{defn}{Definition}
+\newtheorem{example}{Example}
+\newtheorem*{focus}{Central Focus}
+\newtheorem*{obj}{Objectives}
+\newtheorem*{br}{Breakout Room Problem}
+\newtheorem*{pre}{Preclass assignment}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{poll}{Poll question}
+\newtheorem*{cb}{Chat blast}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+\newenvironment{hint}
+  {\begin{proof}[Hint]}
+  {\end{proof}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\nequiv}{\not\equiv}

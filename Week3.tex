@@ -1,0 +1,256 @@
+\documentclass[letterpaper, 11 pt]{article}
+\input{lessonplanheader}
+
+
+
+\title{Week 3--MATH 4573 Elementary Number Theory}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, January 25: More primes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Section 2.1 Jones \& Jones
+
+{\bf Turn in:} How does this section relate to your previous understanding of primes? 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primes (45 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lem}[Lemma 2.1 and Corollary 2.2]
+ If $p$ is prime and $a_1,\dots, a_k$ are integers such that $p$ divides $a_1a_2\cdots a_k$, then 
+ 
+\begin{enumerate}
+ \item either $p\mid a_i$ or $\gcd(a_i,p)=1$ for each $a_i$,
+ \item $p$ divides $a_i$ for some $i$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+ 
+\begin{enumerate}
+ \item By definition $\gcd(a_i,p)$ is a positive divisor of $p$. Thus, it is either $p$ or $1$ since $p$ is prime.
+ \item We use induction on $k$. If $k=1,$ then $p\mid a_i$ and we are done.
+ 
+ If $k=2$, then either $p\mid a_1$ and we are done, or $\gcd(a_1,p)=1$ by part (a). Then by Bezout's identity, there exists integers $u,v$ such that $1=a_1u+pv$. Thus, $a_2=a_1a_2u+a_2pv$. By assumption $p\mid a_1a_2$, so $p$ divides the linear combination $a_1a_2u+a_2pv=a_2$.
+ 
+ Now assume that $k>2$ and that the result holds for all products of $k-1$ factors. Then we can write $a=a_1\dots a_{k-1}$ and $b=a_k$ and $p\mid ab$. By the $k=2$ case, it follows that either $p\mid a$ or $p\mid b$. In the first case, $p\mid a=a_1\cdots a_{k-1}$ means that $p\mid a_i$ for some $i$ by the induction hypothesis. In the other case, $p\mid b$ means that $p\mid a_k$ by construction. \qedhere
+ \end{enumerate}
+\end{proof}
+
+For a polynomial $f(x)=a_n x^n+a_{n-1}x^{n-1}+\cdots+a_1 x+a_0$, where $a_i\in\Z$, whether or not the $a_i$ are divisible by some prime $p$ helps determine if the polynomial can be factored.
+\begin{br}[Exercise 2.1, 5 minutes]
+ Prove that if $p$ is prime and $p\mid a^k$, then $p\mid a$, and thus $p^k\mid a^k$. 
+ 
+ Is this still valid if $p$ is composite? Prove or provide a counterexample.
+\end{br}
+
+\begin{thm} [The Fundamental Theorem of Arithmetic, restatement of Textbook Theorem 2.3] Every integer $n\ge 2$ can be factored into a product of primes $n=p_1 p_2 p_3\dots p_n$ in a unique way (up to rearrangement).\end{thm}
+\begin{proof}
+We work by induction. We can check that $2=2$, $3=3$ and $4=2^2$ all have prime factorizations. So assume now that all numbers $n$ in the range $2\le n<N$ can be factored in the specified way, and we will show that $N$ can be factored this way as well. If $N$ is prime, then $N$ is its own prime factorization. Otherwise $N$ is composite and has some factor $2\le n_1< N$. Thus we can write $N=n_1n_2$. But $n_2$ must also be in the range $2\le n_2 < N$. Therefore $n_1$ and $n_2$ must be factorable into primes, say $n_1=p_1p_2\dots p_r$ and $n_2= q_1q_2\dots q_s$. Then $N=p_1p_2\dots p _r q_1q_2\dots q_s$. By induction, all integers $n\ge 2$ can be factored into a product of primes.
+
+Now we must show this product is unique up to rearrangement. Suppose that $n$ has two factorizations $p_1p_2\dots p_r$ and $q_1q_2\dots q_s$, and let us assume that $r\le s$. By our previous theorem, since $p_1$ divides $q_1q_2\dots q_s$, it must divide one of the $q_i$'s, and, by rearranging, we can assume that $p_1\mid q_1$. But $q_1$ is prime and only has $1$ and $q_1$ as prime factors, so therefore, $p_1=q_1$. Therefore we have $p_2p_3\dots p_r = q_2q_3\dots q_s$. 
+
+We can repeat this process (and repeatedly rearrange the $q_i$'s as necessary) to show that $p_2=q_2$, and then $p_3=q_3$, and so on until we show that $1=q_{r+1}q_{r+2}\dots q_s$. If $s>r$, then the number on the right-hand side here is greater than $1$, which is impossible, so we have that $r=s$ and $p_i=q_i$ for $1\le i \le r$. This proves that the factorization is unique up to rearrangement.
+\end{proof}
+
+So let's suppose we want to factor an integer $n$. Let's start with $d=2$. 
+
+We check to see if $d\mid n$. If it does, then we factor $d$ out of $n$ to get $n'=n/d$. We record the divisor $d$ and henceforth work with $n'$ in place of $n$, restarting at this step. Otherwise, we increment $d$ by one and repeat this step.
+
+Once $n=1$, we have all the factors.
+
+
+Now there are various ways we could try to speed this up. You might think we could only work with those trial divisors $d$ that are prime, but it would take more time to check if $d$ is a prime than it would to just see if it divides $n$. If it's composite, it won't, because we'll have already taken all its factors out of $n$ beforehand.
+
+One thing we can do is only check $d$ up to $\sqrt{n}$. This is because $n$ cannot have two prime factors that are each $>\sqrt{n}$. So if we reach this point, whatever $n$ remains must be prime. So that takes us down from a worst case scenario of $d=n$ to a worst case scenario of $d=\sqrt{n}$. That's a big improvement. It's still very slow.
+
+
+\vspace{1cm}
+
+We can  write out a prime factorization (of a positive integer) by
+\[
+a=\prod_p p^{e_p}
+\]
+where $e_p$ is the number of times $p$ divides $a$ evenly. Note that $\prod$ denote a product in the same way that $\sum$ denotes a sum, and that the subscript $p$ means that the product ranges over all primes.
+
+This is what we are doing when we write $12=2^2\cdot 3$.
+
+This gives us the textbook's formulation of the Fundamental Theorem of Arithmetic
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{An asside on unique factorization (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let $\Z[\sqrt{-6}]=\{a+b\sqrt{-6}: a,b\in\Z\}$.
+
+\begin{defn}
+ An element $a+b\sqrt{-6}$ is \emph{irreducible in $\Z[\sqrt{-6}]$} if it cannot be expressed as a product of two elements for $\Z[\sqrt{6}]$ except with the trivial factorizations
+ \[a+b\sqrt{-6}=(1)(a+b\sqrt{6})=(-1)(-a-b\sqrt{6}).\]
+\end{defn}
+
+We also define the \emph{norm} of a number in $\Z[\sqrt{-6}]$ to be $||a+b\sqrt{-6}||=a^2+6b^2$. The product of the norm is the norm of the product. That is $||xy||=||x|||y||$ for $x,y\in\Z[\sqrt{-6}].$ Why?
+
+\begin{example} Examples from Zoom poll questions: 
+
+Question 1: $2=2+0\sqrt{-6}, ||2||=2^2+6(0^2)=4$, Question 2: $5=5+0\sqrt{-6}, ||5||=5^2+6(0^2)=25$, and Question 3: $2+\sqrt{-6}=2^2+6(1^2)=10$.
+\end{example}
+
+Think about: How would the fundamental theorem of arithmetic (Theorem 1.16) change if we said 1 is a prime number?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, January 27: More distribution of primes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Section 2.2, distribution of primes
+
+{\bf Turn in}: After Theorem 2.9, the book says ``There are also infinitely many primes of the form $4q+1$; however the proof is a little more subtle\dots Where does the method of the proof of Theorem 2.9 break down in this case?"
+
+Answer this question.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Review of reading and announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finishing Unique factorizations (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{br}[10 minutes]
+Consider $\Z[\sqrt{-6}]$. 
+\begin{enumerate}
+ 	\item Prove that $2$ and $5$ are irreducible elements of $\Z[\sqrt{-6}].$
+	\item Prove that $2+\sqrt{-6}$ and $2-\sqrt{-6}$ are irreducible elements of $\Z[\sqrt{-6}].$
+	\item Prove that there are elements of $\Z[\sqrt{-6}]$ with two different factorizations into irreducible elements, and thus $\Z[\sqrt{-6}]$ does not have unique factorizations.
+\end{enumerate}
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Prime-power factorization (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Supposed that integers $a$ and $b$ have factorizations
+\[a=p_1^{e_1}\dots p_k^{e_k}\quad\textrm{and}\quad b=p_1^{f_1}\dots p_k^{f_k}\]
+for primes $p_i$ and integers $e_i,f_i\geq0$. Then we have the following formulas:
+
+\begin{br}[5 minutes]
+\begin{align*}
+ab&=p_1^{e_1+f_1}\cdots p_k^{e_k+f_k}\\
+\frac{a}{b}&=p_1^{e_1-f_1}\cdots p_k^{e_k-f_k}\\ 
+a^m&=p_1^{me_1}\cdots p_k^{me_k}\\
+\gcd(a,b)&=p_1^{\min(e_1,f_1)}\cdots p_k^{\min(e_k,f_k)}\\
+\lcm(a,b)&=p_1^{\max(e_1,f_1)}\cdots p_k^{\max(e_k,f_k)}
+\end{align*}
+ Prove each of these formulas.
+\end{br}
+
+For a prime $p$, we use the notation $p^e||n$ to indicate that $e$ is the highest power of $p$ that divides $n$.
+
+\begin{lem}[Lemma 2.4]
+If $a_1,\dots a_r$ are mutually coprime integers and $a_1\cdots a_r$ is an $m^{th}$ power (ie, $a_1\cdots a-r=b^m$ for some integer $b$) for some integer $m\geq 2,$ then each $a_i$ is an $m^{th}$ power.
+\end{lem}
+\begin{proof}
+ It follows from the formula for $a^m$ that a positive integer is an $m^{th}$ power if and only if the exponent of each prime in its prime-power factorization is divisible by $m$ (recall, equals signs are if and only if statements). If $a=a_1\cdots a_r$, where the factors $a_i$ are mutually coprime (ie, pairwise relatively prime), then each prime that divides $a$ divides exactly one of the $a_i$. Thus, $p^{me}$ appears in the prime factorization of $a$, if and only it also appears in the prime factorization of exactly one of the $a_i$. Since is is true for all prime power divisors of $a$, each $a_i$ is also an $m^{th}$ power.
+\end{proof}
+
+The assumption that the $a_i$ are pairwise relatively prime is important! The integers $4, 6, 9$ are relatively prime as a triple, but not in pairs since $\gcd(4,6)=2, \gcd(6,9)=3$. Both $4$ and $9$ are perfect squares, but $6$ is not. However $4*6*9=216=6^3$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Counting primes (25 minutes, some moved to Friday)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+The reading serves as an introduction to counting the \emph{distribution} or \emph{density} of primes. Much of \emph{analytic number} theory is dedicated to proving these types of results. We will only go over a few in detail.
+
+\begin{thm}[Euclid's infinitude of primes, Theorem 2.6]
+There are infinitely many primes 
+\end{thm}
+\begin{proof}
+ We proceed by contradiction. Assume that there are finitely many prime numbers, $p_1,p_2,\dots, p_k$. Consider \[m=p_1p_2\cdots p_k+1.\]
+Since $m$ is an integer greater than $1$, the Fundamental Theorem of Arithmetic (Theorem 2.3) implies that there exists some $p$ prime such that $p\mid m$. By our assumption, $p$ must be in the list $p_1,p_2,\dots, p_k$. Then $p\mid p_1p_2\cdots p_k$ and $p\mid m$. Thus, $p\mid m-p_1p_2\cdots p_k=1$. However, the only positive divisor of $1$ is $1$. Thus, we have reached a contradiction and there must be infinitely many primes.
+\end{proof}
+
+\begin{thm}
+ There are infinitely many primes of the form $4q+3$.
+\end{thm}
+
+Reviewing this proof was part of the reading assignment. Questions on that proof?
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, January 29: Finishing up primes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Reading: Read the three attached introductions to modular arithmetic: Jones \& Jones pages 37-40, Granville page 61-62, and Strayer pages 39-41.
+
+In class, we will discuss editing and giving feedback on writing. In addition to analyzing the different writing styles, we will create rubrics for giving feedback. We will create ``sentence stems" that can be used for giving feedback such as ``This sentence helps me understand, because\dots"
+
+{\bf Turn in}: Give one potential sentence stem for giving feedback on mathematical writing.
+
+Pick which reading you like the most and which you like the least and answer the following questions about each of them:
+\begin{enumerate}
+ \item Why did you pick those two readings? What makes you like or dislike them?
+ \item For each reading, identify something that the author does that helps you understand the material.
+ \item For each reading, identify something that the author does that is confusing.
+ \end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Announcements (5 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Hints to Homework 2, Problem 1b are linked from the \emph{Divisibility} discussion board.
+
+How to read Gradescope score: \url{https://help.gradescope.com/article/axm932lptr-student-view-submission}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Counting primes (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{br}[Exercise 2.6, 5 minutes]
+Prove that every prime $p\neq3$ has the form $3n+1$ or $3n+2$ for some integer $n$. Prove that there are infinitely many primes of the form $3n+2$. 
+\end{br}
+\begin{hint}
+ The 
+\end{hint}
+
+
+\begin{thm}[Reformulation of Exercise 2.7]
+ There are arbitrarily large gaps in the primes. In other words, for any positive integer $k$, there exist $k$ consecutive composite integers.
+\end{thm}
+\begin{br}[Exercise 2.7, 5 minutes]
+Find five consecutive composite integers. Show that for each integer $k\geq 1$, there is a sequence of $k$ consecutive composite integers.
+\end{br}
+
+Now, what about how many primes there are? We let $\pi(x)$ denote the number of primes up to $x$. So $\pi(2)=1$, $\pi(3)=2$, $\pi(4)=2$ and so on.
+
+\begin{thm}[Prime Number Theorem]
+\[\lim_{n\to\infty}\frac{\pi(x)}{x/\log x}=1\] 
+\end{thm}
+
+\begin{conj}[Twin Prime Conjecture]
+ There are infinitely many prime numbers $p$ for which $p+2$ is also a prime number. 
+\end{conj}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Creating feedback rubrics (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Now we will look at the reading assignments and creating feedback rubrics. 
+
+In your breakout rooms, answer:
+\begin{br}
+ What was one thing that you found helpful in one of the readings?
+What is one piece of advice you would like to give one of the authors?
+\end{br}
+
+
+An example of a graded student homework is on the January 29 Participation assignment.
+
+
+
+
+\end{document}
+
+
+
+
