@@ -1,0 +1,72 @@
+\documentclass{ximera}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem*{thm*}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+
+\title{Quadratic residues}  
+\begin{document}  
+\begin{abstract}  
+We will review a some points about quadratic residues and the Legendre symbol from before break, and finish those sections.
+\end{abstract}  
+\maketitle  
+
+\begin{question}
+ Let $p>2$ be a prime, and let $a$ be an integer between $0$ and $p-1$.
+ 
+\begin{itemize}
+ \item If $a$ is a quadratic residue modulo $p$, then $a^{\frac{p-1}{2}}=\answer{1}
+ $.
+ \item If $a$ is a quadratic nonresidue modulo $p$, then $a^{\frac{p-1}{2}}=\answer{-1}
+ $.
+ \item Otherwise, $a^{\frac{p-1}{2}}=\answer{0}
+ $.
+\end{itemize}
+\end{question}
+
+\begin{question}
+ Euler's identity:  Let $p>2$ be a prime, and let $a$ be an integer. Then $\left(\answer{\frac{a}{p}}
+ \right)\equiv a^{\frac{p-1}{2}} \pmod p$.
+\end{question}
+
+\begin{thm}
+ Let $p>2$ be prime.
+\begin{itemize}
+ \item If $p\equiv 1 \pmod 4$, then $-1$ is a quadratic residue modulo $p$.
+ \item If $p\equiv 3 \pmod 4$, then $-1$ is a quadratic nonresidue modulo $p$.
+\end{itemize}
+\end{thm}
+\begin{proof}
+ For an arbitrary prime $p>2$, Euler's identity tells us that $\left(\frac{-1}{p}\right)\equiv (-1)^{\frac{p-1}{2}} \pmod p$. Note that, we have that $\left(\frac{-1}{p}\right)$ is either $+1$ or $-1$ by definition, and $(-1)^{\frac{p-1}{2}}$ is also either $+1$ or $-1$. Since $1\not\equiv -1 \pmod p$, the two sides of the congruence are actually equal. That is, $\left(\frac{-1}{p}\right)= (-1)^{\frac{p-1}{2}} $.
+ 
+ The completion of the proof involves applying the answer to the preclass assignment, and the proof is on homework 9.
+ \end{proof}
+ 
+\begin{question}
+Let $p>2$ be prime, and let $a$ and $b$ be integers between $1$ and $p-1$.
+\begin{itemize}
+\item If $ab$ is a quadratic residue, then
+\begin{selectAll}
+\choice[correct]
+{$a$ and $b$ are both quadratic residues}
+\choice[correct]
+{$a$ and $b$ are both quadratic nonresidues}
+\choice
+{One of $a$ and $b$ is a quadratic residue and the other is a quadratic nonresidue}
+\end{selectAll}
+ \item If $ab$ is a quadratic nonresidue, then
+\begin{selectAll}
+\choice[correct]
+{$a$ and $b$ are both quadratic residues}
+\choice[correct]
+{$a$ and $b$ are both quadratic nonresidues}
+\choice
+{One of $a$ and $b$ is a quadratic residue and the other is a quadratic nonresidue}
+\end{selectAll}
+\end{itemize}
+ 
+\end{question}
+\end{document}

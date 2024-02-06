@@ -1,0 +1,214 @@
+\documentclass{ximera}
+
+%\newtheorem{theorem}{Theorem}%[section] % reset theorem numbering for each section
+%\newtheorem*{theorem*}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{ex}{Example}
+
+
+\title{M\"obius inversion formula}  
+\begin{document}  
+\begin{abstract}  
+We revisit some arithmetic functions, introduce the M\"obius function, and prove the M\"obius inversion formula.\end{abstract}  
+\maketitle  
+
+\begin{definition}
+ A function $f$ is \emph{arithmetic} if it is defined on all positive integers.
+\end{definition}
+
+We have seen many arithmetic functions: the Euler $\phi$-function, $d(n)$ is the number of positive divisors of $n$, $\sigma(n)$ is the sum of positive divisors of $n$, $\omega(n)$ is the number of distinct prime divisors of $n$, $\Omega(n)$ is the number of primes dividing $n$ counting multiplicity.
+
+\begin{definition}
+ An arithmetic function $f$ is \emph{multiplicative} if for any relatively prime $m,n\in\mathbb{Z}$, $f(mn)=f(m)f(n)$. The function is \emph{completely multiplicative} if $f(mn)=f(m)f(n)$ for all positive integers $m$  and $n$.
+\end{definition}
+
+\begin{question}
+The Euler $\phi$-function is:
+\begin{multipleChoice}
+ \choice {not multiplicative}
+ \choice[correct] {multiplicative}
+ \choice {completely multiplicative}
+\end{multipleChoice}
+
+The function $f(n)=n^2$ is: 
+\begin{multipleChoice}
+ \choice {not multiplicative}
+ \choice{multiplicative}
+ \choice[correct] {completely multiplicative}
+\end{multipleChoice}
+\end{question}
+
+Multiplicative functions are completely defined by their value on powers of primes. If $n=p_1^{a_1}p_2^{a_2}\cdots p_r^{a_r}$, then for any multiplicative function $f$, $f(n)=f(p_1^{a_1})f(p_2^{a_2}\cdots f(p_r^{a_r})$ by repeatedly applying the definition of a multiplicative function.
+
+\begin{theorem}
+ Let $f$ be an arithmetic function and for $n\in\mathbb{Z}$ with $n>0$, let \[F(n)=\displaystyle\sum_{d\mid n} f(d).\] If $f$ is multiplicative, then so is $F(n)$.
+\end{theorem}
+\begin{proof}
+ Let $m$ and $n$ be relatively prime positive integers. To prove that $F(n)$ is multiplicative, we need to show that $F(mn)=F(m)F(n).$  We have that $F(mn)=\displaystyle\sum_{d\mid mn} f(d)$. Since $(m,n)=1$, each divisor $d>0$ of $mn$ can be written as $d_1d_2$ where $d_1\mid m, d_2\mid n$, and $(d_1,d_2)=1$ and each such product corresponds to a divisor $d$ of $mn$ (see homework 10). We have
+ 
+\begin{align*}
+ F(mn)&=\displaystyle\sum_{d_1\mid m,d_2\mid n} f(d_1d_2)\\
+ &=\displaystyle\sum_{d_1\mid m,d_2\mid n} f(d_1)f(d_2)\\
+ &=\displaystyle\sum_{d_1\mid m}f(d_1)\displaystyle\sum_{d_2\mid n} f(d_2)\\
+ &=F(m)F(n)\qedhere
+\end{align*}
+\end{proof}
+
+\begin{example}
+ To clarify the previous proof, we look at an example: Let $m=3$ and $n=4$. We need to show that $F(3\cdot4)=F(3)F(4)$. We have
+ \begin{align*}
+ F(12)&=\displaystyle\sum_{d\mid 12} f(d)\\
+& =f(\answer{1}
+ )+f(\answer{2}
+ )+f(\answer{3}
+ )+f(\answer{4}
+ )+f(\answer{6}
+ )+f(\answer{12}
+ )\\
+ \end{align*}
+Regroup so that the first 3 terms are factors of 4 and the last 3 terms are factors of 3.
+ \begin{align*}
+& =f(\answer{1}
+ )+f(\answer{2}
+ )+f(\answer{4}
+ )+f(\answer{3}
+ )+f(\answer{6}
+ )+f(\answer{12}
+ )\\
+ \end{align*}
+The factor each term
+\begin{align*}
+ &=f(1\cdot1)+f(1\cdot2)+f(1\cdot4)+f(3\cdot1)+f(3\cdot2)+f(3\cdot4)\\
+  &=f(\answer{1}
+  f(\answer{1}
+  )+f(\answer{1}
+  f(\answer{2}
+  )+f(\answer{1}
+  f(\answer{4}
+  )+f(\answer{3}
+  f(\answer{1}
+  )+f(\answer{3}
+  f(\answer{2}
+  )+f(\answer{3}
+  f(\answer{4}
+  )\\
+  &=[f(\answer{1}
+  )+f(\answer{3}
+  ][f(\answer{1}
+  )+f(\answer{2}
+  )+f(\answer{4}
+  )]\\
+  &=\displaystyle\sum_{d_1\mid3}f(d_1)\displaystyle\sum_{d_2\mid4}f(d_2)\\
+  &=F(3)F(4)
+\end{align*}
+\end{example}
+
+\begin{definition}
+ An integer $n$ is \emph{square-free} if it is not divisible by $p^2$ for any prime $p$.
+\end{definition}
+
+\begin{definition}
+ Let $n\in\mathbb{Z}$ with $n>0$. The \emph{M\"obius $\mu$-function}, denoted $\mu(n)$, is 
+ \[\mu(n)=
+\begin{cases}
+ 1& if\ n=1\\
+ 0& if\ p^2\mid n,\ p \textrm{ prime}\\
+ (-1)^r &if\ n=p_1p_2\cdots p_r,\ p_i \textrm{ prime}
+\end{cases}
+=
+\begin{cases}
+ 1& if\ n=1\textrm{ or }\\& n \textrm{ square-free, even number of prime factors}\\
+ 0& if\ n \textrm{ not square-free}\\
+ -1&if\  n \textrm{ square-free, odd number of prime factors}.
+\end{cases}\]
+\end{definition}
+
+\begin{question}
+ Since $504=2^3 3^2 7, \mu(504)$ is 
+\begin{multipleChoice}
+ \choice {1}
+ \choice[correct] {0}
+ \choice {-1}
+\end{multipleChoice}
+Since $30=2\cdot 3 \cdot 5,\mu(30)$ is 
+\begin{multipleChoice}
+ \choice {1}
+ \choice {0}
+ \choice[correct] {-1}
+\end{multipleChoice}
+\end{question}
+
+\begin{theorem}
+ The M\"obius $\mu$ function is multiplicative. 
+\end{theorem}
+\begin{proof}
+ Let $m$ and $n$ be relatively prime positive integers. We must show that $\mu(mn)=\mu(m)\mu(n)$. If $m=1$ or $n=1$, then we are done (see participation assignment). 
+ 
+ Either $m$ or $n$ is divisible by $p^2$ for some prime $p$ if and only if $mn$ is divisible by $p^2$. Then $\mu(mn)=0$ and either $\mu(m)=0$ or $\mu(n)=0$, so $\mu(m)\mu(n)=0$.
+ 
+If $m$ and $n$ are both square-free, then $m=p_1p_2\cdots p_r$ and $n=q_1q_2\cdots q_s$ with $p_1,p_2,\dots,p_r,q_1,q_2,\dots, q_s$ distinct primes. Then
+\begin{align*}
+ \mu(mn)&=\mu(p_1p_2\cdots p_rq_1q_2\cdots q_s)=(-1)^{r+s}\\
+ &=(-1)^r(-1)^s\\
+ &=\mu(m)\mu(n)
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+ Let $n\in\mathbb{Z}$ with $n>0$. Then \[\displaystyle\sum_{d\mid n} \mu(d)=
+\begin{cases}
+ 1 & if\ n=1\\
+ 0 & otherwise
+\end{cases}\]
+\end{theorem}
+\begin{proof}
+ Since $\mu(n)$ is multiplicative, the first theorem from this section says that $\displaystyle\sum_{d\mid n} \mu(d)$ is also multiplicative. Thus, the value of this function is determined by it's value on power of primes. Now, $F(1)=\answer{1}
+ $. If $p$ is prime, then 
+\begin{align*}
+ F(p^a)&=\displaystyle\sum_{d\mid p^a} F(d)\\
+ &=\mu(1)+\mu(p)+\mu(p^2)+\cdot+\mu(p^{a-1})+\mu(p^a)\\
+ &=\answer{1}
+ +\answer{-1}
+ +\answer{0}
+ +\cdots+\answer{0}
+\\ &=0.
+\end{align*}
+\end{proof}
+
+\begin{theorem}[M\"obius Inversion Formula]
+ Let $f$ and $g$ be arithmetic functions. Then \[f(n)=\displaystyle\sum_{d\mid n} g(d)\] if and only if \[g(n)=\displaystyle\sum_{d\mid n} \mu(d)f(\frac{n}{d})=\displaystyle\sum_{d\mid n} \mu(\frac{n}{d})f(d).\]
+\end{theorem}
+\begin{proof}
+ Note that $\displaystyle\sum_{d\mid n} \mu(d)f(\frac{n}{d})=\displaystyle\sum_{d\mid n} \mu(\frac{n}{d})f(d)$ since $\frac{n}{d}$ and $d$ are both on the list of all divisors of $d$.
+ 
+ ($\Rightarrow$) Assume that $f(n)=\displaystyle\sum_{d\mid n} g(d).$ Then 
+\begin{align*}
+ \displaystyle\sum_{d\mid m} \mu(d)f(\frac{n}{d})&=\displaystyle\sum_{d\mid n}\left(\mu(d) \displaystyle\sum_{c\mid \frac{n}{d}} g(c)\right)\\
+ &=\displaystyle\sum_{c\mid n} \left(g(c)\displaystyle\sum_{d\mid\frac{n}{d}}\mu(d)\right) \textrm{why?}
+\end{align*}
+
+By the previous theorem, $\displaystyle\sum_{d\mid n}\mu(d)=0$ unless $\frac{n}{c}=1$, ie $c=n$. Thus, the only term in the summation is $g(c)$.
+
+($\Leftarrow$) Assume that $g(n)=\displaystyle\sum_{d\mid n} \mu(\frac{n}{d})f(d).$ Then 
+\begin{align*}
+ \displaystyle\sum_{d\mid n} g(d)&= \displaystyle\sum_{d\mid n} \left( \displaystyle\sum_{c\mid d}\mu(\frac{d}{c})f(c)\right)\\
+ &= \displaystyle\sum_{d\mid n} \left( f(c)\ \displaystyle\sum_{d=cm\mid n} \mu(\frac{d}{c})\right)\textrm{why?}\\
+ &= \displaystyle\sum_{c\mid n} \left( f(c)\ \displaystyle\sum_{m\mid \frac{n}{c}} \mu(m)\right)\textrm{why?}
+\end{align*}
+
+Again, $\displaystyle\sum_{m\mid \frac{n}{c}}\mu(d)=0$ unless $\frac{n}{c}=1$, ie $c=n$. Thus, the only term left is $f(n)$.
+\end{proof}
+
+\begin{example}
+Let $n\in\mathbb{Z}$ with $n>0$, and $g(n)=n$. We have \[g(n)=n=\displaystyle\sum_{d\mid n} \phi(n).\]  By the M\"obius inversion formula
+\[\phi(n)=\displaystyle\sum_{d\mid n} \mu(d)g(\frac{n}{d})=\displaystyle\sum_{d\mid n} \mu(\frac{n}{d})g(d).\]
+Equivalently, 
+\[\phi(n)=\displaystyle\sum_{d\mid n} \mu(d)\frac{n}{d}=\displaystyle\sum_{d\mid n} \mu(\frac{n}{d})d.\]
+\end{example}
+
+\begin{example}
+Let $n\in\mathbb{Z}$ with $n>0$. We have \[d(n)=\displaystyle\sum_{d\mid n} 1=\displaystyle\sum_{d\mid n} g(d),\] where $g(n)=1$ for all $n>0$. By the M\"obius inversion formula
+\[1=g(n)=\displaystyle\sum_{d\mid n} \mu(d)d(\frac{n}{d})\]
+\end{example}
+\end{document}

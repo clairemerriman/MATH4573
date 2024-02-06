@@ -1,0 +1,162 @@
+\documentclass{ximera}  
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+
+\title{Preclass assignment for March 25}  
+\begin{document}  
+\begin{abstract}  
+We will review a some points about primitive roots, quadratic residues, and the Legendre symbol from before break, then finish those sections.
+\end{abstract}  
+\maketitle  
+
+\begin{question}
+For a prime $p$, a primitive root there exists modulo $p$.
+\begin{multipleChoice}
+ \choice[correct] {Always}
+ \choice {Sometimes}
+ \choice {Never}
+\end{multipleChoice}
+\end{question}
+
+\begin{question}
+ If $n=pq$ where $p$ and $q$ are distinct primes, then there exists a primitive root modulo $n$.
+ \begin{multipleChoice}
+ \choice{Always}
+ \choice[correct] {Sometimes}
+ \choice {Never}
+\end{multipleChoice}
+\end{question}
+
+\begin{question}
+ If $n=2^k$ and $k\geq 3$, then there exists a primitive root modulo $n$.
+ \begin{multipleChoice}
+ \choice{Always}
+ \choice {Sometimes}
+ \choice[correct] {Never}
+\end{multipleChoice}
+\end{question}
+
+\begin{question}
+ If $n=km$ where $k$ and $m$ are relatively prime and greater than 2, then there exists a primitive root modulo $n$.
+ \begin{multipleChoice}
+ \choice{Always}
+ \choice {Sometimes}
+ \choice[correct] {Never}
+\end{multipleChoice}
+\end{question}
+
+\begin{question}
+There exists primitive roots modulo $n$ when for $n=$
+ \begin{selectAll}
+ \choice[correct] {1}
+ \choice[correct] {$p$ a prime}
+ \choice[correct] {4}
+\choice {$2^m$ for $m\geq 3$}
+\choice[correct] {$p^m$ for $p$ an odd prime}
+\choice[correct] {$2 p^m$ for $p$ an odd prime}
+\choice{$n$ a composite number with at least two distinct odd prime factors}
+\end{selectAll}
+\end{question}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}
+ Let $p>2$ be a prime, and let $a$ be an integer between $0$ and $p-1$.
+ 
+\begin{itemize}
+ \item If $a$ is a quadratic residue modulo $p$, then $a^{\frac{p-1}{2}}=\answer{1}
+ $.
+ \item If $a$ is a quadratic nonresidue modulo $p$, then $a^{\frac{p-1}{2}}=\answer{-1}
+ $.
+ \item Otherwise, $a^{\frac{p-1}{2}}=\answer{0}
+ $.
+\end{itemize}
+\end{question}
+
+\begin{question}
+ Euler's identity:  Let $p>2$ be a prime, and let $a$ be an integer. Then $\left(\answer{\frac{a}{p}}
+ \right)\equiv a^{\frac{p-1}{2}} \pmod p$.
+\end{question}
+
+\begin{thm}
+ Let $p>2$ be prime.
+\begin{itemize}
+ \item If $p\equiv 1 \pmod 4$, then $-1$ is a quadratic residue modulo $p$.
+ \item If $p\equiv 3 \pmod 4$, then $-1$ is a quadratic nonresidue modulo $p$.
+\end{itemize}
+\end{thm}
+\begin{proof}
+ For an arbitrary prime $p>2$, Euler's identity tells us that $\left(\frac{-1}{p}\right)\equiv (-1)^{\frac{p-1}{2}} \pmod p$. Note that, we have that $\left(\frac{-1}{p}\right)$ is either $+1$ or $-1$ by definition, and $(-1)^{\frac{p-1}{2}}$ is also either $+1$ or $-1$. Since $1\not\equiv -1 \pmod p$, the two sides of the congruence are actually equal. That is, $\left(\frac{-1}{p}\right)= (-1)^{\frac{p-1}{2}} $.
+ 
+ The completion of the proof involves applying the answer to the preclass assignment, and the proof is on homework 9.
+ \end{proof}
+ 
+\begin{question}
+Let $p>2$ be prime, and let $a$ and $b$ be integers between $1$ and $p-1$.
+\begin{itemize}
+\item If $ab$ is a quadratic residue, then
+\begin{selectAll}
+\choice[correct]
+{$a$ and $b$ are both quadratic residues}
+\choice[correct]
+{$a$ and $b$ are both quadratic nonresidues}
+\choice
+{One of $a$ and $b$ is a quadratic residue and the other is a quadratic nonresidue}
+\end{selectAll}
+ \item If $ab$ is a quadratic nonresidue, then
+\begin{selectAll}
+\choice[correct]
+{$a$ and $b$ are both quadratic residues}
+\choice[correct]
+{$a$ and $b$ are both quadratic nonresidues}
+\choice
+{One of $a$ and $b$ is a quadratic residue and the other is a quadratic nonresidue}
+\end{selectAll}
+\end{itemize}
+ 
+\end{question}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quadratic reciprocity}
+We are going to explore the relationship between $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$. Let's look at an example:
+\begin{question}
+ We want to know if $3$ is a quadratic residue modulo $107$. It would be a lot easier to check if $107$ is a quadratic residue modulo $3$. We know that $107\equiv \answer{2}
+ \pmod 3$, so $\left(\frac{107}{3}\right)=\answer{-1}
+ $. It would be nice if this also gave us $\left(\frac{3}{107}\right)$.
+\end{question}
+
+\begin{question}
+ Another example: Find $\left(\frac{p}{5}\right)$ and $\left(\frac{5}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{5}\right)$&$\answer{-1}$&$\answer{0}$&$\answer{-1}$&$\answer{1}$&$\answer{-1}$\\\hline
+$\left(\frac{5}{p}\right)$&-1&0&-1&1&-1\\\hline
+\end{tabular}
+\end{question}
+
+\begin{question}
+ Another example: Find $\left(\frac{p}{7}\right)$ and $\left(\frac{7}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{7}\right)$&$\answer{-1}$&$\answer{-1}$&0&$\answer{1}$&$\answer{-1}$\\\hline
+$\left(\frac{7}{p}\right)$&$\answer{1}$&$\answer{-1}$&0&-1&-1\\\hline
+\end{tabular}
+\end{question}
+
+This gives some evidence for our theorem:
+\begin{thm}
+ Let $p$ and $q$ be odd primes with $p\neq q$. 
+\begin{itemize}
+ \item if $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right)=\left(\frac{q}{p}\right)$
+ \item if $p\equiv q\equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right)=-\left(\frac{q}{p}\right)$
+\end{itemize}
+\end{thm}
+
+Our goal for Friday is to prove this.
+
+
+
+\end{document}
