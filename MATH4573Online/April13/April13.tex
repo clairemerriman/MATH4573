@@ -2,12 +2,12 @@
 
 %\newtheorem{theorem}{Theorem}%[section] % reset theorem numbering for each section
 %\newtheorem*{theorem*}{Theorem}%[section] % reset theorem numbering for each section
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{lem}[theorem]{Lemma}
-\newtheorem{ex}{Example}
+% \newtheorem{prop}[theorem]{Proposition}
+% \newtheorem{lem}[theorem]{Lemma}
+% \newtheorem{ex}{Example}
 
 
-\title{Decimal expansions}  
+\title{April 13--Decimal expansions}  
 \begin{document}  
 \begin{abstract}  We take a number theoretic view of decimal (ie, regular) expansion of numbers.
 \end{abstract}
@@ -102,7 +102,7 @@ $\alpha=0.a_1a_2a_3\dots a_{N-1}\overline{a_Na_{N+1}\cdots a_{N+\rho-1}}$ Now \[
 
 Homework: parallel this proof for specific numbers.
 
-\section*{A very different look at decimal numbers}
+\subsection{A very different look at decimal numbers}
 Here is a very different way of generating decimal expansions using ideas from dynamical systems. The idea is to divide the unit interval $[0,1)$ into intervals $\left[\frac{i}{10},\frac{i+1}{10}\right)$ where $i=0,1,2,\dots,9$. If a number $x\in\left[\frac{i}{10},\frac{i+1}{10}\right)$, then the first digit of the decimal expansion is $i$. For example, when $i=1$, the interval is $\left(\answer{\frac{1}{10}},\answer{\frac{2}{10}}\right)$ and the first digit of every $x$ in the interval is $\answer{1}$.
 
 To get the second digit, we break each of these intervals into 10 smaller intervals $\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), 0\leq i\leq 9,0\leq j\leq 9$. For each $x\in\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), x=0.ij\dots.$ For example, when $i=2,j=3$, the interval is $\left(\answer{\frac{2}{10}+\frac{3}{100}},\answer{\frac{2}{10}+\frac{4}{100}}\right)$ and the first digit of every $x=0.\answer{2}\answer{3}\dots$.

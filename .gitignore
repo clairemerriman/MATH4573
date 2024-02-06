@@ -23,3 +23,10 @@ MATH4573Online/.DS_Store
 *.lg
 *.log
 *.json
+.DS_Store
+*.synctex(busy)
+*.gz
+*.toc
+*.cls
+.DS_Store
+.DS_Store

@@ -7,13 +7,13 @@
 %\newtheorem{ex}{Example}
 
 
-\title{Continued fractions}  
+\title{April 15--Continued fractions}  
 \begin{document}  
 \begin{abstract}  
 \end{abstract}  
 \maketitle  
 
-\section*{Continued fractions}
+\subsection{Continued fractions}
 Continued fractions are a way to represent positive real numbers as
 \[x=a_0+\frac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\dots}}},\]
 $a_i\in\mathbb{Z}$ with $a_0\geq 0$ and $a_i\geq 1$ for $i\geq 1$. For example, you may have heard that $\pi$ is approximately $\frac{22}{7}$, which comes from the continued fraction approximation $\pi\approx3+\frac{1}{7}=3.\overline{142857}$. In fact, 
@@ -69,7 +69,7 @@ If $x\in\mathbb{R}, x<0$ and $|x|=[a_0;a_1,a_2,\dots]$, then $x=-[a_0;a_1,a_2,\d
 You probably noticed in the example that we have an issue with uniqueness that come from the fact that $2=1+\frac{1}{1}$ and in general, $n=n-1+\frac{1}{1}$. To deal with this, we typically require the last $a_i>1$.
 Thus, $\frac{803}{154}=[\answer{5};\answer{4},\answer{1},\answer{2}]$.
 
-\section*{A very different look at decimal numbers}
+\subsection{A very different look at decimal numbers}
 Here is a very different way of generating decimal expansions using ideas from dynamical systems. The idea is to divide the unit interval $[0,1)$ into intervals $\left[\frac{i}{10},\frac{i+1}{10}\right)$ where $i=0,1,2,\dots,9$. If a number $x\in\left[\frac{i}{10},\frac{i+1}{10}\right)$, then the first digit of the decimal expansion is $i$. For example, when $i=1$, the interval is $\left(\answer{\frac{1}{10}},\answer{\frac{2}{10}}\right)$ and the first digit of the decimal expansion of every $x$ in the interval is $\answer{1}$. 
 
 On the following graph of the real line, I marked the endpoints of each interval, and about the interval, I write the decimal expansion for each $x$ in the interval. ie, $0.0\dots$ above the interval $\left(0,\frac{1}{10}\right)$.
@@ -87,7 +87,7 @@ Here is a zoomed in version of the picture:
 
 Determining the rest of the decimal expansion involves iterating this process. (Note: no dynamical system has actually appeared, but this idea comes from that area of mathematics that uses the function $T(x)=10x-\lfloor 10x\rfloor=10x-i \textrm{ if }x\in\left(\frac{i}{10},\frac{i+1}{10}\right)$ to find the decimal expansion of $x$).
 
-\section*{Back to continued fractions}
+\subsection{Back to continued fractions}
 We can use a similar idea from dynamical systems for continued fractions. Now we break up based on the first digit of the continued fraction expansion, which can be any positive integer. Thus, we get an infinite number of intervals $\left(\frac{1}{i+1},\frac{1}{i}\right)$ where each $x\in\left(\frac{1}{i+1},\frac{1}{i}\right)$ has continued fraction expansion $\frac{1}{i+\dots}$.  For example, when $i=1$, the interval is $\left(\answer{\frac{1}{2}},\answer{\frac{1}{1}}\right)$ and the first digit of the continued fraction expansion every $x$ in the interval is $\answer{1}$. 
 
 On the following graph of the real line, I marked the endpoints of the largest six intervals, and about the interval, I write the continued fraction expansion for each $x$ in the interval. ie, $\frac{1}{2+\dots}$ above the interval $\left(\frac{1}{3},\frac{1}{2}\right)$. Notice that these intervals shrink very quickly.
