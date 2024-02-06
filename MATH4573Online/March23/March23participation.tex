@@ -1,0 +1,57 @@
+\documentclass{ximera}  
+\title{Participation assignment for March 23}  
+\begin{document}  
+\begin{abstract}  
+This assignment looks at arithmetic functions in number theory. We have already seen the examples $\phi(n)=\#\{x: 0<x< n, (x,n)=1\}$ and the floor/ greatest integer function $\lfloor x \rfloor=$greatest integer less than $x$. So far, we have a formula for the value of $\phi(n)$ when $n$ is prime or the product of two distinct primes. We will prove a general formula for the $\phi$ function and look at some other functions.
+\end{abstract}  
+\maketitle  
+
+\section{Euler $\phi$ function: number of relatively prime positive integers less than $n$}
+Recall from before break that $\phi(p)=p-1$ if and only if $p$ is prime. We also proved that $\phi(pq)=(p-1)(q-1)$ for primes $p$ and $q$. 
+
+On the homework, you will prove that for relatively prime positive integers $m$ and $n$,  $\phi(mn)=\phi(m)\phi(n)$. Since Ximera can really only handle numerical answers, let's prove this is true for a particular example:
+
+\begin{question}
+Let us prove that $\phi(20)=\phi(4)\phi(5)$. First, note that $\phi(4)=\answer{2}$ and $\phi(5)=\answer{4}$, so $\phi(20)=\answer{8}$.
+\begin{enumerate}
+ \item A number $a$ is relatively prime to $20$ if and only if $a$ is relatively prime to $\answer{4}$ and $\answer{5}$ (first blank should be smaller than second blank for the automatic grading to work, both should be relevant to what we are trying to show). 
+ \item  
+ We can partition the positive integers less that $20$ into 
+ \begin{align*}
+& 0\equiv\answer{4}\equiv\answer{8}\equiv\answer{12}\equiv\answer{16}\pmod 4\\
+& 1\equiv\answer{5}\equiv\answer{9}\equiv\answer{13}\equiv\answer{17}\pmod 4\\
+& 2\equiv\answer{6}\equiv\answer{10}\equiv\answer{14}\equiv\answer{18}\pmod 4\\
+& 3\equiv\answer{7}\equiv\answer{11}\equiv\answer{15}\equiv\answer{19}\pmod 4
+\end{align*}
+
+For any $b$ in the range $0,1,2,3$, define $s_b$ to be the number of integers $a$ in the range $0,1,2,\dots, 19$ such that $a\equiv b \pmod 4$ and $\gcd(a,20)=1$. Thus, $s_0=\answer{0}, s_1=\answer{4}, s_2=\answer{0}$, and $s_3=\answer{4}$.
+
+We can see that when $(b,4)=1$, $s_b=\phi(\answer{5})$ and when $(b,4)>1$, $s_b=\answer{0}$.
+
+\item $\phi(20)=s_0+s_1+s_2+s_3$. Why? 
+
+All of the positive integers less than or equal to $20$ is in exactly one of the congruence classes above. The $s_i$ count how many integers in each congruence class are relatively prime to $20$. If we add them up, we have counted all positive integers less than or equal to $20$.
+
+\item We have seen that $\phi(20)=s_0+s_1+s_2+s_3$, that when $(b,4)=1$, $s_b=\phi(5)$, and that when $(b,4)>1$, $s_b=0$. Thus, we can say that $\phi(20)=0+\phi(\answer{5})+0+\phi(\answer{5})$. To finish the 	``proof" we show that there are $\phi(\answer{4})$ integers $b$ where $(b,4)=1$. 
+
+There are $\answer{4}$ congruence classes modulo 4. Of these, $\answer{2}=\phi(\answer{4})$ have elements that are relatively prime to $20$. Thus, $\phi(20)=\phi(4)\phi(5)$.
+\end{enumerate}
+
+\end{question}
+
+\section{Other common number theory functions}
+We are going to look at some other functions that show up in analytic number theory. 
+\begin{itemize}
+ \item $d(n)$ is the number of positive divisors of $n$. For example, $d(12)=\answer{6}$. We introduce the notation $\displaystyle\sum_{d\mid n}$ as ``the sum over the divisors of $n$,'' called the \emph{divisor sum}. For the normal sum: $\displaystyle\sum_{i=1}^n 1=\answer{n}$. Then, $\displaystyle\sum_{d\mid n}1=\answer{d(n)}$.
+ 
+ \item $\sigma(n)$ is the sum of positive divisors of $n$. For example, $\sigma(12)=\answer{28}$. Then $\displaystyle\sum_{d\mid n}\answer{d}=\sigma(n)$.
+ 
+ \item $\sigma_k(n)$ is sum of the $k^{th}$ powers of positive divisors of $n$. For example, $\sigma_2(12)=1^2+2^2+3^2+4^2+6^2+12^2=210.$ Generally, $\displaystyle\sum_{d\mid n}\answer{d^k}=\sigma_k(n)$.
+
+ \item $\omega(n)$ is the number of distinct prime divisors of $n$. For example, $\omega(12)=\answer{2}$. We can modify the divisor sum to sum over prime divisors of $n$,  $\displaystyle\sum_{p\mid n}$. Then, $\displaystyle\sum_{p\mid n} \answer{1}=\omega(n)$.
+ 
+ \item $\Omega(n)$ is the number of primes dividing $n$ counting multiplicity. For example, $\Omega(12)=\answer{3}$. Then $\displaystyle\sum_{\answer{p^\beta}\mid n} 1=\Omega(n)$.
+
+\end{itemize}
+
+\end{document}

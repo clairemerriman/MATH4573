@@ -1,0 +1,54 @@
+\documentclass{ximera}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem*{thm*}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+
+\title{Quadratic reciprocity}  
+\begin{document}  
+\begin{abstract}  
+Introducing quadratic reciprocity.
+\end{abstract}  
+\maketitle  
+
+We are going to explore the relationship between $\left(\frac{p}{q}\right)$ and $\left(\frac{q}{p}\right)$. Let's look at an example:
+\begin{question}
+ We want to know if $3$ is a quadratic residue modulo $107$. It would be a lot easier to check if $107$ is a quadratic residue modulo $3$. We know that $107\equiv \answer{2}
+ \pmod 3$, so $\left(\frac{107}{3}\right)=\answer{-1}
+ $. It would be nice if this also gave us $\left(\frac{3}{107}\right)$.
+\end{question}
+
+\begin{question}
+ Another example: Find $\left(\frac{p}{5}\right)$ and $\left(\frac{5}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{5}\right)$&$\answer{-1}$&$\answer{0}$&$\answer{-1}$&$\answer{1}$&$\answer{-1}$\\\hline
+$\left(\frac{5}{p}\right)$&-1&0&-1&1&-1\\\hline
+\end{tabular}
+\end{question}
+
+\begin{question}
+ Another example: Find $\left(\frac{p}{7}\right)$ and $\left(\frac{7}{p}\right)$.
+ 
+\begin{tabular}{|l||l|l|l|l|l|}\hline
+$p$&3&5&7&11&13\\\hline\hline
+$\left(\frac{p}{7}\right)$&$\answer{-1}$&$\answer{-1}$&0&$\answer{1}$&$\answer{-1}$\\\hline
+$\left(\frac{7}{p}\right)$&$\answer{1}$&$\answer{-1}$&0&-1&-1\\\hline
+\end{tabular}
+\end{question}
+
+This gives some evidence for our theorem:
+\begin{thm}
+ Let $p$ and $q$ be odd primes with $p\neq q$. 
+\begin{itemize}
+ \item if $p\equiv 1 \pmod 4$ or $q\equiv 1 \pmod 4$, then $\left(\frac{p}{q}\right)=\left(\frac{q}{p}\right)$
+ \item if $p\equiv q\equiv 3 \pmod 4$, then $\left(\frac{p}{q}\right)=-\left(\frac{q}{p}\right)$
+\end{itemize}
+\end{thm}
+
+Our goal for Friday is to prove this.
+\end{document}

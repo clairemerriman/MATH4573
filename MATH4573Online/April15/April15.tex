@@ -1,0 +1,109 @@
+\documentclass{ximera}
+
+%\newtheorem{theorem}{Theorem}%[section] % reset theorem numbering for each section
+%\newtheorem*{theorem*}{Theorem}%[section] % reset theorem numbering for each section
+%\newtheorem{prop}[theorem]{Proposition}
+%\newtheorem{lem}[theorem]{Lemma}
+%\newtheorem{ex}{Example}
+
+
+\title{Continued fractions}  
+\begin{document}  
+\begin{abstract}  
+\end{abstract}  
+\maketitle  
+
+\section*{Continued fractions}
+Continued fractions are a way to represent positive real numbers as
+\[x=a_0+\frac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\dots}}},\]
+$a_i\in\mathbb{Z}$ with $a_0\geq 0$ and $a_i\geq 1$ for $i\geq 1$. For example, you may have heard that $\pi$ is approximately $\frac{22}{7}$, which comes from the continued fraction approximation $\pi\approx3+\frac{1}{7}=3.\overline{142857}$. In fact, 
+\begin{equation}\label{merriman_pi}\pi=3+\cfrac{1}{7+\cfrac{1}{15+\dots}}\end{equation}
+where $3+\frac{1}{7+\frac{1}{15}}$ agrees with $\pi$ to four decimal places. In fact, for almost all numbers, the continued fraction converges faster than the decimal expansion. 
+ 
+\begin{example}
+ Now, let's try an example using the Euclidean algorithm:
+\begin{align*}
+ 803&=154*5+33\\
+ 154&=33*4+22\\
+ 33&=22*1+11\\
+ 22&=11*2+0
+\end{align*}
+Instead of rewriting these equations to find $11$ as a linear combination of $803$ and $154$, like we have done in previous sections, we are going to find the continued fraction expansion of $\frac{803}{154}$.
+\begin{align}
+ \frac{803}{154}&=5+\frac{33}{154}\label{803}\\
+ \frac{154}{33}&=\answer{4}+\frac{\answer{22}}{\answer{33}\label{154}}\\
+ \frac{33}{22}&=\answer{1}+\frac{\answer{11}}{\answer{22}}\label{33}\\
+ \frac{22}{11}&=\answer{2}+\frac{\answer{0}}{\answer{22}}\label{22}
+\end{align}
+The trick in combining \eqref{803}-\eqref{22} is that $\frac{a}{b}=\cfrac{1}{\frac{b}{a}}$.
+\begin{align*}
+  \frac{803}{154}&=5+\cfrac{1}{\frac{154}{33}}& \textrm{by }\eqref{803}\\
+  &=5+\cfrac{1}{\answer{4}+\cfrac{1}{\frac{\answer{33}}{\answer{22}}}}& \textrm{by }\eqref{154}\\
+  &=5+\cfrac{1}{\answer{4}+\cfrac{1}{\answer{1}+\cfrac{1}{\frac{\answer{22}}{\answer{11}}}}}& \textrm{by }\eqref{33}\\ &=5+\cfrac{1}{\answer{4}+\cfrac{1}{\answer{1}+\cfrac{1}{\answer{2}}}}& \textrm{by }\eqref{22} &\quad \textrm{or} \quad
+  =5+\cfrac{1}{\answer{4}+\cfrac{1}{\answer{1}+\cfrac{1}{\answer{1}+\frac{1}{\answer{1}}}}}
+\end{align*}
+
+We can skip explicitly writing the Euclidean algorithm step by using the floor/ greatest integer function (Note: this is implicitly using the Euclidean algorithm):
+\begin{align*}
+ \frac{803}{154}&=\left\lfloor\frac{803}{154}\right\rfloor+\frac{1}{r_1} &\textrm{where } r_1>1\\
+ &=5+\cfrac{1}{\frac{154}{33}}\\
+ &=5+\cfrac{1}{\left\lfloor\frac{154}{33}\right\rfloor+\frac{1}{r_2}}&\textrm{where } r_2>1\\
+\end{align*}
+continuing the process until it terminates. 
+\end{example}
+
+The floor function method of generating continued fractions also works for irrational numbers like $\pi$ where the Euclidean algorithm version does not make sense. 
+\begin{definition}
+ Let $x\in\mathbb{R},x>0$, then $a_0$ is the largest integer less than $x$. If $a_0=x$, then we are done. Otherwise,
+\[x=a_0+\cfrac{1}{r_1}\quad\textrm{ for }1<r_1.\] 
+Let $a_1$ be the largest integer less that $r_1$. If $x=a_0+\frac{1}{a_1}$, we are done. Otherwise,
+\[x=a_0+\cfrac{1}{a_1+\cfrac{1}{r_2}}\quad\textrm{ for }1<r_2.\] 
+Continue this process, 
+\[x=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\dots}}=[a_0;a_1,a_2,\dots].\]
+We use $x=[a_0;a_1,a_2,\dots]$ to save space.
+If this process ends, we say $x$ has a \emph{finite continued fraction expansion}, otherwise it has an \emph{infinite continue fraction expansion.}
+
+If $x\in\mathbb{R}, x<0$ and $|x|=[a_0;a_1,a_2,\dots]$, then $x=-[a_0;a_1,a_2,\dots]=-\left(a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\dots}}\right)$.
+\end{definition}
+
+You probably noticed in the example that we have an issue with uniqueness that come from the fact that $2=1+\frac{1}{1}$ and in general, $n=n-1+\frac{1}{1}$. To deal with this, we typically require the last $a_i>1$.
+Thus, $\frac{803}{154}=[\answer{5};\answer{4},\answer{1},\answer{2}]$.
+
+\section*{A very different look at decimal numbers}
+Here is a very different way of generating decimal expansions using ideas from dynamical systems. The idea is to divide the unit interval $[0,1)$ into intervals $\left[\frac{i}{10},\frac{i+1}{10}\right)$ where $i=0,1,2,\dots,9$. If a number $x\in\left[\frac{i}{10},\frac{i+1}{10}\right)$, then the first digit of the decimal expansion is $i$. For example, when $i=1$, the interval is $\left(\answer{\frac{1}{10}},\answer{\frac{2}{10}}\right)$ and the first digit of the decimal expansion of every $x$ in the interval is $\answer{1}$. 
+
+On the following graph of the real line, I marked the endpoints of each interval, and about the interval, I write the decimal expansion for each $x$ in the interval. ie, $0.0\dots$ above the interval $\left(0,\frac{1}{10}\right)$.
+
+\begin{image}
+ \includegraphics[width=\textwidth]{decimalcylinder.eps}
+\end{image}
+
+To get the second digit of the decimal expansion of $x$, we break each of these intervals into 10 smaller intervals $\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), 0\leq i\leq 9,0\leq j\leq 9$. For each $x\in\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), x=0.ij\dots.$ For example, when $i=2,j=3$, the interval is $\left(\answer{\frac{2}{10}+\frac{3}{100}},\answer{\frac{2}{10}+\frac{4}{100}}\right)$ and the first two digits of the decimal expansion of every $x=0.\answer{2}\answer{3}\dots$.
+
+Here is a zoomed in version of the picture:
+\begin{image}
+ \includegraphics[width=\textwidth]{zoomeddecimal}
+\end{image}
+
+Determining the rest of the decimal expansion involves iterating this process. (Note: no dynamical system has actually appeared, but this idea comes from that area of mathematics that uses the function $T(x)=10x-\lfloor 10x\rfloor=10x-i \textrm{ if }x\in\left(\frac{i}{10},\frac{i+1}{10}\right)$ to find the decimal expansion of $x$).
+
+\section*{Back to continued fractions}
+We can use a similar idea from dynamical systems for continued fractions. Now we break up based on the first digit of the continued fraction expansion, which can be any positive integer. Thus, we get an infinite number of intervals $\left(\frac{1}{i+1},\frac{1}{i}\right)$ where each $x\in\left(\frac{1}{i+1},\frac{1}{i}\right)$ has continued fraction expansion $\frac{1}{i+\dots}$.  For example, when $i=1$, the interval is $\left(\answer{\frac{1}{2}},\answer{\frac{1}{1}}\right)$ and the first digit of the continued fraction expansion every $x$ in the interval is $\answer{1}$. 
+
+On the following graph of the real line, I marked the endpoints of the largest six intervals, and about the interval, I write the continued fraction expansion for each $x$ in the interval. ie, $\frac{1}{2+\dots}$ above the interval $\left(\frac{1}{3},\frac{1}{2}\right)$. Notice that these intervals shrink very quickly.
+\begin{image}
+ \includegraphics[width=\textwidth]{cfcylinder}
+\end{image}
+
+To get the second digit of the continued fraction expansion of $x$, we break each of these intervals into smaller intervals $\left[\frac{1}{i+\frac{1}{j+1}},\frac{1}{i+\frac{1}{j}}\right), 0\leq i\leq 9,0\leq j\leq 9$. For each $x\in\left[\frac{1}{i+\frac{1}{j}},\frac{1}{i+\frac{1}{j+1}}\right), x=\cfrac{1}{i+\cfrac{1}{j+\dots}}.$ For example, when $i=2,j=3$, the interval is $\left(\frac{1}{\answer{2}+\frac{1}{\answer{3}}},\frac{1}{\frac{\answer{2}}+\frac{1}{\answer{4}}}\right)$ and the first two digits of the continued fraction expansion of every $x=\cfrac{1}{\answer{2}+\cfrac{1}{\answer{3}+\dots}}$.
+
+Here is the picture with some of the second level intervals:
+\begin{image}
+ \includegraphics[width=\textwidth]{cfsecondlevel}
+\end{image}
+and a zoomed in version with some of the third level:
+\begin{image}
+ \includegraphics{cfthird}
+\end{image}
+Noticed that even zoomed in a lot, it becomes very difficult to draw the third level intervals. 
+\end{document}

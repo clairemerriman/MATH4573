@@ -1,0 +1,112 @@
+\documentclass{ximera}
+
+%\newtheorem{theorem}{Theorem}%[section] % reset theorem numbering for each section
+%\newtheorem*{theorem*}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{ex}{Example}
+
+
+\title{Decimal expansions}  
+\begin{document}  
+\begin{abstract}  We take a number theoretic view of decimal (ie, regular) expansion of numbers.
+\end{abstract}
+\maketitle  
+
+ We are going to look at our regular, decimal expansions of numbers from a number theory perspective in order to study something familiar as an analogy for continued fractions.  We start with some familiar definitions.
+ 
+\begin{definition}
+ Let $\alpha\in\mathbb{R}$. Then $\alpha$ is a \emph{rational number} (or $\alpha\in\mathbb{Q}$) if $\alpha=\frac{a}{b}$ where $a,b\in\mathbb{Z}$ and $b\neq 0$. Otherwise $\alpha$ is irrational.
+\end{definition}
+
+\begin{example}
+\begin{enumerate}
+ \item $0.5=\frac{5}{10}=\frac{1}{2}$ 
+ \item $0.666.....$ where the $6$s repeat forever is rational since $0.666\dots=\answer{\frac{2}{3}}$. We will actually prove that the decimal expansion of a rational number either repeats or terminates.
+ \item The real number $\sqrt{2}$ is irrational. This is our first proof.
+ \item The real constants $\pi$ and $e$ are irrational. We will prove that $e$ is irrational in the homework. The proof that $\pi$ is irrational is much harder.
+ \item The real numbers $2^{\sqrt{2}}, e^\pi,$ and $\pi e$ are irrational. These were not proven until 1929.
+ \item We still do not know if $\pi^{\sqrt{2}}, \pi^e$ or $2^e$ are rational or irrational.
+\end{enumerate}
+\end{example}
+
+\begin{theorem}
+ $\sqrt{2}\not\in\mathbb{Q}$.
+\end{theorem}
+\begin{proof}
+ In order to get a contradiction, assume that $\sqrt{2}\in\mathbb{Q}$. Then $\sqrt{2}\in\frac{a}{b}$ for some $a,b\in\mathbb{Z}$, with $b\neq 0$. Without loss of generality, assume $(a,b)=1$. By squaring both sides, we get $2=\frac{a^2}{b^2}$, so $2b^2=a^2$. Thus, $2\mid a^2$ and $2\mid a$. Thus, there is some integer $c$ where $a=2c$. Then $2b^2=4c^2$, so $b^2=2c^2$.  Now we get that $2\mid b$. Thus $2\mid a$ and $2\mid b$, which contradicts $(a,b)=1$. So $\sqrt{2}\not\in\mathbb{Q}$.
+\end{proof}
+
+Proof by contradiction is a useful technique for proving a number is irrational. 
+
+\begin{theorem}
+ Let $\alpha,\beta\in\mathbb{Q}$. Then $\alpha\pm\beta, \alpha\beta\in\mathbb{Q}$, and if $\beta\neq0$, then $\frac{\alpha}{\beta}\in\mathbb{Q}$. 
+\end{theorem}
+\begin{proof} The participation assignment covers $\alpha+\beta, \alpha\beta$. Replacing $\beta$ with $-\beta$ gives $\alpha-\beta$. If $\beta\neq0$, then there exists $a,b,c,d\in\mathbb{Z}$ where $\alpha=\frac{a}{b}$ and $\beta=\frac{c}{d}$ where none of $b,c,d$ are zero.
+\[\frac{\alpha}{\beta}=\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{ad}{bc}.\]
+\end{proof}
+
+The analogous statement for irrational numbers does not hold. For example $\sqrt{2}\sqrt{2}=2$. The participation assignment is to find an example that does not work for addition.
+
+\begin{theorem}
+ Let $\alpha\in\mathbb{R}$ be the root of the polynomial \[f(x)=x^n+c_{n-1}x^{n-1}+\cdot+c_1x+c_0\] where $c_i\in\mathbb{Z}$ and $c_0\neq 0$. Then $\alpha\in\mathbb{Z}$ or $\alpha$ is irrational.
+\end{theorem}
+\begin{proof}
+ Assume that $\alpha\in\mathbb{Q}$. We must show that $\alpha\in\mathbb{Z}$. Now $\alpha=\frac{a}{b}$ for some integers $a$ and $b\neq 0$. Without loss of generality, $(a,b)=1$. Then for $f(\alpha)=0$ implies 
+ \[\left(\frac{a}{b}\right)^n+c_{n-1}\left(\frac{a}{b}\right)^{n-1}+c_{n-2}\left(\frac{a}{b}\right)^{n-2}+\cdots+c_1\left(\frac{a}{b}\right) +c_0=0.\]
+\end{proof}
+Multiplying both sides by $b^n$, we get 
+\[a^n+c_{n-1}a^{n-1}b+c_{n-2}a^{n-2}b^2+\cdots+c_1ab^{n-1}+c_0b^n=0.\]
+Then \[a^n=b(-c_{n-1}a^{n-1}-c_{n-2}a^{n-2}b-\cdots-c_1ab^{n-2}-c_0b^{n-1}.\]
+Thus, $b\mid a^n$. Since $(a,b)=1$, we have that $b=\pm 1$. Then $\alpha=\frac{a}{\pm1}=\pm a\in\mathbb{Z}$.
+
+\begin{example}
+\begin{enumerate}
+ \item $\sqrt{3}$ is a root of the polynomial $f(x)=x^2-3$. Since $\sqrt{3}\not\in\mathbb{Z}$, then $\sqrt{3}$ is irrational.
+ \item $2+\sqrt{7}$ is a root of the polynomial $f(x)=x^2-4x-3$ and $\sqrt{7}\not\in\mathbb{Z}$, $2+\sqrt{7}$ is irrational.
+ \item $\sqrt[3]{5}$ is a root of the polynomial $f(x)=x^3-5$. Since $5$ is between the perfect cubes $\answer{1^3}$ and $\answer{2^3}$, we have that $\answer{1}<\sqrt[3]{5}<\answer{2}$. Thus, $\sqrt[3]{5}$ is not an integer, and thus is irrational.
+\end{enumerate}
+\end{example}
+
+Using this theorem involves finding a polynomial where $x$ is a root. Sometimes this is basic algebra, like rewriting $x=3+\sqrt{2}$ as $0=\answer{x^2-6x+7}$. However, for numbers like $\pi$ and $e$, no such polynomial exists.
+
+Every real number has a decimal expansion, which is how we are used to writing numbers. 
+
+\begin{definition}
+ Let $\alpha\in\mathbb{R}$ with $0\leq\alpha<1$ and let $\displaystyle\sum_{n=1}^\infty \frac{a_n}{10^n}=0.a_1a_2a_3\dots$ be a decimal representation of $\alpha$. If there exist a positive integer $\rho$ and $N$ such that $a_n=a_{n+\rho}$ for all $n\geq N$, then $\alpha$ is \emph{eventually periodic}; the sequence $a_Na_{N+1}\cdots a_{N+\rho-1}$ with $\rho$ minimal is the \emph{period} of $\alpha$ and $\rho$ is the \emph{period length}. If the smallest such $N$ is $1$, then $\alpha$ is \emph{periodic.}  An eventually periodic real number
+ \[\alpha=0.a_1a_2a_3\dots a_{N-1}a_Na_{N+1}\cdots a_{N+\rho-1}a_Na_{N+1}\cdots a_{N+\rho-1}a_Na_{N+1}\cdots a_{N+\rho-1}\cdots\] is written \[\alpha=0.a_1a_2a_3\dots a_{N-1}\overline{a_Na_{N+1}\cdots a_{N+\rho-1}}.\]
+\end{definition}
+This is a formalized definition of a repeating decimal. 
+
+\begin{example}
+\begin{enumerate}
+ \item A decimal representation of $\frac{1}{2}$ is $0.5=0.5\overline{0}$, so $\frac{1}{2}$ is eventually periodic with period $\answer{0}$ and length $\answer{1}$. Any terminating decimal can be considered periodic with the same period and length.
+ \item A decimal representation of $\frac{2}{3}$ is $0.\overline{6}$ is eventually periodic with period $\answer{6}$ and length $\answer{1}$.
+ \item A decimal representation of $\sqrt{2}$ to 20 digits is $1.41421356237309504880\dots$ which does not \emph{appear} to be eventually periodic, but maybe we have not computed enough digits.
+ \item  A decimal representation of $\pi$ to 20 digits is $3.14159263558979323846\dots$ which does not \emph{appear} to be eventually periodic but maybe we have not computed enough digits.
+\end{enumerate}
+\end{example}
+
+You have probably heard that the decimal expansion of a ration number either terminates or repeats. We have formalized the definition of repeats to ``eventually periodic," and show that terminating decimals are also eventually periodic. Now we prove that fact.
+
+\begin{theorem}
+ Let $\alpha\in\mathbb{R}$ with $0\leq\alpha<1$. Then $\alpha\in\mathbb{Q}$ if and only if $\alpha$ is eventually periodic.
+\end{theorem}
+\begin{proof}
+ ($\Rightarrow$)  Assume that $\alpha\in\mathbb{Q}$. The  $\alpha=\frac{a}{b}$ for some integers $a$ and $b\neq0$. Since, $0\leq\alpha<$, we also have that $0\leq a<b$. Now divide $b$ into $a$ by using long division; let the resulting decimal representation of $\alpha$ be  \[\displaystyle\sum_{n=1}^\infty \frac{q_n}{10^n}=0.q_1q_2q_3\dots\]
+ By the division algorithm, the possible remainders when dividing $a$ by $b$ are $0,1,2,\dots,b-1$. At each stage of the long-division process, $b$ is being divided by one of these remainders times 10 (ie, $0,10,20,\dots,(b-1)10$). The first such remainder is $a$. Accordingly, let $r_1=a,r_2,r_3,\dots$ be the sequence of remainders corresponding to the quotients $q_1,q_2,q_3\dots$ (so that $\frac{a}{b}=0.q_1q_2q_3\dots$). Since the number of possible remainders is finite, $r_N=r_M$ for some $N$ and $M$ with $N<M$. If $p=M-N$, then $r_n=r_n+p$ for all $n\geq N$, from which $q_n=q_{n+p}$ for all $n\geq N$, and $\alpha$ is eventually periodic.
+ 
+ ($\Leftarrow$) Assume that $\alpha$ is eventually periodic. Then there exists positive integers $p$ and $N$ such that 
+$\alpha=0.a_1a_2a_3\dots a_{N-1}\overline{a_Na_{N+1}\cdots a_{N+\rho-1}}$ Now \[10^{N-1}\alpha=a_1a_2a_3\dots a_{N-1}.\overline{a_Na_{N+1}\cdots a_{N+\rho-1}}\] and \[10^p10^{N-1}\alpha=a_1a_2a_3\dots a_{N-1}a_Na_{N+1}\cdots a_{N+\rho-1}.\overline{a_Na_{N+1}\cdots a_{N+\rho-1}}.\] Furthermore, $10^p10^{N-1}\alpha-10^{N-1}\alpha$ is an integer since the identical repeating blocks cancel (leaving $a_1a_2a_3\dots a_{N-1}a_Na_{N+1}\cdots a_{N+\rho-1}-a_1a_2a_3\dots a_{N-1}$). Since $10^p10^{N-1}\alpha-10^{N-1}\alpha=(10^p-1)10^{N-1}\alpha$, we have that $(10^p-1)10^{N-1}\alpha=m\in\mathbb{Z}$. Then \[\alpha=\frac{m}{(10^p-1)10^{N-1}}.\] Since $(10^p-1)10^{N-1}$ is a nonzero integer, then $\alpha\in\mathbb{Q}$ as desired.
+\end{proof}
+
+Homework: parallel this proof for specific numbers.
+
+\section*{A very different look at decimal numbers}
+Here is a very different way of generating decimal expansions using ideas from dynamical systems. The idea is to divide the unit interval $[0,1)$ into intervals $\left[\frac{i}{10},\frac{i+1}{10}\right)$ where $i=0,1,2,\dots,9$. If a number $x\in\left[\frac{i}{10},\frac{i+1}{10}\right)$, then the first digit of the decimal expansion is $i$. For example, when $i=1$, the interval is $\left(\answer{\frac{1}{10}},\answer{\frac{2}{10}}\right)$ and the first digit of every $x$ in the interval is $\answer{1}$.
+
+To get the second digit, we break each of these intervals into 10 smaller intervals $\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), 0\leq i\leq 9,0\leq j\leq 9$. For each $x\in\left[\frac{i}{10}+\frac{j}{10^2},\frac{i}{10}+\frac{j+1}{10^2}\right), x=0.ij\dots.$ For example, when $i=2,j=3$, the interval is $\left(\answer{\frac{2}{10}+\frac{3}{100}},\answer{\frac{2}{10}+\frac{4}{100}}\right)$ and the first digit of every $x=0.\answer{2}\answer{3}\dots$.
+
+Determining the rest of the digits involves iterating this process.
+\end{document}
+
