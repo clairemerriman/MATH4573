@@ -1,0 +1,127 @@
+\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings,multicol,hyperref,enumitem,tikz}
+\usepackage{xfrac}
+
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage[,margin=0.7in]{geometry}
+\setlength{\textheight}{8.5in}
+ 
+\usepackage{tkz-euclide}
+%\usetkzobj{all}
+\tikzstyle geometryDiagrams=[rounded corners=.5pt,ultra thick,color=black]
+\colorlet{penColor}{black} % Color of a curve in a plot
+
+
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\newcounter{includepdfpage}
+
+
+\newcommand{\semester}{%
+  \ifcase\month
+  \or Spring %1
+  \or Spring %2
+  \or Spring %3
+  \or Spring %4
+  \or Spring  %5
+  \or Fall %8
+  \or Fall %9
+  \or Fall %10
+  \or Fall %11
+  \or Fall %12
+  \fi
+}
+\usepackage{currfile}
+\usepackage{xstring}
+
+
+
+\lhead{\large{Number Theory: MAT-255}}
+%Put your Document Title (Camp: Topic) Here
+\chead{}
+\rhead{\semester 24}
+\lfoot{}
+\cfoot{}
+\rfoot{Page \thepage}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+
+\headheight 50pt
+\headsep 30pt
+
+\author{Spring 2024}
+\date{}
+ \theoremstyle{plain}
+ 
+\newtheorem{thm}{Theorem}%[section] % reset theorem numbering for each section
+\newtheorem*{thm*}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{cor*}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem*{rem}{Remark}
+\newtheorem*{defn}{Definition}
+\newtheorem{defn_num}{Definition}
+\newtheorem*{ex}{Exercise}
+\newtheorem*{scratch}{Scratch Work}
+
+%\newtheorem*{focus}{Central Focus}
+%\newtheorem*{obj}{Objectives}
+
+\newtheorem*{conj}{Conjecture}
+
+\newtheorem*{poll}{Poll question}
+\newtheorem{tps}{Think-Pair-Share}[section]
+%\newtheorem{br}{In-class Problem}[section]
+\newtheorem*{cs}{Crowd Sourced Proof}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+
+\newenvironment{obj}{
+	\textbf{Learning Objectives.} By the end of class, students will be able to:
+		\begin{itemize}}
+		{\!.\end{itemize}
+		}
+
+\newenvironment{pre}{
+	\begin{description}
+	}{
+	\end{description}
+}
+
+
+\newenvironment{br}[1][2in]%
+{%Env start code
+\problemEnvironmentStart{#1}{In-class Problem}
+}
+{%Env end code
+\problemEnvironmentEnd
+}
+
+
+%\newenvironment{solution}
+%  {\begin{proof}[Solution]}
+%  {\end{proof}}
+%\newenvironment{hint}
+%  {\begin{proof}[Hint]}
+%  {\end{proof}}
+
+\newcommand{\gt}{>}
+\newcommand{\lt}{<}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\nequiv}{\not\equiv}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\ds}{\displaystyle}
