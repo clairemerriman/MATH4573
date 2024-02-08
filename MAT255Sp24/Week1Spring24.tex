@@ -65,24 +65,31 @@ Now, this definition is standard in an introduction to proofs course, but it is 
 Note that we need to define \emph{divides} in order to use Strayer's definition. We will formally prove that these definitions are \emph{equivalent,} but for now, let's use Ernst definition.
  
  
-\begin{thm}[Ernst, Theorem 2.2]
+
+\begin{br}
+
+\begin{thm}
 If $n$ is an even integer, then $n^2$ is even.
 \end{thm}
-\begin{br}
+
  Prove this theorem.
 
-\begin{proof}
+\begin{solution}
  If $n$ is an even integer, then by definition, there is some $k\in\Z$ such that $n=2k$. Then \[n^2=(2k)^2=2(2k^2).\] Since $2(k^2)$ is an integer, we have written $n^2$ in the desired form. Thus, $n^2$ is even.
-\end{proof}
+\end{solution}
 \end{br}
  
- \begin{thm}[Ernst, Theorem 2.3]
+ 
+\begin{cs}
+  \begin{thm}
 The sum of two consecutive integers in odd.
 \end{thm}
 For this problem, we need to figure out how to write two consecutive integers. 
-\begin{proof}
+\begin{solution}
  Let $n,n+1$ be two consecutive integers. Then their sum is $n+n+1=2n+1,$ which is odd by definition.
-\end{proof}
+\end{solution}
+\end{cs}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Divisibility}% % \instructorNotes{(5 minutes)}
@@ -99,7 +106,7 @@ We will also use this material as an opportunity to get used to the course.
 Note that 0 is not a divisor of any integer other than itself, since $b=0c$ implies $a=0$. Also all integers are divisors of 0, as odd as that sounds at first. This is because for any $a\in\Z$, $0=a0$. 
 
 
-Reminding students about the reading for Friday.
+%Reminding students about the reading for Friday.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,95 +136,75 @@ Reminding students about the reading for Friday.
 \item $\sfrac{m}{n}$ 
 \end{enumerate}
 
-\begin{solution}
- The first means ``$n$ divides $m$," which is a relationship between $n$ and $m$. This is a sentence. The other two are nouns, that is, the rational number $\frac{m}{n}$.
-\end{solution}
 
 \item Problem 2.8 Let $a,b,n,m\in\Z$.
  Determine whether each of the following statements is true or false. If a statement is true, prove it. If a statement is false, provide a counterexample.
  \begin{enumerate}%[label=\alph*.]
 \item  If $a\mid n$, then $a\mid mn$
-\begin{solution}
- Let $a\mid n$. Then by definition, there exists $k\in\Z$ such that $ak=n$. Multiplying both sides of the equation by $m$ gives \[a(km)=mn,\] so $a\mid mn$ by definition.
-\end{solution}
-\item If $6$ divides $n,$ then $2$ divides $n$ and $3$ divides $n$.
-\begin{solution}
-  Let $6\mid n$. Then by definition, there exists $k\in\Z$ such that $6k=n$. By factoring $6$, we see that $2(3k)=3(2k)=n,$ so $2\mid n$ and $3\mid n$. 
-  \end{solution}
-\item If $ab$ divides $n,$ then $a$ divides $n$ and $b$ divides $n$.
-\begin{solution}
-  Let $ab\mid n$. Then by definition, there exists $k\in\Z$ such that $abk=n$. Thus, we see that $a(bk)=b(ak)=n,$ so $a\mid n$ and $b\mid n$. 
-  \end{solution}
+
 \end{enumerate}
 
  \item Problem 2.12. Determine whether the converse of each of Corollary 2.9, Theorem 2.10, and Theorem 2.11 is true. That is, for $a,n,m\in\Z$, determine whether each of the following statements is true or false. If a statement is true, prove it. If a statement is false, provide a counterexample.
   \begin{enumerate}%[label=\alph*.]
 \item  If $a$ divides $n^2$, then $a$ divides $n$. (Converse of Corollary 2.9)
-\begin{solution}
- False; $4\mid 4$ but $4\nmid 2$.
-\end{solution}
+
 \item If $a$ divides $-n$, then $a$ divides $n$. (Converse of Theorem 2.10)
-\begin{solution}
- True. If $a\mid -n$, then by definition, there exists $k\in\Z$ such that $ak=-n$. Multiplying both sides by $-1$ gives \[-ak=a(-k)=n.\] Therefore, $a\mid n$.
-\end{solution}
+
 \item If $a$ divides $m+n$, then $a$ divides $m$ and $a$ divides $n$.
  (Converse of Theorem 2.11)
  
-\begin{solution}
- False; $3\mid 2+1$ but $3\nmid 2$ and $3\nmid 1$.
-\end{solution}
 \end{enumerate}
 \end{itemize}
 \end{pre}
 
 
-\subsection{Reminders and Homework Guide Review}% % \instructorNotes{(5 minutes)}
-Updated In Class Work logistics: if I am able to give individual feedback during class or have pairs/groups present the answers during class, then I will not collect the work. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Divisibility practice% % \instructorNotes{(20 minutes)}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\begin{prop*}[Strayer, Proposition 1.1]
-% Let $a,b\in\Z$. If $a\mid b$ and $b \mid c$, then $a\mid c$.
-%\end{prop*}
-%
-%Since this is the first result in the course, the only tool we have is the definition of ``$a\mid b$". 
-%
-%\begin{proof}
-%Since $a\mid b$ and $b \mid c$, there exist $d,e\in\Z$ such that $b=ae$ and $c=bf$. Combining these, we see \[c=bf=(ae)f=a(ef),\] so $a\mid c$.
-%\end{proof}
-%
-%This means that division is \emph{transitive}. 
-%
-%
-%\begin{prop*}[Strayer, Proposition 1.2] Let $a,b,c,m,n\in\Z$.
-% If $c\mid a$ and $c\mid b$ then $c\mid ma+nb$.
-%\end{prop*}
-%\begin{proof}
-% Let $a,b,c,m,n\in\Z$ such that $c\mid a$ and $c\mid b$. Then by definition of divisibility, there exists $j,k\in\Z$ such that $cj=a$ and $ck=b$. Thus, \[ma+nb=m(cj)+n(ck)=c(mj+nk).\] Therefore, $c\mid ma+nb$ by definition.
-%\end{proof}
-%
-%\begin{defn}
-% The expression $ma+nb$ in Proposition 1.2 is called \emph{an (integral) linear combination of $a$ and $b$.}
-%\end{defn}
-%Proposition 1.2 says that an integer dividing each of two integers also divides any integral linear combination of those integers. This fact will be extremely valuable in establishing theoretical results. But first, let's get some more practice with proof writing
-%
-%Break into three groups. Using the proofs of Propositions 1.1 and 1.2 as examples, prove the following facts. Each group will prove one part.
-%
-%\begin{br}[Exercise Set 1.1, Exercise 5]\label{divisfacts}
-% Prove or disprove the following statements.
-%\begin{enumerate}[label=(\alph*)]
-%\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $a+c\mid b+d$.
-%\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $ac\mid bd$.
-%\item If $a,b,$ and $c$ are integers such that if $a\nmid b$ and $b\nmid c$, then $a\nmid c$.
-%\end{enumerate}
-%\end{br}
-%\begin{solution}
-%Problem on Homework 1.
-%\end{solution}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Divisibility practice}% % \footnore{Skipped Spring 2024}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{prop*}[Strayer, Proposition 1.1]
+ Let $a,b\in\Z$. If $a\mid b$ and $b \mid c$, then $a\mid c$.
+\end{prop*}
+
+Since this is the first result in the course, the only tool we have is the definition of ``$a\mid b$". 
+
+\begin{proof}
+Since $a\mid b$ and $b \mid c$, there exist $d,e\in\Z$ such that $b=ae$ and $c=bf$. Combining these, we see \[c=bf=(ae)f=a(ef),\] so $a\mid c$.
+\end{proof}
+
+This means that division is \emph{transitive}. 
+
+
+\begin{prop*}[Strayer, Proposition 1.2] Let $a,b,c,m,n\in\Z$.
+ If $c\mid a$ and $c\mid b$ then $c\mid ma+nb$.
+\end{prop*}
+\begin{proof}
+ Let $a,b,c,m,n\in\Z$ such that $c\mid a$ and $c\mid b$. Then by definition of divisibility, there exists $j,k\in\Z$ such that $cj=a$ and $ck=b$. Thus, \[ma+nb=m(cj)+n(ck)=c(mj+nk).\] Therefore, $c\mid ma+nb$ by definition.
+\end{proof}
+
+\begin{defn}
+ The expression $ma+nb$ in Proposition 1.2 is called \emph{an (integral) linear combination of $a$ and $b$.}
+\end{defn}
+Proposition 1.2 says that an integer dividing each of two integers also divides any integral linear combination of those integers. This fact will be extremely valuable in establishing theoretical results. But first, let's get some more practice with proof writing
+
+Break into three groups. Using the proofs of Propositions 1.1 and 1.2 as examples, prove the following facts. Each group will prove one part.
+
+\begin{br}[Exercise Set 1.1, Exercise 5]\label{divisfacts}
+ Prove or disprove the following statements.
+\begin{enumerate}[label=(\alph*)]
+\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $a+c\mid b+d$.
+\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $ac\mid bd$.
+\item If $a,b,$ and $c$ are integers such that if $a\nmid b$ and $b\nmid c$, then $a\nmid c$.
+\end{enumerate}
+\end{br}
+\begin{solution}
+Problem on Homework 1.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Logic, proof by contradiction, and biconditionals}% % \instructorNotes{(45 minutes)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We will begin by working through Ernst \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_Intro_to_Logic.html}{Section 2.2} through Example 2.21. Discuss Problem 2.17 as a class, and note that Problem 2.19 is on Homework 1.
 
@@ -248,7 +235,7 @@ First, let's define a \emph{lemma.} A lemma is a minor result whose sole purpose
 \begin{defn}
  Let $x\in\R$. The \emph{greatest integer function of $x$,} denoted $[x]$ or $\lfloor x \rfloor$, is the greatest integer less than or equal to $x$.
 \end{defn}
-\begin{lem}[Strayer, Lemma 1.3]
+\begin{lem}[Strayer, Lemma 1.3]\label{lem-floor-range}
  Let $x\in\R$. Then $x-1<[x]\leq x$.
 \end{lem}
 \begin{proof}
@@ -258,21 +245,5 @@ To prove that $x-1<[x],$ we proceed by contradiction. Assume that $x-1\geq [x]$ 
 \end{proof}
 
 
-%All definitions are `biconditionals but we normally only write the ``if."
-%
-%We say that two definitions are \emph{equivalent} if definition A is true if and only if definition B is true. 
-%\begin{br}
-%Prove that our two definitions of even are equivalent.
-%\end{br}
-%
-%\begin{prop*}
-% Let $n\in\Z$. Then there is some $k\in\Z$ such that $n=2k$ if and only if $2\mid n$.
-%\end{prop*}
-%%\begin{proof}
-%% $(\Rightarrow)$  Let $n\in\Z$. Assume that there is some $n\in\Z$ such that $n=2k$. Then 
-%% Thus, $2\mid n$ by definition.
-%% 
-%%  $(\Leftarrow)$  Let $n\in\Z$. Assume that $2\mid n$. Then, there is some $k\in\Z$ such that $n=2k$ by the definition of $2\mid n$.
-%%\end{proof}
 \end{document}
 

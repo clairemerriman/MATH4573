@@ -14,14 +14,14 @@
 %\tableofcontents
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monday, January 29: More algebraic proofs and the Euclidean Algorithm}
+\section{Monday, January 29: More algebraic proofs and the Euclidean algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obj}
 \item  Understand turning scratch work into proof for algebraic proofs
 \item  Approach the floor function problems from Homework 1
-\item Prove the Euclidean Algorithm halts and generates the greatest common divisor of two positive integers
+\item Prove the Euclidean algorithm halts and generates the greatest common divisor of two positive integers
 \end{obj}
 
 \begin{pre}
@@ -29,9 +29,12 @@
  \item[Turn in] The Learn TeX assignment using a copy of the Homework Template.
 \end{pre}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example of proof like the floor function (30 minutes)}
+\subsection{Example of proof like the floor function}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-I did not go over the entire example in class. This also took the place of in class problems.
+\begin{remark}
+	This section was a response to a misconception on the homework. %that question has never been an issue before
+	If keeping, it is best to come up with a better example and move to right after Lemma \ref{lem-floor-range}
+\end{remark}
 
 Let's explicitly think about the floor function as a function. That is, $f(x):\mathbb{R}\to\mathbb{Z}$ (a function from the real numbers to the integers). Here is a restatement of the homework problem:
 
@@ -154,12 +157,12 @@ Here is a similar problem with proofs where $g:\mathbb{R}\to\mathbb{R}$. Note th
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Euclidean Algorithm (20 minutes)}
+\subsection{The Euclidean algorithm}
 
-Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the theorem that the algorithm always generates the greatest common divisor of two (positive) integers.
+Typically by \emph{Euclidean algorithm}, we mean  both the algorithm and the theorem that the algorithm always generates the greatest common divisor of two (positive) integers.
 
 
-\begin{thm*}[Euclidean algorithm] 
+\begin{thm}[Euclidean algorithm]\label{euclid-alg}
 	Let $a,b\in\Z$ with $a\geq b>0$. By the division algorithm, there exist $q_1,r_1\in\Z$ such that 
 	\[a=b q_1+r_1,\quad 0\leq r_1<b.\]
 	If $r_1>0$, there exist $q_2,r_2\in\Z$ such that 
@@ -168,8 +171,8 @@ Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the the
 	\[r_1=r_2 q_3+r_3,\quad 0\leq r_3<r_2.\]
 	
 	Continuing this process, $r_n=0$ for some $n$. If $n>1$, then $\gcd(a,b)=r_{n-1}$. If $n=1$, then $\gcd(a,b)=b$.
-	\end{thm*}
-	\begin{proof}
+\end{thm}
+\begin{proof}
 	 Note that $r_1>r_2>r_3>\dots\geq0$ by construction. If the sequence did not stop, then we would have an infinite, decreasing sequence of positive integers, which is not possible. Thus, $r_n=0$ for some $n$. 
 	 
 	 When $n=1$, $a=bq+0$ and $\gcd(a,b)=b$.
@@ -179,18 +182,18 @@ Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the the
 	 If $n>1$, then by repeated application of the Lemma 1.12, we have 
 	 \[\gcd(a,b)=\gcd(b,r_1)=\gcd(r_1,r_2)=\cdots=\gcd(r_{n-2},r_{n-1})\]
 	 Then $r_{n-2}=r_{n-1} q_n+0$. Thus $\gcd(r_{n-2},r_{n-1})=r_{n-1}$.
-	\end{proof}
+\end{proof}
 	
 	When using the Euclidean algorithm, it can be tricky to keep track of what is happening. Doing a lot of examples can help.
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Wednesday, January 31: Practice with the Euclidean Algorithm and the Fundamental Theorem of Arithmetic}
+\section{Wednesday, January 31: Practice with the Euclidean algorithm and the Fundamental Theorem of Arithmetic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obj}
-\item  Use the (extended) Euclidean Algorithm to write $(a,b)$ as a linear combination of $a$ and $b$
+\item  Use the (extended) Euclidean algorithm to write $(a,b)$ as a linear combination of $a$ and $b$
 \item Prove the Fundamental Theorem of Arithmetic
 \item  Prove $\sqrt{2}$ is irrational
 \end{obj}
@@ -220,12 +223,7 @@ Answers to both questions will vary between students.
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Announcements}
-%%%%%%%%%%%%%%%%%%%%%%%%%
-We have gotten a bit ahead of the reading. I adjusted the reading assignments--make sure to read Section 6.1 for Friday! This section does not use any facts beyond divisibility.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Practice with the Euclidean Algorithm (15 minutes)}
+\subsection{Practice with the Euclidean algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Work in pairs to answer the following. Each pair will be assigned parts the following question.
@@ -238,7 +236,7 @@ Find the greatest common divisors of the pairs of integers below and write the g
 	% \begin{solution}
 	% 	By inspection: $28-21=7$.
 
-	% 	Using the Euclidean Algorithm:
+	% 	Using the Euclidean algorithm:
 	% 	$a=28,b=21$
 	% 	\begin{align*}
 	% 		28 & = 21(1)+7 &q_1=1,r_1=7 &&7=21(1)+28(-1)\\
@@ -248,55 +246,28 @@ Find the greatest common divisors of the pairs of integers below and write the g
 	% \end{solution}
 	\setcounter{enumi}{1}
 	\item $(32,56)$
-	 \begin{solution}
-	 	Using the Euclidean Algorithm:
-	 	$a=56,b=32$
-	 	\begin{align*}
-	 		56 & = 32(1)+24 &q_1=1,r_1=24 &&24=56(1)+32(-1)\\
-	 		32 & = 24(1) +8 & q_2=1, r_2=8 &&8=32(1)+24(-1)=32(1)+(56(1)+32(-1))(-1)=32(2)+56(-1)\\
-	 		32&=8(4)+0 & q_3=4, r_3=0.
-	 	\end{align*}
-	 	so $56(-1)+32(2)=8=(56,32)$
-	 \end{solution}
+	 
 
 	\setcounter{enumi}{3}
-	\item $(0,113)$
-	 \begin{solution}
-	 	Since $0=113(0)$, $(0,113)=113=0(0)=113(1)$.
-	 \end{solution}
+
 \end{enumerate}
 
 
 \begin{enumerate}[label=54(\alph*)]
 	\setcounter{enumi}{1}
 	\item $(78,708)$
-	 \begin{solution}
-	 	Using the Euclidean Algorithm:
-	 	$a=708,b=78$
-	 	\begin{align*}
-	 		708 & = 78(9)+6 &q_1=9,r_1=6 &&6=708(1)+78(-9)\\
-	 		78 & = 6(13) +0 & q_2=13, r_2=0.
-	 	\end{align*}
-	 	so $708(1)+78(-6)=6=(78,708)$
-	 \end{solution}
+	 
 \end{enumerate}
 \end{br}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Fundamental Theorem of Arithmetic (35 minutes)}
+\subsection{Fundamental Theorem of Arithmetic}
 
-Observations from reading assignment
-\begin{itemize}
- \item Lemma 1.14 and Corollary 1.15 (if $p\mid a_1a_2\dots a_n$ then $p\mid a_i$ for some $i$)
-\begin{itemize}
-\item Lemma 1.14 is used as the base case in the proof of Corollary 1.15
- \item Prove factorization is unique by contradiction
-\end{itemize}
-\end{itemize}
 
-\begin{thm*}[Fundamental Theorem of Arithmetic]
+
+\begin{thm}[Fundamental Theorem of Arithmetic]\label{FTA}
 	Every integer greater than one can be written in the form $p_1^{a_1}p_2^{a_2}\cdots p_r^{a_r}$ where the $p_i$ are distinct prime numbers and the $a_i$ are positive integers. This factorization into primes is unique up to the ordering of the terms.
-\end{thm*}
+\end{thm}
 \begin{proof}[Alternate proof for existence]
  We will show that every integer $n$ greater than $1$ has a prime factorization. First, note that all primes are already in the desired form. We will use induction to show that every composite integer can be factored into the product of primes. When $n=4$, we can write $n=2^2$, so $4$ has the desired form.
  
@@ -316,32 +287,32 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 % Finally, work two groups. Each group will be assigned one of the following question.
 
 
-%\begin{br}
-%	Let $p$ be prime.
-%	\begin{enumerate}
-%		\item If $(a,b)=p$, what are the possible values of $(a^2,b)$? Of $(a^3,b)$? Of $(a^2,b^3)$?
-%		
-%		% \begin{solution}
-%		% 	If $(a,b)=p$, then there exist $j,k\in\Z$ such that $a=pj, b=pk$, and $p\nmid j$ or $p\nmid k$ (otherwise $(a,b)=p^2$). 
-%		% 	\[a^2=p^2j^2,\quad
-%		% 	a^3=p^3j^3,\quad
-%		% 	b^3=p^3k^3\]
-%		% 	Then $(a^2,b)$ is $p$ if $p\nmid k$ or $p^2$ if $p\mid k$; and
-%		% 	$(a^3,b)$ is $p$ if $p\nmid k,$ $p^2$ if $p\mid k$ and $p^2\nmid k,$ or $p^3$ if $p^2\mid k$. 
-%			
-%		% 	If $p\mid j,$ then $p\nmid k$ and   
-%		% 	$(a^2,b^3)=p^3$.
-%		% 	If $p\nmid j,$ then   
-%		% 	$(a^2,b^3)=p^2.$
-%		% \end{solution}
-%		\item If $(a,b)=p$ and $(b,p^3)=p^2$, find $(ab,p^4)$ and $(a+b,p^4)$.
-%		
-%		% \begin{solution}
-%		% 	There exists $j,k\in\Z$ such that $a=pj, b=p^2k,$ and $p\nmid k, p\nmid k$. 
-%		% 	Then $ab=p^3jk$ and $a+b=pj+p^2k=p(j+pk)$. Thus, $(ab,p^4)=p^3$ and $(a+b,p^4)=p.$
-%		% \end{solution}
-%	\end{enumerate}
-%\end{br}
+\begin{br}\footnote{Not done 2024}
+	Let $p$ be prime.
+	\begin{enumerate}
+		\item If $(a,b)=p$, what are the possible values of $(a^2,b)$? Of $(a^3,b)$? Of $(a^2,b^3)$?
+		
+		\begin{solution}
+			If $(a,b)=p$, then there exist $j,k\in\Z$ such that $a=pj, b=pk$, and $p\nmid j$ or $p\nmid k$ (otherwise $(a,b)=p^2$). 
+			\[a^2=p^2j^2,\quad
+			a^3=p^3j^3,\quad
+			b^3=p^3k^3\]
+			Then $(a^2,b)$ is $p$ if $p\nmid k$ or $p^2$ if $p\mid k$; and
+			$(a^3,b)$ is $p$ if $p\nmid k,$ $p^2$ if $p\mid k$ and $p^2\nmid k,$ or $p^3$ if $p^2\mid k$. 
+			
+			If $p\mid j,$ then $p\nmid k$ and   
+			$(a^2,b^3)=p^3$.
+			If $p\nmid j,$ then   
+			$(a^2,b^3)=p^2.$
+		\end{solution}
+		\item If $(a,b)=p$ and $(b,p^3)=p^2$, find $(ab,p^4)$ and $(a+b,p^4)$.
+		
+		\begin{solution}
+		 	There exists $j,k\in\Z$ such that $a=pj, b=p^2k,$ and $p\nmid k, p\nmid k$. 
+		 	Then $ab=p^3jk$ and $a+b=pj+p^2k=p(j+pk)$. Thus, $(ab,p^4)=p^3$ and $(a+b,p^4)=p.$
+		\end{solution}
+	\end{enumerate}
+\end{br}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Friday, February 2: Quiz 2, Greatest Common Divisors and Diophantine Equations}
@@ -357,9 +328,7 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
  \item[Read] Strayer, Section 6.1
  \item[Turn in] Exercise 2a.
  Find all integer solutions to $18x+28y=10$
-% \begin{solution}
-% Notice that $18(-1)+28(1)=10$. This can be done by inspection or the Euclidean Algorithm. Then our specific solution is $x_0=-1, y_0=1$ and all solutions have the form \[x=-1+\frac{28n}{2}=-1+14n,\quad y=1-\frac{18n}{2}=1-9n \qquad \textnormal{for all $n\in\Z$.}\]
-% \end{solution}
+
 \end{pre}
 
 
@@ -367,7 +336,7 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 \subsection{Quiz (10 minutes)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{More greatest common divisor (40 min)} 
+\subsection{More greatest common divisor} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{lem}\label{gcd_3case}
@@ -375,7 +344,7 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 \end{lem}
 
  \begin{proof}
- 	Let $a,b,c\in\Z,$ with $a\neq 0$. Define $d=(a,b,c)$ and $e=((a,b),c).$ We will show that $d\mid e$ and $e\mid d$. Since the greatest common divisor is positive, we can conclude that $d=e$\footnote{This is not true in general and a common mistake on the homework. In general $d=\pm e$}.
+ 	Let $a,b,c\in\Z,$ with $a\neq 0$. Define $d=(a,b,c)$ and $e=((a,b),c).$ We will show that $d\mid e$ and $e\mid d$. Since the greatest common divisor is positive, we can conclude that $d=e$.
 
  	Since $d=(a,b,c),$ we know $d\mid a, d\mid b,$ and $d\mid c$. By the lemma we are about to prove, $d\mid (a,b)$. Thus, $d$ is a common divisor of $(a,b)$ and $c$, so $d\mid e$.
 
@@ -397,9 +366,7 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 \begin{proof}
  Let $c$ be a divisor of $(a,b)$. Since $(a,b)\mid a$ and $(a,b )\mid b,$ then $c\mid a$ and $c\mid b$ by transitivity.
 \end{proof}
-%\begin{prop*}
-%	Let $a,b,c\in\Z,$ at least one not equal to zero, and $d=(a,b,c)$. Then there exists integers $x,y,z$ such that \[ax+by+cz=d.\]
-%\end{prop*}
+
 
 
 \begin{prop*}
@@ -407,7 +374,7 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 	\[(a_1,\dots,a_n)=((a_1,a_2,a_3,\dots,a_{n-1}),a_n).\]
 \end{prop*}
 \begin{proof}
- Let $k=2$. The since $((a_1,a_2))=(a_1,a_2)$ by the definition of greatest common divisor of one integer,  $(a_1,a_2)=((a_1,a_2))$. The $k=3$ case is the first lemma in this section (\ref{gcd_3case}).
+ Let $k=2$. The since $((a_1,a_2))=(a_1,a_2)$ by the definition of greatest common divisor of one integer,  $(a_1,a_2)=((a_1,a_2))$. The $k=3$ case is Lemma \ref{gcd_3case} in this section.
  
  Assume that for all $2\leq k< n$, 
  	\[(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k).\]
