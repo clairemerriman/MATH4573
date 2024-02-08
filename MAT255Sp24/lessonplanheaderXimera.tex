@@ -19,20 +19,6 @@
 \newcounter{includepdfpage}
 
 
-\newcommand{\semester}{%
-  \ifcase\month
-  \or Spring %1
-  \or Spring %2
-  \or Spring %3
-  \or Spring %4
-  \or Spring  %5
-  \or Fall %8
-  \or Fall %9
-  \or Fall %10
-  \or Fall %11
-  \or Fall %12
-  \fi
-}
 \usepackage{currfile}
 \usepackage{xstring}
 
@@ -41,7 +27,7 @@
 \lhead{\large{Number Theory: MAT-255}}
 %Put your Document Title (Camp: Topic) Here
 \chead{}
-\rhead{\semester 24}
+\rhead{Spring 2024}
 \lfoot{}
 \cfoot{}
 \rfoot{Page \thepage}
@@ -104,7 +90,7 @@
 {%Env end code
 \problemEnvironmentEnd
 }
-
+ \numberwithin{problem}{section}
 
 %\newenvironment{solution}
 %  {\begin{proof}[Solution]}
