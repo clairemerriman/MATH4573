@@ -1,6 +1,6 @@
 # MATH 4573
 
-Elementary number theory course at Ohio State: upper level elective, has introduction to proofs as a prerequiste, covers groups/rings/fields
+Elementary number theory course at Ohio State: upper level elective, has introduction to proofs as a prerequisite, covers groups/rings/fields
 
 ## Spring 2020
 
@@ -15,14 +15,14 @@ The rest is heavily influenced by the presentations in _Elementary Number Theory
 
 ## Spring 2021
 
-Switched to _Elementary Number Theory_ by Gareth A. Jones and J. Mary Jones. Notes mix presentation from Jones \& Jones with the prentation from 2020.
+Switched to _Elementary Number Theory_ by Gareth A. Jones and J. Mary Jones. Notes mix presentation from Jones \& Jones with the presentation from 2020.
 
 Spring 2021 notes are complete, although the SemesterNotesSP2021.tex might be having compile issues.
 
 # MAT 255
 
 Number theory course at Davidson College which can also serve as introduction to proofs. 
-Continuing to interate on the notes from the previous 4 years (Spring 2022 OSU and Spring 2023 Davidson not included in respository).
+Continuing to iterate on the notes from the previous 4 years (Spring 2022 OSU and Spring 2023 Davidson not included in repository).
 
 Using _Elementary Number Theory_ by James K. Strayer as the official textbook, with [An Introduction to Proof via Inquiry-Based Learning](https://danaernst.com/IBL-IntroToProof/pretext/appendix_elements_of_style.html) by Dana C. Ernst for the Introduction to proofs.
 
