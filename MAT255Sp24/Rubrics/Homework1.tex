@@ -1,0 +1,248 @@
+\documentclass[letterpaper, 11 pt]{../ximera}
+\input{rubricsPreamble.tex}
+
+\StrBetween*[1,1]{\currfilename}{Homework}{.tex}[\homework]
+
+
+
+\begin{document}
+
+\chapter{MAT-255, Homework \#\homework\ Rubrics}
+
+\begin{problem}[Strayer Chapter 1, Exercise 5]\label{ch1-ex5}%
+    Prove or disprove the following statements.%
+            \begin{enumerate}[label=(\alph*)]
+            \item If \(a,b,c,\) and \(d\) are integers such that \(a\mid b\) and \(c\mid d\), then \(a+c\mid b+d\).%
+            \item If \(a,b,c,\) and \(d\) are integers such that \(a\mid b\) and \(c\mid d\), then \(ac\mid bd\).%
+            \item If \(a,b,\) and \(c\) are integers such that \(a\nmid b\) and \(b\nmid c\), then \(a\nmid c\).enumerate%
+    \end{enumerate}
+%
+    
+    \begin{solution}
+         \begin{enumerate}[label=(\alph*)]
+            \item False: Let \(a=b=c=1\) and \(d=2\). Then \(a+b=2\) and \(c+d=3\). Therefore, \(a+b\nmid c+d\).%
+            \item Let \(a,b,c,\) and \(d\) be integers such that \(a\mid b\) and \(c\mid d\). Then there exists \(m,n\in\Z\) such that \(a=bm\) and \(c=dn\), by \hyperref[def-divides]{definition of divides}. Multiplying these two equations gives \[ac=(bm)(dn)=(bd)(mn).\]  Therefore, \(ac\mid bd\).%
+            \item False: Let \(a=2, b=3,\) and \(c=4\). Then \(a\nmid b, b\nmid c\) and \(a\mid c\).
+        \end{enumerate}
+    \end{solution}
+
+
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+            Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+            Two parts are mathematically correct, with the third containing major mathematical errors. Or proof has some significant gaps or excess information.
+        \item \textbf{Demonstrates understanding}
+            Two parts are mathematically correct, with minor errors in the third part. Or does not follow the homework guide for mathematical writing.
+        \item \textbf{Exemplary}
+            All three parts are mathematically correct and follows the homework guide for mathematical writing.
+    \end{writeRubric}
+%
+\end{problem}
+
+\begin{problem}[Strayer Chapter 1, Exercise 10]\label{ch1-ex10}%
+%
+    \begin{enumerate}[label=(\alph*)]
+            \item Let \(n\in\Z\). Prove that \(3\mid n^3-n\).%
+            \item Let \(n\in\Z\). Prove that \(5\mid n^5-n\).%
+            \item Let \(n\in\Z\). Is it true that \(4\mid n^4-n\)? Provide a proof or counter example.enumerate%
+    \end{enumerate}
+%
+    \begin{proof}
+    There are several ways to do these problems. I used slightly different methods for parts (a) and (b).%
+        \begin{enumerate}[label=(\alph*)]
+            \item Let \(n\in\Z\). Then \(n^3-n=\). By the Division Algorithm, there exists unique \(q,r\in\Z\) such that \(n=3q+r\) and \(0\leq r<3\).  Thus, \(n^3-n=27q^3+27q^2r+9qr^2+r^3-3q-r\)%
+
+            If \(r=0\), then \(n^3-n=27q^3-3q=3(9q^3-q)\), so\(3\mid n^3-n.\)%
+
+            If \(r=1\), then \(n^3-n=27q^3+27q^2+6q=3(9q^3+9q^2+2q)\), so\(3\mid n^3-n.\)%
+
+            If \(r=2\), then \(n^3-n=27q^3+54q^2+15q+6=3(9q^3+18q^2+5q+2)\), so\(3\mid n^3-n.\)%
+
+            Therefore, \(3\mid n^3-n\) in all possible cases.%
+            
+            \item Let \(n\in\Z\). Then \(n^5-n=n(n-1)(n+1)(n^2+1)\). By the Division Algorithm, there exists unique \(q,r\in\Z\) such that \(n=5q+r\) and \(0\leq r<5\).%
+
+            If \(r=0\), then \(5\mid n.\) If \(r=1\), then \(5\mid (n-1)=5q\). If \(r=4\), then \(5\mid (n+1)=5q\).%
+
+            If \(r=2\), then \(n=5q+2\) and \(n^2+1=25q^2+20q+4+1=5(5q^2+4q+1)\). Therefore, \(5\mid (n^2+1)\). If \(r=3\), then \(n=5q+3\) and \(n^2+1=25q^2+30q+9+1=5(5q^2+6q+2)\). Therefore, \(5\mid (n^2+1)\). Thus, by transitivity of division, \(5\mid n^5-n\).%
+            
+            \item False: Let \(n=2\). Then \(n^4-n=14\) and \(4\nmid 14\).%
+        \end{enumerate}
+%
+    \end{proof}
+
+
+    The hint in the back of the book says to use induction for part (a). That is not necessary and likely harder.%
+    
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        Two parts are mathematically correct with some missing details, with the third containing major mathematical errors. Or proof has some significant gaps or excess information.
+        \item \textbf{Demonstrates understanding}
+        Two parts are mathematically correct, with minor errors. Or does not follow the homework guide for mathematical writing.
+        \item \textbf{Exemplary}
+        All three parts are mathematically correct and follows the homework guide for mathematical writing.
+    \end{writeRubric}
+%
+\end{problem}
+
+\begin{problem}[Strayer Chapter 1, Exercise 11]\label{-even-odd}%
+Use the \hyperref[def-even-odd-divides]{definition of even and odd} from Strayer and \emph{not} Ernst.%
+    \begin{enumerate}[label=(\alph*)]
+        \item\label{even-equiv-def} Let \(n\in\Z\). Prove that \(n\) is an even integer if and only if \(n=2m\) with \(m\in\mathbb{Z}\).%
+        \item\label{odd-equiv-def} Let \(n\in\Z\). Prove that \(n\) is an odd integer if and only if \(n=2m+1\) with \(m\in\mathbb{Z}\).%
+        \item\label{sum-prod-even} Prove that the sum and product of two even integers are even.%
+        \item\label{sum-prod-odd} Prove that the sum of two odd integers is even and that their product is odd.%
+        \item\label{sum-prod-even-odd} Prove that the sum of an even integer and an odd integer is odd and that their product is even.%
+    \end{enumerate}
+%
+
+    Rubric for parts (a) and (b), graded together:%
+        
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        Proof has some significant gaps or excess information. Or does not prove both directions for both parts.
+        \item \textbf{Demonstrates understanding}
+        Contains minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
+        \item [Exemplory]
+        Correctly proves both directions of both (a) and (b). Work is easy to follow with formal mathematical writing.
+    \end{writeRubric}
+%
+
+    Rubric for parts (c),(d), and (e), graded together:%
+        
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        Proof has some significant gaps or excess information. Or missing the proof for either the sum or product in one part.
+        \item \textbf{Demonstrates understanding}
+        Mathematically correct proof for all three parts with minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
+        \item [Exemplory]
+        Mathematically correct proof for all three parts. Work is easy to follow with formal mathematical writing.
+    \end{writeRubric}
+%
+\end{problem}
+
+\begin{problem}[Ernst Problem 2.19]\label{ernst-prob2.19}%
+Let \(A\)  represent ``6 is an even integer” and \(B\)  represent ``4 divides 6.” Express each of the following compound propositions in an ordinary English sentence and then determine its truth value.%
+    \begin{enumerate}[label=\alph*.]
+            \item \( A\land B\)%
+            \item \( A\lor B\)%
+            \item \( \neg A\)%
+            \item \( \neg B\)%
+            \item \( \neg (A\land B)\)%
+            \item \( \neg(A\lor B)\)%
+            \item \( A\Rightarrow B\)%
+    \end{enumerate}
+%
+    \begin{solution}
+
+        \begin{enumerate}[label=(\alph*)]
+            \item ``6 is an even integer and 4 divides 6". This is false because 4 does not divide 6.%
+            \item ``6 is an even integer or 4 divides 6". This is true because 6 is an even.%
+            \item ``6 is not an even number". This is false.%
+            \item ``6 is not an even number or 4 does not divide 6". This is true because 4 does not divide 6.%
+            \item ``6 is not an even number and 4 does not divide 6". This is false because 6 is an even number.%
+            \item ``If 6 is an even integer, then 4 divides 6". This is false because 4 does not divide 6.%
+        \end{enumerate}
+    \end{solution}
+
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        Three or four parts are mathematically and grammatically correct sentences.
+        \item \textbf{Demonstrates understanding}
+        Five or six parts are mathematically and grammatically correct sentences.
+        \item \textbf{Exemplary}
+        All parts are mathematically and grammatically correct sentences.
+    \end{writeRubric}
+%
+\end{problem}
+
+\begin{problem}[Ernst Problem 2.37]\label{ernst-prob2.37}%
+Let \(A\)  and \(B\)  represent the statements from Problem 2.19. Express each of the following in an ordinary English sentence.%
+    \begin{enumerate}[label=(\alph*)]
+            \item The converse of \(A\Rightarrow B\)%
+            \item The contrapositive of \(A\Rightarrow B\)%
+    \end{enumerate}
+
+    \begin{solution}
+        Let \(A\)  represent ``6 is an even integer” and \(B\)  represent ``4 divides 6.”%
+        \begin{enumerate}[label=(\alph*)]
+            \item ``If 4 divides 6, then 6 is an even integer.`` Since 4 does not divide 6, any conclusion is vacuously true.%
+            \item ``If 4 does not divides 6, then 6 is not an even integer.`` Since 6=2(3), this statement is false.%
+        \end{enumerate}       
+    \end{solution}
+
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        One part is not mathematically correct. Or both parts are missing the proof or counterexample.
+        \item \textbf{Demonstrates understanding}
+        Both parts correctly translate the statements into grammaticallly correct sentences. One part contains a mathematically correct proof or counterexample.  Or does not follow the homework guide for mathematical writing.
+        \item \textbf{Exemplary}
+        Both parts correctly translate the statements into grammaticallly correct sentences with a mathematically correct proof or counterexample.
+    \end{writeRubric}
+%
+\end{problem}
+
+\begin{problem}\label{hw-tf}%
+For each of the following equation, find what real numbers \(x\)  make the statement true. Prove your statement.%
+    \begin{enumerate}
+            \item \( \lfloor x \rfloor + \lfloor x \rfloor =\lfloor 2x\rfloor\)%
+            \item \( \lfloor x + 3 \rfloor  = 3 +\lfloor x\rfloor\)%
+            \item \( \lfloor x +3 \rfloor = 	3 + x\)%
+    \end{enumerate}
+%
+    \begin{solution}
+    All of these statements could be stated as ``if and only if." The proofs below also work for both directions of the biconditional.%
+%
+    \begin{enumerate}
+            \item If the decimal part of \(x\) is less than 0.5, then \(\lfloor x \rfloor + \lfloor x \rfloor =\lfloor 2x\rfloor\) . In otherwords, if \(x-\frac{1}{2} < \lfloor x \rfloor\leq x\), then \(\lfloor x \rfloor + \lfloor x \rfloor =\lfloor 2x\rfloor\) .
+            
+                \begin{proof}
+                We will use the characterization \(x-\frac{1}{2} < \lfloor x \rfloor\leq x\). Then we add this inequality to itself to find%
+                    \begin{align*}
+                        x-\frac{1}{2}+x-\frac{1}{2} &   
+                        < \lfloor x \rfloor +\lfloor x \rfloor\leq x + x\\
+                        2x-1 &   
+                        < \lfloor x \rfloor +\lfloor x \rfloor\leq 2x. 
+                    \end{align*}
+                By \hyperref[lem-floor]{Strayer, Lemma 1.3}, \(2x-1 < \lfloor 2x \rfloor \leq 2x.\) Since the characterizations are the same, it must be that \(\lfloor x \rfloor +\lfloor x \rfloor=\lfloor 2x \rfloor .\)%
+                \end{proof}
+                %
+            \item If \(x\in\R\), then \(\lfloor x + 3 \rfloor  = 3 +\lfloor x\rfloor\). 
+            \begin{proof}
+                By \hyperref[lem-floor]{Strayer, Lemma 1.3}, for all \(x\in\R\), \(x-1 +3 < 3 + \lfloor x \rfloor \leq x + 3\) and \(x + 2 < \lfloor x + 3 \rfloor \leq x +3 \). That is, \(3 + \lfloor x \rfloor= \lfloor x +3 \rfloor\).%
+            \end{proof}
+                %
+            \item If \(x\in\Z\), then \(\lfloor x +3 \rfloor = 	3 + x\)  
+            \begin{proof}
+                Since \(\lfloor x +3 \rfloor \in \Z,\) \(\lfloor x +3 \rfloor = 	3 + x\) requires \(x\in\Z\). By part (b), \(\lfloor x + 3 \rfloor  = 3 +\lfloor x\rfloor\) for all \(x\in\Z\).%
+            \end{proof}
+                %
+        \end{enumerate}
+            
+    \end{solution}
+    
+    \begin{writeRubric}
+        \item \textbf{Does not demonstrate understanding}
+        Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+        \item \textbf{Needs revisions}
+        Two parts are mathematically correct, with the third containing major mathematical errors. Or proof has some significant gaps or excess information.
+        \item \textbf{Demonstrates understanding}
+        Two parts are mathematically correct, with minor errors in the third part. Or does not follow the homework guide for mathematical writing.
+        \item \textbf{Exemplary}
+        All three parts are mathematically correct and follows the homework guide for mathematical writing.
+    \end{writeRubric}
+%
+\end{problem}
+
+\end{document}
