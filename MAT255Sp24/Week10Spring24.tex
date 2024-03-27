@@ -1,0 +1,253 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{lessonplanheaderXimera.tex}
+
+%Imports for cross references
+\externaldocument{otherResults}
+\externaldocument{Week1Spring24}
+\externaldocument{Week2Spring24}
+\externaldocument{Week3Spring24}
+\externaldocument{Week4Spring24}
+\externaldocument{Week5Spring24}
+\externaldocument{Week6Spring24}
+\externaldocument{Week7Spring24}
+\externaldocument{Week8Spring24}
+\externaldocument{Week9Spring24}
+
+
+
+
+\StrBetween*[1,1]{\currfilename}{Week}{Sp}[\week]
+
+\title{Week \week--MAT-255 Number Theory}
+
+\begin{document}
+\section{Monday, March 25: Quadratic residue of $-1$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Prove \nameref{thm:euler-quads}
+	\item Classify when $-1$ is a quadratic residue modulo an odd prime
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Euler's Criterion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will prove \nameref{thm:euler-quads}. 
+
+\begin{thm*}[Euler's Criterion]
+    Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ Then \[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}\]
+\end{thm*}
+
+\begin{proof}
+	Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ If there exists $b\in\Z$ such that $b^2\equiv a\pmod{p},$ then $\legendre{a}{p}=1$ by \hyperref[defn:legendre]{definition}.
+	Note that \[a^{(p-1)/2}\equiv (b^2){(p-1)/2}\equiv b^{p-1}\equiv 1\pmod{p}\]
+	by \nameref{FlT}. Thus $\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}.$
+	
+	If $a$ is a quadratic nonresidue modulo $p,$ consider the \hyperref[defn:reduced-res-sys]{reduced residue system} $\{1,2,\dots,p-1\}.$ For each element $c$ of the list, there exists a unique element $d$, also on the list, such that $cd\equiv a\pmod{p}$ by \hyperref[thm:lin-cong-solutions]{Theorem 2.6} since $(a,p)=1$. Since $a$ is a quadratic nonresidue by assumption, $c\not\equiv d\pmod{p}.$ Thus, there are $\frac{p-1}{2}$ pairs $c,d$ where $cd\equiv a\pmod{p}.$ Thus, 
+		\[
+			-1\equiv (p-1)! \equiv a^{(p-1)/2}\pmod{p}
+		\]
+	by \nameref{Wilson}. Since $a$ is a quadratic nonresidue modulo $p,$ $\legendre{a}{p}=-1\equiv a^{(p-1)/2}\pmod{p}.$
+\end{proof}
+
+\begin{remark}
+	Some sources define $\legendre{a}{p}=0$ when $p\mid a.$ In this case,  Let $p$ be an odd prime and $a\in\Z$.
+	If $p\mid a,$ then $a^{(p-1)/2}\equiv 0^{(p-1)/2}\equiv 0\equiv\legendre{a}{p}\pmod{p}.$
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{When is $-1$ a quadratic residue?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thm*}[Theorem 4.6]\label{thm:residue-neg1}
+	Let $p$ be an odd prime number. Then 
+	\[
+		\legendre{-1}{p}=
+			\begin{cases}
+ 				1, & p\equiv 1\pmod{4}\\
+				-1, & p\equiv 3\pmod{4}
+			\end{cases}.
+	\]
+\end{thm*}
+
+\begin{proof}
+	Let $p$ be an odd prime number. Then from \nameref{thm:euler-quads}, $\legendre{-1}{p}\equiv (-1)^{(p-1)/2}\pmod{p}.$ Since both values are $\pm1,$ we can say $\legendre{-1}{p}=(-1)^{(p-1)/2}.$
+
+	If $p\equiv 1\pmod{4},$ then there exists $k\in\Z$ such that $p=4k+1.$ Thus, $\frac{p-1}{2}=2k$ and 
+		\[
+			\legendre{-1}{p}=(-1)^{(p-1)/2}=(-1)^{2k}=1.
+		\]
+	
+	If $p\equiv 3\pmod{4},$ then there exists $k\in\Z$ such that $p=4k+3.$ Thus, $\frac{p-1}{2}=2k+1$ and 
+		\[
+			\legendre{-1}{p}=(-1)^{(p-1)/2}=(-1)^{2k+1}=-1.
+		\]
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 27: Introduction to quadratic reciprocity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Use quadratic reciprocity to find the Legendre symbol of an integer modulo $p$.
+    \item Characterize the primes where $3,-3,5,-5,7,-7$ are quadratic residues.
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading:] Scanned notes, Pommersheim-Marks-Flapan Section 11.2 and part of 11.3.
+    \item[Turn in:] \emph{Use the results from the reading} to find $\legendre{-3}{71}.$
+
+     \begin{solution}
+     	From Theorem 4.5\ref{legendre-mult}, $\legendre{-3}{71}=\legendre{-1}{71}\legendre{3}{71}.$
+     	Since $71\equiv3\pmod{4},$ from \nameref{thm:residue-neg1}, $\legendre{-1}{71}=-1,$
+	and from \nameref{quad-rec-useful-form} $\legendre{3}{71}=-\legendre{71}{3}.$ Putting this together, we get
+	
+		\begin{align*}
+		 	\legendre{-3}{71}&=\legendre{-1}{71}\legendre{3}{71}=(-1)\left(-\legendre{71}{3}\right)\\
+				&=\legendre{71}{3}=\legendre{2}{3}=-1
+		\end{align*}
+	from Theorem 4.5\ref{legendre-respects-mod} and the fact that $2$ is a quadratic nonresidue modulo $3.$
+     \end{solution}
+\end{pre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic reciprocity (20 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thm*}[Quadratic Reciprocity (first statement)]\label{quad-rec-useful-form}
+	Let $p$ and $q$ be distinct primes.  
+	\begin{enumerate}[label=(\alph*)]
+		\item If $p\equiv 1 \pmod{4}$ or $q\equiv 1\pmod{4},$ then $\legendre{p}{q}=\legendre{q}{p}.$
+ 		\item If $p\equiv q \equiv 3 \pmod{4},$ then $\legendre{p}{q}=-\legendre{q}{p}.$
+	\end{enumerate}
+\end{thm*}
+
+It will take time to prove the lemmas for quadratic reciprocity, but we can immediately prove some results. 
+The first is that this initial statement is equivalent to the more standard statement. This is our first example where one statement of a result (\nameref{quad-rec-useful-form}) is more useful in calculations and proofs, but the proof involves proving an equivalent statement (\nameref{quad-rec-standard-form}).
+
+\begin{thm*}[Law of Quadratic Reciprocity]\label{quad-rec-standard-form} (Theorem 4.9)
+	Let $p$ and $q$ be distinct primes.  Then
+	\[
+		\legendre{p}{q}\legendre{q}{p}=(-1)^{(p-1)/2\ (q-1)/2}=
+			\begin{cases}
+ 				1, & \textnormal{ if } p\equiv 1\pmod{4} \textnormal{ or } q\equiv 1\pmod{4}\\
+				-1, & \textnormal{ if } p\equiv q\equiv 3\pmod{4}.
+			\end{cases}
+	\]
+\end{thm*}
+
+\begin{remark}
+	We can quickly prove the second equality, 
+		\[(-1)^{(p-1)/2\ (q-1)/2}=
+			\begin{cases}
+ 				1, & \textnormal{ if } p\equiv 1\pmod{4} \textnormal{ or } q\equiv 1\pmod{4}\\
+				-1, & \textnormal{ if } p\equiv q\equiv 3\pmod{4}.
+			\end{cases}\]
+	If $p\equiv 1\pmod{4}$ or $q\equiv 1\pmod{4},$ then one of $\frac{p-1}{2}$ and $\frac{q-1}{2}$ is even. Thus $(-1)^{(p-1)/2\ (q-1)/2}=1.$ If $p\equiv q\equiv 3\pmod{4},$ then $\frac{p-1}{2}$ and $\frac{q-1}{2}$ are both odd. Thus $(-1)^{(p-1)/2\ (q-1)/2}=-1.$
+\end{remark}
+
+\begin{proposition}
+ \nameref{quad-rec-useful-form} is equivalent to \nameref{quad-rec-standard-form}. That is, \nameref{quad-rec-useful-form} implies \nameref{quad-rec-standard-form} and \nameref{quad-rec-standard-form} implies \nameref{quad-rec-useful-form} .
+\end{proposition}
+\begin{proof}
+	We will first show that \nameref{quad-rec-standard-form} implies \nameref{quad-rec-useful-form}.
+	
+	Let $p$ and $q$ be distinct primes.  Then \nameref{quad-rec-standard-form} says that 
+	\[
+		\legendre{p}{q}\legendre{q}{p}=
+			\begin{cases}
+ 				1, & \textnormal{ if } p\equiv 1\pmod{4} \textnormal{ or } q\equiv 1\pmod{4}\\
+				-1, & \textnormal{ if } p\equiv q\equiv 3\pmod{4}.
+			\end{cases}
+	\]
+	Since $\legendre{p}{q}=\pm 1$ and $\legendre{q}{p}=\pm 1,$ we know that $\legendre{p}{q}\legendre{q}{p}=1$ if and only if $\legendre{p}{q}=\legendre{q}{p}.$ Thus, when $p\equiv 1\pmod{4}$ or $q\equiv 1\pmod{4},$ $\legendre{p}{q}=\legendre{q}{p}.$ Similarly, $\legendre{p}{q}\legendre{q}{p}=-1$ if and only if $\legendre{p}{q}=-\legendre{q}{p}.$ Thus, when $p\equiv q\equiv 3\pmod{4},$ $\legendre{p}{q}=-\legendre{q}{p}.$ 
+	
+	The other direction is on next homework assignment.
+\end{proof}
+
+Notice that we also proved the converse of \nameref{quad-rec-useful-form}:
+\begin{corollary}\label{cor:quad-rec}
+	Let $p$ and $q$ be distinct primes.  
+	\begin{enumerate}[label=(\alph*)]
+		\item If $\legendre{p}{q}=\legendre{q}{p},$ then $p\equiv 1 \pmod{4}$ or $q\equiv 1\pmod{4}.$
+ 		\item If $\legendre{p}{q}=-\legendre{q}{p},$ then $p\equiv q \equiv 3 \pmod{4}.$
+	\end{enumerate}
+\end{corollary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic reciprocity practice (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{br}[Strayer Chapter 4, Exercise 35]
+	Let $p$ be an odd prime number. Prove the following statements the following provided outlines, which will help solve the next problem, as well.
+	
+	\begin{enumerate}[label=(\alph*)]
+	\setcounter{enumi}{1}
+		\item $\legendre{3}{p}=1$ if and only if $p\equiv \pm1\pmod{12}.$
+		\item $\legendre{-3}{p}=1$ if and only if $p\equiv 1\pmod{6}.$	
+	\end{enumerate}
+\end{br}
+
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+	\setcounter{enumi}{1}
+		\item Since $3\equiv \answer{3}\pmod{4},$\footnote{In this problem, this step is repetitive, but it is needed when $p\neq3$.} we need two cases for \nameref{quad-rec-useful-form}. 
+			\begin{enumerate}[label=(\roman*)]
+ 				\item If $p\equiv 1\pmod{4},$ then $\legendre{3}{p}=\answer{\legendre{p}{3}}$ by \nameref{quad-rec-useful-form}, and $\legendre{p}{3}=1$ if and only if $p\equiv\answer{1\pmod{3}}$. Then $p\equiv \answer{1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+		
+				\item If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{3}{p}=\answer{-\legendre{p}{3}}$ by \nameref{quad-rec-useful-form}, and $\legendre{p}{3}=-1$ if and only if $p\equiv\answer{ 2\equiv-1\pmod{3}}$. Then $p\equiv \answer{-1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+			\end{enumerate}
+		Therefore, $\legendre{3}{p}=1$ if and only if $p\equiv \pm1\pmod{12}.$ 
+		
+		\item From Theorem 4.25\ref{legendre-mult}, $\legendre{-3}{p}= \answer{\legendre{-1}{p}\legendre{3}{p}}.$
+		Again, we have two cases.
+			\begin{enumerate}[label=(\roman*)]
+ 				\item If $p\equiv 1\pmod{4},$ then $\legendre{-1}{p}=\answer{1}$ by \nameref{thm:residue-neg1} and
+				$\legendre{3}{p}=\answer{\legendre{p}{3}}$ by \nameref{quad-rec-useful-form}. Thus, $\legendre{-3}{p}=\answer{\legendre{p}{3}}=1$ if and only if $p\equiv \answer{1\pmod{3}}.$ Then $p\equiv \answer{1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+		
+		\item If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{-1}{p}=\answer{-1}$ by \nameref{thm:residue-neg1} and
+				$\legendre{3}{p}=\answer{-\legendre{p}{3}}$ by \nameref{quad-rec-useful-form}. Thus, $\legendre{-3}{p}=\answer{\legendre{p}{3}}=1$ if and only if $p\equiv \answer{1\pmod{3}}.$ Then $p\equiv \answer{7}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+	\end{enumerate}
+	Therefore, $\legendre{-3}{p}=1$ if and only if $p\equiv \answer{1,7}\pmod{12},$ which is equivalent to $p\equiv 1\pmod{6}.$ \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{br}[Strayer Chapter 4, Exercise 36]
+	Find congruences characterizing all prime numbers $p$ for which the following integers are quadratic residues modulo $p,$ as done in the previous exercise. 
+	
+	Outline is provided for the first part. Outline for second part added after class.
+	\begin{enumerate}[label=(\alph*)]
+		\item $5$ 
+		\item $-5$	
+		\item $7$ 
+		\item $-7$	
+	\end{enumerate}
+\end{br}
+
+\begin{solution}
+ 	\begin{enumerate}[label=(\alph*)]
+		\item Since $5\equiv\answer{1}\pmod{4},$ $\answer{\legendre{5}{p}=\legendre{p}{5}}$ by \nameref{quad-rec-useful-form}. Then $\legendre{5}{p}=\answer{\legendre{p}{5}}=1$ if and only if $p\equiv\answer{ \pm1\pmod{5}}$.
+
+		\item From Theorem 4.25\ref{legendre-mult}, $\legendre{-5}{p}= \answer{\legendre{-1}{p}\legendre{5}{p}}=\answer{\legendre{-1}{p}\legendre{p}{5}}$ by \nameref{quad-rec-useful-form}. Again, we have two cases.
+			
+			\begin{enumerate}[label=(\roman*)]
+ 				\item If $p\equiv 1\pmod{4},$ then $\legendre{-1}{p}=\answer{1}$ by \nameref{thm:residue-neg1} and
+				$\legendre{5}{p}=\answer{\legendre{p}{5}}$ by \nameref{quad-rec-useful-form}. Thus, $\legendre{-5}{p}=\answer{\legendre{p}{5}}=1$ if and only if $p\equiv \answer{\pm1\pmod{5}}.$ When $p\equiv \answer{1}\pmod{5},$ we have $p\equiv\answer{1}\pmod{\answer{20}}$ and when $p\equiv \answer{-1}\pmod{5},$ we have $p\equiv\answer{9}\pmod{\answer{20}}$. In each case, there is a unique equivalence class modulo $\answer{20}$ by the Chinese Remainder Theorem.
+		
+		\item If $p\equiv 3\pmod{4},$ then $\legendre{-1}{p}=\answer{-1}$ by \nameref{thm:residue-neg1} and
+				$\legendre{5}{p}=\answer{\legendre{p}{5}}$ by \nameref{quad-rec-useful-form}. Thus, $\legendre{-5}{p}=\answer{-\legendre{p}{5}}=1$ if and only if $p\equiv \answer{\pm 2}\pmod{5}.$ When $p\equiv \answer{2}\pmod{5},$ we have $p\equiv\answer{7}\pmod{\answer{20}}$ and when $p\equiv \answer{3}\pmod{5},$ we have $p\equiv\answer{3}\pmod{\answer{20}}$. In each case, there is a unique equivalence class modulo $\answer{20}$ by the Chinese Remainder Theorem.
+	\end{enumerate}
+	Therefore, $\legendre{-5}{p}=1$ if and only if $p\equiv \answer{1,3,7,9}\pmod{\answer{20}}.$\qedhere
+	\end{enumerate}
+\end{solution}
+
+\section{Friday March 29: No class for Good Friday}
+\end{document}

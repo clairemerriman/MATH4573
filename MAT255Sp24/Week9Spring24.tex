@@ -12,9 +12,9 @@
 \externaldocument{Week7Spring24}
 \externaldocument{Week8Spring24}
 
-%
-%\theoremstyle{definition}
-%\newtheorem*{annotation}{Annotation}
+
+\theoremstyle{definition}
+\newtheorem*{annotation}{Annotation}
 
 
 
@@ -99,9 +99,7 @@ We will now prove the existence of primivitive roots modulo a prime combining th
     for distinct primes $q_1,q_2,\dots,q_k$ and positive integers $s_1,s_2,\dots,s_k.$ Let $a_1,a_2,\dots,a_k$ be elements of order $q_1^{s_1},q_2^{s_2},\dots, q_k^{s_k}$ respectively.
     %Since there are $\phi(q_1^{s_1})$ options for $a_1,$ $\phi(q_2^{s_2})$ options for $a_2,$ etc there are $\phi(q_1^{s_1})\phi(q_2^{s_2})\cdots\phi(q_k^{s_k})=\phi(d)$ ways to form $a=a_1a_2\cdots a_k.$ 
     Consider $a=a_1a_2\cdots a_k$ and $a^2, a^3,\dots,a^d$. By Homework 6, Problem 6, $a$ has order $q_1^{s_1}q_2^{s_2}\cdots q_k^{s_k}=d.$ 
-    By \nameref{prop:roots-unity}, there are exactly $d$ solutions to $x^d\equiv 1\pmod{p}$. \begin{annotation}
-        This is where we ended class on Monday.
-    \end{annotation}
+    By \nameref{prop:roots-unity}, there are exactly $d$ solutions to $x^d\equiv 1\pmod{p}$. 
     Thus, $a, a^2,\dots,a^d$ are all incongruent solutions to $x^d\equiv 1\pmod{p}$ by \nameref{prop:order_divides_phi}. 
     By \nameref{prop:compare-order},
     $\ord_p a^i=\frac{d}{(d,i)}=d$ if and only if $(d,i)=1.$ Since there are $\phi(d)$ such integers $i,$ there are in fact $\phi(d)$ incongruent integers with order $d$ modulo $p.$
@@ -280,4 +278,50 @@ We will now prove the existence of primivitive roots modulo a prime combining th
  
 
     \end{pre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quiz (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+Technical difficults with printer and projector.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Legendre symbol (35 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Legendre symbol]\label{defn:legendre}
+    Let $p$ be an odd prime number and let $a\in\Z$ with $p\nmid a$. The \emph{Legendre symbol}, denoted $\legendre{a}{p}$, is
+        \[
+            \legendre{a}{p}=
+            \begin{cases}
+                1, & \text{ if $a$ is a quadratic residue modulo $p$} \\
+                -1, & \text{ if $a$ is a quadratic nonresidue modulo $p$} 
+            \end{cases}
+        \]
+\end{definition}
+
+\begin{thm*}[Euler's Criterion]\label{thm:euler-quads}
+    Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ Then \[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}\]
+\end{thm*}
+
+We will not prove this today, but we will use it to go over the solution to the reading assignment and to prove the following proposition.
+
+\begin{prop*}[Proposition 4.5]\label{prop:legendre-facts}
+	Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then 
+	\begin{enumerate}[label=(\alph*)]
+		\item $\legendre{a^2}{p}=1$ \label{squares-are-square}
+		\item If $a\equiv b\pmod{p}$ then $\legendre{a}{p}=\legendre{b}{p}$ \label{legendre-respects-mod}
+		\item $\legendre{ab}{p}=\legendre{a}{p}\legendre{b}{p}$ \label{legendre-mult}
+	\end{enumerate}
+\end{prop*}
+
+
+\begin{proof}
+    Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then $a^2$ is a quadratic residue modulo $p,$ by definition, so $\legendre{a^2}{p}=1$ by the definition of the Legendre symbol.
+
+    If $a\equiv b\pmod{p},$ then either both $a$ and $b$ are quadratic residues modulo $p$ or both $a$ and $b$ are quadratic nonresidues modulo $p.$ Thus $\legendre{a}{p}=\legendre{b}{p}.$
+
+    For the last part, \nameref{thm:euler-quads} gives \[\legendre{ab}{p}\equiv (ab)^{(p-1)/2}\equiv (a^{(p-1)/2})(b^{(p-1)/2})\equiv \legendre{a}{p}\legendre{b}{p}\pmod{p}\]
+\end{proof}
+
 \end{document}
