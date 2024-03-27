@@ -1,5 +1,6 @@
-\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings,multicol,hyperref,enumitem,tikz}
+\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings,multicol,hyperref,xr-hyper,aliascnt,enumitem}
 \usepackage{xfrac}
+
 
 \usepackage{parskip}
 \usepackage{graphicx}
@@ -19,15 +20,28 @@
 \newcounter{includepdfpage}
 
 
+\newcommand{\semester}{%
+  \ifcase\month
+  \or Spring %1
+  \or Spring %2
+  \or Spring %3
+  \or Spring %4
+  \or Spring  %5
+  \or Fall %8
+  \or Fall %9
+  \or Fall %10
+  \or Fall %11
+  \or Fall %12
+  \fi
+}
 \usepackage{currfile}
 \usepackage{xstring}
-
 
 
 \lhead{\large{Number Theory: MAT-255}}
 %Put your Document Title (Camp: Topic) Here
 \chead{}
-\rhead{Spring 2024}
+\rhead{\semester 24}
 \lfoot{}
 \cfoot{}
 \rfoot{Page \thepage}
@@ -39,28 +53,130 @@
 
 \author{Claire Merriman}
 \date{Spring 2024}
- \theoremstyle{plain}
- 
-\newtheorem{thm}{Theorem}%[section] % reset theorem numbering for each section
-\newtheorem*{thm*}{Theorem}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem*{prop*}{Proposition}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem*{lem*}{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem*{cor*}{Corollary}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Counters and autoref for unnumbered environments
+%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+
+
+\newtheorem*{namedthm}{Theorem}
+\newcounter{thm}%makes pointer correct
+\providecommand{\thmname}{Proposition}
+
+\makeatletter
+\NewDocumentEnvironment{thm*}{o}
+ {%
+  \IfValueTF{#1}
+    {\namedthm[#1]\refstepcounter{thm}\def\@currentlabel{(#1)}}%
+    {\namedthm}%
+ }
+ {%
+  \endnamedthm
+ }
+\makeatother
+
+
+\newtheorem*{namedprop}{Proposition}
+\newcounter{prop}%makes pointer correct
+\providecommand{\propname}{Proposition}
+
+\makeatletter
+\NewDocumentEnvironment{prop*}{o}
+ {%
+  \IfValueTF{#1}
+    {\namedprop[#1]\refstepcounter{prop}\def\@currentlabel{(#1)}}%
+    {\namedprop}%
+ }
+ {%
+  \endnamedprop
+ }
+\makeatother
+
+\newtheorem*{namedlem}{Lemma}
+\newcounter{lem}%makes pointer correct
+\providecommand{\lemname}{Lemma}
+
+\makeatletter
+\NewDocumentEnvironment{lem*}{o}
+ {%
+  \IfValueTF{#1}
+    {\namedlem[#1]\refstepcounter{lem}\def\@currentlabel{(#1)}}%
+    {\namedlem}%
+ }
+ {%
+  \endnamedlem
+ }
+\makeatother
+
+\newtheorem*{namedcor}{Corollary}
+\newcounter{cor}%makes pointer correct
+\providecommand{\corname}{Corollary}
+
+\makeatletter
+\NewDocumentEnvironment{cor*}{o}
+ {%
+  \IfValueTF{#1}
+    {\namedcor[#1]\refstepcounter{cor}\def\@currentlabel{(#1)}}%
+    {\namedcor}%
+ }
+ {%
+  \endnamedcor
+ }
+\makeatother
 
 \theoremstyle{definition}
-\newtheorem*{rem}{Remark}
-\newtheorem*{defn}{Definition}
-\newtheorem{defn_num}{Definition}
-\newtheorem*{ex}{Exercise}
+
+\newtheorem*{innerrem}{Remark}
+\newcounter{rem}%makes pointer correct
+\providecommand{\remname}{Remark}
+
+\makeatletter
+\NewDocumentEnvironment{rem}{o}
+ {%
+  \IfValueTF{#1}
+    {\innerrem[#1]\refstepcounter{rem}\def\@currentlabel{(#1)}}%
+    {\innerrem}%
+ }
+ {%
+  \endinnerrem
+ }
+\makeatother
+
+\newtheorem*{innerdefn}{Definition}%%placeholder
+\newcounter{defn}%makes pointer correct
+\providecommand{\defnname}{Definition}
+
+\makeatletter
+\NewDocumentEnvironment{defn}{o}
+ {%
+  \IfValueTF{#1}
+    {\innerdefn[#1]\refstepcounter{defn}\def\@currentlabel{(#1)}}%
+    {\innerdefn}%
+ }
+ {%
+  \endinnerdefn
+ }
+\makeatother
+
 \newtheorem*{scratch}{Scratch Work}
 
-%\newtheorem*{focus}{Central Focus}
-%\newtheorem*{obj}{Objectives}
 
-\newtheorem*{conj}{Conjecture}
+\newtheorem*{namedconj}{Conjecture}
+\newcounter{conj}%makes pointer correct
+\providecommand{\conjname}{Conjecture}
+\makeatletter
+\NewDocumentEnvironment{conj}{o}
+ {%
+  \IfValueTF{#1}
+    {\innerconj[#1]\refstepcounter{conj}\def\@currentlabel{(#1)}}%
+    {\innerconj}%
+ }
+ {%
+  \endinnerconj
+ }
+\makeatother
 
 \newtheorem*{poll}{Poll question}
 \newtheorem{tps}{Think-Pair-Share}[section]
@@ -83,18 +199,34 @@
 }
 
 
+\newcounter{br}%makes pointer correct
+\providecommand{\brname}{In-class Problem}
+
 \newenvironment{br}[1][2in]%
 {%Env start code
 \problemEnvironmentStart{#1}{In-class Problem}
+\refstepcounter{br}
 }
 {%Env end code
 \problemEnvironmentEnd
 }
- \numberwithin{problem}{section}
 
-%\newenvironment{solution}
-%  {\begin{proof}[Solution]}
-%  {\end{proof}}
+\newcounter{ex}%makes pointer correct
+\providecommand{\exname}{Homework Problem}
+\newenvironment{ex}[1][2in]%
+{%Env start code
+\problemEnvironmentStart{#1}{Homework Problem}
+\refstepcounter{ex}
+}
+{%Env end code
+\problemEnvironmentEnd
+}
+
+
+
+\newenvironment{sketch}
+ {\begin{proof}[Sketch of Proof]}
+ {\end{proof}}
 %\newenvironment{hint}
 %  {\begin{proof}[Hint]}
 %  {\end{proof}}
@@ -111,3 +243,9 @@
 \newcommand{\nequiv}{\not\equiv}
 \newcommand{\ord}{\operatorname{ord}}
 \newcommand{\ds}{\displaystyle}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+
+
+
+%%%%%%%%%%%%
+
