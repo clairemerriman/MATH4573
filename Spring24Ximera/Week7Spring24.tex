@@ -1,0 +1,345 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{lessonplanheaderXimera.tex}
+
+%Imports for cross references
+\externaldocument{otherResults}
+\externaldocument{Week1Spring24}
+\externaldocument{Week2Spring24}
+\externaldocument{Week3Spring24}
+\externaldocument{Week4Spring24}
+\externaldocument{Week5Spring24}
+\externaldocument{Week6Spring24}
+
+\StrBetween*[1,1]{\currfilename}{Week}{Sp}[\week]
+
+\title{Week \week--MAT-255 Number Theory}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Monday, February 26: Modular arithmetic calculations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+\item Use Wilson's Theorem to find the least nonnegative residue modulo a prime
+\item Use Fermat's Little Theorem to find the least nonnegative residue modulo a prime
+%\item Use Euler's Theorem to find the least nonnegative residue modulo a composite
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multiplicative inverses using Wilson's Theorem (30 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+First, some important algebra  for multiplicative inverses
+\begin{example}
+\begin{enumerate}
+ \item  Let $n$ be an odd positive integer. Then \[2\left(\frac{n+1}{2}\right)=n+1\equiv 1\pmod{n}.\] So $\frac{n+1}{2}$ is the multiplicative inverse of $2$ modulo $n$. 
+\begin{tps}
+ Why is $\left(\frac{n+1}{2},n\right)=1$?
+\end{tps}
+
+We also have that $n-\frac{n+1}{2}= \frac{n-1}{2}$ and $n-2\equiv -2\pmod{n},$ so $\frac{n-1}{2}$ is the multiplicative inverse of $n-2$ modulo $n.$ Another way to see this is 
+\[-2\left(\frac{n-1}{2}\right)=-n+1\equiv 1\pmod{n}.\] 
+
+\item Let $m$ and $n$ be positive integers such that $n\equiv 1\pmod m.$ Then there exists $k\in\Z$ such that $n=mk+1$ by the \nameref{defn:mod-equiv-all}. Then 
+\[-m\left(\frac{n-1}{m}\right)=-n+1\equiv 1\pmod{n}.\]
+
+\item Let $m$ and $n$ be positive integers such that $n\equiv -1\pmod m.$ Then there exists $k\in\Z$ such that $n=mk-1$ by definition. Then 
+\[m\left(\frac{n+1}{m}\right)=n+1\equiv 1\pmod{n}.\]
+\end{enumerate}
+
+\end{example}
+
+
+\begin{example}
+\begin{enumerate}
+ \item  Practice with Wilson's Theorem: 
+ Find  $\frac{31!}{23!} \pmod{11}.$
+ \begin{align*}
+ x\equiv \frac{31!}{23!}	 & \equiv & 24(25)(26)(27)(28)(29)(30)(31) \pmod{11}\\
+ 			 & \equiv & 2(3)(4)(5)(6)(7)(8)(9) \pmod{11}.
+\end{align*}
+Then $-x\equiv 10! \equiv -1\pmod{11}.$ Therefore, $x\equiv 1\pmod{11}.$
+
+\item Let $p$ be an odd prime $p,$ then $2(p-3)!\equiv -1 \pmod{p}$.
+ 
+\begin{proof}
+ Let $p$ be an odd prime, then $(p-1)!\equiv -1\pmod{p}$ by Wilson's Theorem. Multiplying both sides of the congruence by $-1$ gives $(p-2)!\equiv 1\pmod{p}.$ Since $(p-2)!=(p-3)!(p-2)$ by the definition of factorial, $p-2\equiv -2\pmod{p}$ is the multiplicative inverse of $(p-3)!$ modulo $p.$ Thus, 
+\begin{align*}
+ -2(p-3)!	&\equiv 1\pmod{p}\\
+ 2(p-3)!	 & \equiv & -1\pmod{p}.\qedhere
+\end{align*}
+\end{proof}
+\end{enumerate}
+
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finding least nonnegative residue Fermat's Little Theorem (20 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{example}
+\begin{enumerate}
+ \item  Find the least nonnegative residue of $29^{202}$ modulo $13$. 
+ 
+ First, note that $29\equiv 3\pmod{13}$ and $202=12(10)+82=12(10)+12(6)+10=12(16)+10.$  Thus,
+ \[29^{202}\equiv3^{202}\equiv (3^{12})^{16}  3^{10}\equiv 1^{16} 3^{10}\pmod{13}\]
+ From here,  we have two  options: 
+\begin{description}
+ \item[Keep reducing:] For this problem, this is the easier method: \[3^{10}\equiv (3^3)^3 3\equiv (27)^3 3\equiv 3\pmod{13}.\]
+ \item[Find inverse:] Note that $3^{12}\equiv 1\pmod{13},$ so $3^{10}$ is the multiplicative inverse of $3^2\equiv 9\pmod{13}.$ Since $9(3)\equiv 1\pmod{13},$ $3^{10}\equiv 1\pmod{13}.$
+\end{description}
+
+\item Find the least nonnegative residue of $71^{71}$ modulo $17$. 
+
+First, note that $71\equiv 3\pmod{17}$ and $71=8(8)+7.$  Thus,
+ \[71^{71}\equiv3^{71}\equiv (3^{8})^{8}  3^{7}\equiv 1^{8} 3^{7}\pmod{17}\]
+Then \[3^7\equiv 3^{3}(3^3)(3)\equiv 10(10)(3)\equiv 10(-4)\equiv -6\equiv 11\pmod{17}.\]
+\end{enumerate}
+\end{example}
+
+\begin{cor*}[Corollary 2.14]\label{cor:inv-fermat}
+ Let $p$ be a prime. If $a\in\Z$ with $p\nmid a,$ then $a^{p-2}$  is the multiplicative inverse of $a$ modulo $p$.
+\end{cor*}
+
+\begin{tps} Prove:
+  Let $p$ be a prime. If $a,k\in\Z$ with $p\nmid a$ and $0\leq k<p,$ then $a^{p-k}$  is the multiplicative inverse of $a^k$ modulo $p$.
+  
+  
+\begin{proof}
+ Let $p$ be a prime. If $a\in\Z$ with $p\nmid a,$ then by Fermat's Little Theorem, $a^{p-1}\equiv 1\pmod{p.}$ If $k\in\Z$ with $0\leq k<p,$ then $a^{p-1}=a^{p-k}a^k.$ Thus, $a^{p-k}a^k\equiv 1\pmod{p}.$
+\end{proof}
+\end{tps}
+
+\begin{example}
+ Find all incongruent solutions to $9x\equiv 21\pmod{23}$.
+ 
+Since$(9,23)=1,$ there is only one  incongruent solution  modulo $23.$ By \nameref{cor:inv-fermat}, $9^{21}$ is the multiplicative inverse of $9$ modulo ${23}$. Thus, $x\equiv 21(9^{21})\pmod{23.}$
+
+Alternately, $3^{20}$ is the multiplicative inverse of $3^2$ modulo ${23},$ so $x\equiv 21(3^{20})\equiv  (3^{21})7\pmod{23}.$ Since $3^{21}$ is the multiplicative inverse of $3$ modulo $23,$ so $3^{21}\equiv 8\pmod{23}.$ Thus, $x\equiv 7(8)\equiv 10\pmod{23}.$
+\end{example}
+
+\begin{example}
+ Let $p$ be prime and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then $a^p\equiv b^p\pmod{p}$ if and only if $a\equiv b\pmod{p}$.
+ 
+ 
+\begin{proof}
+  Let $p$ be prime and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ 
+  
+  ($\Leftarrow$) If $a\equiv  b\pmod{p},$ then $a^p\equiv b^p\pmod{p}$ by repeated applications of Proposition 2.4.
+  
+  ($\Rightarrow$)  If $a^p\equiv  b^p\pmod{p},$ then by Fermat's Little Theorem, 
+  \[a\equiv a^{p-1}a\equiv b^{p-1}b\equiv b\pmod p. \]
+\end{proof}
+\begin{warning}
+ This statement is only true for primes. Since
+\[
+ 1^2\equiv 3^2\equiv 5^2\equiv 7^2\pmod{8},\quad 2^2\equiv 6^2\pmod{8},
+ \]
+ 
+\[
+ 1^8\equiv 3^8\equiv 5^8\equiv 7^8\pmod{8},\quad  2^8\equiv 6^8\pmod{8}.
+\]
+\end{warning}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, February 28: Modular arithmetic calculations and the $\phi-$ function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+\item Use Euler's Theorem to find the least nonnegative residue modulo a composite
+\item Use Euler's Theorem to find the multiplicative inverse of an integer modulo $m$
+\item Prove $\phi(4)\phi(5)=\phi(20)$ using an outline that mirrors the proof that $\phi(m)\phi(n)=\phi(mn)$ when $(m,n)=1$
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multiplicative inverses using Euler's Extension of Fermat's Little Theorem (30 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example}\label{ex-euler-solve-cong}
+ 
+\begin{enumerate}
+ \item Find the least nonnegative residue of $29^{202}$ modulo $20$. 
+ 
+ The integers $1,3,7,9,11,13,17,19$ are relatively prime to $20.$ Thus $\phi(20)=8.$ Also note that $29\equiv 9\pmod{20}$ and $202=8(25)+2,$ so 
+ \[29^{202}\equiv 9^{202}\equiv(9^8)^{25} 9^2\equiv 1^{25} 9^2\equiv 1\pmod{20}\] 
+ 
+ \item Find the least nonnegative residue of $71^{71}$ modulo $16$.
+ 
+ The integers $1,3,5,7,9,11,13,15$ are relatively prime to $16.$ Thus $\phi(16)=8.$ Also note that $71\equiv 7\pmod{16}$ and $71=8(8)+7,$ so 
+  \[71^{71}\equiv 7^{71}\equiv(7^8)^{8} 7^7\equiv 1^{8} 7^7\pmod{16}\] 
+Since $7^8\equiv 7^7 7\equiv 1\pmod{16},$ $7^7$ is the multiplicative inverse of $7$ mulod $16.$
+
+Using the Euclidean algorithm, 
+\begin{align*}
+ 16	& = 7(2) + 2,	&2&=16+7(-2)\\
+ 7	& = 2(3) + 1,	&1&=7-2(3)=7-(16+7(-2))(3)=16(-3)+7(7)
+\end{align*}
+Thus, $7(7)\equiv 1\pmod{16},$ and $7^7\equiv 7\pmod{16}.$
+\end{enumerate}
+\end{example}
+
+\begin{cor*}[Corollary 2.19]\label{cor:inv-euler}
+ Let $a,m\in\Z$ with $m>0.$  If $(a,m)=1,$ then $a^{\phi(m)-1}$ is the multiplicative inverse of $a$ modulo $m$.
+\end{cor*}
+
+\begin{example}
+ Find all incongruent solutions to $9x\equiv 21\pmod{25}$.
+ 
+The only positive integers less than $25$ that are \emph{not} relatively prime to $25$ are $5,10,15,20$. Thus, $\phi(25)=24-4=20.$
+
+Since$(9,25)=1,$ there is only one  incongruent solution  modulo $25.$ By \nameref{cor:inv-euler}, $9^{19}$ is the multiplicative inverse of $9$ modulo ${25}$. Thus, $x\equiv 21(9^{19})\pmod{25.}$
+
+Alternately, $3^{18}$ is the multiplicative inverse of $3^2$ modulo ${25},$ so $x\equiv 21(3^{18})\equiv  (3^{19})7\pmod{25}.$
+\end{example}
+
+The previous example does not ask for the least nonnegative residue, but let's find it anyway.
+
+\begin{example}
+  Find the least nonnegative residue of $(9^{19})21$ modulo $25$.
+
+  First, note that $(9^{19})21=(3^2)^19(21)$. From here there are two options:
+
+  \begin{description}
+    \item[Factor $21$:]
+      \begin{align*}
+        (9^{19})21\equiv (3^2)^19(3)(7)
+        \equiv (3^{39})(7)
+        \equiv (3^{20})(3^{19})(7) \pmod{25}
+      \end{align*}
+      By \nameref{thm:euler-FlT}, $3^{20}\equiv 1\pmod{25}$ and by \nameref{cor:inv-euler}, $3^{19}$ is the multiplicative inverse of $3$ moddulo $25.$ Since $3(-8)\equiv -24\equiv 1\pmod{25},$ $3^{19}\equiv -8\pmod{25.}$ Thus, 
+      \begin{align*}
+        (9^{19})21\equiv (-8)(7)\equiv -56\equiv 19 \pmod{25}.
+      \end{align*}
+
+    \item[Using $21\equiv -4\pmod{25}$:] 
+      \begin{align*}
+        (9^{19})21\equiv (3^2)^19(-4)
+        \equiv (3^{38})(-4)
+        \equiv (3^{20})(3^{18})(-4) \pmod{25}
+      \end{align*}
+      Since $3^{20}=3^{18}(3^2)\equiv 1\pmod{25}$ by \nameref{thm:euler-FlT}, $3^{18}$ is the multiplicative inverse of $3^2=9$ modulo $25.$ Since $9(-11)\equiv -99\equiv 1\pmod{25},$ we have $3^{18}\equiv -11\pmod{25}.$ Thus, 
+      \begin{align*}
+        (9^{19})21\equiv (-11)(-4)\equiv 44 \equiv 19 \pmod{25}.
+      \end{align*}
+  \end{description}
+  
+\end{example}
+
+\begin{br}\label{br:modpq}
+  Let $p,q$ be distinct primes. Prove that $p^{q-1}+q^{p-1}\equiv 1 \pmod{pq}.$
+ 
+ 
+  \begin{proof} Let $p,q$ be distinct primes. 
+   Then $\answer{q^{p-1}\equiv 1}\pmod{p}$ and  $\answer{p^{q-1}\equiv 1}\pmod{q}$ by Fermat's Little Theorem, and $\answer{p^{q-1}\equiv 1}\equiv0\pmod{p}$ and  $\answer{q^{p-1}\equiv 1}\equiv 0\pmod{q}$ by $\answer{\textnormal{definition}}.$
+   
+   Thus, $p^{q-1}+q^{p-1}\equiv \answer{1} \pmod{p}$ and $p^{q-1}+q^{p-1}\equiv \answer{1} \pmod{p}$ by $\answer{\textnormal{modular addition}}.$
+
+   (Finish proof using definition of congruence modulo $p$ and $q$)
+  \end{proof}
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Euler $\phi$-function (20 min)}\label{sec-phi-start}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will also find a formula for $\phi(n)$ in general. The following exercise will outline the general proof:
+
+\begin{br}\label{br:multiplicative-proof}
+  Let us prove that $\phi(20)=\phi(4)\phi(5)$. First, note that $\phi(4)=\answer{2}$ and $\phi(5)=\answer{4}$, so $\phi(20)=\answer{8}$.
+  \begin{enumerate}
+    \item A number $a$ is relatively prime to $20$ if and only if $a$ is relatively prime to $\answer{4}$ and $\answer{5}$ %(first blank should be smaller than second blank for the automatic grading to work, both should be relevant to what we are trying to show). 
+    
+    \item  
+    We can partition the positive integers less that $20$ into 
+    \begin{align*}
+      & 0\equiv\answer{4}\equiv\answer{8}\equiv\answer{12}\equiv\answer{16}\pmod 4\\
+      & 1\equiv\answer{5}\equiv\answer{9}\equiv\answer{13}\equiv\answer{17}\pmod 4\\
+      & 2\equiv\answer{6}\equiv\answer{10}\equiv\answer{14}\equiv\answer{18}\pmod 4\\
+      & 3\equiv\answer{7}\equiv\answer{11}\equiv\answer{15}\equiv\answer{19}\pmod 4
+    \end{align*}
+ 
+    For any $b$ in the range $0,1,2,3$, define $s_b$ to be the number of integers $a$ in the range $0,1,2,\dots, 19$ such that $a\equiv b \pmod 4$ and $\gcd(a,20)=1$. Thus, $s_0=\answer{0}, s_1=\answer{4}, s_2=\answer{0}$, and $s_3=\answer{4}$.
+ 
+    We can see that when $(b,4)=1$, $s_b=\phi(\answer{5})$ and when $(b,4)>1$, $s_b=\answer{0}$.
+ 
+    \item $\phi(20)=s_0+s_1+s_2+s_3$. Why? 
+ 
+    \begin{solution}
+      All of the positive integers less than or equal to $20$ is in exactly one of the congruence classes above. The $s_i$ count how many integers in each congruence class are relatively prime to $20$. If we add them up, we have counted all positive integers less than or equal to $20$.
+    \end{solution}
+ 
+    \item We have seen that $\phi(20)=s_0+s_1+s_2+s_3$, that when $(b,4)=1$, $s_b=\phi(5)$, and that when $(b,4)>1$, $s_b=0$. Thus, we can say that $\phi(20)=0+\phi(\answer{5})+0+\phi(\answer{5})$. To finish the 	``proof" we show that there are $\phi(\answer{4})$ integers $b$ where $(b,4)=1$. 
+ 
+    \begin{solution}
+      There are $\answer{4}$ congruence classes modulo 4. Of these, $\answer{2}=\phi(\answer{4})$ have elements that are relatively prime to $20$. Thus, $\phi(20)=\phi(4)\phi(5)$.
+    \end{solution}
+  \end{enumerate}
+ 
+\end{br}
+
+\section{Friday, March 1: The $\phi-$ function and a preview of primitive roots}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+  \item Prove that $\phi(m)\phi(n)=\phi(mn)$ when $(m,n)=1$
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+    \item[Turn In] Paper 2
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quiz (10 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{The Euler $\phi$-function (20 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will use \autoref{br:multiplicative-proof} as an outline to prove 
+
+\begin{thm*}[Theorem 3.2]\label{thm:phi-multiplicative}
+  Let $m$ and $n$ be positive integers where $(m,n)=1$. Then $\phi(mn)=\phi(m)\phi(n).$
+\end{thm*}
+maybe works?
+
+\begin{proof} 
+  First, we note that an integer $a$ is relatively prime to $mn$ if and only if it is relatively prime to $m$ and $n,$ since $m$ and $n$ (together) have the same prime divisors as $mn$.
+
+  
+  We can partition the positive integers less that $mn$ into 
+    \begin{alignat*}{8}
+      &0  & \equiv & m  & \equiv & 2m & \equiv &\cdots  & \equiv & (n-1)m\pmod{m}\\
+      &1  & \equiv & m + 1  & \equiv & 2m + 1 & \equiv &\cdots  & \equiv & (n-1)m + 1\pmod{m}\\
+      &2  & \equiv & m + 2  & \equiv & 2m + 2 & \equiv & \cdots  & \equiv & (n-1)m + 2\pmod{m}\\
+      & \vdots & & \vdots& & \vdots & & & &  \vdots\\
+      &m-1  & \equiv & 2m - 1  & \equiv & 3m -1 & \equiv & \cdots  & \equiv & nm - 1\pmod{m}
+    \end{alignat*}
+ 
+    For any $b$ in the range $0,1,2,\dots,m-1$, define $s_b$ to be the number of integers $a$ in the range $0,1,2,\dots, mn-1$ such that $a\equiv b \pmod{m}$ and $\gcd(a,mn)=1$. For each equivalence class $b,$ $\gcd(b,m)\mid km +b$ by linear combination. Thus, $s_b={0}$ if $(b,m)>1.$ If $\gcd(b,m)=1$, the arithmetic progression, \{b, m + b, 2m + b, \dots, (n-1)m+ b\} contains $n$ elements. By \autoref{br:arithmetic-progression}, the arithmetic progression is a \nameref{defn:complete-residue} modulo $n,$ so $\phi(n)$ elements are relatively prime to $n$ and thus $mn.$
+ 
+    Thus, can see that when $(b,m)=1$, $s_b=\phi(n)$ and when $(b,m)>1$, $s_b={0}$.
+ 
+    Since all of the positive integers less than or equal to $mn$ is in exactly one of the congruence classes above and t he $s_i$ count how many integers in each congruence class are relatively prime to $mn$, $phi(mn)=s_0+s_1+\cdots +s_{m-1}.$
+ 
+    Since $\phi(m)$ of the $s_i=\phi(n)$ and the rest are 0, $\phi(mn)=s_0+s_1+\cdots +s_{m-1}=\phi(m)\phi(n).$
+ 
+\end{proof}
+
+
+\begin{br}\label{br:arithmetic-progression}
+  Complete the proof of \nameref{thm:phi-multiplicative} by proving that, if $m, n,$ and $i$ are positive integers with ($m, n) = (m, i) = 1,$ then the integers $i, m + i, 2m +i,..., (n - 1)m +i$ form a complete system of residues modulo $n.$
+\end{br}
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{lessonplanheaderXimera.tex}
+
+
+\title{Other Results from Strayer}
+
+
+\begin{document}
+
+\begin{axiom}[Well Ordering Principle]\label{well-order}
+    Every nonempty set of positive integers contains a least element.
+\end{axiom}
+    \section*{Divisibility facts}\label{sec:additional-div}
+
+    \begin{lem*}[Proposition 1.2]\label{lem:linear-combo}
+         Let $a,b,c,d\in\Z.$ If $c\mid a$ and $c\mid d,$ then $c\mid ma+nb.$
+    \end{lem*}
+
+
+    \begin{prop*}[Proposition 1.10]\label{prop:div-gcd-rel-prime}
+        Let $a,b\in\Z$ with $(a,b)=d.$ Then $(\tfrac{a}{d},\tfrac{b}{d})=1.$
+    \end{prop*}
+
+
+    \begin{lem*}[Lemma 1.12]\label{lem:gcd-remainders}
+     If $a,b\in\Z,$ $a\geq b\gt 0,$ and $a=bq+r$ with $q,r\in|Z,$ then $(a,b)=(b,r).$
+    \end{lem*}
+    
+
+\section*{Prime facts}\label{sec:additional-primes}
+
+\begin{lem*}[Lemma 1.14]\label{lem:irreducible-prime}
+    Let $a,b,p\in\Z$ with $p$ prime. If $p\mid ab,$ then $p\mid a$ or $p\mid b.$
+\end{lem*}
+
+\begin{cor*}[Corollary 1.15]\label{cor:irreducible-prime} Let $a_1,a_2,\dots,a_n,p\in\Z$ with $p$ prime. If $p\mid a_1a_2\cdots a_n,$ then $p\mid a_i$ for some $i.$
+\end{cor*}
+
+\begin{prop*}[Proposition 1.17]\label{prop:form-lcm-gcd}
+ Let $a,b\in\Z$ with $a,b\gt 1.$ Write $a=p_1^{a_1}p_2^{a_2}\cdots  p_n^{a_n}$ and $b=p_1^{b_1}p_2^{b_2}\cdots p_n^{b_n}$ where $p_1,p_2,\dots,p_n$ are distinct primes and ${a_1},{a_2}\cdots,{a_n},{b_1},{b_2},\cdots,{b_n}$ are nonnegative integers (possibly zero). Then
+        \[(a,b)=p_1^{\min\{a_1,b_1\}}p_2^{\min\{a_2,b_2\}}\cdots p_n^{\min\{a_n,b_n\}}\]
+        and 
+        \[[a,b]=p_1^{\max\{a_1,b_1\}}p_2^{\max\{a_2,b_2\}}\cdots p_n^{\max\{a_n,b_n\}}.\]
+\end{prop*}
+
+\begin{thm*}[Theorem 1.19]\label{thm:prod-lcm-gcd} Let $a,b\in\Z$ with $a,b\gt 0.$ Then $(a,b)[a,b]=ab.$
+\end{thm*}
+
+\section*{Congruences}
+
+\begin{prop*}[Proposition 2.1]\label{prop:equiv-rel}
+    Let $a,b,c,d,m\in\Z$ with $m>0,$ then:
+        \begin{enumerate}
+            \item\label{equiv-reflect} $a\equiv a \pmod{m}$
+            
+            \item\label{equiv-sym} $a\equiv b \pmod{m}$ implies $b\equiv a \pmod{m}$
+
+            \item\label{equiv-trans} $a\equiv b \pmod{m}$ and $b\equiv c \pmod{m}$ implies $a\equiv c \pmod{m}$
+\end{enumerate}
+\end{prop*}
+
+
+\begin{prop*}[Proposition 2.4]\label{prop:add-mult}
+    Let $a,b,c,d,m\in\Z$ with $m>0,$ then:
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item\label{equiv-add} $a\equiv b \pmod{m}$ and $c\equiv d \pmod{m}$ implies $a+c \equiv b+d \pmod{m}$ 
+        \item\label{equiv-multiply} $a\equiv b\pmod{m}$ and $c\equiv d \pmod{m}$ implies $ac\equiv bd \pmod{m}$.
+    \end{enumerate}
+\end{prop*}
+
+
+\begin{prop*}[Proposition 2.5]\label{prop:equiv-gcd}
+    Let $a,b,c,m\in\Z$ with $m>0.$ Then $ca\equiv cb\pmod{m}$ if and only if $a\equiv b\pmod{\tfrac{m}{(a,m)}}.$
+\end{prop*}
+
+
+\begin{lem*}[Chapter 2, Exercise 9]\label{ex-equiv-upmod}
+    Let $a,b,c,m\in\Z$ with $m>0.$ If $a\equiv b \pmod{m}$ then $ac\equiv bc \pmod{mc}$ for $c>0$.
+\end{lem*}
+
+
+\begin{cor*}[Corollary 2.15]\label{cor:a_power_prime_mod}
+    Let $p$ be a prime number and let $a\in\Z.$ Then $a^p\equiv a\pmod{p}.$
+\end{cor*}
+
+\section*{The Euler Phi-Function}
+
+\begin{thm*}[Theorem 3.3]\label{thm:phi-prime-power}
+    Let $p$ be prime and let $a\in\Z$ with $a>0.$ Then $\phi(p^a)=p^a-p^{a-1}=p^{a-1}(p-1).$
+\end{thm*}
+\section*{Diophantine equations}
+\begin{thm*}[Theorem 6.2]\label{thm:linear-dioph}
+Let $ax+by=c$ be a linear Diophantine equation in two variables $x$ and $y$ and let $d=(a,b).$ If $d\nmid c,$ then the equation has no solutions. If $d\mid c$ then there are infinitely many solutions of the form \[
+            x=x_0+\frac{b}{d}n, y=y_0-\frac{a}{d}n, \text{ for } n\in\Z.
+        \]
+\end{thm*}
+
+
+\end{document}

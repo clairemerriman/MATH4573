@@ -1,0 +1,737 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{lessonplanheaderXimera.tex}
+
+%Imports for cross references
+\externaldocument{otherResults}
+\externaldocument{Week1Spring24}
+\externaldocument{Week2Spring24}
+\externaldocument{Week3Spring24}
+\externaldocument{Week4Spring24}
+\externaldocument{Week5Spring24}
+\externaldocument{Week6Spring24}
+\externaldocument{Week7Spring24}
+
+\theoremstyle{definition}
+\newtheorem*{annotation}{Annotation}
+
+
+
+\StrBetween*[1,1]{\currfilename}{Week}{Sp}[\week]
+
+\title{Week \week--MAT-255 Number Theory}
+
+\begin{document}
+\section{Monday, March 11: Order of elements modulo $m$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+\item Define the order of an element modulo $m$
+\item Find the order of an element modulo $m$
+\item Prove basic facts about the order of an element modulo $m$
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Review of $\phi$-function (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+    From before break, \nameref{thm:phi-multiplicative} states if $(m,n)=1$ for positive integers $m$ and $n$, then $\phi(mn)=\phi(m)\phi(n).$ 
+
+    Thus, $\phi(63)=\phi(9(7))=\phi(9)\phi(7)=6(6).$
+\end{remark}
+
+\setcounter{ex}{7}
+\begin{ex} Chapter 2, Exercise 71, using \nameref{thm:euler-FlT} and the \nameref{CRT}
+	\begin{enumerate}
+ 		\item\label{ex:proof-with-euler-crt} Let $n$ be an integer not divisible by $3$. Prove that $n^7\equiv n\pmod{63}$.
+ 		
+         \begin{proof}
+            Let $n$ be an integer that is not divisible by $3$. By the \nameref{CRT}, 
+            \begin{align*}
+                x&\equiv n^7 \pmod{7}\\
+                x&\equiv n^7 \pmod{9}
+            \end{align*} 
+            has a unique solution modulo $63.$ 
+            By \nameref{cor:a_power_prime_mod}, $n^7\equiv n\pmod{7}.$ 
+            
+            Since $(n,9)=1$ and $\phi(9)=6,$ \nameref{thm:euler-FlT} says that $n^6\equiv 1\pmod{9}.$ Multiplying both sides of the congruence by $n$ gives $n^7\equiv n\pmod{9}.$ Thus, $7\mid n^7-n$ and $9\mid n^7-n$ by definition. Since $(7,9)=1,$ $63\mid n^7-n,$ so $n^7\equiv n\pmod{63}.$
+         \end{proof}
+
+		\item Let $n$ be an integer divisible by $9$. Prove that $n^7\equiv n \pmod{63}$.
+		\begin{remark} Reviewing the proof of part \ref{ex:proof-with-euler-crt}:
+            \nameref{cor:a_power_prime_mod} only requires the modulus is prime. \nameref{thm:euler-FlT} does require $(n,m)=1,$ so you cannot use it for this problem, but $n\equiv 0\pmod{9}.$
+        \end{remark}
+	\end{enumerate}
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Order of $a$ modulo $m$ (35 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[order of $a$ modulo $m$]\label{defn:order}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Then the \emph{order of $a$ modulo $m$}, denoted $\ord_m a$, is the smallest positive integer $n$ such that $a^n\equiv 1\pmod{m}.$
+\end{definition}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|cc|}
+    $a^1$ & $a^2$ & $a^3$ & $a^4$ & $a^5$ & $a^6$ && $\ord_7a$\\\hline
+    $1$ & $1$ & $1$ & $1$ & $1$ & $1$ && $1$\\
+    $2$ & $4$ & $1$ & $2$ & $4$ & $1$ && $3$\\
+    $3$ & $2$ & $6$ & $4$ & $5$ & $1$ && $6$\\
+    $4$ & $2$ & $1$ & $4$ & $2$ & $1$ && $3$\\
+    $5$ & $4$ & $6$ & $2$ & $3$ & $1$ && $6$\\
+    $6$ & $1$ & $6$ & $1$ & $6$ & $1$ && $2$\\
+\end{tabular}
+\captionof{table}{Table of exponents modulo $7$}\label{table:exp_mod7}
+\end{center}
+
+There are many patterns in this table that we will talk about in the future, but the first is that $\ord_m a\mid \phi(m).$
+
+
+\begin{prop*}[Proposition 5.1]\label{prop:order_divides_phi}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Then $a^n\equiv 1\pmod{m}$ for some positive integer $n$ if and only if $\ord_m a\mid n.$ In particular, $\ord_m a\mid \phi(m).$
+\end{prop*}
+\begin{proof}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$
+
+    \begin{description}
+        \item[($\Rightarrow$)] We want to show if $a^n\equiv 1\pmod{m}$ for some positive integer $n,$ then $\ord_m a\mid n.$ 
+        
+        By the \nameref{div-alg}, there exist unique integers $q, r$ such that $n=(\ord_m a)q+r$ and $0\leq r< \ord_m a.$ Thus, 
+            \begin{align*}
+                1 & \equiv a^n \equiv a^{(\ord_m a)q+r}\equiv (a^{(\ord_m a)})^q a^r \equiv a^r\pmod{m}
+            \end{align*}
+        since $a^{(\ord_m a)}\equiv 1\pmod{m}$ by definition of \nameref{defn:order}. Since $a^r\equiv 1\pmod{m}$ and $0\leq r< \ord_m a,$ if must be that $r=0,$ otherwise $\ord_m a$ is not the smallest positive integer where $a^k\equiv 1\pmod{m}.$
+
+        \item[($\Leftarrow$)] We want to show if $\ord_m a\mid n$ for some positive integer $n,$ then $a^n\equiv 1\pmod{m}.$
+        
+        If $\ord_m a\mid n,$ then there exists an integer $k$ such that $(\ord_m a)k=n$. Thus, \[a^n\equiv (a^{\ord_m a})^k\equiv 1\pmod{m}\] by definition of \nameref{defn:order}.\qedhere
+    \end{description}
+\end{proof}
+
+
+\begin{prop*}[Proposition 5.2]\label{prop:exponents_mod_order}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Then $a^i\equiv a^j\pmod{m}$ for nonnegative integers $i, j$ if and and only if $i\equiv j\pmod{\ord_m a}.$
+\end{prop*}
+
+
+\begin{example}
+    Let $a=2$ and $m=7.$ Since $\ord_7 2=3,$ $2^i\equiv 2^j\pmod{7}$ if and only if $i\equiv j\pmod{3}.$
+
+
+    \begin{sketch}
+        Let $a=2$ and $m=7.$ Without loss of generality, assume that $i\geq j.$ 
+
+        \begin{description}
+            \item[($\Rightarrow$)] Assume that $2^i\equiv 2^j\pmod{7}.$ Then by exponent rules, $2^j 2^{i-j}\equiv 2^j\pmod{7}.$ Since $(2^i,7)=1,$ there exists a multiplicative inverse of $2^i$ modulo $7$ by \nameref{cor:condition-invertible}, say $(2^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[2^{i-j}\equiv (2^j)^\prime 2^j 2^{i-j}\equiv (2^j)^\prime 2^j\equiv 1\pmod{7}.\]
+            By \nameref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
+
+            \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{3}.$ Then $3\mid i-j$ by definition. Since $\ord_7 2=3,$ \nameref{prop:order_divides_phi} states that $2^{i-j}\equiv 1\pmod{7}.$ Multiplying both sides of the congruence by $2^j$ gives $2^i\equiv 2^j\pmod{7}.$ 
+        \end{description}
+    \end{sketch}
+\end{example}
+
+
+\begin{proof}[Proof of \nameref{prop:exponents_mod_order}]
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Without loss of generality, assume that $i\geq j$ for nonnegative integers $i$ and $j.$ 
+
+        \begin{description}
+            \item[($\Rightarrow$)] Assume that $a^i\equiv a^j\pmod{m}.$ Then by exponent rules, $a^j a^{i-j}\equiv a^j\pmod{m}.$ Since $(a^i,m)=1$ by assumption, there exists a multiplicative inverse of $a^i$ modulo $m$ by \nameref{cor:condition-invertible}, say $(a^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[a^{i-j}\equiv (a^j)^\prime a^j a^{i-j}\equiv (a^j)^\prime a^j\equiv 1\pmod{m}.\]
+            By \nameref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
+
+            \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{\ord_m a}.$ Then $\ord_m a\mid i-j$ by definition, and \nameref{prop:order_divides_phi} states that $a^{i-j}\equiv 1\pmod{m}.$ Multiplying both sides of the congruence by $a^j$ gives $a^i\equiv a^j\pmod{m}.$ 
+        \end{description}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reading for March 13: Primitive roots modulo $p$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{example}{0}
+The original scan on Moodle is a bit hard to read, especially as some parts are annotated and some parts are covered up--since I have not receieved the book from interlibrary loan to re-scan, I will transcribe (incorporating the annotations/references to our textbook and examples.)
+
+\noindent\textbf{Turn in:} For each result in the typed or scanned notes, identify the result in our textbook. If it is a special case of the theorem in the textbook, (ie, the reading only proves the theorem for primes or $d=qs$), also note this
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Definition of primitive root}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+If $a$ is a nonzero element of $\Z_7$ (ie, $a\not\equiv 0\pmod{7}$), then \nameref{FlT} tells us that $a^6\equiv 1\pmod{7}.$ This implies that the order of every element of $\Z_7$ is at most $6$. At the beginning of this chapter (\nameref{table:exp_mod7}) we saw that $\ord_7 3=6.$ We can also say that the element $3\in\Z_7$ has order $6.$
+
+
+\begin{annotation}
+    The notation $\overline{a}\in\Z_m$ is a more group theory way of writing $a\pmod{m},$ where $\overline{a}$ referes to the congruence class of $a$ modulo $m.$ See Strayer Chapter 2, Example 4.
+\end{annotation}
+
+\begin{definition}[Definition 10.3.1]
+    Let $p$ be prime and let $\overline{a}\in \Z_p$ with $a\not\equiv 0\pmod{p}.$ Then $\overline{a}$ is said to be a \emph{primitive root in $\Z_p$} or \emph{primitive root modulo $p$} if $\ord_p a=p-1.$
+\end{definition}
+
+\begin{annotation}
+    See also to Strayer Chapter 5, Definition 2.
+\end{annotation}
+
+\begin{remark}
+    Primitive roots may also be defined for $\Z_n$ when $n$ is composite. (See Paper 3 topics)
+\end{remark}
+
+
+\begin{example}\label{ex:prime_roots_7}
+    
+    \begin{enumerate}
+        \item Is $\overline{2}\in\Z_7$ a primitive root?
+        \item Is $\overline{5}\in\Z_7$ a primitive root?
+    \end{enumerate}
+    
+    \begin{solution} Computing powers of $2$ and $5$ modulo $7,$ we find 
+        
+        \begin{align*}
+            2^1 & \equiv 2\pmod{7}  
+                &5^1&\equiv 5\pmod{7}\\
+            2^2 & \equiv 4\pmod{7}  
+                &5^2&\equiv 4\pmod{7}\\
+            2^3 & \equiv 1\pmod{7}  
+                &5^3&\equiv 6\pmod{7}\\
+            &   &5^4&\equiv 2\pmod{7}\\
+            &   &5^5&\equiv 3\pmod{7}\\            
+            &   &5^6&\equiv 1\pmod{7}\
+        \end{align*}
+        \begin{enumerate}
+            \item Thus, the order of $\overline{2}$ is $3,$ so $\overline{2}$ is not a primitive root (in $\Z_7$) 
+            \item We see that the order of $\overline{5}$ is $6;$ hence, $\overline{5}$ is a primitive root (in $\Z_7$) 
+        \end{enumerate}
+    \end{solution}
+\end{example}
+
+
+\begin{example}\label{ex:prime_roots_11}
+    Determine which elements of $Z_{11}$ are primitive roots.
+
+    
+    \begin{annotation}
+        We have not determined the order of elements modulo $11,$ so here is a chart:
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|cc|}
+                $a^1$ & $a^2$ & $a^3$ & $a^4$ & $a^5$ & $a^6$ & $a^7$ & $a^8$ & $a^9$ & $a^{10} $&& $\ord_{11}a$\\\hline
+                $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$  && $1$\\
+                $2$ & $4$ & $8$ & $5$ & $10$ & $9$ & $7$ & $3$ & $6$ & $1$ && $10$\\
+                $3$ & $9$ & $5$ & $4$ & $1$ & $3$ & $9$ & $5$ & $4$ & $1$ && $5$\\
+                $4$ & $5$ & $9$ & $3$ & $1$ & $4$ & $5$ & $9$ & $3$ & $1$  && $5$\\
+                $5$ & $3$ & $4$ & $9$ & $1$ & $5$ & $3$ & $4$ & $9$ & $1$ && $5$\\
+                $6$ & $3$ & $7$ & $10$ & $5$ & $8$ & $7$ & $9$ & $2$ & $1$ && $10$\\
+                $7$ & $5$ & $2$ & $3$ & $10$ & $4$ & $6$ & $9$ & $8$ & $1$ && $10$\\
+                $8$ & $9$ & $6$ & $4$ & $10$ & $3$ & $2$ & $5$ & $7$ & $1$ && $10$\\
+                $9$ & $4$ & $3$ & $5$ & $1$ & $9$ & $4$ & $3$ & $5$ & $1$  && $10$\\
+                $10$ & $1$ & $10$ & $1$ & $10$ & $1$ & $10$ & $1$ & $10$ & $1$  && $2$\\
+            \end{tabular}
+            \captionof{table}{Table of exponents modulo $11$}\label{table:exp_mod11}
+            \end{center}
+    \end{annotation}
+    \begin{solution}
+        From \nameref{table:exp_mod11}, we determined the orders of all of the nonzero elements of $\Z_{11}:$
+
+        \begin{align*}
+            \ord_{11} 1&=1 \\
+            \ord_{11} 10&=2 \\
+            \ord_{11} 3&=\ord_{11} 4=\ord_{11} 5=\ord_{11} 9=5\\
+            \ord_{11} 2&=\ord_{11} 6=\ord_{11} 7=\ord_{11} 8=10.
+        \end{align*}
+        Hence, the primitive roots in $\Z_{11}$ (ie, the primitive roots modulo $11$) are $\overline{2},\overline{6},\overline{7},$ and $\overline{8}.$
+    \end{solution}
+\end{example}
+
+
+\begin{example}\label{ex:prime_roots_17}
+    Find a primitive root in $\Z_{17},$ if one exists.
+
+    
+    \begin{solution}
+        For want of a better strategy, we will check the orders of the elements $\overline{1},\overline{2},\overline{3},\dots,$ until we find an element of order 16.
+        
+        \begin{align*}
+            1^1&\equiv 1\pmod{17} 
+                &2^1&\equiv 2\pmod{17} 
+                &3^1&\equiv 3\pmod{17}\\
+            &   &2^2&\equiv 4\pmod{17} 
+                &3^2&\equiv 9\pmod{17}\\
+            &   &2^3&\equiv 8\pmod{17} 
+                &3^3&\equiv 10\pmod{17}\\
+            &   &2^4&\equiv 16\pmod{17} 
+                &3^4&\equiv 13\pmod{17}\\
+            &   &2^5&\equiv 15\pmod{17} 
+                &3^5&\equiv 5\pmod{17}\\
+            &   &2^6&\equiv 13\pmod{17} 
+                &3^6&\equiv 15\pmod{17}\\
+            &   &2^7&\equiv 9\pmod{17} 
+                &3^7&\equiv 11\pmod{17}\\
+            &   &2^8&\equiv 1\pmod{17} 
+                &3^8&\equiv 16\pmod{17}\\
+            &&& &3^9&\equiv 14\pmod{17}\\
+            &&& &3^{10}&\equiv 8\pmod{17}\\
+            &&& &3^{11}&\equiv 7\pmod{17}\\
+            &&& &3^{12}&\equiv 4\pmod{17}\\
+            &&& &3^{13}&\equiv 12\pmod{17}\\
+            &&& &3^{14}&\equiv 2\pmod{17}\\
+            &&& &3^{15}&\equiv 6\pmod{17}\\
+            &&& &3^{16}&\equiv 1\pmod{17}
+        \end{align*}
+        From the left column, we see that $1$ has order $1.$
+
+        From the center column, we see that $2$ has order $8.$
+
+        From the right column, we see that the order of $3$ equals $16,$ and we conclude that $3$ is a primitive root modulo $17.$
+
+        We did not actually need to compute all of those powers of $3$ to determine that $3$ is a primitive root. We know that $\ord_{17}3$ must be a divisor of $17-1=16,$ by \nameref{prop:order_divides_phi}. Once we have computed from $3^1$ to $3^8$ and not yet obtained an answer of $1,$ we know $\ord-{17}3>8.$ Since the only divisor of $16$ that is greater than $8$ is 16 itself, we can then conclude that $\ord_{17}3=16.$ (This observation is generalized in Exercise 7.)
+    \end{solution}
+\end{example}
+
+In Exercise \ref{ex:prime_roots_17}, we found $\overline{3}$ is a primitive root of $\Z_{17}$ (ie, $3$ is a primitive root modulo $17.$) Looking again at the column of powers of $\overline{3}$ from the example, observe that these powers cycle through all of the nonzero elements of $\Z_{17}.$ That is, every nonzero element is equivalent to $\overline{3}$ raised to some power. This is a general fact about primite roots, which we will now prove.
+
+
+\begin{prop*}[Proposition 10.3.2]\label{read-prop:prime-root-generates}
+    Let $p$ be a prime and let $a\in\Z_p$ be a primitive root. Then every nonzero element of $\Z_p$ appears exactly once on the list \[\overline{a}^0,\overline{a}^1,\dots,\overline{a}^{p-2} \pmod{p}.\]
+\end{prop*}
+
+\begin{annotation}
+    Let $p$ be a prime and let $a\in\Z$ be a primitive root modulo $p.$ Then every integer $n$ where $p\nmid n$ is conguent to exactly one of 
+    \begin{equation}\label{eq:prime-generates}
+        {a}^0,{a}^1,\dots,{a}^{p-2} \pmod{p}.
+    \end{equation}
+\end{annotation}
+
+\begin{proof}
+    First, we show that the elements in the list \eqref{eq:prime-generates} are distinct. Suppose that \[a^j\equiv a^k\pmod{p}\] 
+    with $j$ and $k$ in the range $0,\dots,p-2.$ Since $\ord_p a=p-1,$ we know that the two powers of $a$ are equal if and only if the exponents are congruent modulo $p-1,$ by \nameref{prop:exponents_mod_order}. Hence, \[j\equiv k\pmod{p-1}.\] 
+    But since $j$ and $k$ are restricted to the range $0,\dots,p-2,$ it follows that $j=k.$ THus, we have show the elements in list \eqref{eq:prime-generates} are all distinct.
+
+    Note that since $a\not\equiv 0\pmod{p},$ each element in the like \eqref{eq:prime-generates} is a nonzero element modulo $p.$ There are $p-1$ elements in list \eqref{eq:prime-generates}, and we have just shown that these elements are distinct. Since there are exactly $p-1$ nonzero residues modulo $p,$ list \eqref{eq:prime-generates} must include every nonzero residue modulo $p.$ 
+\end{proof}
+
+
+\begin{question}
+    In $\Z_{11},$ $\overline{2}$ is a primitive root.  Express each of the following elements as $\overline{2}^k,$ where $k$ is in the range $0,\dots,9$
+    
+    \begin{enumerate}
+        \item $\overline{5}$
+        
+        % \begin{solution}
+        %     $5\equiv 2^4\pmod{11}$ from \nameref{table:exp_mod11}
+        % \end{solution}
+        \item $\overline{9}$
+        
+        % \begin{solution}
+        %     $9\equiv 2^6\pmod{11}$ from \nameref{table:exp_mod11}
+        % \end{solution}
+    \end{enumerate}
+\end{question}
+
+The converse of \nameref{read-prop:prime-root-generates} is also true. More precisely, if $\overline{a}\in\Z_p,$ and if every nonzero element if $\Z_p$ can be expressed as a power of $\overline{a},$ then $\overline{a}$ must be a primitive root. (See Exercise 11.) 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Existence of primitive roots in a prime modulus}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In Example \ref{ex:prime_roots_17}, we asked whether there exists a primitive root in $\Z_{17}.$ To solve this, we did not have to search very vary. Although $\overline{1}$ and $\overline{2}$ are not primitive roots we found that $\overline{3}$ is a primitive roots. If we looke for primitive roots modulo other primes, we find a similar situation. For example, modulo $47,$ we find that $5$ is a primitive root, and modulo $293,$ we find that $2$ is a primitive toot, In fact, every prime less that $100$ has a primitive root that is less than or equal to $7.$ Every prime less that $1,000,000$ has a primitive root that is less than or equal to $73.$
+
+The main result of this chapter is the \nameref{thm:prime-roots}, which states that for every prime $p,$ there exists a primitive root modulo $p.$ Although this is easy to state, priving it is quite tricky. So tricky, in fact, that the proof given by the great Leonhard Euler was incorrect. It was Lagrange who gave the first correct proof of the \nameref{thm:prime-roots}.
+
+
+\begin{thm*}[Primitive Root Theorem]\label{thm:prime-roots}
+    Let $p$ be prime. Then there exists a primitive root modulo $p.$
+\end{thm*}
+To prove the \nameref{thm:prime-roots}, we must first prove that in $\Z_,$ there exists an element of order $p-1.$ Our first step is to prove that there exists an element of order $q^s,$ where $q$ is prime and $q^s$ divides $p-1$. (Numbers of the form $q^s$ where $q$ is prime and $s\in\N$ are called \emph{prime powers}.)
+
+
+\begin{lem*}[Lemma 10.3.4]\label{read-lem:prime-power-order}
+    Let $p$ be a prime and let $q^s$ be a prime power (where $q$ is prime and $s\geq 1$). If $q^s\mid p-1,$ then there exits an element of order $q^s$ modulo $p.$
+\end{lem*}
+
+Before proving this lemma, let's see a quick example.
+
+\begin{example}\label{ex:orders_101}
+    Suppose that $p=101.$ Then $p-1=100=2^2(5^2),$ which is divisible by the following prime powers: \[2^1=2, 2^2=4,5^1=5, 5^2=25.\]
+    Thus, \nameref{read-lem:prime-power-order} guarentees that we will find elements of orders $2,4,5,$ and $25$ modulo $101.$
+\end{example}
+
+
+\begin{proof}[Proof of \nameref{read-lem:prime-power-order}]
+    Let $p$ be a prime. Let $q$ be prime and $s\in\N$ such that $q^s\mid p-1.$ Consider the following congruences: 
+    \begin{subequations}
+        \begin{align}
+            x^{q^s}&\equiv 1\pmod{p}\label{eq:2a}\\
+            \textnormal{ and } 
+            x^{q^{s-1}}&\equiv 1\pmod{p}.\label{eq:2b}
+        \end{align}
+    \end{subequations}
+
+
+    By Proposition 5.8, equation \eqref{eq:2a} has $q^s$ solutions and equation \eqref{eq:2b} has $q^{s-1}$ solutions. Since $q^s > q^{s-1},$ there must be at least one $a\in\Z$ that is a solution to \eqref{eq:2a} and not \eqref{eq:2b}. That is, 
+    \begin{subequations}
+        \begin{align}
+            a^{q^s}&\equiv 1\pmod{p}\label{eq:3a}\\
+            \textnormal{ but } 
+            a^{q^{s-1}}&\not\equiv 1\pmod{p}.\label{eq:3b}
+        \end{align}
+    \end{subequations}
+    
+
+    \begin{claim}\label{claim:1}
+        $a$ has order $q^s.$
+    \end{claim}
+
+    \begin{proof}[Proof of Claim \ref{claim:1}]\renewcommand{\qedsymbol}{}
+        By equation \eqref{eq:3a}, it follows (using \nameref{prop:order_divides_phi}) that $\ord_p a$ divides $q^s.$ Thus, the order of $a$ modulo $p$ is one of the numbers in the list 
+        \begin{equation}1,q,q^2,\dots,q^{s-1},q^s.\label{eq:4}
+        \end{equation}
+        However, from \eqref{eq:3b}, it follows (again using \nameref{prop:order_divides_phi}) that $\ord_p a$ does not divide $q^{s-1}.$ Since the only number in list \eqref{eq:4} that does not divide $q^{s-1}$ is $q^s,$ we conclude that the order of $a$ modulo $p$ is $q^s.$
+    \end{proof}
+    Thus, we have found an integer $a$ with order $q^s$ modulo $p.$
+\end{proof}
+
+Suppose we want to know whether $\Z_{101}$ has primitive root--that is, an element of order $100.$ \nameref{read-lem:prime-power-order} tells us that there is an element $\overline{a}$ of order $4,$ and element $b$ of order $25$ (see Example \ref{ex:orders_101}). It turns out that the product $\overline{ab}$ will have order $4\cdot 25=100$ and hence, $\overline{ab}$ is the primitive root we seek. This is guarenteed by the following lemma.
+
+
+\begin{lem*}[Lemma 10.3.5]\label{read-lem:order-multiplicative}
+    Let $n\in\N,$ and let $\overline{a},\overline{b}\in\Z_n$ be reduced residues (see: \nameref{defn:reduced-res-sys}). If $\ord_n a$ and $\ord_n b$ are relatively prime, then 
+    \[\ord_n (ab)=(\ord_n a)(\ord_n b).\]
+\end{lem*}
+
+\begin{proof}
+    On Homework 6--Strayer Chapter 5, Exercise 5a.
+\end{proof}
+
+In Example \ref{ex:orders_101}, we used \nameref{read-lem:prime-power-order} to determine that $\Z_{101}$ has orders $4$ and $25.$ By \nameref{read-lem:order-multiplicative}, the product of these elements has order $100,$ os it is a primitive root. We will use this same argument, which combines \nameref{read-lem:prime-power-order} and \nameref{read-lem:order-multiplicative} to give a general proof of the \nameref{thm:prime-roots}.
+
+
+\begin{proof}[Proof of \nameref{thm:prime-roots}]
+    Let $p$ be prime. 
+    
+    If $p=2,$ then $1$ is a primitive root modulo $p.$ Thus, we may assume $p>2.$
+
+    Factor $p-1$ into primes:
+    \[p-1=q_1^{a^1}q_1^{a_2}\cdots q_m^{a_m}.\]
+
+    By \nameref{read-lem:prime-power-order}, for each $k=1,2,\dots, m,$ there exists an integer ${x_k}$ of order $q_k^{a_k}$ modulo $p.$ Let 
+    \[x\equiv x_1 x_2\cdots x_m\pmod{p}.\]
+    Applying \nameref{read-lem:order-multiplicative} repeatedly (see Exercise 14), we find 
+    \begin{align*}
+        \ord_p x &=(\ord_p x_1)(\ord_p x_2)\cdots(\ord_p x_m)\\
+        &=q_1^{a^1}q_1^{a_2}\cdots q_m^{a_m}\\
+        &=p-1
+    \end{align*}
+    Hence, $x$ is a primitive root modulo $p.$
+\end{proof}
+
+We have now proved that $\Z_p$ always has at least one primitive root, but as we have seen, $\Z_p$ often has more than one primitive root. It turns out that once we know \emph{one} primitive root in $\Z_p,$ it is easy to find all primitive roots in $\Z_p.$ The following lemma tells us how to do this.
+
+
+\begin{lem*}[Lemma 10.3.6]\label{read-lem:all-prime-roots}
+    Let $p$ be prime, and let $a\in\Z$ be a primitive root modulo $p.$ Then for any $j\in\Z,$ $a^j$ is a primitive root modulo $p$ if and only if $\gcd(j,p-1)=1.$
+\end{lem*}
+
+\begin{proof}
+    Let $p$ be prime, and let $a\in\Z$ be a primitive root modulo $p.$
+
+    By Proposition 5.4, 
+    \[\ord_p(a^j)=\frac{p-1}{\gcd(j,p-1)}.\]
+    Thus, 
+    $\ord_p(a^j)=p-1$ if and only if $\gcd(j,p-1)=1.$
+\end{proof}
+
+\subsection*{Naomi's Numerical Proof Preview: \nameref{read-thm:number-prime-roots}}
+Let's see whether we can use this llemma to determine how many primitive roots there are modulo $19.$ Let $\overline{a}\in\Z_{19}$ be a primitive root (modulo $19$). Then the nonzero elements of $\Z_{19}$ are 
+\[\overline{a}^0,\overline{a}^1,\overline{a}^2,\dots,\overline{a}^{17}.\]
+\nameref{read-lem:all-prime-roots} tells us which of these elements are primitive roots modulo $19$: precisely those in which the exponent is relatively prime to $18.$ Thus, the primitive roots modulo $19$ are 
+\[\overline{a}^1,\overline{a}^5,\overline{a}^7,\overline{a}^{11},\overline{a}^{13},\overline{a}^{17}.\]
+We see then that the primitive roots modulo $19$ correspond to the exponents $1,5,7,11,13$ and $17,$ which are the positive integers less than $18$ which are relatively prime to $18.$ The nunber of such integers is exactly $\phi(18)=6.$ In general, we have the following theorem.
+
+\begin{thm*}[Theorem 10.3.7]\label{read-thm:number-prime-roots}
+    Let $p$ be prime. Then there are exactly $\phi(p-1)$ primitive roots modulo $p.$
+\end{thm*}
+
+\begin{proof}
+    Let $a\in\Z$ be a primitive root modulo $p.$ Then by \nameref{read-prop:prime-root-generates}, we know that the list of reduced residues modulo $p$ comprises the elements 
+    \[a^0,a^1,a^2,\dots,a^{p-2}\]
+    By \nameref{read-lem:all-prime-roots}, an integers $a^j$ is a primitive root modulo $p$ if and only if $\gcd(j,p-1)=1.$ Thus, the number of primitive roots equals the number of positive integers $j$ that are less than $p-1$ and relatively prime to $p-1.$ By definition, this is exactly $\phi(p-1).$
+\end{proof}
+
+
+\subsection*{Referenced Exercises}
+
+\begin{exercise}(Exercise 11)\label{read-ex11}
+    Prove the following statement, which is the converse of \nameref{read-prop:prime-root-generates}:
+
+    Let $p$ be prime, and let $\overline{a}\in\Z_p.$ If every nonzero element of $\Z_p$ is a power of $\overline{a},$ then $\overline{a}$ is a primitive root (modulo $p$).
+\end{exercise}
+
+
+\begin{exercise}(Exercise 14)
+    Prove the following generalization of \nameref{read-lem:order-multiplicative}
+    
+    
+    \begin{lem*}
+        Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
+    \end{lem*}
+\end{exercise}
+
+% \bibliographystyle{plain}
+% \bibliography{sources}
+% \nocite{theo-prim-roots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 13: Primitive roots modulo a prime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Find the order of an element modulo $m$ using primitive roots
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] Uploaded notes
+    \item[Turn in] For each result in the scanned notes, identify the result in our textbook. If it is a special case of the theorem in the textbook, (ie, the reading only proves the theorem for primes or $d=q^s$), also note this.
+
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primitive roots and comparing Strayer to the reading}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}[primitive root]\label{defn:prime-root}
+    Let $r,m\in\Z$ with $m>0$ and $(r,m)=1.$ Then $r$ is said to be a \emph{primitive root modulo $m$} if $\ord_m r=\phi(r).$
+\end{definition}
+
+We saw in the reading that primitive roots always exist modulo a prime. What about composites?
+\begin{example}
+    
+    \begin{itemize}
+        \item Since $\phi(4)=2,$ and $\ord_4 3=2,$ $3$ is a primite root modulo $4.$ The powers $\{3^1, 3^2\}$ are a reduced residue system modulo $4.$
+        \item Since $\phi(6)=\phi(3)\phi(2)=2$ and $\ord_6 5=2,$ $5$ is a primitive root modulo $6.$ The powers $\{5^1, 5^2\}$ are a reduced residue system modulo $6.$
+        \item There are no primitive roots modulo $8.$ By \nameref{thm:phi-prime-power}, $\phi(8)=4.$ Since every odd number squares to $1$ modulo $8,$ $\ord_8 1=1$ and $\ord_8 3=\ord_8 5=\ord_8 7=2.$ 
+        \item Since $\phi(9)=3^1(3-1)=6$ by \nameref{thm:phi-prime-power}, we check:
+
+        \begin{align*}
+            2^1&=1, &2^2&=4, &2^3&=8, &2^4&\equiv7\pmod{9}, &2^5&\equiv 5\pmod{9},&2^6&\equiv 1\pmod{9}
+        \end{align*}
+        So $2$ is a primite root modulo $9,$ but are there more?
+        \begin{align*}
+            4^1&=4, &4^2&=2^4\equiv 7\pmod{9}, &4^3&=2^6\equiv1\pmod{9}
+        \end{align*}
+        We can also use exponent rules and \nameref{prop:exponents_mod_order} to simplify some calculuations. For example, $5\equiv 2^5\pmod{9},$ so $5^i\equiv 2^{5i}\equiv 2^j\pmod{9}$ if and only if $5i\equiv j\pmod{6}.$
+
+        \begin{align*}
+            5^1&\equiv 5\pmod{9}, 
+            &5^2&\equiv 2^{10}\equiv 2^4\equiv 7\pmod{9},
+            &5^3&\equiv 2^{15}\equiv 2^3\equiv 8\pmod{9}, \\
+            5^4&\equiv 2^{20}\equiv 2^2\equiv 4\pmod{9}, 
+            &5^5&\equiv 2^{25}\equiv 2^1\equiv 2\pmod{9},
+            &5^6&\equiv 1\pmod{9},
+        \end{align*}
+        \begin{align*}
+            7^1&\equiv (-2)\equiv 7\pmod{9}, 
+            &7^2&\equiv (-2)^2\equiv 4\pmod{9},
+            &7^3&\equiv (-2)^{3}\equiv -8 \equiv 1\pmod{9}
+        \end{align*}
+        \begin{align*}
+            \ord_9(1)&=1\\
+            \ord_9(2)&=\ord_9(5)=6\\
+            \ord_9(4)&=\ord_9(7)=3\\
+            \ord_9 (8)&=2
+        \end{align*}
+    \end{itemize}
+\end{example}
+
+
+\begin{prop*}[Proposition 5.3]\label{prop:prime-roots-generate}
+    Let $r$ be a primitive root modulo $m.$ Then \[\{r,r^2,\dots,r^{\phi(m)}\}\]
+    is a set of reduced residues modulo $m.$
+\end{prop*}
+This is the general version of \nameref{read-prop:prime-root-generates}, using exponents $1,2,\dots,\phi(m)$ instead of $0,1,\dots,\phi(m)-1$. Since Strayer's statement of \nameref{prop:exponents_mod_order} is already stated and proved for composites, and both lists have the same number of elements, the only changes to the proof is replacing $p-1$ with $\phi(m).$ Note $a^0\equiv a^{\phi(m)}\equiv 1\pmod{m}$ when $(a,m)=1.$
+
+
+\begin{prop*}[Proposition 5.4]\label{prop:compare-order}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If $i$ is a positive integer, then 
+    \[\ord_m(a^i)=\frac{\ord_m a}{\gcd(\ord_m a,i)}.\]
+\end{prop*}
+
+\begin{br}
+    Use only the results through \nameref{prop:prime-roots-generate}/\nameref{read-lem:order-multiplicative} to prove the primitive root version:
+
+
+    \begin{prop*}
+        Let $r,m\in\Z$ with $m>0$ and $r$ a primitive root modulo $m.$
+        If $i$ is a positive integer, then 
+    \[\ord_m(r^i)=\frac{\phi(m)}{\gcd(\phi(m),i)}.\]
+    \end{prop*}
+    \begin{proof}
+        Let $i,r,m\in\Z$ with $i,m\gt 0$ and $r$ a primitive root modulo $m.$ Then $\ord_m r=\phi(m)$ by \hyperref[defn:prime-root]{definition}. Let $d=(\phi(m),i).$ Then there exists positive integers $j,k$ such that $\phi(m)=dj,i=dk$ and $(j,k)=1$ by \nameref{prop:div-gcd-rel-prime}. Then using the proceding equations and exponent rules, we find
+            \[
+                (a^i)^j=(a^{dk})^{\phi(m)/d}=(a^{\phi(m)})^k\equiv 1\pmod{m}
+            \]
+        since $a^{\phi(m)}\equiv 1\pmod{p}$ by \hyperref[defn:primeRoot]{definition}. \nameref{prop:order_divides_phi} says that $\ord_p(a^i)\mid j.$
+
+        Since $a^{i\ord_p(a^i)}\equiv(a^i)^{\ord_p(a^i)}\equiv 1\pmod{p}$ by \hyperref[defn:order]{definition of order}, \nameref{prop:order_divides_phi} says that $\ord_p a\mid i \ord_p(a^i).$ Since $\ord_p a=\phi(m)=dj$ and $i=dk,$ we have $dj\mid dk \ord_p(a^i)$ which simplifies to $j\mid k \ord_p(a^i)$. Since $(j,k)=1,$ we can conclude $j\mid \ord_p(a^i)$. 
+
+        Since $\ord_p(a^i)\mid j, j\mid \ord_p(a^i)$ and both values are positive, we can conclude that $\ord_p(a^i)=j.$ Finally, we have 
+            \[
+                \ord_p(a^i)=j=\frac{\phi(m)}{d}=\frac{\phi(m)}{(\phi(m),i)}.
+            \]
+    \end{proof}
+\end{br}
+
+
+Exercises cited in the reading, also on Homework 6:
+
+
+
+\begin{br}
+    Prove the following statement, which is the converse of \nameref{read-prop:prime-root-generates}:
+
+    Let $p$ be prime, and let $a\in\Z.$ If every $b\in\Z$ such that $p\nmid b$ is congruent to a power of $a$ modulo $p,$ then ${a}$ is a primitive root modulo $p$.
+    
+    % \begin{solution}
+    %     Let $p$ be prime, and let $a\in\Z$ such that every integer $b\in\Z$ where $p\nmid b$ is congruent to $a^i$ modulo $p$ for some positive integer $i$. Thus, $(a,p)=1,$ otherwise $1$ would not be congruent to a power of $a$. By \nameref{prop:exponents_mod_order}, $a^i\equiv a^j\pmod{p}$ if and only if $i\equiv j\pmod{p-1}.$ Thus, $a^1,a^2,\dots,a^{p-1}$ are distinct congruence classes and only one of $a^1,a^2,\dots,a^{p-1}$ is congruent to $1$ modulo $p.$ By \nameref{FlT}, $a^{p-1}\equiv1\pmod{p},$ so $\ord_p a=p-1.$
+    % \end{solution}
+\end{br}
+
+\begin{br}
+    Prove the following generalization of \nameref{read-lem:order-multiplicative}
+    
+    
+    \begin{lem*}
+        Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
+    \end{lem*}
+\end{br}
+
+\section{Friday, March 15: Lagrange's Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{obj}
+    \item Prove Lagrange's Theorem
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] Strayer Section 5.2
+    \item[Turn in:] 
+    
+    \begin{enumerate}
+        \item Exercise 10a: Determine the number of incongruent primitive roots modulo $41$
+        \begin{solution}
+            Since $41$ is prime, \nameref{read-thm:number-prime-roots} says there are $\phi(41)=40$ primitive roots modulo $41.$
+        \end{solution}
+        \item Exercise 11a: Find all incongruent integers having order $6$ modulo $31.$
+        \begin{solution}
+                From Appendix E, Table 3, $3$ is a primitive root modulo $31.$ By \nameref{prop:compare-order}, the elements of order $6$ modulo $31$ are those where \[6=\ord_{31}(3^i)=\frac{\phi(31)}{(\phi(31),i)}=\frac{30}{5}.\] The positive integers less than $31$ where $(30,i)=5$ are $i=5,25.$ So the elements of order $6$ are $3^5, 3^{25}.$
+                
+
+                The problem does not ask for the least nonnegative residues. However, we can also find those:
+                    \[
+                        3^5\equiv (-4)(9)\equiv -5\equiv 26\pmod{31}
+                    \]
+                    \[
+                        3^{25}\equiv (-5)^{5}\equiv (-6)^2(-5)\equiv -25\equiv 6\pmod{31}
+                    \]
+            \end{solution}
+    \end{enumerate}
+\end{pre}
+
+\subsection{Quiz (10 minutes)}
+\subsection{Lagrange's Theorem}
+    The goal is to finish proving the \nameref{thm:prime-roots} with a look at polynomials.
+
+    \begin{thm*}[Theorem 5.7 (Lagrange)]\label{thm:lagrange}
+        Let $p$ be a prime number and let 
+        \[f(x)=a_n x^n +a_{n-1} x^{n-1}+\cdots +a_1 x+a_0\]
+        for integers $a_0,a_1,\dots,a_n.$ Let $d$ be the greatest integer such that $a_d\not\equiv 0\pmod{p}t$ then $d$ is the \emph{degree of $f(x)$ modulo $p.$}
+        Then the congruence 
+        \[f(x)\equiv 0\pmod{p}\]
+        has at most $d$ incongruent solutions. We call these solutions \emph{roots of $f(x)$ modulo $p.$}
+    \end{thm*}
+
+    \begin{proof}[Proof from class]
+        We proceed by induction on the degree $d.$
+        
+        First, for degree $d=0,$ note that $f(x)\equiv a_0\not\equiv 0\pmod{p}$ by assumption, so $f(x)\equiv 0\pmod{p}$ for $0$ integers.
+
+            
+        \begin{description}
+                
+            \item[Base Case: $d=1$.] 
+            Then $f(x)\equiv a_1 x+a_0\pmod{p}$. Since $a_1\not\equiv 0\pmod{p}$ by assumption, $p\nmid a_1.$ Since $p$ is prime, $(a_1,p)=1.$ Thus, by \nameref{cor:condition-invertible}, there is a unique solution modulo $p$ to $a_1\not\equiv 0\pmod{p}.$
+
+            \item[Induction Hypothesis:]
+            Assume that for all $k\lt d,$ if $f(x)$ has degree $k$ modulo $p,$ then 
+            \[f(x)\equiv a_k x^k +a_{k-1}x^{k-1}+\cdots+a_1x+a_0\equiv 0 \pmod{p}\]
+            has at most $k$ incongruent solutions.
+        \end{description}
+
+        We will proceed by contradiction. That is, assume that there exists $f(x)$ with degree $d$ modulo $p$ and at least $d+1$ roots modulo $p.$ Call these roots $r_1,r_2,\dots,r_d,r_{d+1}.$ Consider the polynomial \[g(x)=a_d(x-r_1)(x-r_2)\cdots (x-r_d).\]
+        Then $f(x)$ and $g(x)$ have the same leading term modulo $p.$ The polynomial $h(x)=f(x)-g(x)$ is either the $0$ polynomial or it has degree less than $d$ modulo $p.$
+
+        If $h(x)$ is the $0$ polynomial, then 
+        \[h(r_{1})\equiv h(r_2)\equiv\cdots\equiv h(r_{d+1})\equiv 0\pmod{p}\]
+        and 
+        \[f(r_{1})\equiv f(r_2)\equiv\cdots\equiv f(r_{d+1})\equiv 0\pmod{p}\]
+        implies
+        \[g(r_{1})\equiv g(r_2)\equiv\cdots\equiv g(r_{d+1})\equiv 0\pmod{p}.\]
+        That is, 
+        \[a_d(r_{d+1}-r_1)(r_{d+1}-r_2)\cdots(r_{d+1}-r_d)\equiv 0\pmod{p}.\]
+        Since $p$ is prime, repeated applications of Homework 4, Problem 9a gives that one of $a_d,r_{d+1}-r_1,r_{d+1}-r_2,\dots,r_{d+1}-r_d$ is $0$ modulo $p.$ Now, $a_d\not\equiv0\pmod{p}$ by assumption, and the $r_i$ are distinct modulo $p,$ so we have a contradiction. Thus, $h(x)$ is not the $0$ polynomial. 
+
+        Since $r_1,r_2,\dots,r_d$ are roots of both $f(x)$ and $g(x),$ they are also roots of $h(x).$ This contradicts the induction hypothesis, since $h(x)$ has degree less than $d$ by construction.
+
+        Thus, $f(x)$ has at most $d$ incongruent solution modulo $p.$
+    \end{proof}
+
+    \begin{proof}[Modified proof from Strayer]
+        We proceed by induction on the degree $d.$
+        
+        First, for degree $d=0,$ note that $f(x)\equiv a_0\not\equiv 0\pmod{p}$ by assumption, so $f(x)\equiv 0\pmod{p}$ for $0$ integers.
+            
+        \begin{description}
+                
+            \item[Base Case: $d=1$.] Then $f(x)\equiv a_1 x+a_0\pmod{p}$. Since $a_1\not\equiv 0\pmod{p}$ by assumption, $p\nmid a_1.$ Since $p$ is prime, $(a_1,p)=1.$ Thus, by \nameref{cor:condition-invertible}, there is a unique solution modulo $p$ to $a_1\not\equiv 0\pmod{p}.$
+
+            \item[Induction Hypothesis:]
+            Assume that for all $k\lt d,$ if $f(x)$ has degree $k$ modulo $p,$ then 
+            \[f(x)\equiv a_k x^k +a_{k-1}x^{k-1}+\cdots+a_1x+a_0\equiv 0 \pmod{p}\]
+            has at most $k$ incongruent solutions.
+        \end{description}
+        If the congruence $f(x)\equiv 0\pmod{p}$ has no solutions we are done. Otherwise, assume that there exists at least one solution, say $a.$ Dividing $f(x)$ by $(x-a)$ gives 
+        \[f(x)\equiv (x-a)q(x)\pmod{p}\]
+        where $q(x)$ is a polynomial of degree $d-1$ modulo $p.$
+        Since $q(x)$ has at most $d-1$ roots modulo $p$ by the induction hypothesis, there are at most $d-1$ incongruent additional roots of $f(x)$ modulo $p$. Thus, there are a total of at most $d$ incongruent roots modulo $p.$
+    \end{proof}
+
+    \begin{prop*}[Proposition 5.8]\label{prop:roots-unity}
+        Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then 
+        \[
+            x^m\equiv 1\pmod{p}
+        \]
+        has $m$ incongruent solutions modulo $p.$
+    \end{prop*}
+
+
+    \begin{proof}
+        Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then there exists $k\in\Z$ such that $mk=p-1.$
+        Then 
+        \[
+            x^{p-1}-1=(x^m-1)(x^{(k-1)m}+x^{(k-2)m}+\cdots+x^{2m}+x^m+1)
+        \]
+        By \nameref{FlT}, there are $p-1$ incongruent solutions to $x^{p-1}-1\equiv0\pmod{p},$ namely $1,2,\dots,p-1.$ We will show that $m$ of these are solutions to 
+        $x^m-1\equiv 0\pmod{p}$ and the rest are solutions to $x^{(k-1)m}+x^{(k-2)m}+\cdots+x^{2m}+x^m+1\equiv 0\pmod{p}.$
+
+        By \nameref{thm:lagrange}, there are at most $(k-1)m$ solutions to $x^{(k-1)m}+x^{(k-2)m}+\cdots+x^{2m}+x^m+1\equiv 0\pmod{p}.$ Thus, there are at least $p-1-(k-1)m=m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}.$ 
+        Since there are also at least $m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}$ by \nameref{thm:lagrange}, there are exactly $m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}$ and thus $x^m\equiv 1\pmod{p}.$
+    \end{proof}
+
+    \begin{definition}[Roots of unity]\label{def:root-unity}
+    
+        Let $p$ be prime and $m$ a positive integer. We call the solutions to  
+        \[x^m\equiv 1\pmod{p}\]
+        the \emph{$m^{th}$ roots of unity modulo $p.$}
+    \end{definition}
+\end{document}

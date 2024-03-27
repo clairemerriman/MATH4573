@@ -1,0 +1,283 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{lessonplanheaderXimera.tex}
+
+%Imports for cross references
+\externaldocument{otherResults}
+\externaldocument{Week1Spring24}
+\externaldocument{Week2Spring24}
+\externaldocument{Week3Spring24}
+\externaldocument{Week4Spring24}
+\externaldocument{Week5Spring24}
+\externaldocument{Week6Spring24}
+\externaldocument{Week7Spring24}
+\externaldocument{Week8Spring24}
+
+
+\theoremstyle{definition}
+\newtheorem*{annotation}{Annotation}
+
+
+
+\StrBetween*[1,1]{\currfilename}{Week}{Sp}[\week]
+
+\title{Week \week--MAT-255 Number Theory}
+
+\begin{document}
+\section{Monday, March 18: Proof of \nameref{thm:prime-roots}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Find the number of roots of unity modulo $m$
+    \item Prove primitive roots exist modulo a prime
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Roots of unity (35 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Finish proof of \nameref{prop:roots-unity}
+
+
+\begin{br}\label{br:condition-root-unity}
+    Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ Prove that $a^m\equiv 1\pmod{p}$ if and only if $a^d\equiv 1\pmod{p}.$
+
+
+    \begin{solution}
+        Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ Let $a\in\Z$. If $p\mid a,$ then $a^i\answer{\equiv 0\pmod{p}}$ for all positive integers $i$. 
+        Thus, we are only considering $a\in\Z$ such that $p\nmid a.$
+        Otherwise, $a^{p-1}\equiv 1\pmod{p}$ by $\answer{\textnormal{\nameref{FlT}}}$.
+        
+        By \nameref{prop:order_divides_phi}, $a^m\equiv 1\pmod{p}$ if and only if $\answer{\ord_p a \mid m}$. Similarly, $\answer{a^{p-1}\equiv 1\pmod{p}}$ if and only if $\answer{\ord_p a \mid p-1}$. Thus, $\answer{\ord_p a}$ is a common divisor of $\answer{m}$ and $\answer{p-1}$. Combining \nameref{lem:gcd_mult} and \nameref{lem:gcd_trans} gives $\ord_p a$ is a common divisor of   $\answer{m}$ and $\answer{p-1}$ if and only if $\ord_p a\mid d$. One final application of \nameref{prop:order_divides_phi} gives $\answer{\ord_p a\mid d}$ if and only if $\answer{a^d\equiv 1\pmod{p}}$.
+    \end{solution}
+\end{br}
+
+\begin{br}\label{br:more-roots-unity}
+        Let $p$ be prime and $m$ a positive integer. Prove that 
+        \[
+            x^m\equiv 1\pmod{p}
+        \]
+        has exactly $(m,p-1)$ incongruent solutions modulo $p.$
+
+
+        \begin{proof}
+            Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ 
+            By \autoref{br:condition-root-unity}, $x^m\equiv 1\pmod{p}$ if and only if $x^d\equiv 1\pmod{p}$. By \nameref{prop:roots-unity} there are exactly $d$ solutions to $x^d\equiv 1\pmod{p}.$ Thus, there are exactly $d$ solutions to $x^m\equiv 1\pmod{p}.$
+        \end{proof}
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primitive roots modulo a prime (15 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will now prove the existence of primivitive roots modulo a prime combining the two methods from the reading: we will show that when $d\mid p-1,$ there are $\phi(d)$ incongruent integers of order $d$ modulo $p,$ like Strayer. However, we will prove this using the method from \nameref{read-lem:prime-power-order} instead of results from Chapter 3.
+
+\begin{thm*}[Theorem 5.9]\label{thm:number-element-order-d}
+    Let $p$ be a prime and let $d\in\Z$ with $d>0$ and $d\mid p-1.$ Then there are exactly $\phi(d)$ incongruent integers of order $d$ modulo $p.$
+\end{thm*}
+
+
+\begin{proof}
+    Let $p$ be a prime and let $d\in\Z$ with $d>0$ and $d\mid p-1.$ First we will prove the theorem for $d=q^s$ modulo $p$ where $q$ is prime and $s$ is a nonnegative integer.
+
+    By \nameref{prop:roots-unity}, there are exactly $q^s$ incongruent solutions to 
+    \begin{equation}\label{eq:unity-2a}
+        x^{q^s}\equiv 1\pmod{p}
+    \end{equation} and exactly $q^{s-1}$ incongruent solutions to 
+    \begin{equation}\label{eq:unity-2b}
+        x^{q^{s-1}}\equiv 1\pmod{p}.
+    \end{equation}
+    Since $(x^{q^{s-1}})^q=x^{q^s},$ all solutions to \eqref{eq:unity-2b} are solutions to \eqref{eq:unity-2a}. 
+    Thus, there are exactly $q^s-q^{s-1}=q^{s-1}(q-1)$ integers $a$ where $a^{q^s}\equiv 1\pmod{p}$ and $a^{q^{s-1}}\not\equiv 1\pmod{p}.$ Thus, by \nameref{prop:order_divides_phi}, $\ord_p a \mid q^s$ and $\ord_p a\nmid q^{s-1}.$ Since $q$ is prime, $\ord_p a =q^s.$ By \nameref{thm:phi-prime-power}, $\phi(q^s)=q^s-q^{s-1}=q^{s-1}(q-1),$ so we have shown there are $\phi(q^s)$ incongruent integers with order $q^s$ modulo $p$.
+
+    Now we will prove the general case. Let 
+    \[d=q_1^{s_1}q_2^{s_2}\cdots q_k^{s_k}\]
+    for distinct primes $q_1,q_2,\dots,q_k$ and positive integers $s_1,s_2,\dots,s_k.$ Let $a_1,a_2,\dots,a_k$ be elements of order $q_1^{s_1},q_2^{s_2},\dots, q_k^{s_k}$ respectively.
+    %Since there are $\phi(q_1^{s_1})$ options for $a_1,$ $\phi(q_2^{s_2})$ options for $a_2,$ etc there are $\phi(q_1^{s_1})\phi(q_2^{s_2})\cdots\phi(q_k^{s_k})=\phi(d)$ ways to form $a=a_1a_2\cdots a_k.$ 
+    Consider $a=a_1a_2\cdots a_k$ and $a^2, a^3,\dots,a^d$. By Homework 6, Problem 6, $a$ has order $q_1^{s_1}q_2^{s_2}\cdots q_k^{s_k}=d.$ 
+    By \nameref{prop:roots-unity}, there are exactly $d$ solutions to $x^d\equiv 1\pmod{p}$. \begin{annotation}
+        This is where we ended class on Monday.
+    \end{annotation}
+    Thus, $a, a^2,\dots,a^d$ are all incongruent solutions to $x^d\equiv 1\pmod{p}$ by \nameref{prop:order_divides_phi}. 
+    By \nameref{prop:compare-order},
+    $\ord_p a^i=\frac{d}{(d,i)}=d$ if and only if $(d,i)=1.$ Since there are $\phi(d)$ such integers $i,$ there are in fact $\phi(d)$ incongruent integers with order $d$ modulo $p.$
+\end{proof}
+
+
+\begin{cor*}[Corollary 5.10]\label{cor:number-prime-roots}
+    Let $p$ be prime. There are exactly $\phi(p-1)$ primitive roots modulo $p.$
+\end{cor*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wednesday, March 20: Introduction to quadratic residues}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Define a quadratic residue modulo $m$
+    \item Prove that the quadratic congruence $x^2\equiv a\pmod{p}$ has zero or one solution modulo a prime when $p\nmid a$
+    \item Use the solution to a quadratic congruence modulo a prime to find the other solution
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading:] Strayer Section 4.1
+    \item[Turn in:] Exercise 3
+     Find all incongruent solutions of the quadratic congruence $x^2\equiv 1\pmod{8}.$ Is it not true that quadratic congruences have either no solutions or exactly two incongruent solutions? Explain.
+
+     \begin{solution}
+        As we have seen on many previous questions, $x^2\equiv 1\pmod{8}$ for all odd numbers. So there are $4$ incongruent solutions modulo $8$, which is not a contradiction because $8$ is not an odd prime number.
+     \end{solution}
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finish proof of the existence of primitive roots modulo a prime (10 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quadratic residues (40 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{definition}[quadratic residue]\label{defn:quad-residue}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ The $a$ is said to be a \emph{quadratic residue modulo $m$} if the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable in $\Z.$ Otherwise, $a$ is said to be a \emph{quadratic nonresidue modulo $m$}.
+\end{definition}
+
+\begin{remark}
+    When finding squares modulo $m,$ we only need to check up to $\frac{m}{2},$ since $(-a)^2=a^2$ and $m-a\equiv -a\pmod{m}$
+\end{remark}
+
+\begin{br}
+    Find all incongruent quadratic residues and nonresidues modulo $2,3,4,5,6,7,8,$ and $9$.
+    % \begin{enumerate}
+    %     \item $3$
+    %     \item $4$
+    %     \item $5$
+    %     \item $7$
+    %     \item $6$
+    %     \item $8$
+    %     \item $9$
+    %     \item $10$
+    % \end{enumerate}
+
+
+    \begin{solution}
+        I also included solutions modulo $10,11,12$
+
+        \begin{tabular}{p{1.5cm}|p{4cm}p{3cm}p{3cm}}
+            Modulus & least nonnegative reduced residues & quadratic residues & quadratic nonresidues \\\hline
+            $2$ & $1$   
+                & $1$ 
+                & N/A \\
+            $3$ & $\answer{1,2}$ 
+                & $\answer{1}$
+                & $\answer{2}$\\
+            $4$ & $\answer{1,3}$ 
+                & $\answer{1}$
+                & $\answer{3}$\\
+            $5$ & $\answer{1,2,3,4}$
+                & $\answer{1,4}$
+                & $\answer{2,3}$\\
+            $6$ & $\answer{1,5}$
+                & $\answer{1}$
+                & $\answer{5}$\\
+            $7$ & $\answer{1,2,3,4,5}$
+                & $\answer{1,2,4}$
+                & $\answer{3,5,6}$\\
+            $8$ & $\answer{1,3,5,7}$
+                & $\answer{1}$
+                & $\answer{3,5,7}$\\
+            $9$ & $\answer{1,2,4,5,7,8}$
+                & $\answer{1,4,7}$
+                & $\answer{2,4,8}$\\
+            $10$ & $\answer{1,3,7,9}$
+                & $\answer{1,9}$
+                & $\answer{3,7}$\\
+            $11$ & $\answer{1,2,3,4,5,6,7,8,9,10}$
+                & $\answer{1,3,4,5,9}$
+                & $\answer{2,6,7,8,10}$\\
+            $12$ & $\answer{1,5,7,11}$
+                & $\answer{1}$
+                & $\answer{5,7,11}$\\
+        \end{tabular}
+    \end{solution}
+\end{br}
+
+\begin{lem*}[Generalized Porism 4.2]\label{lem:roots-pairs}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0,$ then  $m-x_0$ is also a solution. If $m\gt 2,$ then $x_0\not\equiv m-x_0\pmod{m},$ and solutions occur in pairs.
+\end{lem*}
+
+\begin{proof}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0.$ Then 
+    \[(m-x_0)^2\equiv (-x_0)^2\equiv x_0^2\equiv a\pmod{m}.\]
+    
+    If $x_0\equiv m-x_0\pmod{m},$ then $2x_0\equiv m\equiv 0 \pmod{m}$ and $m\mid 2x_0$ by definition. Since $(a,m)=1,$ it must be that $(x_0,m)=1$ since $(x_0,m)\mid(a,m).$ Thus, $m\mid 2,$ so $m=2.$ Therefore, when  $m\gt 2,$ then $x_0\not\equiv m-x_0\pmod{m},$ and solutions occur in pairs.
+\end{proof}
+
+
+\begin{remark}
+    Since $x_0\equiv m-x_0\pmod{m}$ implies $x_0\equiv \frac{m}{2},$ we can say that if $x^2\equiv a\pmod{m}$ is solvable and $\frac{m}{2}$ is \emph{not} a solution, then solutions occur in pairs.
+\end{remark}
+
+\begin{prop*}[Proposition 4.1]\label{prop:number-sqrts}
+    Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Then the quadratic congruence $x^2\equiv a\pmod{p}$ has either no solutions or exactly two incongruent solutions modulo $p$.
+\end{prop*}
+
+\begin{proof}
+	Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Consider the quadratic congruence $x^2\equiv a\pmod{p}.$ If no solutions exist, we are done.
+	
+	If solutions to the quadratic congruence exist, then \nameref{lem:roots-pairs} says that there are at least two solutions, since $p>2.$ \nameref{thm:lagrange} says that there are at most two solutions to $x^2-a\equiv 0\pmod{p}$ and therefore $x^2\equiv a\pmod{p}.$ Thus, there are exactly two incongruent solutions modulo $p.$
+\end{proof}
+
+\begin{prop*}[Proposition 4.3]\label{prop:number-quad-residues}
+	Let $p$ be an odd prime number. Then there are exactly $\frac{p-1}{2}$ incongruent quadratic residues modulo $p$ and exactly $\frac{p-1}{2}$ incongruent quadratic nonresidues modulo $p.$
+\end{prop*}
+\begin{proof}
+	Consider the $p-1$ quadratic congruences
+	\begin{align*}
+ 		x^2&\equiv 1\pmod{p}\\
+		x^2&\equiv 2\pmod{p}\\
+		&\vdots\\
+		x^2&\equiv p-1\pmod{p}.
+	\end{align*}
+	Since each congruence has either zero or two incongruent solutions modulo $p$ by \nameref{prop:number-sqrts}, and no integer is a solution to more than one of the congruences, exactly half are solvable. Therefore,  there are exactly $\frac{p-1}{2}$ incongruent quadratic residues modulo $p$ and exactly $\frac{p-1}{2}$ incongruent quadratic nonresidues modulo $p.$
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Friday, March 22: Legendre symbol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Define the Legendre symbol
+    \item Prove basic facts about the Legendre symbol
+    \item Use the definition and basic facts to find the Legendre symbol for specific examples
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading:] Strayer Section 4.2 through Example 4
+    \item[Turn in:] Exercise 12
+     Use Euler's Criterion to evaluate the following Legendre symbols 
+	\begin{enumerate}
+ 		\item $\left(\frac{11}{23}\right)$
+		
+		\begin{solution}
+ 			$\left(\frac{11}{23}\right)\equiv 11^{(23-1)/2}\equiv 11^{11}\pmod{23}$ By Euler's Criterion. Then
+			\[11^{11}\equiv (11^{2})^{5}(11)\equiv 6^5(11)\equiv (6^2)(6^3)(11)\equiv (13)(9)(11)\equiv(-90)(11)\equiv -1\pmod{23}\]
+		\end{solution}
+		
+		\item $\left(\frac{-6}{11}\right)$
+		
+		\begin{solution}
+ 			$\left(\frac{-6}{11}\right)\equiv (-6)^{(11-1)/2}\equiv (-6)^{5}\pmod{11}$ By Euler's Criterion. Then
+			\[(-6)^{5}\equiv ((6)^{2})^{2}(-6)\equiv 3^2(-6)\equiv -54 \equiv 1\pmod{11}\]
+		\end{solution}
+	\end{enumerate}
+ 
+
+    \end{pre}
+\end{document}
