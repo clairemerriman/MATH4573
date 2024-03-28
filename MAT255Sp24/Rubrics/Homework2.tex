@@ -1,0 +1,162 @@
+
+\documentclass[letterpaper, 11pt]{../ximera}
+\input{rubricsPreamble.tex}
+
+\StrBetween*[1,1]{\currfilename}{Homework}{.tex}[\homework]
+
+\begin{document}
+
+\chapter{MAT-255, Homework \#\homework\ Rubrics}
+
+\section*{Proofs and writing}  %the * means this section will not be numbered
+%%%%%%%%%%%%%%%%%%%%%
+Strayer Exercise Set 1.1, Exercises 7, 9, 15. Strayer Exercise Set 1.2, Exercises 23, 25. 
+\begin{ex}[Strayer Exercise 7]
+ Let $a, b \in\Z$ with $a\mid b$. Prove that $a^n\mid b^n$ for every positive integer $n$.
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       \begin{proof}
+ 
+\end{proof}
+
+\begin{ex}[Strayer Exercise 9]
+ Let $a, m$ and $n$ be positive integers with $a >1$ Prove that $a^m-1\mid a^n-1$ if and only if $m\mid n.$ (\emph{Hint:} For the ``if" direction, write $n= md$ with $d$ a positive integer and use the factorization $a^{md} d - 1= (a^m - 1) \times  (a^{m(d-1)} + a^{m(d-2)} +\cdot + a^m + 1).$]
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       \begin{proof}
+ 
+\end{proof}
+
+\begin{ex}[Strayer Exercise 15] The following exercises present two alternative versions of the division algorithm. Both versions allow negative divisors; as such, they are more general than Theorem 1.4
+	\begin{enumerate}[label=(\alph*)]
+		\item\label{abs_value_divide} Let $a$ and $b$ be nonzero integers. Prove that there exists a unique $q,r\in\Z$ such that 
+		\[a=bq+r, \quad 0\leq r <|b|.\]
+		\item Find the unique $q$ and $r$ guarenteed by the division algorithm of part \ref{abs_value_divide} above with $a=47$ and $b=-6$.
+		\item\label{least_remain} Let $a$ and $b$ be nonzero integers. Prove that there exist unique $q,r\in\Z$ such that 
+		\[a=bq+r,\quad -\frac{|b|}{2}<r\leq \frac{|b|}{2}.\] 
+		This algorithm is called the \emph{absolute least remainders algorithm}.
+		\item Find the unique $q$ and $r$ guarenteed by the division algorithm of part \ref{least_remain} above with $a=47$ and $b=-6$.
+	\end{enumerate}
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       	
+\begin{solution}
+ \begin{enumerate}[label=(\alph*)]
+		\item %proof for part a
+		\item %solution for part b		
+		\item %proof for part c
+		\item %solution for part d	
+\end{enumerate}
+
+\end{solution}
+
+\begin{ex}[Strayer Exercise 23] Prove or disprove the following conjecture, which is similar to Conjecture 1:
+		\textbf{Conjecture:} There are infinitely many prime number $p$ for which $p+2$ and $p+4$ are also prime numbers.
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       \begin{solution}
+ 
+\end{solution}
+
+\begin{ex}[Strayer Exercise 25] 
+		 \begin{enumerate}[label=(\alph*)]
+		 	\item Prove that all odd prime numbers can be expressed as the difference of square of two successive integers.
+			\item Prove that no prime numbers can be expressed as the difference of two fourth power integers (\emph{Hint:} Use the factorization tool discussed in the final paragraph of this section.)
+		\end{enumerate}
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       
+
+\begin{proof}
+ 	\begin{enumerate}[label=(\alph*)]
+		\item %proof for part a
+		\item %proof for part b
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Ernst Problem 2.50]
+Consider the following statement: If $x\in\mathbb{Z}$ such that $x^2$ is odd, then $x$ is odd.
+The items below can be assembled to form a proof of this statement, but they are currently out of order.  Put them in the proper order.
+\begin{enumerate}
+	\item Assume that $x$ is an even integer.
+	\item We will utilize a proof by contraposition.
+	\item Thus, $x^2$ is twice an integer.
+	\item Since $x=2k$, we have that $x^2 =(2k)^2 =4k^2$.
+	\item Since $k$ is an integer, $2k^2$ is also an integer.
+	\item By the definition of even, there is an integer $k$ such that $x=2k$.
+	\item We have proved the contrapositive, and hence the desired statement is true.
+	\item Assume $x\in \mathbb{Z}$.
+	\item By the definition of even integer, $x^2$ is an even integer.
+	\item Notice that $x^2 = 2(2k^2)$.
+\end{enumerate}
+\end{ex}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+                                       \begin{proof}%simply copy/paste the sentences above in the correct order
+\end{proof}
+
+
+	
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
