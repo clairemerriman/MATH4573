@@ -81,16 +81,16 @@ Section 1.1 introduces the division algorithm, which will come up repeatedly thr
  Let $a,b\in\Z$ with $b>0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <b.\]
 \end{thm*}
 
-Before proving this theorem, let's think about division with remainders, ie long division. The quotient $q$ should be the largest integer such that $bq\leq a$. If we divide both sides by $b$, we have $q\leq\frac{a}{b}$. We have a function to find the greatest integer less than or equal to $\frac{a}{b},$ namely $q=\left\lfloor\frac{a}{b}\right\rfloor$. If we rearrange the equation $a=bq+r,$ we gave $r=a-bq$. This is our scratch work for existence.
+Before proving this theorem, let's think about division with remainders, ie long division. The quotient $q$ should be the largest integer such that $bq\leq a$. If we divide both sides by $b$, we have $q\leq\frac{a}{b}$. We have a function to find the greatest integer less than or equal to $\frac{a}{b},$ namely $q=\floor{\frac{a}{b}}$. If we rearrange the equation $a=bq+r,$ we gave $r=a-bq$. This is our scratch work for existence.
 
 \begin{proof} Let $a,b\in\Z$ with $b>0$.
-Define $q=\left\lfloor\frac{a}{b}\right\rfloor$ and $r=a-b\left\lfloor\frac{a}{b}\right\rfloor$. Then $a=bq+r$ by rearranging the equation. 
+Define $q=\floor{\frac{a}{b}}$ and $r=a-b\floor{\frac{a}{b}}$. Then $a=bq+r$ by rearranging the equation. 
 Now we need to show $0\leq r<b$. 
 
-Since $x-1<\lfloor x\rfloor\leq x$ by \nameref{lem:floor-inter}, we have \[\frac{a}{b}-1<\left\lfloor\frac{a}{b}\right\rfloor\leq\frac{a}{b}.\] 
+Since $x-1<\floor{ x}\leq x$ by \nameref{lem:floor-inter}, we have \[\frac{a}{b}-1<\floor{\frac{a}{b}}\leq\frac{a}{b}.\] 
 Multiplying all terms by $-b$, we get 
- \[-a+b>-b\left\lfloor\frac{a}{b}\right\rfloor\geq-a.\]
- Adding $a$ to every term gives \[b>a-b\left\lfloor\frac{a}{b}\right\rfloor\geq 0.\] 
+ \[-a+b>-b\floor{\frac{a}{b}}\geq-a.\]
+ Adding $a$ to every term gives \[b>a-b\floor{\frac{a}{b}}\geq 0.\] 
 By the definition of $r$, we have shown $0\leq r <b$.
 
 Finally, we need to show that $q$ and $r$ are unique.
@@ -144,10 +144,10 @@ One proof method is using an existing proof as a guide.
 	\end{enumerate}
     	\item Use the \emph{proof} of the \nameref{div-alg} as a template to prove this statement. That is, repeat the steps, adjusting as necessary, but do not use the conclusion.
     	\begin{enumerate}
-    		\item In the proof of the \nameref{div-alg}, we let $q=\lfloor\frac{a}{b}\rfloor$. Here we have two cases:
+    		\item In the proof of the \nameref{div-alg}, we let $q=\floor{\frac{a}{b}}$. Here we have two cases:
     		\begin{enumerate}
-      			\item When $\answer{b>0}$, $q=\answer{\lfloor\frac{a}{b}\rfloor}$ and $r=\answer{a-bq}.$
-      			\item When $\answer{b<0}$, $q=\answer{-\lfloor\frac{a}{b}\rfloor}$ and $r=\answer{a-bq}.$   
+      			\item When $\answer{b>0}$, $q=\answer{\floor{\frac{a}{b}}}$ and $r=\answer{a-bq}.$
+      			\item When $\answer{b<0}$, $q=\answer{-\floor{\frac{a}{b}}}$ and $r=\answer{a-bq}.$   
 		\end{enumerate}
     		\item Follow the steps of the \emph{proof} of the \nameref{div-alg} to finish the proof.
     	\end{enumerate}
