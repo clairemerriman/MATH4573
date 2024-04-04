@@ -1,7 +1,8 @@
-\documentclass{xourse}  
+\documentclass[handout]{xourse}  
 
+\newenvironment{writeRubric}{\textbf{Rubric:} \begin{enumerate}[leftmargin=.75in,label=\textbf{\arabic* points}]\setcounter{enumi}{-1}\item Work does not contain enough of the relevant concepts to provide feedback.}{\!\end{enumerate}}
 
-\input{lessonplanheaderXimera.tex}
+\input{lessonplanheader.tex}
  
 \title{MAT-255 Number Theory--Spring 2024}  
 %% This is the Name of your course  
@@ -14,18 +15,29 @@ Course notes for Davidson College MAT-255 Number Theory, Spring 2024.
 \maketitle  
  
 %% Here we have a listing of the activities.  
-\activity{Week1Spring24}  
-\activity{Week2Spring24}
-\activity{Week3Spring24}
-\activity{Week4Spring24}
-\activity{Week5Spring24}
-\activity{Week6Spring24}
-\activity{Week7Spring24}
-\activity{Week8Spring24}
-\activity{Week9Spring24}
-\activity{Week10Spring24}
+\part{Week 1}
+    \activity{Week1/IntroductionandDivisibility.tex}
+    \activity{Week1/DivisionAlgorithm}
+    \practice{Rubrics/Homework1.tex}
+% \activity{Week1Spring24}  
+% \activity{Week2Spring24}
+% \activity{Week3Spring24}
+% \activity{Week4Spring24}
+% \activity{Week5Spring24}
+% \activity{Week6Spring24}
+% \activity{Week7Spring24}
+% \activity{Week8Spring24}
+% \activity{Week9Spring24}
+% \activity{Week10Spring24}
+% \activity{Week11Spring24}
 
 
 \activity{otherResults.tex}
+
+
+
+
+    % \bibliographystyle{apalike}
+    % \bibliography{sources}
 
 \end{document}
