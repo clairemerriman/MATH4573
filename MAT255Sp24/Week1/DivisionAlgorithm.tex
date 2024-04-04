@@ -1,0 +1,187 @@
+\documentclass{../ximera}
+\input{../lessonplanheader.tex}
+
+\title{Division algorithm, divisibility}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+  \item Prove facts about divisibility
+  \item Prove basic mathematical statements using definitions and direct proof
+  \item Use truth tables to understand compound propositions
+  \item Prove statements by contradiction
+  \item Use the greatest integer function
+\end{obj}
+ 
+  
+\begin{pre}
+  \item[Reading]  Read Ernst  \href{https://danaernst.com/IBL-IntroToProof/pretext/chap_intro.html}{Chapter 1} and \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_baby_number_theory.html}{Section 2.1}. Also read Strayer Introduction and Section 1.1 through the proof of Proposition 1.2 (that is, pages 1-5).
+
+ \item[Turn in:] From Ernst
+  \begin{problem}[Problem 2.6]
+    For $n,m\in\Z,$ how are the following mathematical expressions similar and how are they different? In particular, is each one a sentence or simply a noun?
+ 
+      \begin{enumerate}%[label=\alph*.]
+        \item  $n\mid m$
+        \item $\frac{m}{n}$ 
+        \item $\sfrac{m}{n}$ 
+      \end{enumerate}
+
+      \begin{solution}
+        The first means ``$n$ divides $m$," which is a relationship between $n$ and $m$. This is a sentence. The other two are nouns, that is, the rational number $\frac{m}{n}$.
+      \end{solution}
+    \end{problem}
+    
+    \begin{problem}[Problem 2.8] Let $a,b,n,m\in\Z$.
+        Determine whether each of the following statements is true or false. If a statement is true, prove it. If a statement is false, provide a counterexample.
+          \begin{enumerate}%[label=\alph*.]
+            \item  If $a\mid n$, then $a\mid mn$
+              \begin{solution}
+                Let $a\mid n$. Then by \autoref{defn:divides}, there exists $k\in\Z$ such that $ak=n$. Multiplying both sides of the equation by $m$ gives \[a(km)=mn,\] so $a\mid mn$ by definition of \nameref{defn:divides}.
+              \end{solution}
+            
+            \item If $6$ divides $n,$ then $2$ divides $n$ and $3$ divides $n$.
+              \begin{solution}
+                Let $6\mid n$. Then by definition of \nameref{defn:divides}, there exists $k\in\Z$ such that $6k=n$. By factoring out $6$, we see that $2(3k)=3(2k)=n,$ so $2\mid n$ and $3\mid n$. 
+              \end{solution}
+
+            \item If $ab$ divides $n,$ then $a$ divides $n$ and $b$ divides $n$.
+              \begin{solution}
+                Let $ab\mid n$. Then by definition of \nameref{defn:divides}, there exists $k\in\Z$ such that $abk=n$. Thus, we see that $a(bk)=b(ak)=n,$ so $a\mid n$ and $b\mid n$. 
+              \end{solution}
+          \end{enumerate}
+        \end{problem}
+    
+        \begin{problem}[Problem 2.12] Determine whether the converse of each of Corollary 2.9, Theorem 2.10, and Theorem 2.11 is true. That is, for $a,n,m\in\Z$, determine whether each of the following statements is true or false. If a statement is true, prove it. If a statement is false, provide a counterexample.
+        \begin{enumerate}%[label=\alph*.]
+          \item If $a$ divides $n^2$, then $a$ divides $n$. (Converse of Corollary 2.9)
+          \begin{solution}
+            False; $4\mid 4$ but $4\nmid 2$.
+          \end{solution}
+
+          \item If $a$ divides $-n$, then $a$ divides $n$. (Converse of Theorem 2.10)
+            \begin{solution}
+              True. If $a\mid -n$, then by definition of \nameref{defn:divides}, there exists $k\in\Z$ such that $ak=-n$. Multiplying both sides by $-1$ gives \[-ak=a(-k)=n.\] Therefore, $a\mid n$.
+            \end{solution}
+
+          \item If $a$ divides $m+n$, then $a$ divides $m$ and $a$ divides $n$.
+          (Converse of Theorem 2.11)
+ 
+            \begin{solution}
+              False; $3\mid 2+1$ but $3\nmid 2$ and $3\nmid 1$.
+            \end{solution}
+        \end{enumerate}
+    \end{problem}
+\end{pre}
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Divisibility practice% % \instructorNotes{(20 minutes)}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{prop*}[Strayer, Proposition 1.1]
+% Let $a,b\in\Z$. If $a\mid b$ and $b \mid c$, then $a\mid c$.
+%\end{prop*}
+%
+%Since this is the first result in the course, the only tool we have is the definition of ``$a\mid b$". 
+%
+%\begin{proof}
+%Since $a\mid b$ and $b \mid c$, there exist $d,e\in\Z$ such that $b=ae$ and $c=bf$. Combining these, we see \[c=bf=(ae)f=a(ef),\] so $a\mid c$.
+%\end{proof}
+%
+%This means that division is \emph{transitive}. 
+%
+%
+%\begin{prop*}[Strayer, Proposition 1.2] Let $a,b,c,m,n\in\Z$.
+% If $c\mid a$ and $c\mid b$ then $c\mid ma+nb$.
+%\end{prop*}
+%\begin{proof}
+% Let $a,b,c,m,n\in\Z$ such that $c\mid a$ and $c\mid b$. Then by definition of divisibility, there exists $j,k\in\Z$ such that $cj=a$ and $ck=b$. Thus, \[ma+nb=m(cj)+n(ck)=c(mj+nk).\] Therefore, $c\mid ma+nb$ by definition.
+%\end{proof}
+%
+%\begin{defn}
+% The expression $ma+nb$ in Proposition 1.2 is called \emph{an (integral) linear combination of $a$ and $b$.}
+%\end{defn}
+%Proposition 1.2 says that an integer dividing each of two integers also divides any integral linear combination of those integers. This fact will be extremely valuable in establishing theoretical results. But first, let's get some more practice with proof writing
+%
+%Break into three groups. Using the proofs of Propositions 1.1 and 1.2 as examples, prove the following facts. Each group will prove one part.
+%
+%\begin{br}[Exercise Set 1.1, Exercise 5]\label{divisfacts}
+% Prove or disprove the following statements.
+%\begin{enumerate}[label=(\alph*)]
+%\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $a+c\mid b+d$.
+%\item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $ac\mid bd$.
+%\item If $a,b,$ and $c$ are integers such that if $a\nmid b$ and $b\nmid c$, then $a\nmid c$.
+%\end{enumerate}
+%\end{br}
+%\begin{solution}
+%Problem on Homework 1.
+%\end{solution}
+%
+\subsection{Logic, proof by contradiction, and biconditionals}% % \instructorNotes{(45 minutes)} 
+
+We will begin by working through Ernst \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_Intro_to_Logic.html}{Section 2.2} through Example 2.21. Discuss Problem 2.17 as a class, and note that Problem 2.19 is on Homework 1.
+
+
+
+\begin{br}
+  Construct a truth table for $A\Rightarrow B, \neg (A\Rightarrow B)$ and $A\land \neg B$
+
+  \begin{solution}
+ 
+    \begin{tabular}{c|c|c|c|c}
+      $A$ 	& $B$	& $A\Rightarrow B$ 	& $\neg (A\Rightarrow B)$ & $A\land \neg B$\\\hline
+      T 	& T		& T 				& F					& F	\\
+      T 	& F 		& F 				& T					& T\\
+      F 	& T 		& T 				& F					& F\\
+      F 	& F 		& T 				& F					& F\\
+    \end{tabular}
+  \end{solution}
+\end{br}
+This is the basis for \emph{proof by contradiction.} We assume both $A$ and $\neg B$, and proceed until we get a contradiction. That is, $A$ and $\neg B$ cannot both be true.
+
+\begin{defn}[Proof by contradiction]\label{proof-contradiction}
+  Let $A$ and $B$ be propositions. To prove $A$ implies $B$ by contradiction, first assume the $B$ is false. Then work through logical steps until you conclude $\neg A \land A$.
+\end{defn}
+
+First, let's define a \emph{lemma.} A lemma is a minor result whose sole purpose is to help in proving a theorem, although some famous named lemmas have become important results in their own right.
+
+\begin{defn}[greatest integer (floor) function]\label{defn:floor}
+  Let $x\in\R$. The \emph{greatest integer function of $x$,} denoted $[x]$ or $\floor{x}$, is the greatest integer less than or equal to $x$.
+\end{defn}
+
+\begin{lem*}[Strayer, Lemma 1.3]\label{lem:floor-inter}
+  Let $x\in\R$. Then $x-1<[x]\leq x$.
+  
+  \begin{proof}
+    By the definition of the \nameref{defn:floor}, $[x]\leq x$. 
+
+    To prove that $x-1<[x],$ we proceed by contradiction. Assume that $x-1\geq [x]$ (the negation of $x-1<[x]$). Then, $x\geq [x]+1$. This contradicts the assumption that $[x]$ is the greatest integer \emph{less than or equal to} $x$. Thus, $x-1<[x].$
+  \end{proof}
+\end{lem*}
+
+
+%All definitions are `biconditionals but we normally only write the ``if."
+%
+%We say that two definitions are \emph{equivalent} if definition A is true if and only if definition B is true. 
+%\begin{br}
+%Prove that our two definitions of even are equivalent.
+%\end{br}
+%
+%\begin{prop*}
+% Let $n\in\Z$. Then there is some $k\in\Z$ such that $n=2k$ if and only if $2\mid n$.
+%\end{prop*}
+%%\begin{proof}
+%% $(\Rightarrow)$  Let $n\in\Z$. Assume that there is some $n\in\Z$ such that $n=2k$. Then 
+%% Thus, $2\mid n$ by definition.
+%% 
+%%  $(\Leftarrow)$  Let $n\in\Z$. Assume that $2\mid n$. Then, there is some $k\in\Z$ such that $n=2k$ by the definition of $2\mid n$.
+%%\end{proof}
+
+
+\end{document}
