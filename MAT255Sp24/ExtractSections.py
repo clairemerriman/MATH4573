@@ -40,13 +40,19 @@ def extract_all_sections(input_file):
 
                 with open(output_file, "w") as section_file:
                     section_file.write(output_content)
-                break
+            
+                # Reset variables to keep looping
+                if line.startswith(r'\section'):
+                    section_title = line.split(': ', 1)[1].split('}')[0]
+                extracted_lines = []
+            
             else:
                 extracted_lines.append(line)
         elif line.startswith(r'\section') or line.startswith(r'\section*'):
             append_line = True
-            section_title = line.split(':', 1)[1].split('}')[0]
+            #Get the Content Title that is after
+            section_title = line.split(': ', 1)[1].split('}')[0]
             # extracted_lines.append(line)
 
 
-sections = extract_all_sections('Week1Spring24.tex')
+sections = extract_all_sections('Week2Spring24.tex')
