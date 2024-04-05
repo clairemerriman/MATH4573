@@ -1,0 +1,98 @@
+\documentclass{../ximera}
+\input{../lessonplanheader.tex}
+
+\title{More facts about greatest common divisor and primes}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Find the solutions to a specific Diophantine equation in three variables
+    \item Prove that when a Diophantine equation in three variables has a solutions, it has infinitely many.
+\end{obj}
+
+\begin{pre}
+\item[Reading]  Strayer Section 1.5.
+
+\item[Turn in] 
+\begin{enumerate}
+ \item  The proof of Theorem 1.19 ends with ``the cases $a=1$ and $b>1,$ $a>1$ and $b=1,$ and $a=b=1$ are easily checked and are left as exercises. Do this.
+\item For Corollary 1.20, the book states ``The (extremely easy) proof is left as an exercise for the reader." Complete this proof.\end{enumerate}
+
+\begin{solution}
+ 
+\begin{enumerate}
+ \item When $a=1$ and $b>1,$ then $(a,b)=1$ and $[a,b]=b$. Then $(a,b)[a,b]=b=ab$. Similarly for $a>1, b=1$. When $a=b=1,$ then $(a,b)=[a,b]=1$ and $(a,b)[a,b]=1=ab.$
+ \item From Theorem 1.19, we know that $\gcd(a,b)\lcm[a,b]=ab$. Since $\gcd(a,b),\lcm[a,b],$ and $ab$ are all positive, $\lcm[a,b]=\frac{ab}{\gcd(a,b)}$ if and only if $\gcd(a,b)=1$.
+\end{enumerate}
+\end{solution}
+\end{pre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Greatest common divisor and Diophantine equations (30 minutes)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Finish proof from Friday--end of notes from Week 3.
+
+
+\begin{proposition}\label{prop:3diophantine}
+    Let $a,b,c,d\in\Z$ and let $ax+by+cz=d$ be a linear Diophantine equation. If $(a,b,c)\nmid d$, then the equation has no solutions. If $(a,b,c)\mid d,$ then there are infinitely many solutions.
+\end{proposition}
+
+\begin{br}
+Find integral solutions to the Diophantine equation \[8x_1-4x_2+6x_3=6.\]
+
+\begin{enumerate}
+    \item Since $(8,-4,6)=2,$ solutions exist
+    \item The linear Diophantine equation $8x_1-4x_2=4y$ has infinitely many solutions for all $y\in\Z$ by \nameref{thm:linear-dioph}. Substituting into the original Diophantine equation gives $4y+6x_3=6,$ which has infinitely many solutions by \nameref{thm:linear-dioph}, since $(4,6)=2\mid 6$. Find them.
+     
+    \begin{solution}
+        By inspection, $y=0,x_3=1$ is a particular solution. Then by \nameref{thm:linear-dioph}, the solutions have the form 
+        \begin{align*}
+            y&=0+\frac{6n}{2},\quad x_3=1-\frac{4n}{2}, \quad \textnormal{ or }\\
+            y&=0+3n,\quad x_3=1-2n, \qquad n\in\Z. \qedhere
+        \end{align*}
+        \end{solution}
+    \item  For a particular value of $y$, the Diophantine equation $8x_1-4x_2=0$ has solutions, find them. 
+    \begin{solution}
+        By inspection, $x_1=1,x_2=2$ is a particular solution. Then by \nameref{thm:linear-dioph}, the solutions have the form 
+        \begin{align*}
+            x_1&=1+\frac{-4m}{4},\quad x_2=2-\frac{8m}{4}, \quad \textnormal{ or }\\
+            x_1&=1-m,\quad x_2=2-2m, \qquad m\in\Z. \qedhere
+        \end{align*}
+        \end{solution}
+    \item Then $x_1=1-m, x_2=2-2m,x_3=1$ for $m\in\Z$.
+\end{enumerate}
+\end{br}
+
+
+\begin{proof}[Proof of Proposition \ref{prop:3diophantine}]
+    Let $a,b,c,d\in\Z$ and let $ax+by+cz=d$ be a linear Diophantine equation. If $(a,b,c)\mid d,$ let $e=(a,b).$ 
+    Then \begin{equation}\label{eq:interDioph1}ax+by=ew\end{equation} has a solution for all $w\in\Z$ by \nameref{thm:linear-dioph}.
+    Similarly, the linear Diophantine equation \begin{equation}\label{eq:interDioph2}
+        ew+cz=d
+    \end{equation} has infinitely many solutions by \nameref{thm:linear-dioph}, since $(e,c)=(a,b,c)$ by the Lemma \ref{lem:gcd_3case} and $(a,b,c)\mid d$ by assumption. These solutions have the form 
+    \[w=w_0+\frac{cn}{(a,b,c)},\quad z=z_0-\frac{en}{(a,b,c)},\qquad n\in\Z,\]
+    where $w_0,z_0$ is a particular solution. Let $x_0,y_0$ be a particular solution to \[ax+by=ew_0.\] Then the general solution is 
+    \[x=x_0+\frac{bm}{e},\quad y=y_0-\frac{am}{e},\qquad m\in\Z.\]
+
+    To verify that these formulas for $x,y,$ and $z$ give solutions to $ax+by+cz=d$, we substitute into equation \ref{eq:interDioph2} then \ref{eq:interDioph1}
+    \begin{align*}
+        e\left(w_0+\frac{cn}{(a,b,c)}\right)+c\left(z_0-\frac{en}{(a,b,c)}\right)&=d\\
+        e w_0 + c z_0 & =d\\
+        a\left(x_0+\frac{bm}{e}\right)+b\left(y_0-\frac{am}{e}\right)+cz _0 &=d\\
+        ax_0+by_0+c z_0&=d.
+    \end{align*}
+
+    When $(a,b,c)\nmid d$, $\frac{a}{(a,b,c)},\frac{b}{(a,b,c)},\frac{c}{(a,b,c)}\in\Z$ by definition, but $\frac{d}{(a,b,c)}$ is not an integer. Therefore, there are no integers such that \[\frac{a}{(a,b,c)}x+\frac{b}{(a,b,c)}y+\frac{c}{(a,b,c)}z=\frac{d}{(a,b,c)}. \qedhere\] 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

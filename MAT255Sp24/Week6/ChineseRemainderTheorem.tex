@@ -1,0 +1,138 @@
+\documentclass{../ximera}
+\input{../lessonplanheader.tex}
+
+\title{Chinese Remainder Theorem}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+\item Solve system of linear equations in one variable.
+ \item Prove the Chinese Remainder Theorem.
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multiplicative inverses (20 min)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+From Friday
+
+\begin{cor*}[Corollary 2.8]\label{cor:condition-invertible}
+    Let $a,m\in\Z$ with $m>0.$ The linear congruence in one variable $ax\equiv 1\pmod{m}$ has a solution if and only if $(a,m)=1$. If $(a,m)=1,$ then the solution is unique modulo $m$. 
+\end{cor*}
+
+\begin{defn}[multiplicative inverse of $a$ modulo $m$]\label{defn:mult-inv} Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$
+    We call the unique incongruent solution to $ax\equiv 1\pmod m$ the \emph{multiplicative inverse of $a$ modulo $m$}.
+\end{defn}
+
+\begin{example}\label{example:mult-inv}
+    Examples of multiplicative inverses:
+    \begin{itemize}
+        \item $5(3)\equiv 1\pmod{7}$ so $3$ is the multiplicative inverse of $5$ modulo $7$ and $5$ is the multiplicative inverse of $3$ modulo $7$.
+        \item $9(5)\equiv 1\pmod{11}$ so $5$ is the multiplicative inverse of $9$ modulo $11$ and $9$ is the multiplicative inverse of $5$ modulo $11$.
+        \item $8(-4)\equiv 8(7)\equiv 1\pmod{11}$ so $7\equiv -4\pmod{11}$ is the multiplicative inverse of $8$ modulo $11$ and $8$ is the multiplicative inverse of $7\equiv -4\pmod{11}$ modulo $11$.
+        \item $8(5)\equiv 1\pmod{13}$ so $5$ is the multiplicative inverse of $8$ modulo $13$ and $8$ is the multiplicative inverse of $5$ modulo $13$.
+    \end{itemize}
+
+    Example using multiplicative inverses:
+    \begin{align*}
+        6!& \equiv 6\ast 5\ast 4\ast 3\ast 2\ast 1\pmod{7}\\
+          & \equiv 6\ast 5(3)\ast 4(2)\ast 1\pmod{7}\\
+          & \equiv 6 \pmod{7}
+    \end{align*}
+\end{example}
+
+\begin{tps}
+    Find $10!\pmod{11}$ and $12!\pmod{13}.$ Is there a pattern?
+
+    
+    \begin{solution}
+        \begin{align*}
+            10! & \equiv 10\ast 9\ast 8\ast 7\ast 6\ast 5\ast 4\ast 3\ast 2\ast 1\pmod{11}\\
+                & \equiv 10\ast 9(5)\ast 8(7)\ast 6(2)\ast 4(3)\ast 1\pmod{11}\\
+                & \equiv 1\pmod{11}
+        \end{align*}
+
+        \begin{align*}
+            12! & \equiv 12\ast 11\ast 10\ast 9\ast 8\ast 7\ast 6\ast 5\ast 4\ast 3\ast 2\ast 1\pmod{13}\\
+                & \equiv 12\ast 11(6) \ast 10(4)\ast 9(3)\ast 8(5)\ast 7(2) \ast 1\pmod{13}\\
+                & \equiv 1\pmod{13}
+        \end{align*}
+
+        For a prime $p,$ $(p-1)!\equiv 1\pmod{p}$.
+    \end{solution}
+\end{tps}
+\begin{remark}
+    We do need the condition that $p$ is prime. For example, $3!\equiv 2\pmod{4},$ and $8!\equiv 0\pmod{9}.$
+\end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simultaneous Linear congruences in one variable (30 min)}
+
+
+\begin{example}
+    Consider the system of linear equations 
+    \begin{align*}
+        x &\equiv 2 \pmod{5}\\
+        x &\equiv 3 \pmod{7}\\
+        x &\equiv 1 \pmod{8}.
+    \end{align*}
+
+    A slow way to find an integer $x$ that satisfies all three congruences is to write out the congruence classes:
+    \begin{align*}
+        2, 2+5, 2+5(2), \boxed{2+5(3)}, \dots\\
+        3, 3+7, \boxed{3+7(2)}, 3+7(3), \dots\\
+        1, 1+8, 1+8(2), \boxed{1+8(3)}, \dots
+    \end{align*}
+    and see what integers are on all three lists. In addition to being tedius, we this doesn't help find \emph{all} such integers.
+
+    To find all such integers, define $M=5(7)(8)=280,$ and $M_1=\frac{M}{5}=7(8),M_2=\frac{M}{7}=5(8),M_3=\frac{M}{8}=5(7).$ Then each $M_i$ is relatively prime to $M$ by construction. Thus, by \nameref{cor:condition-invertible} the congruences
+    \begin{align*}
+        M_1x_1 & \equiv 1\pmod 5, & 7(8)x_1&\equiv x_1 \equiv 1\pmod 5\\
+        M_2x_2 & \equiv 1\pmod 7, & 5(8)x_2 &\equiv 5x_2 \equiv 1\pmod 7\\
+        M_3x_3 & \equiv 1\pmod 8, & 5(7)x_3&\equiv 3x_3\equiv 1\pmod 8
+    \end{align*}
+    have solutions. Thus, $x_1\equiv 1\pmod{5}, x_2\equiv 3\pmod{7},$ and $x_3\equiv 3\pmod{8}.$
+
+    Note that 
+    \begin{align*}
+        M_1x_1(2)&=56(1)(2)\equiv 2\pmod 5, & M_2&\equiv M_3\equiv 0\pmod{5}\\
+        M_2x_2(3)&=40(3)(3)\equiv 3\pmod 7, & M_1&\equiv M_3\equiv 0\pmod{7}\\
+        M_3x_3(1)&=35(3)(1)\equiv 1\pmod 8, & M_1&\equiv M_2\equiv 0\pmod{8}
+    \end{align*}
+
+    Thus, \[x=M_1x_1(2)+M_2x_2(3)+M_3x_3(1)=56(1)(2)+40(3)(3)+35(3)(1)\]
+    is a solution to all three congruences.
+\end{example}
+
+\begin{thm*}[Chinese Remainder Theorem]\label{CRT}
+    Let $m_1,m_2,\dots m_k$ be pairwise relatively prime positive integers (that is, any pair $\gcd(m_i,m_j)=1$ when $i\neq j$). Let $b_1, b_2,\dots, b_k$ be integers. Then the system of congruences 
+   \begin{align*}
+    x&\equiv b_1 \pmod{m_1}\\
+    x&\equiv b_2 \pmod{m_2}\\
+       &\vdots\\
+     x&\equiv b_n \pmod{m_k}
+   \end{align*}
+   has a unique solution modulo $M=m_1m_2\dots m_k$. This solution has the form 
+   \[x=M_1x_1b_1+M_2x_2b_2+\cdot+M_kx_kb_k,\] where $M_i=\frac{M}{m_i}$ and $M_i x_i\equiv 1 \pmod{m_i}$.
+   \end{thm*}
+   \begin{proof} Let $m_1,m_2,\dots m_k$ be pairwise relatively prime positive integers.
+    We start by constructing a solution modulo $M=m_1m_2\dots m_k$. By construction, $M_i=\frac{M}{m_i}$ is an integer. Since each the $m_i$ are pairwise relatively prime, $\left(M_i, m_i\right)=1$. Thus, by \nameref{cor:condition-invertible}, for each $i$ there is an integer $x_i$ where $M_i x_i\equiv 1 \pmod{m_i}$. Thus $M_i x_i b_i\equiv b_i\pmod{m_i}$. We also have that $(M_i, m_j)=m_j$ when $i\neq j$, so $M_i b_i\equiv 0 \pmod{m_j}$ when $i\neq j$.  Let 
+    \[x=M_1x_1b_1+M_2x_2b_2+\cdot+M_kx_kb_k.\] 
+    Then $x\equiv M_i x_i b_i\equiv b_i\pmod{m_i}$ for each $i=1,2,\dots,k$ and $x\equiv M_i x_i b_i\equiv 0\pmod{m_j}$ when $i\neq j.$ Thus, we have found a solution to the system of equivalences.
+    
+    To show the solution is unique modulo $M,$ consider two solutions $x_1,x_2.$ Then $x_1\equiv x_2\pmod{m_i}$ for each $i=1,2,\dots,k.$ Thus $m_i\mid x_2-x_1$. Since $(m_i,m_j)=1$ when $i\neq j,$ $M=[m_1,m_2,\dots,m_k]$ and $M\mid x_2-x_1.$ Thus, $x_1\equiv x_2\pmod M.$ 
+   \end{proof}
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
