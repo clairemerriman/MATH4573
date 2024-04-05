@@ -1,0 +1,159 @@
+\documentclass{../ximera}
+\input{../lessonplanheader.tex}
+
+\title{The Division Algorithm}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+  \item Prove existence and uniqueness for the Division Algorithm
+  \item Prove existence and uniqueness for the general Division Algorithm
+\end{obj}
+
+\begin{pre}
+  \item[Read] Ernst \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_Intro_to_Logic.html}{Section 2.2} and \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_Introduction_to_Quantification.html}{Section 2.4}
+ 
+  \item[Turn in] Ernst, Problem 2.59 and 2.64
+\end{pre}
+
+\begin{instructorNotes}
+  Go over reading assignment at the start of class.
+\end{instructorNotes}
+
+
+This section introduces the division algorithm, which will come up repeatedly throughout the semester, as well as the definition of divisors from last class.
+
+First, let's define a \emph{lemma.} A lemma is a minor result whose sole purpose is to help in proving a theorem, although some famous named lemmas have become important results in their own right.
+
+\begin{defn}[greatest integer (floor) function]\label{defn:floor}
+  Let $x\in\R$. The \emph{greatest integer function of $x$,} denoted $[x]$ or $\floor{x}$, is the greatest integer less than or equal to $x$.
+\end{defn}
+
+\begin{lemma}\label{lem:floor-inter}
+  Let $x\in\R$. Then $x-1<[x]\leq x$.
+  
+  \begin{proof}
+    By the definition of the floor function, $[x]\leq x$. 
+
+    To prove that $x-1<[x],$ we proceed by contradiction. Assume that $x-1\geq [x]$ (the negation of $x-1<[x]$). Then, $x\geq [x]+1$. This contradicts the assumption that $[x]$ is the greatest integer \emph{less than or equal to} $x$. Thus, $x-1<[x].$
+  \end{proof}
+\end{lemma}
+
+\begin{thm*}[Division Algorithm]\label{div-alg}
+ Let $a,b\in\Z$ with $b>0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <b.\]
+\end{thm*}
+
+Before proving this theorem, let's think about division with remainders, ie long division. The quotient $q$ should be the largest integer such that $bq\leq a$. If we divide both sides by $b$, we have $q\leq\frac{a}{b}$. We have a function to find the greatest integer less than or equal to $\frac{a}{b},$ namely $q=\floor{\frac{a}{b}}$. If we rearrange the equation $a=bq+r,$ we gave $r=a-bq$. This is our scratch work for existence.
+
+\begin{proof} Let $a,b\in\Z$ with $b>0$.
+Define $q=\floor{\frac{a}{b}}$ and $r=a-b\floor{\frac{a}{b}}$. Then $a=bq+r$ by rearranging the equation. 
+Now we need to show $0\leq r<b$. 
+
+Since $x-1<\floor{ x}\leq x$ by Lemma \ref{lem:floor-inter}, we have \[\frac{a}{b}-1<\floor{\frac{a}{b}}\leq\frac{a}{b}.\] 
+Multiplying all terms by $-b$, we get 
+ \[-a+b>-b\floor{\frac{a}{b}}\geq-a.\]
+ Adding $a$ to every term gives \[b>a-b\floor{\frac{a}{b}}\geq 0.\] 
+By the definition of $r$, we have shown $0\leq r <b$.
+
+Finally, we need to show that $q$ and $r$ are unique.
+Assume there exist $q_1,q_2,r_1,r_2\in\Z$ with \[a=bq_1+r_1, \quad 0\leq r_1<b\]
+ \[a=bq_2+r_2, \quad 0\leq r_2<b.\]
+ We need to show $q_1=q_2$ and $r_1=r_2$. We can subtract the two equations from each other. 
+ 
+\begin{align*}
+  a&=bq_1+r_1, \\
+\underline{ -(a}&\underline{=bq_2+r_2)}, \\
+ 0&=bq_1+r_1-bq_2-r_2=b(q_1-q_2)+(r_1-r_2) . 
+\end{align*}
+
+Rearranging, we get $b(q_1-q_2)=r_2-r_1$. Thus, $b\mid r_2-r_1$. From rearranging the inequalities:
+\begin{align*}
+ & 0\leq r_2<b\\
+- & \underline{b< -r_1\leq 0}\\
+ -&b<r_2-r_1<b.
+\end{align*}
+Thus, the only way $b\mid r_2-r_1$ is that $r_2-r_1=0$ and thus $r_1=r_2$. Now, $0=b(q_1-q_2)+(r_1-r_2)$ becomes $0=b(q_1-q_2)$. Since we assumed $b>0$, we have that $q_1-q_2=0$. 
+\end{proof}
+
+
+
+\begin{br}
+ Use the \nameref{div-alg} on $a=47, b=6$ and $a=281, b=13$.
+\end{br}
+\begin{solution}
+For $a=47, b=6$, we have that $a=(7)6+5, q=7, r=5$.
+For $a=281, b=13$, we have that $a=(21)13+8, q=21, r=8$.
+\end{solution}
+
+\begin{corollary}
+ Let $a,b\in\Z$ with $b\neq0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <|b|.\]
+\end{corollary}
+One proof method is using an existing proof as a guide.
+
+\begin{br} Let $a$ and $b$ be nonzero integers. Prove that there exists a unique $q,r\in\Z$ such that 
+  \[a=bq+r, \quad 0\leq r <|b|.\]
+  \begin{enumerate}
+    	\item Use the \nameref{div-alg} to prove this statement as a corollary. That is, use the \emph{conclusion} of the \nameref{div-alg} as part of the proof.  Use the following outline:
+    	\begin{enumerate}
+		\item  Let $a$ and $b$ be nonzero integers. Since $|b|>0$, the \nameref{div-alg} says that there exist unique $p,s\in\Z$ such that 
+		\begin{prompt}
+			$\answer{a=p|b|+s}$
+		\end{prompt} and 
+		\begin{prompt}
+			$\answer{0\leq s<|b|}$.
+		\end{prompt}
+      		\item There are two cases:
+      		\begin{enumerate}
+        			\item When 
+					\begin{prompt}
+						$\answer{b>0}$
+					\end{prompt}, the conditions are already met and 
+					\begin{prompt}
+						$r=\answer{s}$ and $q=answer{b}$.
+					\end{prompt}
+        			\item Otherwise, 
+					\begin{prompt}
+						$\answer{b<0}$
+					\end{prompt}, \begin{prompt}
+						$r=\answer{s}$ and $q=answer{-b}$.
+					\end{prompt}.
+      		\end{enumerate}
+      		\item Since both cases used that the $p,s$ are unique, then $q,r$ are also unique
+	\end{enumerate}
+    	\item Use the \emph{proof} of the \nameref{div-alg} as a template to prove this statement. That is, repeat the steps, adjusting as necessary, but do not use the conclusion.
+    	\begin{enumerate}
+    		\item In the proof of the \nameref{div-alg}, we let $q=\floor{\frac{a}{b}}$. Here we have two cases:
+    		\begin{enumerate}
+      			\item When 
+				\begin{prompt}
+					$\answer{b>0}$
+				\end{prompt}, 
+				\begin{prompt}
+					$q=\answer{\floor{\frac{a}{b}}}$ and $r=\answer{a-bq}.$
+				\end{prompt}
+
+      			\item When 
+				\begin{prompt}
+					$\answer{b<0}$
+				\end{prompt}, 
+				\begin{prompt}
+					$q=\answer{-\floor{\frac{a}{b}}}$ and $r=\answer{a-bq}.$
+				\end{prompt}
+		\end{enumerate}
+    		\item Follow the steps of the \emph{proof} of the \nameref{div-alg} to finish the proof.
+    	\end{enumerate}
+
+\end{enumerate}
+
+
+\end{br}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

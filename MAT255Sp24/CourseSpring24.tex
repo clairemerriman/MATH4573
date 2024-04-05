@@ -1,6 +1,5 @@
 \documentclass[handout]{xourse}  
 
-\newenvironment{writeRubric}{\textbf{Rubric:} \begin{enumerate}[leftmargin=.75in,label=\textbf{\arabic* points}]\setcounter{enumi}{-1}\item Work does not contain enough of the relevant concepts to provide feedback.}{\!\end{enumerate}}
 
 \input{lessonplanheader.tex}
  
@@ -14,11 +13,26 @@ Course notes for Davidson College MAT-255 Number Theory, Spring 2024.
 \end{abstract}  
 \maketitle  
  
-%% Here we have a listing of the activities.  
-\part{Week 1}
-    \activity{Week1/IntroductionandDivisibility.tex}
-    \activity{Week1/DivisionAlgorithm}
-    \practice{Rubrics/Homework1.tex}
+%% Here we have a listing of the activities.
+\chapterstyle
+    \activity{Week1/introduction.tex}
+\sectionstyle  
+    \activity{Week1/basicDefinitions.tex}
+
+\chapterstyle
+    \activity{Week1/divisibilityIntro.tex}
+
+\sectionstyle  
+    \activity{Week2/basicDivisionFacts.tex}
+    \activity{Week2/divisionAlgorithm}
+    \activity{Week2/primes.tex}
+    \activity{Week2/gcdIntro.tex}
+    \activity{Week2/induction.tex}
+    \activity{Week3/euclidAlgorithm.tex}
+    \activity{Week3/fundamentalThmArith.tex}
+    \activity{Week3/generalizeGCD.tex}
+
+
 % \activity{Week1Spring24}  
 % \activity{Week2Spring24}
 % \activity{Week3Spring24}
@@ -31,8 +45,8 @@ Course notes for Davidson College MAT-255 Number Theory, Spring 2024.
 % \activity{Week10Spring24}
 % \activity{Week11Spring24}
 
-
-\activity{otherResults.tex}
+\part{Appendix}
+    \activity{otherResults.tex}
 
 
 

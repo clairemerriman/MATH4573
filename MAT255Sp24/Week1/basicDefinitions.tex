@@ -1,0 +1,75 @@
+\documentclass{../ximera}
+\input{../lessonplanheader.tex}
+
+\title{Mathematical definitions and notation}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+  \item Formally define even and odd
+  \item Complete basic algebraic proofs
+\end{obj}
+
+
+
+\begin{defn}\label{defn:number-systems} 
+  We will use the following number systems and abbreviations:
+  \begin{itemize}
+    \item The \emph{integers,} written $\Z$, is the set $\{\dots,-3,-2,-1,0,1,2,3,\dots\}$. 
+    \item The \emph{natural numbers,} written $\N$. Most elementary number theory texts either define $\N$ to be the positive integers or avoid using $\N$. Some mathematicians include $0$ in $\N$.
+    \item The \emph{real numbers,} written $\R$.
+    \item The \emph{integers modulo $n$,} written $\Z_n$. We will define this set in Strayer Chapter 2, although Strayer does not use this notation.
+  \end{itemize}
+  We will also use the following notation:
+  \begin{itemize}
+    \item The symbol $\in$ means ``element of" or ``in." For example, $x\in\Z$ means ``$x$ is an element of the integers" or ``$x$ in the integers."
+  \end{itemize}
+\end{defn}
+
+This first section will cover basic even, odd, and divisibility results. These first few definitions and results will use algebraic proofs, before we cover formal proof methods.
+
+\begin{defn}[Even and odd, multiplication definition]\label{defn:even-odd-form}
+  An integer $n$ is \emph{even} if $n=2k$ for some $k\in\Z$. That is, $n$ is a \emph{multiple} of $2.$
+
+  An integer $n$ is odd if $n=2k+1$ for some $k\in\Z$.
+\end{defn}
+
+Now, the preceding definition is standard in an introduction to proofs course, but it is not the only definition of even/odd. We also have the following definition that is closer to the definition you are probably used to:
+
+\begin{defn}[Even and odd, division definition]\label{defn:even-odd-divides}
+  Let $n\in\Z$. Then $n$ is said to be \emph{even} if $2$ divides $n$ and $n$ is said to be \emph{odd} if $2$ does not divide $n$.
+\end{defn}
+Note that we need to define \emph{divides} in order to use the second definition. We will formally prove that these definitions are \emph{equivalent,} but for now, let's use the first definition.
+ 
+ 
+\begin{thm*}\label{thm:even-sq}
+  If $n$ is an even integer, then $n^2$ is even.
+\end{thm*}
+
+\begin{br}\label{br:sqr-evens}
+  Prove this theorem.
+
+  \begin{expandable}
+    \begin{proof}
+      If $n$ is an even integer, then by definition, there is some $k\in\Z$ such that $n=2k$. Then \[n^2=(2k)^2=2(2k^2).\] Since $2(k^2)$ is an integer, we have written $n^2$ in the desired form. Thus, $n^2$ is even.
+    \end{proof}
+  \end{expandable}
+  
+\end{br}
+ 
+\begin{prop*}\label{thm:sum-odd}
+  The sum of two consecutive integers in odd.
+\end{prop*}
+For this problem, we need to figure out how to write two consecutive integers. 
+\begin{proof}
+  Let $n,n+1$ be two consecutive integers. Then their sum is $n+n+1=2n+1,$ which is odd by \nameref{defn:even-odd-form}.
+\end{proof}
+
+
+
+\end{document}
