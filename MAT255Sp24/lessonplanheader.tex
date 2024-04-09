@@ -7,33 +7,13 @@
 \usepackage[,margin=0.7in]{geometry}
 \setlength{\textheight}{8.5in}
  
-\usepackage{tkz-euclide}
-%\usetkzobj{all}
-\tikzstyle geometryDiagrams=[rounded corners=.5pt,ultra thick,color=black]
-\colorlet{penColor}{black} % Color of a curve in a plot
-
 
 \usepackage{subcaption}
-\usepackage{float}
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 \newcounter{includepdfpage}
 
 
-\newcommand{\semester}{%
-  \ifcase\month
-  \or Spring %1
-  \or Spring %2
-  \or Spring %3
-  \or Spring %4
-  \or Spring  %5
-  \or Fall %8
-  \or Fall %9
-  \or Fall %10
-  \or Fall %11
-  \or Fall %12
-  \fi
-}
 \usepackage{currfile}
 \usepackage{xstring}
 
@@ -41,7 +21,7 @@
 \lhead{\large{Number Theory: MAT-255}}
 %Put your Document Title (Camp: Topic) Here
 \chead{}
-\rhead{\semester 24}
+\rhead{Spring 24}
 \lfoot{}
 \cfoot{}
 \rfoot{Page \thepage}
