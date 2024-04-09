@@ -58,73 +58,74 @@
 %%%%%%%%%%%%%%%%%%%%%
 % Counters and autoref for unnumbered environments
 %%%%%%%%%%%%%%%%%%%%%
-\theoremstyle{plain}
+%seems to not work for xake??
+% \theoremstyle{plain}
 
 
-\newtheorem*{namedthm}{Theorem}
-\newcounter{thm}%makes pointer correct
-\providecommand{\thmname}{Proposition}
+% \newtheorem*{namedthm}{Theorem}
+% \newcounter{thm}%makes pointer correct
+% \providecommand{\thmname}{Proposition}
 
-\makeatletter
-\NewDocumentEnvironment{thm*}{o}
- {%
-  \IfValueTF{#1}
-    {\namedthm[#1]\refstepcounter{thm}\def\@currentlabel{(#1)}}%
-    {\namedthm}%
- }
- {%
-  \endnamedthm
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{thm*}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\namedthm[#1]\refstepcounter{thm}\def\@currentlabel{(#1)}}%
+%     {\namedthm}%
+%  }
+%  {%
+%   \endnamedthm
+%  }
+% \makeatother
 
 
-\newtheorem*{namedprop}{Proposition}
-\newcounter{prop}%makes pointer correct
-\providecommand{\propname}{Proposition}
+% \newtheorem*{namedprop}{Proposition}
+% \newcounter{prop}%makes pointer correct
+% \providecommand{\propname}{Proposition}
 
-\makeatletter
-\NewDocumentEnvironment{prop*}{o}
- {%
-  \IfValueTF{#1}
-    {\namedprop[#1]\refstepcounter{prop}\def\@currentlabel{(#1)}}%
-    {\namedprop}%
- }
- {%
-  \endnamedprop
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{prop*}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\namedprop[#1]\refstepcounter{prop}\def\@currentlabel{(#1)}}%
+%     {\namedprop}%
+%  }
+%  {%
+%   \endnamedprop
+%  }
+% \makeatother
 
-\newtheorem*{namedlem}{Lemma}
-\newcounter{lem}%makes pointer correct
-\providecommand{\lemname}{Lemma}
+% \newtheorem*{namedlem}{Lemma}
+% \newcounter{lem}%makes pointer correct
+% \providecommand{\lemname}{Lemma}
 
-\makeatletter
-\NewDocumentEnvironment{lem*}{o}
- {%
-  \IfValueTF{#1}
-    {\namedlem[#1]\refstepcounter{lem}\def\@currentlabel{(#1)}}%
-    {\namedlem}%
- }
- {%
-  \endnamedlem
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{lem*}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\namedlem[#1]\refstepcounter{lem}\def\@currentlabel{(#1)}}%
+%     {\namedlem}%
+%  }
+%  {%
+%   \endnamedlem
+%  }
+% \makeatother
 
-\newtheorem*{namedcor}{Corollary}
-\newcounter{cor}%makes pointer correct
-\providecommand{\corname}{Corollary}
+% \newtheorem*{namedcor}{Corollary}
+% \newcounter{cor}%makes pointer correct
+% \providecommand{\corname}{Corollary}
 
-\makeatletter
-\NewDocumentEnvironment{cor*}{o}
- {%
-  \IfValueTF{#1}
-    {\namedcor[#1]\refstepcounter{cor}\def\@currentlabel{(#1)}}%
-    {\namedcor}%
- }
- {%
-  \endnamedcor
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{cor*}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\namedcor[#1]\refstepcounter{cor}\def\@currentlabel{(#1)}}%
+%     {\namedcor}%
+%  }
+%  {%
+%   \endnamedcor
+%  }
+% \makeatother
 
 % \theoremstyle{definition}
 % \newtheorem*{annotation}{Annotation}
