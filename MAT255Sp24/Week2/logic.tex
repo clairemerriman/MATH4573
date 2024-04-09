@@ -1,0 +1,163 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Symbolic logic}
+\begin{document}
+\begin{abstract}
+  This section is included for students who have not seen symbolic logic and truth tables or need a review.
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+  \item Prove basic mathematical statements using definitions and direct proof
+  \item Use truth tables to understand compound propositions
+  \item Prove statements by contradiction
+  \item Use the greatest integer function
+\end{obj}
+ 
+
+\begin{instructorNotes}
+  \begin{pre}
+    \item[Reading]  Read Ernst  \href{https://danaernst.com/IBL-IntroToProof/pretext/chap_intro.html}{Chapter 1} and \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_baby_number_theory.html}{Section 2.1}. Also read Strayer Introduction and Section 1.1 through the proof of Proposition 1.2 (that is, pages 1-5).
+  
+    \item[Turn in:] From Ernst: Problem 2.6 and 2.8
+  \end{pre}
+\end{instructorNotes}
+
+
+If you have not seen proof by induction or need a review, see Ernst  \href{https://danaernst.com/IBL-IntroToProof/pretext/chap_intro.html}{Chapter 1} and \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_baby_number_theory.html}{Section 2.1}
+and \href{https://danaernst.com/IBL-IntroToProof/pretext/sec_Intro_to_Logic.html}{Section 2.2} through Example 2.21. Problem 2.17 is also provided below:
+
+
+\begin{br}
+  Determine whether each of the following is a proposition. Explain your reasoning.
+
+  \begin{itemize}
+    \item All cars are red.
+    \item Every person whose name begins with J has the name Joe.
+    \item $x^2=4.$
+    \item There exists a real number $x$ such that $x^2=4$.
+    \item For all real numbers $x,$ $x^2=4.$
+    \item $\sqrt{2}$ is an irrational number.
+    \item $p$ is prime.
+    \item Is it raining?
+    \item It will rain tomorrow.
+    \item Led Zeppelin is the best band of all time.
+  \end{itemize}
+\end{br}
+
+
+
+\begin{br}
+  Construct a truth table for $A\Rightarrow B, \neg (A\Rightarrow B)$ and $A\land \neg B$
+
+  \begin{solution}
+ 
+    \begin{tabular}{c|c|c|c|c}
+      $A$ 	& $B$	& $A\Rightarrow B$ 	& $\neg (A\Rightarrow B)$ & $A\land \neg B$\\\hline
+      True& True
+            	& \begin{prompt}
+                  \wordChoice{  
+                    \choice[correct]{True}  
+                    \choice{False}  
+                  }
+              \end{prompt}			
+                & \begin{prompt}
+                    \wordChoice{  
+                      \choice{True}  
+                      \choice[correct]{False}  
+                    }
+                  \end{prompt}					
+                  & \begin{prompt}
+                      \wordChoice{  
+                        \choice{True}  
+                        \choice[correct]{False}  
+                      }
+                    \end{prompt}	\\
+      True& False	
+            & \begin{prompt}
+                \wordChoice{  
+                  \choice{True}  
+                  \choice[correct]{False}  
+                }
+              \end{prompt}
+                & \begin{prompt}
+                    \wordChoice{  
+                      \choice[correct]{True}  
+                      \choice{False}  
+                    }
+                  \end{prompt}
+              				& \begin{prompt}
+                          \wordChoice{  
+                            \choice[correct]{True}  
+                            \choice{False}  
+                          }
+                        \end{prompt}\\
+      False&True
+      	& \begin{prompt}
+            \wordChoice{  
+              \choice[correct]{True}  
+              \choice{False}  
+            }
+          \end{prompt}
+          & \begin{prompt}
+              \wordChoice{  
+                \choice{True}  
+                \choice[correct]{False}  
+              }
+            \end{prompt}
+            & \begin{prompt}
+                \wordChoice{  
+                  \choice{True}  
+                  \choice[correct]{False}  
+                }
+              \end{prompt}\\
+      False& True
+        & \begin{prompt}
+            \wordChoice{  
+              \choice[correct]{True}  
+              \choice{False}  
+            }
+          \end{prompt}
+          & \begin{prompt}
+            \wordChoice{  
+              \choice{True}  
+              \choice[correct]{False}  
+            }
+          \end{prompt}
+            & \begin{prompt}
+              \wordChoice{  
+                \choice{True}  
+                \choice[correct]{False}  
+              }
+            \end{prompt}\\
+    \end{tabular}
+  \end{solution}
+\end{br}
+This is the basis for \emph{proof by contradiction.} We assume both $A$ and $\neg B$, and proceed until we get a contradiction. That is, $A$ and $\neg B$ cannot both be true.
+
+\begin{defn}[Proof by contradiction]\label{proof-contradiction}
+  Let $A$ and $B$ be propositions. To prove $A$ implies $B$ by contradiction, first assume the $B$ is false. Then work through logical steps until you conclude $\neg A \land A$.
+\end{defn}
+
+All definitions are `biconditionals but we normally only write the ``if."
+
+We say that two definitions are \emph{equivalent} if definition A is true if and only if definition B is true. 
+%\begin{br}
+%Prove that our two definitions of even are equivalent.
+%\end{br}
+%
+%\begin{proposition}
+% Let $n\in\Z$. Then there is some $k\in\Z$ such that $n=2k$ if and only if $2\mid n$.
+%\end{proposition}
+%%\begin{proof}
+%% $(\Rightarrow)$  Let $n\in\Z$. Assume that there is some $n\in\Z$ such that $n=2k$. Then 
+%% Thus, $2\mid n$ by definition.
+%% 
+%%  $(\Leftarrow)$  Let $n\in\Z$. Assume that $2\mid n$. Then, there is some $k\in\Z$ such that $n=2k$ by the definition of $2\mid n$.
+%%\end{proof}
+
+
+\end{document}
