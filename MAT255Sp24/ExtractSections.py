@@ -18,7 +18,7 @@ def extract_all_sections(input_file):
     for line in lines:
         if append_line:
             if line.startswith(r'\section') or line.startswith(r'\end{document}'):
-                output_content = r'''\documentclass{../ximera}
+                output_content = r'''\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{''' + section_title + r'''}
