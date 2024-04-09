@@ -1,0 +1,62 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Equivalence Relations}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\begin{obj}
+  \item Prove a given set is an equivalence relation
+\end{obj}
+
+\begin{pre}
+  \item[Reading] Strayer, Appendix B
+  \item[Turn in] Let $R$ be the equivalence relation on $\R$
+  defined by
+  \[
+ [a]=\{b\in\R:\sin(a)=\sin(b) \textnormal{ and }\cos(a)=\cos(b)\}.\]
+   Prove that $R$ is an equivalence relation on $\R.$
+ Describe the equivalence classes on $\R$
+ 
+ \begin{solution}
+      Since $\sin(a)=\sin(a)$ and $\cos(a)=\cos(a),$ the relation $R$ is reflexive.
+
+      If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ the $\sin(b)=\sin(a)$ and $\cos(b)=\cos(a),$ so the relation is symmetric.
+
+      If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ $\sin(b)=\sin(c)$ and $\cos(b)=\cos(c),$ then $\sin(a)=\sin(c)$ and $\cos(a)=\cos(c)$ is transitive.
+
+      Note that $\sin(a)=\sin(b)$ if $b=a+2\pi k$ or $b=-a+\pi+2\pi k$ for some $k\in\Z,$ and  $\cos(a)=\cos(b)$ if $b=a+2\pi k$ or $b=-a+2\pi k$ for some $k\in\Z.$ These conditions are both true with $b=a+2\pi k$. Thus, for $a\in[0,2\pi),$
+      \[
+          [a]=\{\dots,a-4\pi,a-2\pi,a,a+2\pi,a+4\pi,\dots\}.
+      \]
+     \end{solution}
+\end{pre}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{br}
+    Prove that \[[a]=\{b\in\Z: 3\mid(a-b)\}\] is an equivalence relation on $\Z.$
+  \end{br}
+  
+  \begin{proof}
+    Let $a,b\in\Z$. We must show that the relation is reflexive, symmetric, and transitive.
+  
+     To show the relation is reflexive, we must show $a\in \{b\in\Z: 3\mid(a-b)\}.$ Since $\answer{3\mid a-a=0}$,\\
+     $a\in \{b\in\Z: 3\mid(a-b)\}.$
+  
+     To show the relation is symmetric, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\},$ then $a\in \{b\in\Z: 3\mid(x-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then $\answer{\textnormal{there exists $k\in\Z$ such that $3k=a-x$}}$. Therefore, $\answer{-3k=b-a}$
+     and $a\in \{b\in\Z: 3\mid(x-b)\}.$
+  
+     To show the relation is transitive, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\}$ and $y\in \{b\in\Z: 3\mid(x-b)\},$ then $x\in \{b\in\Z: 3\mid(a-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then $\answer{\textnormal{there exists $k\in\Z$ such that $3k=a-x$}}$. 
+     Similarly, if $y\in \{b\in\Z: 3\mid(x-b)\},$ then $\answer{\textnormal{there exists $m\in\Z$ such that $3m=x-y$}}$.
+     Therefore, $\answer{3(m+k)=a-k}$
+     and $y\in \{b\in\Z: 3\mid(a-b)\}.$ $\answer{\textnormal{Since the relation is reflexive, symmetric, and transitive, it is an equivalence relation.}}$
+  \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\end{document}
