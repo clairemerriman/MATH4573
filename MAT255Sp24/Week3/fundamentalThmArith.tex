@@ -60,7 +60,51 @@ We will use an idea similar to the proof of the Fundamental Theorem of Arithmeti
 		$\sqrt{2}$ is irrational
 	\end{prop*}
 
-	As class, put the steps of the proof in order, then fill in the missing information.
+	\pdfOnly{As class, put the steps of the proof in order, then fill in the missing information.}
+
+
+	\begin{prompt}
+		Put the following steps in order:
+
+			
+			$\answer{10}$ Therefore, $\sqrt{2}$ is not rational.
+			$\answer{2}$ Assume that $\sqrt{2}$ is rational, ie, there exists $p,q\in\Z$ such that $\sqrt{2}=\frac{p}{q}$.\\
+			$\answer{6}$ Therefore there exists $k\in\Z$ such that $p=2k$ by \wordChoice{  
+                \choice[correct]{definition of $2\mid p$}  
+				\choice{definition of $2\mid p^2$}  
+                \choice{\nameref{lem:irreducible-prime}}  
+                \choice{prime factorization}  
+                }  \\
+			$\answer{4}$ Then (include to remove fractions and the radical) $\answer{2q^2=p^2}.$\\
+			$\answer{5}$ Then $2\mid p^2$ by definition of divisibility and $2\mid p$ by \wordChoice{  
+                \choice{definition of $2\mid p$}  
+				\choice{definition of $2\mid p^2$}  
+                \choice[correct]{\nameref{lem:irreducible-prime}}  
+                \choice{prime factorization}  
+                }  \\
+				$\answer{9}$ This contradicts our assumption that 
+				\wordChoice{  
+					\choice{$\sqrt{2}=\frac{p}{q}$.}  
+					\choice{$2q^2=p^2$}  
+					\choice[correct]{$(p,q)=1$}   
+						  }
+			$\answer{7}$ Then (more algebraic manipulations) $\answer{2q^2=4k^2}$ and $\answer{q^2=2k^2}.$\\
+			$\answer{1}$ We proceed by contradiction.\\
+			$\answer{8}$ Then $2\mid q^2$ and $2\mid q$ by \wordChoice{  
+                \choice{definition of $2\mid q$}  
+				\choice{definition of $2\mid q^2$}  
+                \choice[correct]{\nameref{lem:irreducible-prime}}  
+                \choice{prime factorization}  
+                }
+				and \wordChoice{  
+				\choice[correct]{definition of $2\mid q$}  
+				\choice{definition of $2\mid q^2$}  
+				\choice{\nameref{lem:irreducible-prime}}  
+				\choice{prime factorization}  
+					  }	  \\
+			$\answer{3}$ Without loss of generality, we may assume $(p,q)=1,$ since \\
+			
+	\end{prompt}
 \end{br}
 
 Finally, work two groups. Each group will be assigned one of the following question.
