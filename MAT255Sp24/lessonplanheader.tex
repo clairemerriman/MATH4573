@@ -126,111 +126,109 @@
  }
 \makeatother
 
-\theoremstyle{definition}
-\newtheorem*{annotation}{Annotation}
+% \theoremstyle{definition}
+% \newtheorem*{annotation}{Annotation}
 
-\newtheorem*{innerrem}{Remark}
-\newcounter{rem}%makes pointer correct
-\providecommand{\remname}{Remark}
+% \newtheorem*{innerrem}{Remark}
+% \newcounter{rem}%makes pointer correct
+% \providecommand{\remname}{Remark}
 
-\makeatletter
-\NewDocumentEnvironment{rem}{o}
- {%
-  \IfValueTF{#1}
-    {\innerrem[#1]\refstepcounter{rem}\def\@currentlabel{(#1)}}%
-    {\innerrem}%
- }
- {%
-  \endinnerrem
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{rem}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\innerrem[#1]\refstepcounter{rem}\def\@currentlabel{(#1)}}%
+%     {\innerrem}%
+%  }
+%  {%
+%   \endinnerrem
+%  }
+% \makeatother
 
-\newtheorem*{innerdefn}{Definition}%%placeholder
-\newcounter{defn}%makes pointer correct
-\providecommand{\defnname}{Definition}
+% \newtheorem*{innerdefn}{Definition}%%placeholder
+% \newcounter{defn}%makes pointer correct
+% \providecommand{\defnname}{Definition}
 
-\makeatletter
-\NewDocumentEnvironment{defn}{o}
- {%
-  \IfValueTF{#1}
-    {\innerdefn[#1]\refstepcounter{defn}\def\@currentlabel{(#1)}}%
-    {\innerdefn}%
- }
- {%
-  \endinnerdefn
- }
-\makeatother
+% \makeatletter
+% \NewDocumentEnvironment{defn}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\innerdefn[#1]\refstepcounter{defn}\def\@currentlabel{(#1)}}%
+%     {\innerdefn}%
+%  }
+%  {%
+%   \endinnerdefn
+%  }
+% \makeatother
 
-\newtheorem*{scratch}{Scratch Work}
-
-
-\newtheorem*{namedconj}{Conjecture}
-\newcounter{conj}%makes pointer correct
-\providecommand{\conjname}{Conjecture}
-\makeatletter
-\NewDocumentEnvironment{conj}{o}
- {%
-  \IfValueTF{#1}
-    {\innerconj[#1]\refstepcounter{conj}\def\@currentlabel{(#1)}}%
-    {\innerconj}%
- }
- {%
-  \endinnerconj
- }
-\makeatother
-
-\newtheorem*{poll}{Poll question}
-\newtheorem{tps}{Think-Pair-Share}[section]
-%\newtheorem{br}{In-class Problem}[section]
-\newtheorem*{cs}{Crowd Sourced Proof}
-
-\newlist{checklist}{itemize}{2}
-\setlist[checklist]{label=$\square$}
-
-\newenvironment{obj}{
-	\textbf{Learning Objectives.} By the end of class, students will be able to:
-		\begin{itemize}}
-		{\!.\end{itemize}
-		}
-
-\newenvironment{pre}{
-	\begin{description}
-	}{
-	\end{description}
-}
+% \newtheorem*{scratch}{Scratch Work}
 
 
-\newcounter{br}%makes pointer correct
-\providecommand{\brname}{In-class Problem}
+% \newtheorem*{namedconj}{Conjecture}
+% \newcounter{conj}%makes pointer correct
+% \providecommand{\conjname}{Conjecture}
+% \makeatletter
+% \NewDocumentEnvironment{conj}{o}
+%  {%
+%   \IfValueTF{#1}
+%     {\innerconj[#1]\refstepcounter{conj}\def\@currentlabel{(#1)}}%
+%     {\innerconj}%
+%  }
+%  {%
+%   \endinnerconj
+%  }
+% \makeatother
 
-\newenvironment{br}[1][2in]%
-{%Env start code
-\problemEnvironmentStart{#1}{In-class Problem}
-\refstepcounter{br}
-}
-{%Env end code
-\problemEnvironmentEnd
-}
+% \newtheorem*{poll}{Poll question}
+% \newtheorem{tps}{Think-Pair-Share}[section]
+% %\newtheorem{br}{In-class Problem}[section]
+% \newtheorem*{cs}{Crowd Sourced Proof}
 
-\newcounter{ex}%makes pointer correct
-\providecommand{\exname}{Homework Problem}
-\newenvironment{ex}[1][2in]%
-{%Env start code
-\problemEnvironmentStart{#1}{Homework Problem}
-\refstepcounter{ex}
-}
-{%Env end code
-\problemEnvironmentEnd
-}
+% \newlist{checklist}{itemize}{2}
+% \setlist[checklist]{label=$\square$}
+
+% \newenvironment{obj}{
+% 	\textbf{Learning Objectives.} By the end of class, students will be able to:
+% 		\begin{itemize}}
+% 		{\!.\end{itemize}
+% 		}
+
+% \newenvironment{pre}{
+% 	\begin{description}
+% 	}{
+% 	\end{description}
+% }
+
+
+% \newcounter{br}%makes pointer correct
+% \providecommand{\brname}{In-class Problem}
+
+% \newenvironment{br}[1][2in]%
+% {%Env start code
+% \problemEnvironmentStart{#1}{In-class Problem}
+% \refstepcounter{br}
+% }
+% {%Env end code
+% \problemEnvironmentEnd
+% }
+
+% \newcounter{ex}%makes pointer correct
+% \providecommand{\exname}{Homework Problem}
+% \newenvironment{ex}[1][2in]%
+% {%Env start code
+% \problemEnvironmentStart{#1}{Homework Problem}
+% \refstepcounter{ex}
+% }
+% {%Env end code
+% \problemEnvironmentEnd
+% }
 
 
 
-\newenvironment{sketch}
- {\begin{proof}[Sketch of Proof]}
- {\end{proof}}
-%\newenvironment{hint}
-%  {\begin{proof}[Hint]}
+% \newenvironment{sketch}
+%  {\begin{proof}[Sketch of Proof]}
 %  {\end{proof}}
+
 
 \newcommand{\gt}{>}
 \newcommand{\lt}{<}
