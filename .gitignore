@@ -34,12 +34,10 @@ Spring24Ximera/April13.tex
 *.glo
 *.ist
 *.code-workspace
+*.pdf
 MAT255Sp24/ReadingMar13.tex
-MAT255Sp24/ReadingMar13.pdf
 MAT255Sp24/Rubrics/output.tex
-MAT255Sp24/Rubrics/output.pdf
 MAT255Sp24/Week10Spring24.tex
-MAT255Sp24/Week11Spring24.pdf
 MAT255Sp24/Week11Spring24.tex
 MAT255Sp24/Week1Spring24.tex
 MAT255Sp24/Week2Spring24.tex
@@ -50,4 +48,5 @@ MAT255Sp24/Week6Spring24.tex
 MAT255Sp24/Week7Spring24.tex
 MAT255Sp24/Week8Spring24.tex
 MAT255Sp24/Week9Spring24.tex
-MAT255Sp24/Rubrics/convertFromXml.py
+MAT255Sp24/Rubrics/
+
