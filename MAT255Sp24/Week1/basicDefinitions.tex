@@ -10,14 +10,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{obj}
+\begin{itemize}
   \item Formally define even and odd
   \item Complete basic algebraic proofs
-\end{obj}
+\end{itemize}
 
 
 
-\begin{defn}\label{defn:number-systems} 
+\begin{definition}\label{defn:number-systems} 
   We will use the following number systems and abbreviations:
   \begin{itemize}
     \item The \emph{integers,} written $\Z$, is the set $\{\dots,-3,-2,-1,0,1,2,3,\dots\}$. 
@@ -29,29 +29,29 @@
   \begin{itemize}
     \item The symbol $\in$ means ``element of" or ``in." For example, $x\in\Z$ means ``$x$ is an element of the integers" or ``$x$ in the integers."
   \end{itemize}
-\end{defn}
+\end{definition}
 
 This first section will cover basic even, odd, and divisibility results. These first few definitions and results will use algebraic proofs, before we cover formal proof methods.
 
-\begin{defn}[Even and odd, multiplication definition]\label{defn:even-odd-form}
+\begin{definition}[Even and odd, multiplication definition]\label{defn:even-odd-form}
   An integer $n$ is \emph{even} if $n=2k$ for some $k\in\Z$. That is, $n$ is a \emph{multiple} of $2.$
 
   An integer $n$ is odd if $n=2k+1$ for some $k\in\Z$.
-\end{defn}
+\end{definition}
 
 Now, the preceding definition is standard in an introduction to proofs course, but it is not the only definition of even/odd. We also have the following definition that is closer to the definition you are probably used to:
 
-\begin{defn}[Even and odd, division definition]\label{defn:even-odd-divides}
+\begin{definition}[Even and odd, division definition]\label{defn:even-odd-divides}
   Let $n\in\Z$. Then $n$ is said to be \emph{even} if $2$ divides $n$ and $n$ is said to be \emph{odd} if $2$ does not divide $n$.
-\end{defn}
+\end{definition}
 Note that we need to define \emph{divides} in order to use the second definition. We will formally prove that these definitions are \emph{equivalent,} but for now, let's use the first definition.
  
  
-\begin{thm*}\label{thm:even-sq}
+\begin{theorem}\label{thm:even-sq}
   If $n$ is an even integer, then $n^2$ is even.
-\end{thm*}
+\end{theorem}
 
-\begin{br}\label{br:sqr-evens}
+\begin{problem}\label{br:sqr-evens}
   Prove this theorem.
 
   \begin{expandable}
@@ -60,11 +60,11 @@ Note that we need to define \emph{divides} in order to use the second definition
     \end{proof}
   \end{expandable}
   
-\end{br}
+\end{problem}
  
-\begin{prop*}\label{thm:sum-odd}
+\begin{proposition}\label{thm:sum-odd}
   The sum of two consecutive integers in odd.
-\end{prop*}
+\end{proposition}
 For this problem, we need to figure out how to write two consecutive integers. 
 \begin{proof}
   Let $n,n+1$ be two consecutive integers. Then their sum is $n+n+1=2n+1,$ which is odd by \nameref{defn:even-odd-form}.
