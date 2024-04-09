@@ -1,7 +1,7 @@
 \documentclass{ximera}
 \input{../lessonplanheader.tex}
 
-\title{Modular arithmetic}
+\title{Introduction to modular arithmetic}
 \begin{document}
 \begin{abstract}
 \end{abstract}
@@ -56,10 +56,6 @@ Let $a,b,m\in\Z$ with $m> 0.$ By the \nameref{div-alg}, there exists $q_1,q_2,r_
                 In the other direction, if $r_1=r_2,$ then $a-b=q_1 m-q_2 m=m(q_1-q_2).$ Thus, $m\mid a-b.$
 \end{proof}
 
-Congruences generalize the concept of evenness and oddness. We typically think of even and odd as ``divisible by 2'' and ``not divisible by 2'', but a more useful interpretation is even means ``there is no remainder when divided by 2'' and ``there is a remainder of 1 when divided by 2''. This interpretation gives us more flexibility when replacing $2$ by $3$ or larger numbers. Instead of ``divisible'' or ``not divisible'' we have several gradations.
-
-There's two major reasons. As we've already seen, calculations get simplified for modular arithmetic. We'll see later that taking MASSIVE powers of MASSIVE numbers is a fairly doable feat in modular arithmetic. The second reason is that by reducing a question from all integers to modular arithmetic, we often have an easier time seeing what is not allowed. 
-
 \begin{example}
  We will eventually find a function that generates all integers solutions to the equation $a^2+b^2=c^2$ (this can be done with only divisibility, so feel free to try for yourself after class).
  
@@ -84,7 +80,7 @@ There's two major reasons. As we've already seen, calculations get simplified fo
 So at least one of $a,b,c$ is even, and at least one is divisible by $3$.
 \end{example}
 
-We can use the idea of congruences to simplify divisibility arguments
+We can use the idea of congruences to simplify divisibility arguments, as well as nonlinear Diophantine equations.
 
 
 
