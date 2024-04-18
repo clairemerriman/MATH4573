@@ -1,7 +1,7 @@
 import os
 
 # Input and output definitions at the beginning
-input_file = '../../../Homework/HW6Sp24.tex'
+input_file = '../../../Homework/HW7Sp24.tex'
 section_name = 'Proofs and writing'  # Change this to the desired section name
 
 # Use input file to name output file
@@ -55,7 +55,7 @@ extracted_section = extract_section(input_file, section_name)
 
 # Construct the complete LaTeX document with preamble and extracted section
 output_content = r'''
-\documentclass[letterpaper, 11pt]{../ximera}
+\documentclass[letterpaper, 11pt]{ximera}
 \input{rubricsPreamble.tex}
 
 \StrBetween*[1,1]{\currfilename}{Homework}{.tex}[\homework]

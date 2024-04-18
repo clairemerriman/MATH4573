@@ -1,0 +1,302 @@
+\documentclass[letterpaper, 11pt]{ximera}
+\input{rubricsPreamble.tex}
+
+\StrBetween*[1,1]{\currfilename}{Homework}{.tex}[\homework]
+
+\begin{document}
+
+\chapter{Homework \#\homework\ Rubrics}
+
+\section*{Proofs and writing}  %the * means this section will not be numbered
+%%%%%%%%%%%%%%%%%%%%%
+Section 2.4, Exercise 47 (See notes from February 21)
+
+\noindent Section 4.2, Exercises 17,18
+
+\noindent Finish the proof of Theorem 4.8
+
+\noindent Section 4.3, Exercises 35, 36 (See notes from March 27)
+
+\noindent Section 6.2, Exercise 12 (To disprove “there are no integral solutions,” you need to find an integer solution)
+
+\begin{ex}[Chapter 2, Exercise 47]
+	Let $p$ be an odd prime number. 
+	\begin{enumerate}[label=(\alph*)]
+		 \item Prove that $\left(\left(\frac{p-1}{2}\right)!\right)^2\equiv (-1)^{(p+1)/2}\pmod{p}.$
+		 \item If $p\equiv 1\pmod{4},$ prove that $\left(\frac{p-1}{2}\right)!$ is a solution to $x^2\equiv -1\pmod{p}$.
+		  \item If $p\equiv 3\pmod{4},$ prove that $\left(\frac{p-1}{2}\right)!$ is a solution to $x^2\equiv 1\pmod{p}$.
+	\end{enumerate}
+
+	\begin{solution}
+		\begin{enumerate}[label=(\alph*)]
+			\item Let $p$ be an odd prime number. Then $(p-1)!\equiv 1\pmod{p}$ by Wilson's Theorem. Note that $p-\frac{p-1}{2}=\frac{p+1}{2}.$ Thus, 
+			\begin{align*}
+				-1 &\equiv (p-1)!\equiv 1(2)\cdots \left(\frac{p-1}{2}\right)\left(\frac{p+1}{2}\right)\cdots (p-2)(p-1)\pmod{p}\\
+				&\equiv 1(2)\cdot
+				\left(\frac{p-1}{2}\right)\left(-\frac{p-1}{2}\right)\cdots (-2)(-1)\pmod{p}\\
+				&\equiv\left(\frac{p-1}{2}\right)! (-1)^{(p-1)/2}\left(\frac{p-1}{2}\right)!\pmod{p}.
+			\end{align*}
+			Multiplying both sides of this congruence by $(-1)^{(p-1)/2}$ yields $(-1)^{(p+1)/2}\equiv\left(\frac{p-1}{2}\right)!\left(\frac{p-1}{2}\right)!\pmod{p}.$
+			\item Assume $p\equiv 1\pmod{4}.$ Then there exists $k\in\Z$ such that $4p=4k+1.$ Thus, $\frac{p+1}{2}=2k+1$ and $\left(\left(\frac{p-1}{2}\right)!\right)^2\equiv (-1)^{(p+1)/2}\equiv -1\pmod{p}.$
+			\item Assume $p\equiv 3\pmod{4}.$ Then there exists $k\in\Z$ such that $4p=4k+3.$ Thus, $\frac{p+1}{2}=2k+2$ and $\left(\left(\frac{p-1}{2}\right)!\right)^2\equiv (-1)^{(p+1)/2}\equiv 1\pmod{p}.$
+	   \end{enumerate}
+   \end{solution}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions} Work shows partial understanding of the relationship between factorials and squares modulo $p$, but it has significant gaps or errors. Writing may be difficult to follow. It needs further review and significant revisions.
+     
+    \item \textbf{Demonstrates understanding} Mathematically correct proof for all parts with minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
+    
+    \item \textbf{Exemplary} Mathematically correct and complete proof, likely using Wilson's Theorem and following the proof of Lemma 2.10 for Part (a). Or using Euler's Criterion. Part (b) and Part (c) likely use Part (a).  Work is easy to follow with formal mathematical writing.
+\end{writeRubric}
+\end{ex}
+
+\begin{ex}[Chapter 4, Exercise 17]
+	Prove or disprove the following statements.
+	 \begin{enumerate}[label=(\alph*)]
+		 \item Let $p$ be an odd prime number and let $a$ and $b$ be quadratic nonresidues modulo $p.$ Then the congruence $x^2\equiv ab\pmod{p}$ is solvable.
+		 \item Let $p$ and $q$ be distinct odd prime numbers and let $b$ be quadratic nonresidue of each $p$ and $q.$ Then the congruence $x^2\equiv b\pmod{pq}$ is solvable.
+	\end{enumerate}
+
+	\begin{solution}
+		\begin{enumerate}[label=(\alph*)]
+			\item Let $p$ be an odd prime number and let $a$ and $b$ be quadratic nonresidues modulo $p.$ Then $\legendre{a}{p}=\legendre{b}{p}=-1$ and $\legendre{ab}{p}=(-1)(-1)=1.$ Then the congruence $x^2\equiv ab\pmod{p}$ is solvable.
+			\item This is false; let $b=2, p=3,$ and $q=5.$ By inspection, $x^2\equiv a\pmod{15}$ is solvable if and only if $a\equiv 0,1,4,6,9,10\pmod{15}$. ($0$ and $10$ are not quadratic residues since they are not relatively prime to $15$)
+	   \end{enumerate}
+	\end{solution}
+
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+
+\end{ex}
+
+\begin{ex}[Chapter 4, Exercise 18]
+ 	Let $p$ be an odd prime number and let $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Prove that among the congruences $x^2\equiv a\pmod{p}, x^2\equiv b\pmod{p},$ and $x^2\equiv ab\pmod{p},$ either all three are solvable or exactly one is solvable.
+
+	\begin{solution}
+		Let $p$ be an odd prime number and let $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ If $a$ and $b$ are both quadratic residues modulo $p,$ then so is $ab,$ and thus all three congruences are solvable. If $a$ and $b$ are both quadratic nonresidues modulo $p,$ then $x^2\equiv ab\pmod{p}$ is solvable by Exercise 17a.
+
+		If exactly one of $a$ and $b$ is a quadratic residue modulo $p,$ then either $\legendre{a}{p}=1$ and $\legendre{b}{p}=-1$ or $\legendre{a}{p}=-1$ and $\legendre{b}{p}=1.$ In either case $\legendre{ab}{p}=-1,$ so  $x^2\equiv ab\pmod{p}$ is not solvable. Thus, exactly one of $x^2\equiv a\pmod{p}, x^2\equiv b\pmod{p},$ and $x^2\equiv ab\pmod{p}$ is solvable.
+	\end{solution}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+     
+    \item \textbf{Demonstrates understanding}
+    
+    \item \textbf{Exemplary}
+        
+\end{writeRubric}
+\end{ex}                                       
+
+
+\begin{ex}
+ 	Finish the proof of:  Let $p$ be an odd prime. Then 
+	\begin{equation*}
+ 		\left(\frac{2}{p}\right)=(-1)^{\frac{p^2-1}{8}}=
+		\begin{cases}
+			 1& if\ p\equiv 1,7 \pmod 8\\
+			 -1 & if\ p\equiv 3,5 \pmod 8.
+		\end{cases}
+	\end{equation*} 
+	for $p\equiv 3,5,7 \pmod 8$.
+
+	\begin{solution}
+		From the proof in Strayer, $\left(\frac{2}{p}\right)=(-1)^{(p-1)/2-\floor{p/4}}$ and it suffices to show that 
+			\[\frac{p-1}{2}-\floor{\frac{p}{4}}\equiv \frac{p-1}{2}\pmod{2}.\]
+		Following the proof of the $p\equiv 1\pmod{8}$ case:
+
+		\begin{description}
+			\item[$p\equiv3\pmod 8$:] Then there exists $k\in\Z$ such that $p=8k+3.$ Then 
+			\[\frac{p-1}{2}-\floor{\frac{p}{4}}
+			=\frac{8k+3-1}{2}-\floor{\frac{8k+3}{4}}
+			=4k+1-2k\equiv 1\pmod{2}\]
+			and 
+			\[\frac{p^2-1}{8}
+			=\frac{(8k+3)^2-1}{8}
+			=\frac{64k^2+48k+9-1}{8}
+			=8k^2+6k+1\equiv 1\pmod{2}.\]
+			\item[$p\equiv5\pmod 8$:] Then there exists $k\in\Z$ such that $p=8k+5.$ Then 
+			\[\frac{p-1}{2}-\floor{\frac{p}{4}}
+			=\frac{8k+5-1}{2}-\floor{\frac{8k+5}{4}}
+			=4k+2-2k-1\equiv 1\pmod{2}\]
+			and 
+			\[\frac{p^2-1}{8}
+			=\frac{(8k+5)^2-1}{8}
+			=\frac{64k^2+80k+25-1}{8}
+			=8k^2+10k+3\equiv 1\pmod{2}.\]
+			\item[$p\equiv7\pmod 8$:] Then there exists $k\in\Z$ such that $p=8k+7.$ Then 
+			\[\frac{p-1}{2}-\floor{\frac{p}{4}}
+			=\frac{8k+7-1}{2}-\floor{\frac{8k+7}{4}}
+			=4k+3-2k-1\equiv 0\pmod{2}\]
+			and 
+			\[\frac{p^2-1}{8}
+			=\frac{(8k+7)^2-1}{8}
+			=\frac{64k^2+112k+49-1}{8}
+			=8k^2+14k+6\equiv 0\pmod{2}.\]
+		\end{description}
+	\end{solution}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions} Mathematically correct proof for one case with attempts to prove the other two cases. Proof contains excess information, gaps, or errors that makes it difficult to determine understanding. Writing may be difficult to follow. 
+     
+    \item \textbf{Demonstrates understanding} Mathematically correct proof for two case and minor errors in the third. May contain minor minor arithmetic, spelling, or grammatical errors while still demonstrating understanding. Or uses informal mathematical writing.
+    
+    \item \textbf{Exemplary} Mathematically correct for each of the cases, likely following the proof of the $p\equiv 1 \pmod 8$ case from class. Proof is easy to follow using formal mathematical writing.
+        
+\end{writeRubric}
+\end{ex}
+
+\begin{ex}[Chapter 4, Exercise 35]
+ 	Let $p$ be an odd prime. Prove the following statements:
+	\begin{enumerate}[label=(\alph*)]
+		 \item\label{minus2}$\left(\frac{-2}{p}\right)=1$ if and only if $p\equiv 1,3 \pmod8$
+ 		\item\label{3}$\left(\frac{3}{p}\right)=1$ if and only if $p\equiv\pm1 \pmod{12}$
+		\item$\left(\frac{-3}{p}\right)=1$ if and only if $p\equiv\pm1 \pmod{6}$
+	\end{enumerate}
+
+	\begin{solution}
+		\begin{enumerate}[label=(\alph*)]
+			\item Let $p$ be an odd prime. Then $\legendre{-2}{p}=\legendre{-1}{p}\legendre{2}{p}=1$ if and only if $\legendre{-1}{p}=\legendre{2}{p}.$ If $p\equiv 1\pmod{8},$ then $p\equiv 1\pmod{4}$ and $\legendre{-1}{p}=\legendre{2}{p}=1.$ If $p\equiv 3\pmod{8},$ then $p\equiv 3\pmod{4}$ and $\legendre{-1}{p}=\legendre{2}{p}=-1.$
+			
+			If $p\equiv 5\pmod{8},$ then $p\equiv 1\pmod{4}$ and $\legendre{-1}{p}=1$ but $\legendre{2}{p}=-1.$ If $p\equiv 7\pmod{8},$ then $p\equiv 3\pmod{4}$ and $\legendre{-1}{p}=-1$ but $\legendre{2}{p}=1.$ Thus $\left(\frac{-2}{p}\right)=1$ if and only if $p\equiv 1,3 \pmod{8}.$
+			
+			\item Let $p$ be an odd prime. Since $3\equiv {3}\pmod{4},$\footnote{In this problem, this step is repetitive, but it is needed when $p\neq3$.} we need two cases for quadratic reciprocity. 
+			
+			If $p\equiv 1\pmod{4},$ then $\legendre{3}{p}={\legendre{p}{3}}$ by quadratic reciprocity, and $\legendre{p}{3}=1$ if and only if $p\equiv{1\pmod{3}}$. Then $p\equiv {1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+					
+			If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{3}{p}={-\legendre{p}{3}}$ by quadratic reciprocity, and $\legendre{p}{3}=-1$ if and only if $p\equiv{ 2\equiv-1\pmod{3}}$. Then $p\equiv {-1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+
+			Therefore, $\legendre{3}{p}=1$ if and only if $p\equiv \pm1\pmod{12}.$ 
+					
+			\item Let $p$ be an odd prime.	From Theorem 4.25(c), $\legendre{-3}{p}= {\legendre{-1}{p}\legendre{3}{p}}.$
+			Again, we have two cases.
+			
+			If $p\equiv 1\pmod{4},$ then $\legendre{-1}{p}={1}$ by Theorem 4.6 and $\legendre{3}{p}={\legendre{p}{3}}$ by quadratic reciprocity. Thus, $\legendre{-3}{p}={\legendre{p}{3}}=1$ if and only if $p\equiv {1\pmod{3}}.$ Then $p\equiv {1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+					
+			If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{-1}{p}={-1}$ by Theorem 4.6 and $\legendre{3}{p}={-\legendre{p}{3}}$ by quadratic reciprocity. Thus, $\legendre{-3}{p}={\legendre{p}{3}}=1$ if and only if $p\equiv {1\pmod{3}}.$ Then $p\equiv {7}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+
+			Therefore, $\legendre{-3}{p}=1$ if and only if $p\equiv {1,7}\pmod{12},$ which is equivalent to $p\equiv 1\pmod{6}.$
+	   \end{enumerate}
+   \end{solution}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions} Mathematically correct proof for one part but not the other two. Proof contains excess information, gaps, or errors that makes it difficult to determine understanding. Writing may be difficult to follow. 
+     
+    \item \textbf{Demonstrates understanding} Mathematically correct proof for two parts and minor errors in the third. May contain minor minor arithmetic, spelling, or grammatical errors while still demonstrating understanding. Or uses informal mathematical writing.
+    
+    \item \textbf{Exemplary} Mathematically correct argument for both parts using facts about quadratic residues and systems of linear congruences. Probably uses outline from Class March 27, multiplicity of the Legendre symbol, and/or Quadratic Reciprocity. Proof is easy to follow using formal mathematical writing.
+        
+\end{writeRubric}
+\end{ex}
+
+
+\begin{ex}
+ 	Characterize all primes $p$ where the following  integers are quadratic residues modulo $p$. (For example: the statement of Problem \ref{minus2} is all of the primes where $-2$ is a quadratic residue, and Problem \ref{3} is all of the primes where $3$ is a quadratic residue).
+	\begin{enumerate}[label=(\alph*)]
+		 \item $5$
+		 \item $-5$
+		 \item\label{7} $7$
+		 \item $-7$
+	\end{enumerate}
+
+	\begin{solution}
+	\begin{enumerate}[label=(\alph*)]
+		\item Let $p$ be an odd prime. Since $5\equiv 1\pmod{4},$ $\legendre{5}{p}=\legendre{p}{5}=1$ if and only if $p\equiv \pm1\pmod{5}.$
+		
+		\item Let $p$ be an odd prime. Then $\legendre{-5}{p}=\legendre{-1}{p}\legendre{5}{p}=1$ if and only if $\legendre{-1}{p}=\legendre{5}{p}.$ Since $\legendre{-1}{p}=1$ if and only if $p\equiv 1\pmod{4}$ and $\legendre{5}{p}=1$ if and only if $p\equiv \pm 1\pmod{5}.$
+		If $p\equiv 1\pmod{4}$, $p\equiv 1\pmod{5}$ then $p\equiv 1\pmod{20}.$ If $p\equiv 1\pmod{4}$, $p\equiv -1\pmod{5}$ then $p\equiv 9\pmod{20}.$
+
+		Since $\legendre{-1}{p}=-1$ if and only if $p\equiv 3\pmod{4}$ and $\legendre{5}{p}=-1$ if and only if $p\equiv \pm 2\equiv \mp 3\pmod{5}.$
+		If $p\equiv 3\pmod{4}$, $p\equiv 3\pmod{5}$ then $p\equiv 3\pmod{20}.$ If $p\equiv 3\pmod{4}$, $p\equiv -3\pmod{5}$ then $p\equiv 7\pmod{20}.$
+
+		Thus $\legendre{-5}{p}=1$ if and only if $p\equiv 1,3,7,9\pmod{20}.$
+		
+		\item Let $p$ be an odd prime. Since $7\equiv {3}\pmod{4},$ we need two cases for quadratic reciprocity. 
+			
+		If $p\equiv 1\pmod{4},$ then $\legendre{7}{p}={\legendre{p}{7}}$ by quadratic reciprocity, and $\legendre{p}{7}=1$ if and only if $p\equiv 1,2,4\pmod{7}$. Then $p\equiv 1,9,25\pmod{28},$ and these are the unique equivalence classes modulo $28$ by the Chinese Remainder Theorem.
+				
+		If $p\equiv 3\pmod{4},$ then $\legendre{7}{p}={-\legendre{p}{7}}$ by quadratic reciprocity, and $\legendre{p}{7}=-1$ if and only if $p\equiv 3,5,6\pmod{7}$. Then $p\equiv 3,19,27\pmod{28},$ and these are the unique equivalence classes modulo $28$ by the Chinese Remainder Theorem.
+
+		Therefore, $\legendre{7}{p}=1$ if and only if $p\equiv 1,3,9,19,25,27\equiv \pm1, \pm 3,\pm 9 \pmod{28}.$
+
+		\item Let $p$ be an odd prime.	From Theorem 4.25(c), $\legendre{-7}{p}= {\legendre{-1}{p}\legendre{7}{p}}.$ Thus, $\legendre{-7}{p}=1$ if and only if $\legendre{-1}{p}=\legendre{7}{p}.$ 
+		
+		From part \ref{7}, $\legendre{7}{p}=1$ if and only if $p\equiv 1,3,9,19,25,27 \pmod{28}.$ If $p\equiv 1, 9, 25 \pmod{28},$ then $p\equiv 1\pmod{4}$ and $\legendre{-1}{p}=1.$
+
+		Again from part \ref{7}, $\legendre{7}{p}=-1$ if and only if $p\equiv 5,11,13,15,17,23 \pmod{28}$ (removing the cases where $p$ is not relatively prime to $28$). If $p\equiv 11,15,23 \pmod{28},$ then $p\equiv 3\pmod{4}$ and $\legendre{-1}{p}=-1.$
+		
+		Therefore, $\legendre{-7}{p}=1$ if and only if $p\equiv 1,9,11,15,23,25\pmod{28}.$
+	\end{enumerate}
+	\end{solution}
+
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions} Mathematically correct proof for two parts but not the others. Or lists a case where $p$ is composite. Proof contains excess information, gaps, or errors that makes it difficult to determine understanding. Writing may be difficult to follow. 
+     
+    \item \textbf{Demonstrates understanding} Minor minor arithmetic, spelling, or grammatical errors. This could include losing a negative sign, if the proofs otherwise demonstrate understanding, ie, incorrectly copying a previous step. Or uses informal mathematical writing.
+    
+    \item \textbf{Exemplary} Mathematically correct argument for all parts using facts about quadratic residues and systems of linear congruences. Probably uses part (a) to solve part (b) and part (c) to solve part (d), multiplicity of the Legendre symbol, and/or Quadratic Reciprocity. Proof is easy to follow using formal mathematical writing.
+\end{writeRubric}
+\end{ex}
+
+
+\begin{ex}[Chapter 6, Exercise 12]
+	Prove or disprove the following statements.
+	\begin{enumerate}[label=(\alph*)]
+ 		\item The Diophantine equation $x^2+y^2+1=4z$ has no integer solutions.
+		\item The Diophantine equation $x^2+y^2+3=4z$  has no integral solutions.
+		\item The Diophantine equation $x^2+2y^2+1=8z$  has no integral solutions.
+		\item The Diophantine equation $x^2+2y^2+3=8z$  has no integral solutions.
+	\end{enumerate}
+
+	\begin{solution}
+	\begin{enumerate}[label=(\alph*)]
+		\item Consider $x^2+y^2+1=4z$ modulo $4$. Then we are looking for solutions to $x^2+y^2+1\equiv 0\pmod{4}$. Since $x^2,y^2\equiv 0,1\pmod{4},$ $x^2+y^2+1\equiv 1,2,3\pmod{4},$ and thus no solutions exist.
+		
+		Alternately, $x^2+y^2+1\equiv 0\pmod{4}$ has solutions if and only if $x^2+y^2\equiv -1\pmod{4}$ has solutions. Then no solutions exist.
+
+		\item This is false. Let $x=0,y=1,z=1.$ Then $x^2+y^2+3=4z$.
+		
+		\item Consider $x^2+2y^2+1=8z$ modulo $2.$ Then $x^2+1\equiv 0\pmod{2}.$ Thus, $x$ is odd and $x^2\equiv 1\pmod{8}.$ Also $x^2+2y^2+1\equiv 0\pmod{8},$ so $1+2y^2+1\equiv 0\pmod{8}.$ That is, $2y^2\equiv -2\pmod{8}.$ Since $y^2\equiv 0,1,4\pmod{8},$ no solutions exist.
+		
+		\item Conside $x^2+2y^2+3=8z$ modulo $2.$ Then $x^2+1\equiv 0\pmod{2}.$ Thus, $x$ is odd and $x^2\equiv 1\pmod{8}.$ 
+		
+		Also $x^2+2y^2+3\equiv 0\pmod{8},$ so $1+2y^2+3\equiv 0\pmod{8}.$ That is, $2y^2\equiv 4\pmod{8}.$ Since $y^2\equiv 0,1,4\pmod{8},$ no solutions exist.
+	\end{enumerate}
+	\end{solution}
+
+\begin{writeRubric}
+    \item \textbf{Does not demonstrate understanding}
+     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+    \item \textbf{Needs revisions}
+	Mathematically correct proof or counterexample for at least one part. Work shows partial understanding of the material, but it has significant gaps or errors. Writing may be difficult to follow. It needs further review and significant revisions.
+     
+    \item \textbf{Demonstrates understanding}
+    Mathematically correct proof or counterexample for at least two parts, with minor errors in the other parts, but still able to demonstrate understanding. May contain minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
+    
+    \item \textbf{Exemplary}
+    For all four parts, mathematically correct proofs that no integer solutions exist or examples of integer solutions. Proofs may use congruences, quadratic residues, divisibility, or other results. Work is easy to follow with formal mathematical writing.
+        
+\end{writeRubric}
+\end{ex}
+\end{document}
