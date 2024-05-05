@@ -1,0 +1,58 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{April 17, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+ 	\begin{center}%
+    		{\large \scshape MAT-255-- Number Theory 
+			\hfill Spring 2024 
+			\hfill In Class Work April 17}%
+    
+		{\large Your Name: \hrulefill \quad 
+			Group Members:\hrulefill \quad 
+			\hrulefill
+			\par}%
+ 	\end{center}%
+	 
+
+\begin{br}[Chapter 6, Exercise 34]
+    Prove that a positive integer can be written as the difference of two squares of integers if and only if it is not of the form $4n + 2$ for some $n\in\Z.$
+    \begin{proof}
+        \begin{description}
+            \item[($\Rightarrow$)] We will show that if a positive integer can be written as the difference of two squares of integers, then it is not of the form $4n + 2$ for some $n\in\Z.$
+            
+            \begin{shortAnswer}
+                
+            \end{shortAnswer}
+            
+            \item[($\Leftarrow$)] We will show that any positive integer not of the form $4n + 2$ for some $n\in\Z$ can be written as the difference of two squares of integers. 
+            
+            First, we will show that if $a$ and $b$ are positive integers that can be written as the difference of two squares of integers, then so can $ab.$
+            \begin{shortAnswer}
+                
+            \end{shortAnswer}
+
+            Now we will show that every odd prime can be written as the difference of two squares of integers. Let $p$ be an odd prime. Then $p=x^2-y^2=(x-y)(x+y)$ when $x=\inlineAnswer{\frac{p+1}{2}}$ and $y=\inlineAnswer{\frac{p-1}{2}}.$
+            Therefore every odd number can be written as the difference of two squares since 
+            \begin{shortAnswer}[\vspace{1 in}]
+                every odd number is a product of odd primes, and we proved that the product of integers that can be written as the difference of two squares can also be written as the difference of two squares.
+            \end{shortAnswer}
+            
+
+            \pagebreak
+            It remains to show that every positive integer of the form $4n$ for some $n\in\Z$ can be written as the difference of two squares of integers. Why is this the only remaining case?
+            \begin{shortAnswer}[\vspace{1 in}]
+                Every even integer has the form $4n$ or $4n+2.$
+            \end{shortAnswer}
+
+            Similar to the odd prime case, $4n=x^2-y^2=(x-y)(x+y)$ when $x=\inlineAnswer{n+1}$ and $y=\inlineAnswer{n-1}.$
+            \end{description}
+    \end{proof}
+\end{br}
+
+
+\end{document}

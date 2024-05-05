@@ -1,0 +1,134 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{January 19, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+  \begin{center}%
+    {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 19}%
+    
+    {\large
+        Your Name: \hrulefill \quad 
+        Group Members:\hrulefill \quad \hrulefill
+        \par}%
+  \end{center}%
+
+Use the proofs of the following propositions as a guide.
+
+\begin{proposition}%[Strayer, Proposition 1.1]
+    Let $a,b\in\Z$. If $a\mid b$ and $b \mid c$, then $a\mid c$.
+    \begin{proof}
+        Since $a\mid b$ and $b \mid c$, there exist $d,e\in\Z$ such that $b=ae$ and $c=bf$. Combining these, we see \[c=bf=(ae)f=a(ef),\] so $a\mid c$.
+    \end{proof}
+\end{proposition}
+
+
+
+\begin{proposition}%[Strayer, Proposition 1.2] 
+    Let $a,b,c,m,n\in\Z$.
+    If $c\mid a$ and $c\mid b$ then $c\mid ma+nb$.
+
+    \begin{proof}
+        Let $a,b,c,m,n\in\Z$ such that $c\mid a$ and $c\mid b$. Then by definition of divisibility, there exists $j,k\in\Z$ such that $cj=a$ and $ck=b$. Thus, \[ma+nb=m(cj)+n(ck)=c(mj+nk).\] Therefore, $c\mid ma+nb$ by definition.
+    \end{proof}
+\end{proposition}
+
+\begin{br}%[Exercise Set 1.1, Exercise 5]\label{divisfacts}
+    Prove or disprove the following statements.
+    \begin{enumerate}
+        \item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $a+c\mid b+d$.
+        \item If $a,b,c,$ and $d$ are integers such that if $a\mid b$ and $c\mid d$, then $ac\mid bd$.
+        \item If $a,b,$ and $c$ are integers such that if $a\nmid b$ and $b\nmid c$, then $a\nmid c$.
+    \end{enumerate}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    \vfill
+    \vfill}
+\else
+\fi}
+
+
+
+\begin{br}
+    Construct a truth table for $A\rightarrow B, \neg (A\rightarrow B)$ and $A\land \neg B$
+    \begin{solution}
+ 
+        \begin{tabular}{c|c|c|c|c}
+            $A$ 	& $B$	& $A\Rightarrow B$ 	& $\neg (A\Rightarrow B)$ & $A\land \neg B$\\\hline
+            T 	& T		& T 				& F					& F	\\
+            T 	& F 		& F 				& T					& T\\
+            F 	& T 		& T 				& F					& F\\
+            F 	& F 		& T 				& F					& F\\
+        \end{tabular}
+    
+    \end{solution}
+    \pdfOnly{\ifhandout{
+        \vfill
+        \vfill}
+    \else
+    \fi}
+\end{br}
+
+ 
+\pdfOnly{\ifhandout{
+    Pause for more lecture. If there is time, complete the following problem.
+
+    \pagebreak}
+\else
+\fi}
+ 
+\begin{br}
+Prove that our two definitions of even are equivalent using the following outline:
+    \begin{proposition}
+        Let $n\in\Z$. Then there is some $k\in\Z$ such that $n=2k$ if and only if $2\mid n$.
+
+        \begin{proof}
+            $(\Rightarrow)$  Let $n\in\Z$. Assume that there is some $k\in\Z$ such that $n=2k$.  
+            Thus, $2\mid n$ 
+            \begin{shortAnswer}[\hrulefill]
+                by definition of divides.
+            \end{shortAnswer}
+
+ 
+            $(\Leftarrow)$  Let $n\in\Z$. Assume that $2\mid n$. Then, there is some $k\in\Z$ such that $n=2k$
+            \begin{shortAnswer}[\hrulefill.]
+                by definition of divides.
+            \end{shortAnswer}
+        \end{proof}
+    \end{proposition}
+\end{br}
+
+
+\begin{br}
+    Prove that our two definitions of odd are equivalent using the following outline:
+        \begin{proposition}
+        Let $n\in\Z$. Then there is some $k\in\Z$ such that $n=2k+1$ if and only if $2\nmid k$.
+
+        \begin{proof}
+            $(\Rightarrow)$  Let $n\in\Z$. Assume that there is some $k\in\Z$ such that $n=2k+1$. Then 
+            \begin{shortAnswer}[\vspace{3cm}]
+                by the division algorithm, there exists unique $q,r\in\Z$ such that $n=2q+r$ and $0\leq r <2.$
+            \end{shortAnswer}
+            Thus, $2\nmid k$.
+
+            $(\Leftarrow)$  Let $n\in\Z$. Assume that $2\nmid k$. Then
+            \begin{shortAnswer}[\vspace{3cm}]
+                by the division algorithm, there exists unique $q,r\in\Z$ such that $n=2q+r$ and $0< r <2.$ Thus, $r=1.1$ 
+            \end{shortAnswer}
+            Thus, there is some $k\in\Z$ such that $n=2k+1$.
+        \end{proof}
+    \end{proposition}
+\end{br}
+\end{document}
+
+
+
+
+
+
+
+

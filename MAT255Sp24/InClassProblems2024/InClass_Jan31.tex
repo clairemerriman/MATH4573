@@ -1,0 +1,106 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+\title{January 26, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+    \begin{center}%
+        {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 26}%
+    
+        {\large
+            Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	    \par}%
+    \end{center}%
+
+ 
+\begin{br}[Strayer Exercises 32 and 54]
+    Find the greatest common divisors of the pairs of integers below and write the greatest common divisor as a linear combination of the integers.
+    \begin{enumerate}
+        \item $(21,28)$
+        
+        \begin{solution}
+            By inspection: $28-21=7$.
+
+            Using the Euclidean Algorithm:
+            $a=28,b=21$
+            \begin{align*}
+                28 & = 21(1)+7 &q_1=1,r_1=7 &&7=21(1)+28(-1)\\
+                21 & = 7(3) +0 & q_2=3, r_2=0
+            \end{align*}
+            so $28+(-1)21=7=(28,21)$
+        \end{solution}
+
+        \item $(32,56)$
+        \begin{solution}
+            Using the Euclidean Algorithm:
+            $a=56,b=32$
+            \begin{align*}
+                56 & = 32(1)+24 &q_1=1,r_1=24 &&24=56(1)+32(-1)\\
+                32 & = 24(1) +8 & q_2=1, r_2=8 &&8=32(1)+24(-1)=32(1)+(56(1)+32(-1))(-1)=32(2)+56(-1)\\
+                32&=8(4)+0 & q_3=4, r_3=0.
+            \end{align*}
+            so $56(-1)+32(2)=8=(56,32)$
+        \end{solution}
+
+        \item $(0,113)$
+        \begin{solution}
+            Since $0=113(0)$, $(0,113)=113=0(0)=113(1)$.
+        \end{solution}
+        
+        \item $(78,708)$
+        \begin{solution}
+            Using the Euclidean Algorithm:
+            $a=708,b=78$
+            \begin{align*}
+                708 & = 78(9)+6 &q_1=9,r_1=6 &&6=708(1)+78(-9)\\
+                78 & = 6(13) +0 & q_2=13, r_2=0.
+            \end{align*}
+            so $708(1)+78(-6)=6=(78,708)$
+        \end{solution}
+    \end{enumerate}
+    \pdfOnly{\ifhandout{
+        \vfill}
+        \else
+        \fi}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    Pause for more lecture.}
+    \else
+    \fi}
+
+
+\begin{br}
+	Let $p$ be prime.
+	\begin{enumerate}
+		\item If $(a,b)=p$, what are the possible values of $(a^2,b)$? Of $(a^3,b)$? Of $(a^2,b^3)$?
+		
+		\begin{solution}
+			If $(a,b)=p$, then there exist $j,k\in\Z$ such that $a=pj, b=pk$, and $p\nmid j$ or $p\nmid k$ (otherwise $(a,b)=p^2$). 
+			\[a^2=p^2j^2,\quad
+			a^3=p^3j^3,\quad
+			b^3=p^3k^3\]
+			Then $(a^2,b)$ is $p$ if $p\nmid k$ or $p^2$ if $p\mid k$; and
+			$(a^3,b)$ is $p$ if $p\nmid k,$ $p^2$ if $p\mid k$ and $p^2\nmid k,$ or $p^3$ if $p^2\mid k$. 
+			
+			If $p\mid j,$ then $p\nmid k$ and   
+			$(a^2,b^3)=p^3$.
+			If $p\nmid j,$ then   
+			$(a^2,b^3)=p^2.$
+		\end{solution}
+		\item If $(a,b)=p$ and $(b,p^3)=p^2$, find $(ab,p^4)$ and $(a+b,p^4)$.
+		
+		\begin{solution}
+			There exists $j,k\in\Z$ such that $a=pj, b=p^2k,$ and $p\nmid k, p\nmid k$. 
+			Then $ab=p^3jk$ and $a+b=pj+p^2k=p(j+pk)$. Thus, $(ab,p^4)=p^3$ and $(a+b,p^4)=p.$
+		\end{solution}
+	\end{enumerate}
+    \pdfOnly{\ifhandout{
+        \vfill}
+        \else
+        \fi}
+\end{br}
+  
+  \end{document}

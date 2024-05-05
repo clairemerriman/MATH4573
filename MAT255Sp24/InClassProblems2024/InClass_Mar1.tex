@@ -1,0 +1,71 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+\title{February 28, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+  \begin{center}%
+    {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work February 28}%
+    
+    {\large
+        Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	\par}%
+  \end{center}%
+  
+
+
+\begin{br}
+    Repeat the proof from last class to prove \begin{thm*}[Theorem 3.2]\label{thm:phi-multiplicative}
+        Let $m$ and $n$ be positive integers where $(m,n)=1$. Then $\phi(mn)=\phi(m)\phi(n).$
+    \end{thm*}
+
+    \begin{proof}
+        Let $m$ and $m$ be relatively prime positive integers. A number $a$ is relatively prime to $mn$ if and only if $a$ is relatively prime to $\inlineAnswer[1 cm]{m}$ and $\inlineAnswer[1 cm]{n}.$ 
+        
+        
+        We can partition the positive integers less that or equal to $mn$ into 
+        \begin{align*}
+        & 1\equiv\inlineAnswer[1 cm]{m+1}   
+            \equiv\inlineAnswer[1 cm]{2m+1}
+            \equiv \cdots
+            \equiv\inlineAnswer[1 cm]{(n-1)m+1}\pmod m\\
+        & 2 \equiv\inlineAnswer[1 cm]{m+2}   
+            \equiv\inlineAnswer[1 cm]{2m+2}
+            \equiv \cdots
+            \equiv\inlineAnswer[1 cm]{(n-1)m+2}\pmod m\\
+        & \vdots\\
+        & m\equiv\inlineAnswer[1 cm]{2m}   
+            \equiv\inlineAnswer[1 cm]{3m}
+            \equiv \cdots
+            \equiv\inlineAnswer[1 cm]{nm}\pmod m
+        \end{align*}
+
+        For any $b$ in the range $1,2,3,\dots,m,$ define $s_b$ to be the number of integers $a$ in the range $1,2,\dots, mn$ such that $a\equiv b \pmod m$ and $\gcd(a,mn)=1$. Thus, when $(b,m)=1$, $s_b=\phi(\inlineAnswer[1 cm]{m})$ and when $(b,m)>1$, $s_b=\inlineAnswer[1 cm]{0}$.
+
+        \begin{shortAnswer}[\vspace{1in}]
+            Since every positive integers less that or equal to $mn$ is counted by exactly one $s_b,$ $\phi(mn)=s_1+s_2+\cdots+s_m.$
+        \end{shortAnswer}
+
+        
+        We have seen that $\phi(mn)=s_1+s_2+\dots+s_m$, that when $(b,m)=1$, $s_b=\inlineAnswer[1 cm]{\phi(n)},$
+        \pdfOnly{\ifhandout
+        \footnote{This blank is asking for a function, not a value.}\else\fi} 
+        \begin{onlineOnly}
+            This blank is asking for a function, not a value.
+        \end{onlineOnly}
+        and that when $(b,m)>1$, $s_b=\inlineAnswer[1 cm]{0}$. Since there are $\phi(\inlineAnswer[1 cm]{m})$ integers $b$ where $(b,m)=1$. 
+        Thus, we can say that $\phi(mn)=\inlineAnswer{\phi(m)\phi(n)}.$ 
+    \end{proof}
+\end{br}
+
+
+\begin{br}
+    Complete the proof of \nameref{thm:phi-multiplicative} by proving 
+    \begin{proposition}
+        If $m, n,$ and $i$ are positive integers with ($m, n) = (m, i) = 1,$ then the integers \[i, m + i, 2m +i,\dots, (n - 1)m +i\] form a complete system of residues modulo $n.$
+    \end{proposition}
+\end{br}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+\title{March 18, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+ 	\begin{center}%
+    		{\large \scshape MAT-255-- Number Theory 
+			\hfill Spring 2024 
+			\hfill In Class Work March 18}%
+    
+		{\large Your Name: \hrulefill \quad 
+			Group Members:\hrulefill \quad 
+			\hrulefill
+			\par}%
+ 	\end{center}%
+	
+ \subsection*{Previous Results}
+ \begin{lemma}\label{lem:gcd_mult}
+	Let $a,b\in\Z,$ not both zero. Then any  common divisor of $a$ and $b$ divides the greatest common divisor.
+\end{lemma}
+
+
+\begin{lemma}\label{lem:gcd_trans}
+ 	Let $a,b\in\Z,$ not both zero. Then any divisor of $(a,b)$ is a common divisor of $a$ and $b$.
+\end{lemma}
+ 
+ \begin{prop*}[Proposition 5.1]\label{prop:order_divides_phi}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Then $a^n\equiv 1\pmod{m}$ for some positive integer $n$ if and only if $\ord_m a\mid n.$ In particular, $\ord_m a\mid \phi(m).$
+\end{prop*}
+
+\subsection*{Problems}
+
+\begin{br}
+    Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ Prove that $a^m\equiv 1\pmod{p}$ if and only if $a^d\equiv 1\pmod{p}.$
+
+	\begin{proof}
+        Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ Let $a\in\Z$. If $p\mid a,$ then $a^i\equiv \inlineAnswer{0\pmod{p}}$ for all positive integers. 
+        Otherwise, $a^{p-1}\equiv 1\pmod{p}$ by $\inlineAnswer[1 in]{Fermat's\ Little\ Theorem}.$
+        
+        By \nameref{prop:order_divides_phi}, $a^m\equiv 1\pmod{p}$ if and only if $\inlineAnswer{\ord_p a \mid m}$. Similarly, $\inlineAnswer{a^{p-1}\equiv 1\pmod{p}}$ if and only if $\inlineAnswer{\ord_p a \mid p-1}$. Thus, $\inlineAnswer{\ord_p a}$ is a common divisor of $\inlineAnswer{m}$ and $\inlineAnswer{p-1}$. Combining Lemmas \autoref{lem:gcd_mult}
+        and \autoref{lem:gcd_trans} gives $\ord_p a$ is a common divisor of   $\inlineAnswer{m}$ and $\inlineAnswer{p-1}$ if and only if $\ord_p a\mid d$. One final application of \nameref{prop:order_divides_phi} gives $\inlineAnswer{\ord_p a\mid d}$ if and only if $\inlineAnswer{a^d\equiv 1\pmod{p}}$.
+    \end{proof}
+\end{br}
+\pdfOnly{\ifhandout{
+    \vfill
+    Problem 2 on back page 
+    \pagebreak}
+    \else\fi
+}
+
+\begin{br}
+    Let $p$ be prime and $m$ a positive integer. Prove that 
+        \[x^m\equiv 1\pmod{p}\]
+    has exactly $(m,p-1)$ incongruent solutions modulo $p.$
+
+
+    \begin{proof}
+        Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ 
+        From Problem 1,
+        \begin{shortAnswer}[\vspace{1in}]
+            $x^m\equiv 1\pmod{p}$ if and only if $x^d\equiv 1\pmod{p}$.
+        \end{shortAnswer}
+
+            
+        \emph{Now find a result that allows you to finish the proof in 1-2 sentences.}
+
+        \begin{shortAnswer}[\vspace{1in}]
+            By Proposition 5.8 there are exactly $d$ solutions to $x^d\equiv 1\pmod{p}.$ Thus, there are exactly $d$ solutions to $x^m\equiv 1\pmod{p}.$
+        \end{shortAnswer}
+    \end{proof}
+\end{br}
+
+\pdfOnly{\ifhandout{If you have time, start working on this problem from the homework.}
+    \else\fi}
+
+\begin{br}
+    Prove the following statement, which is the converse of Proposition 5.4 (for a prime):
+
+    Let $p$ be prime, and let $a\in\Z.$ If every $b\in\Z$ such that $p\nmid b$ is congruent to a power of $a$ modulo $p,$ then ${a}$ is a primitive root modulo $p$.
+    
+    \begin{solution}
+        Let $p$ be prime, and let $a\in\Z$ such that every integer $b\in\Z$ where $p\nmid b$ is congruent to $a^i$ modulo $p$ for some positive integer $i$. Thus, $(a,p)=1,$ otherwise $1$ would not be congruent to a power of $a$. By Proposition 5.2, $a^i\equiv a^j\pmod{p}$ if and only if $i\equiv j\pmod{p-1}.$ Thus, $a^1,a^2,\dots,a^{p-1}$ are distinct congruence classes and only one of $a^1,a^2,\dots,a^{p-1}$ is congruent to $1$ modulo $p.$ By Fermat's Little Theorem, $a^{p-1}\equiv1\pmod{p},$ so $\ord_p a=p-1.$
+    \end{solution}
+\end{br}
+\end{document}

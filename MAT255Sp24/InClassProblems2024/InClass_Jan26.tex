@@ -1,0 +1,201 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{January 26, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+    \begin{center}%
+        {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 26}%
+    
+        {\large
+            Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	    \par}%
+    \end{center}%
+  
+Use the first principle of mathematical induction to prove each statement.
+
+
+\begin{br}[Ernst Theorem 4.5]
+    For all $n\in\mathbb{N}$, 3 divides $4^{n}-1$.
+
+    \begin{proof}
+        We proceed by induction. The base case is $n=1$. Since $\inlineAnswer{3\mid 4^1-1},$
+        we are done.
+
+
+        The induction hypothesis is that if $k \geq 1$ and $n = k,$ then  $\inlineAnswer{3\mid 4^k-1}.$ We want to show that $\inlineAnswer{3\mid 4^{k+1}-1}.$
+
+        \begin{shortAnswer}[Complete the proof:\vfill]
+            Then by the definition of divides, there exists $m$ such that $3m=4^k-1$. Rewriting this equation, we get $3m+1=4^k$. Multiplying both sides by $4$ gives $4(3m)+4=4^{k+1}$, or $3(4m+1)=4^{k+1}-1$. Therefore, $3\mid 4^{k+1}-1$.
+        \end{shortAnswer}
+    \end{proof}
+\end{br}
+
+
+\begin{br}[Ernst Theorem 4.7]
+    Let $p_{1}, p_{2}, \ldots, p_{n}$ be $n$ distinct points arranged on a circle.  Then the number of line segments joining all pairs of points is $\frac{n^{2}-n}{2}$.
+
+    \begin{proof}
+        We proceed by induction. The base case is $n=1$. Since 
+        \begin{shortAnswer}[\hrulefill]
+            There are $6\frac{1^{2}-1}{2}=0$ line segments connecting the only point
+        \end{shortAnswer}
+        we are done.
+
+        The induction hypothesis is that if $k \geq 1$ and $n = k,$ then 
+        \begin{shortAnswer}
+            there are $\frac{k^{2}-k}{2}$ line segments joining all pairs of distinct points $p_{1}, p_{2}, \ldots, p_{k}$ arranged on a circle.
+        \end{shortAnswer}
+
+        We want to show that
+        \begin{shortAnswer}
+            there are $\frac{(k+1)^{2}-(k+1)}{2}$ line segments joining all pairs of distinct points $p_{1}, p_{2}, \ldots, p_{k}, p_{k+1}$ arranged on a circle.
+        \end{shortAnswer}
+
+        \begin{shortAnswer}[Complete the proof:\vfill]
+            Adding a $k+1^{st}$ point adds an additional $k$ pairs of points. Then there are $\frac{k^{2}-k}{2}+k=\frac{k^{2}+k}{2}=\frac{(k+1)^2-(k+1)}{2}$ line segments joining all pairs of distinct points $p_{1}, p_{2}, \ldots, p_{k}, p_{k+1}$ arranged on a circle.
+        \end{shortAnswer}
+    \end{proof}
+\end{br}
+
+\pdfOnly{
+    \ifhandout{
+        \pagebreak}
+        \else
+        \fi}
+
+\begin{br}
+    If $n$ is a positive integer, then 
+        \[1^3+2^3+3^3+\cdots+n^3
+            =\frac{n^2(n+1)^2}{4}.\]
+	\begin{proof}
+        We proceed by induction. The base case is $n=1$. Since  $\inlineAnswer{1^3=\frac{1^2(1+1)^2}{4}},$ we are done.
+
+        The induction hypothesis is that if $k \geq 1$ and $n = k,$ then 
+        \[\inlineAnswer[0cm]{1^3+2^3+3^3+\cdots+n^3
+            =\frac{n^2(n+1)^2}{4}}\]
+        We want to show that 
+        \[\inlineAnswer[0cm]{1^3+2^3+3^3+\cdots+n^3+(n+1)^3
+            =\frac{(n+1)^2(n+2)^2}{4}}\]
+        
+        \begin{shortAnswer}[Complete the proof:\vfill]
+            \begin{align*}
+                1^3+2^3+3^3+\cdots+k^3
+                    &=\frac{k^2(k+1)^2}{4} \\
+                1^3+2^3+3^3+\cdots+k^3+(k+1)^3
+                    &=\frac{k^2(k+1)^2}{4}+(k+1)^3=\frac{k^2(k+1)^2+4(k+1)^3}{4}\\
+                &=\frac{(k+1)^2(k^2+4k+4)}{4}
+                    =\frac{(k+1)^2(k+2)^2}{4}
+            \end{align*}
+        \end{shortAnswer}
+    \end{proof}
+\end{br}
+
+\begin{br}
+    If $n$ is an integer with $n\geq 5,$ then 
+    \[2^n>n^2.\]
+	
+    \begin{proof}
+        We proceed by induction. The base case is $n=5$. Since $\inlineAnswer{2^5>5^2},$
+        we are done.
+
+        The induction hypothesis is that if $k \geq 5$ and $n = k,$ then $\inlineAnswer{2^k>k^2}.$ 
+        We want to show that $\inlineAnswer{2^{k+1}>(k+1)^2}.$
+
+        \begin{shortAnswer}[Complete the proof:\vfill]
+            Multiplying both sides by $k$ gives $k2^{k}>2^{k+1}>k^2.$
+        \end{shortAnswer}
+        
+    \end{proof}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    \pagebreak}
+    \else
+    \fi}
+
+Recall the notation $\gcd(a,b)=(a,b).$
+\begin{br}
+    Let $a_1,a_2,\dots,a_n\in\Z$ with $a_1\neq 0$. Prove that \[(a_1,\dots,a_n)=((a_1,a_2,a_3,\dots,a_{n-1}),a_n).\]
+
+    \begin{hint}
+        Try solving the $k=3$ case as part of your scratch work.
+    \end{hint}
+ 
+	\begin{proof}
+        We proceed by induction. The base case is $n=2,$ since the statement we are trying to prove requires at least two inputs. Since 
+            \[\inlineAnswer[0 cm]{(a_1,a_2)
+                =((a_1,a_2))}\] 
+        we are done.
+        
+        The induction hypothesis is that if $k \geq 2$ and $n = k,$ then 
+            \[\inlineAnswer[0 cm]{(a_1,a_2,\dots,a_k)
+                =((a_1,a_2,a_{k-1}),a_k)}\] 
+        We want to prove that 
+            \[\inlineAnswer[0 cm]{(a_1,a_2,\dots,a_{k+1})
+                =((a_1,a_2,a_{k}),a_{k+1})}\] 
+        \begin{shortAnswer}[Complete the proof:\vfill]
+            Let $d_k=(a_1,a_2,a_3,\dots,a_{k}),$
+            $e=((a_1,a_2,a_3,\dots,a_{k}),a_{k+1})=(d_k,a_{k+1}),$ and $f= (a_1,a_2,a_3,\dots,a_{k},a_{k+1}).$ We will show that $e\mid f$ and $f\mid e$. Since both $e$ and $f$ are positive, this will prove that $e=f$.
+
+            Note that $e\mid (a_1,a_2,a_3,\dots,a_{k})$ and $e\mid a_{k+1}$ by definition. 
+            Since $(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k)=(d_{k-1},a_k)$ by the induction hypothesis, $e\mid d_{k-1}$ and $e\mid a_k$ by defintion of $(d_{k-1},a_k).$ Again, by the induction hypothesis, $d_{k-1}=(a_1,a_2,a_3,\dots,a_{k-1})=((a_1,a_2,a_3,\dots,a_{k-2}),a_{k-1})=(d_{k-2},a_{k-1}),$ so $e\mid a_{k-1}$ and $e\mid d_{k-2}$ by defintion of $(d_{k-2},a_{k-1}).$ Repeat this process until we get $(a_1,a_2,a_3)=((a_1,a_2),a_3)$, so $e\mid a_3$ and $e\mid (a_1,a_2)$ by definition of $((a_1,a_2),a_3)$. Thus $e\mid a_1,a_2,\dots,a_{k+1}$ by repeated applications of the induction hypothesis and the definition of greatest common divisor. By Problem 4 on Homework 3, $e\mid f.$
+
+            To show that $f\mid e,$ we note that $f\mid a_1,a_2,\dots, a_k,a_{k+1}$ by definition. Then $f\mid d_k$ by Problem 4 on Homework 3. Since $e=(d_k,a_k),$ we have that $f\mid e$ by Problem 4 on Homework 3.
+        \end{shortAnswer}
+    \end{proof}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    \pagebreak}
+    \else
+    \fi}
+
+\begin{br}
+    Redo the following proofs using induction:
+ 	\begin{br}
+		Let $n\in\Z$. Prove that $3\mid n^3-n$.
+		
+        \begin{proof}
+            We proceed by induction. The base case is $n=1$. Since $\inlineAnswer{3\mid 1^3-1=3},$
+            we are done.
+
+            The induction hypothesis is that if $k \geq 1$ and $n = k,$ then $\inlineAnswer{3\mid k^3-k}.$
+            We want to show that $\inlineAnswer{3\mid (k+1)^3-(k+1)}.$
+            \begin{shortAnswer}
+                Since $3\mid 3(k^2 + k)$ by the definition of divides, and $3\mid k^3-k$ by the induction hypothesis, $k^3 - k +3(k^2 + k)$ by linear combination. Note that 
+                \begin{align*}
+                    k^3 - k +3(k^2 + k)
+                    &= k^3+3k^2 + 3k +1 - k- 1\\
+                    &= (k+1)^3-(k+1).
+                \end{align*}
+                Thus, $3\mid (k+1)^3-(k+1).$
+            \end{shortAnswer}
+        \end{proof}
+    \end{br}
+
+		
+    \begin{br}
+        Let $n\in\Z$. Prove that $5\mid n^5-n$.
+		\begin{proof}
+            We proceed by induction. The base case is $n=1$. Since $\inlineAnswer{5\mid 1^5-1=0},$
+            we are done.
+
+            The induction hypothesis is that if $k \geq 1$ and $n = k,$ then $\inlineAnswer{5\mid k^5-k}.$
+            We want to show that $\inlineAnswer{5\mid (k+1)^5-(k+1)}.$
+            \begin{shortAnswer}
+                Since $5\mid 5(k^4 + 2k^3 +2k^2 + k)$ by the definition of divides, and $5\mid k^5-k$ by the induction hypothesis, $k^5 - k +5(k^4 + 2k^3 +2k^2 + k)$ by linear combination. Note that 
+                \begin{align*}
+                    k^5 - k +5(k^4 + 2k^3 +2k^2 + k)
+                    &= k^5 + 5k^4 + 10k^3 + 10k^2+ 5k +1 - k- 1\\
+                    &= (k+1)^5-(k+1).
+                \end{align*}
+                Thus, $5\mid (k+1)^5-(k+1).$
+            \end{shortAnswer}
+        \end{proof}
+	\end{br}
+\end{br}
+  \end{document}

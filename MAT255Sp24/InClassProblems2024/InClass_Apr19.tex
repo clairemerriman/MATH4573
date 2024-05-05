@@ -1,0 +1,61 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{April 19, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+ 	\begin{center}%
+    		{\large \scshape MAT-255-- Number Theory 
+			\hfill Spring 2024 
+			\hfill In Class Work April 19}%
+    
+		{\large Your Name: \hrulefill \quad 
+			Group Members:\hrulefill \quad 
+			\hrulefill
+			\par}%
+ 	\end{center}%
+	 
+
+\begin{br}[Chapter 6, Exercise 20]
+    Let $x,y,z\in\Z$ and let $p$ be a prime number.
+    
+    \begin{enumerate}
+        \item Prove that if $x^{p-1}+y^{p-1}=z^{p-1},$ then $p\mid xyz.$
+        \item Prove that if $x^{p}+y^{p}=z^{p},$ then $p\mid (x+y-z).$
+    \end{enumerate}
+    \begin{hint}
+        Recall Fermat's Little Theorem and its corrollaries.
+    \end{hint}
+
+    \begin{solution}
+        Let  $p$ be a prime number.
+
+        \begin{enumerate}
+            \item Let $x,y,z\in\Z$ such that $x^{p-1}+y^{p-1}=z^{p-1}.$ 
+            
+            By Fermat's Little Theorem, if $p\nmid x,$ then $x^{p-1}\equiv 1\pmod{p}.$ If $p\mid x,$ then $x^{p-1}\equiv 0\pmod{p}.$ Similarly for $y$ and $z.$ Thus, 
+            \[x^{p-1}+y^{p-1}\equiv 
+                \begin{cases}
+                    0 + 0 \pmod{p}\\
+                    0 + 1 \pmod{p}\\
+                    1 + 1 \pmod{p}
+                \end{cases}
+            \]
+            has a solution if andd only if $p$ divides at least one of $x,y$. Thus, $p\mid xyz.$
+            \item Let $x,y,z\in\Z$ such that $x^{p}+y^{p}=z^{p}.$ 
+            
+            By Corollary 5.8, $x^{p}\equiv x\pmod{p},  y^p\equiv y\pmod{p},$ and $z^p\equiv z \pmod{p}.$ Thus,
+            \begin{align*}
+                x^{p}+y^{p}& \equiv z^{p}\pmod{p}\\
+                x+y& \equiv z\pmod{p}.
+            \end{align*}
+            In otherwords, $p\mid (x+y-z).$
+        \end{enumerate}
+    \end{solution}
+\end{br}
+
+
+\end{document}

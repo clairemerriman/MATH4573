@@ -1,0 +1,93 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{January 22, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+    \begin{center}%
+            {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 22}%
+        
+        {\large
+            Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	    \par}%
+    \end{center}%
+
+\begin{br} 
+    Use the division algorithm on $a=47, b=6$ and $a=281, b=13$.
+    \begin{solution}
+        When $a=47, b=6,$ we have $q=7,$ and $r=5$ since \[47=6(7)+5\quad and \quad 0\leq 5 <6.\]
+        When $a=281, b=13,$ we have $q=21,$ and $r=8$ since \[47=13(21)+8\quad and \quad 0\leq 8 <13.\]
+    \end{solution}
+    \pdfOnly{\ifhandout{
+        \vfill}
+        \else
+        \fi}
+\end{br}
+
+\begin{br} Let $a$ and $b$ be nonzero integers. Prove that there exists a unique $q,r\in\Z$ such that 
+    \[a=bq+r, \quad 0\leq r <|b|.\]
+    \begin{enumerate}
+        \item Use the division algorithm to prove this statement as a corollary. That is, use the \emph{conclusion} of the division algorithm as part of the proof.  Use the following outline:
+        \begin{enumerate}
+            \item  Let $a$ and $b$ be nonzero integers. Since $|b|>0$, the division algorithm says that there exist unique $p,s\in\Z$ such that
+            $\inlineAnswer{a=p|b|+s}$
+            and
+            $\inlineAnswer{0\leq s<|b|}.$
+                
+            \item There are two cases:
+                \begin{enumerate}
+                    \item When $\inlineAnswer{b>0},$
+                    the conditions are already met, and $r=\inlineAnswer{s}$ and $q=\inlineAnswer{b}.$
+                    
+                    \item Otherwise,
+                    $\inlineAnswer{b<0},$ 
+                    $r=\inlineAnswer{s}$ and $q=\inlineAnswer{-b}.$
+                \end{enumerate}
+            
+            \item Since both cases used that the $p,s$ are unique, then $q,r$ are also unique
+        \end{enumerate}
+        
+        \item Use the \emph{proof} of the division algorithm as a template to prove this statement. That is, repeat the steps, adjusting as necessary, but do not use the conclusion.
+            \begin{enumerate}
+                \item In the proof of the division algorithm, we let $q=\floor{\frac{a}{b}}$. Here we have two cases:
+                \begin{enumerate}
+                    \item When $\inlineAnswer{b>0},$
+                    $q=\inlineAnswer{\floor{\frac{a}{b}}}$ and $r=\inlineAnswer{a-bq}.$
+                        
+                    \begin{onlineOnly}
+                        \begin{hint}
+                            The \TeX code for the floor function is \verb|\lfloor ... \rfloor|
+                        \end{hint}
+                    \end{onlineOnly}
+                    as in the proof of the division algorithm. 
+  
+                    \item When $\inlineAnswer{b<0},$
+                    $q=\inlineAnswer{-\floor{\frac{a}{b}}}$ and $r=\inlineAnswer{a-bq}.$
+                \end{enumerate}
+                
+                \item Summarizing these statements, rewrite $q,r$ in terms of $a$ and $b$, as in the original proof of the division algorithm.
+            
+        
+            \item Now use your scratch work and follow the outline of the proof of the division algorithm to provide a new proof \emph{without referencing the division algorithm.}
+        
+            \pdfOnly{\ifhandout{
+                \vfill
+                \vfill}
+                \else
+                \fi}
+        \end{enumerate}
+    \end{enumerate}
+\end{br}
+
+\end{document}
+
+
+
+
+
+
+
+

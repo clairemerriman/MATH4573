@@ -1,0 +1,38 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+
+\title{February 9, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+  \begin{center}%
+    {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work February 9}%
+    
+    {\large
+        Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	\par}%
+  \end{center}%
+
+
+\begin{br}
+  Prove that \[[a]=\{b\in\Z: 3\mid(a-b)\}\] is an equivalence relation on $\Z.$
+
+    \begin{solution}
+        Let $a,b\in\Z$. We must show that the relation is reflexive, symmetric, and transitive.
+  
+        To show the relation is reflexive, we must show $a\in \{b\in\Z: 3\mid(a-b)\}.$ Since $3\mid a-a=0$, $a\in \{b\in\Z: 3\mid(a-b)\}.$
+  
+        To show the relation is symmetric, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\},$ then $a\in \{b\in\Z: 3\mid(x-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then there exists $k\in\Z$ such that $3k=a-x.$ Therefore, $-3k=b-a$ and $a\in \{b\in\Z: 3\mid(x-b)\}.$
+  
+        To show the relation is transitive, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\}$ and $y\in \{b\in\Z: 3\mid(x-b)\},$ then $x\in \{b\in\Z: 3\mid(a-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then there exists $k\in\Z$ such that $3k=a-x.$ 
+        Similarly, if $y\in \{b\in\Z: 3\mid(x-b)\},$ then there exists $m\in\Z$ such that $3m=x-y.$ Therefore, $3(m+k)=a-k$ and $y\in \{b\in\Z: 3\mid(a-b)\}.$
+        
+        Since the relation is reflexive, symmetric, and transitive, it is an equivalence relation.
+  \end{solution}
+\end{br}
+
+
+  \end{document}

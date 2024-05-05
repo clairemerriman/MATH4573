@@ -1,0 +1,70 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+\title{January 24, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+    \begin{center}%
+        {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 24}%
+    
+        {\large
+            Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	    \par}%
+    \end{center}%
+
+
+  
+\begin{br}[Chapter 1, Exercise 29]
+    Let $n$ be a positive integer with $n\neq 1$. Prove that if $n^2+1$ is prime, then $n^2+1$ can be written in the form $4k+1$ with $k\in\Z$.
+
+
+    \begin{hint}
+        Try showing the statement is true for all odd integers greater than $1.$
+    \end{hint}
+
+    \begin{solution}
+        Assume that $n$ is a positive integer, $n\neq 1,$ and $n^2+1$ is prime. If $n$ is odd, then $n^2$ is odd, which would imply $n^2+1=2,$ the only even prime. However, $n\neq 1$ by assumption. Thus, $n$ is even. 
+
+        By definition of even, there exists $j\in\Z$ such that $n=2k$ and $n^2=4j^2$. Thus, $n^2+1=4k+1$ when $k=j^2.$
+    \end{solution}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    \vfill
+    \vfill}
+    \else
+    \fi}
+
+\begin{br}[Chapter 1, Exercise 33]
+    Prove or disprove the following conjecture, which is similar to the Twin Prime Conjecture:
+    \begin{conjecture}
+        There are infinitely many prime number $p$ for which $p+2$ and $p+4$ are also prime numbers.
+    \end{conjecture}
+
+
+    \begin{hint}
+        Show that the only prime where $p+2$ and $p+4$ are also prime is $p=3.$ 
+    \end{hint}
+
+
+    \pdfOnly{\ifhandout{
+        \vfill}
+        \else
+        \fi}
+\end{br}
+
+\pdfOnly{\ifhandout{
+    Wait for more lecture before answering the problem on the back.
+    
+    \pagebreak}
+    \else
+    \fi}
+ 
+\begin{br}
+    Without looking up the proof, prove 
+    Proposition 1.10:
+    Let $a, b\in \Z$ with $(a,b)=d.$ Then $\left(\frac{a}{d},\frac{b}{d}\right)=1.$
+\end{br}
+\end{document}

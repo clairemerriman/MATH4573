@@ -1,0 +1,91 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+\title{March 13, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+    \begin{center}%
+        {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work March 13}%
+        
+        {\large
+            Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+        \par}%
+    \end{center}%
+ 
+\begin{prop*}[Proposition 5.4]\label{prop:compare-order}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If $i$ is a positive integer, then 
+    \[\ord_m(a^i)=\frac{\ord_m a}{\gcd(\ord_m a,i)}.\]
+\end{prop*}
+
+\begin{br}
+    Use only the results through Proposition 5.3/Reading Lemma 10.3.5 (ie, not Proposition 5.4) to prove the primitive root version:
+
+
+    \begin{prop*}
+        Let $r,m\in\Z$ with $m>0$ and $r$ a primitive root modulo $m.$
+        If $i$ is a positive integer, then 
+    \[\ord_m(r^i)=\frac{\phi(m)}{\gcd(\phi(m),i)}.\]
+    \end{prop*}
+    \begin{solution}
+        Let $r$ be a primitive root modulo $m.$ Then by Proposition 5.3, $\{r,r^2,\dots,r^{\phi(m)}\}$ is a complete residue system modulo $m.$
+        By Proposition 5.1, $\ord_m(r^i)\mid \phi(m)$ and by Proposition 5.3, $r,r^2,\dots,r^{\phi(m)}$ is a complete residue system modulo $m$ 
+    \end{solution}
+    \pdfOnly{\ifhandout
+        \vfill
+        \else\fi}
+\end{br}
+
+
+\begin{br} Prove
+    \begin{prop*}[Proposition 10.2.2]\label{read-prop:roots-unity}
+        Let $p$ be prime, and let $m$ be a positive integer. Consider \[x^m\equiv 1\pmod{p}.\]
+        
+        \begin{enumerate}
+            \item If $m\mid p-1,$ then there are exactly $m$ incongruent solutions modulo $p.$
+            \item For any positive integer $m,$ there are $\gcd(m,p-1)$ incongruent solutions modulo $p.$
+        \end{enumerate}
+    \end{prop*}
+
+    \begin{solution}
+        Let $p$ be prime, and let $m$ be a positive integer. By Fermat's Little Theorem, $a^{p-1}\equiv 1\pmod{p}.$
+
+        \begin{enumerate}
+            \item If $m\mid p-1,$ then there exists $k\in\Z$ such that $mk=p-1.$ If $a^m\equiv 1\pmod{p}$
+        \end{enumerate}
+    \end{solution}
+    \pdfOnly{\ifhandout
+        \vfill
+        \else\fi}
+\end{br}
+
+\pdfOnly{\ifhandout
+        \pagebreak
+        \else\fi}
+
+\begin{br}
+    Prove the following statement, which is the converse of Reading Proposition 10.3.2:
+
+    Let $p$ be prime, and let $a\in\Z.$ If every $b\in\Z$ such that $p\nmid b$ is congruent to a power of $a$ modulo $p,$ then ${a}$ is a primitive root modulo $p$.
+    
+    \begin{solution}
+        Let $p$ be prime, and let $a\in\Z$ such that every integer $b\in\Z$ where $p\nmid b$ is congruent to $a^i$ modulo $p$ for some positive integer $i$. Thus, $(a,p)=1,$ otherwise $1$ would not be congruent to a power of $a$. ByProposition 5.2, $a^i\equiv a^j\pmod{p}$ if and only if $i\equiv j\pmod{p-1}.$ Thus, $a^1,a^2,\dots,a^{p-1}$ are distinct congruence classes and only one of $a^1,a^2,\dots,a^{p-1}$ is congruent to $1$ modulo $p.$ By Fermat's Little Theorem, $a^{p-1}\equiv1\pmod{p},$ so $\ord_p a=p-1.$
+    \end{solution}
+    \pdfOnly{\ifhandout
+        \vfill
+        \else\fi}
+\end{br}
+
+\begin{br}
+    Prove the following generalization of Reading Lemma 10.3.5
+    
+    
+    \begin{lem*}
+        Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
+    \end{lem*}
+    \pdfOnly{\ifhandout
+        \vfill
+        \else\fi}
+\end{br}
+\end{document}

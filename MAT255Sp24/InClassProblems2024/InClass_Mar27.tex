@@ -1,0 +1,117 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{March 27, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+ 	\begin{center}%
+    	{\large \scshape MAT-255-- Number Theory 
+			\hfill Spring 2024 
+			\hfill In Class Work March 27}%
+    
+		{\large Your Name: \hrulefill \quad 
+			Group Members:\hrulefill \quad 
+			\hrulefill
+			\par}%
+ 	\end{center}%
+	 
+From class March 20:
+
+\begin{tabular}{cll}
+	Modulus & Quadratic residues & Quadratic nonresidues\\\hline
+	$2$	& $1$ 	& None\\
+	$3$	& $1$	& $2$\\
+	$5$	& $1,4$	& $2,3$\\
+	$7$	& $1,2,4$	& $3,5,6$
+\end{tabular}
+
+\begin{prop*}[Proposition 4.5]
+	Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then 
+	\begin{enumerate}[label=(\alph*)]
+		\item $\legendre{a^2}{p}=1$ \label{squares-are-square}
+		\item If $a\equiv b\pmod{p}$ then $\legendre{a}{p}=\legendre{b}{p}$ \label{legendre-respects-mod}
+		\item $\legendre{ab}{p}=\legendre{a}{p}\legendre{b}{p}$ \label{legendre-mult}
+	\end{enumerate}
+\end{prop*}
+
+\begin{thm*}[Theorem 4.6]\label{thm:residue-neg1}
+	Let $p$ be an odd prime number. Then 
+	\[
+		\legendre{-1}{p}=
+			\begin{cases}
+ 				1, & p\equiv 1\pmod{4}\\
+				-1, & p\equiv 3\pmod{4}
+			\end{cases}.
+	\]
+\end{thm*}
+
+\begin{thm*}[Quadratic reciprocity]\label{quad-rec}
+	Let $p$ and $q$ be distinct primes.  
+	\begin{enumerate}[label=(\alph*)]
+		\item If $p\equiv 1 \pmod{4}$ or $q\equiv 1\pmod{4},$ then $\legendre{p}{q}=\legendre{q}{p}$
+ 		\item If $p\equiv q \equiv 3 \pmod{4},$ then $\legendre{p}{q}=-\legendre{q}{p}$
+	\end{enumerate}
+\end{thm*}
+
+
+
+
+\begin{br}[Strayer Chapter 4, Exercise 35]
+	Let $p$ be an odd prime number. Prove the following statements the following provided outlines, which will help solve the next problem, as well.
+	
+	\begin{enumerate}
+		\item $\legendre{3}{p}=1$ if and only if $p\equiv \pm1\pmod{12}.$
+		\item $\legendre{-3}{p}=1$ if and only if $p\equiv 1\pmod{6}.$	
+	\end{enumerate}
+\end{br}
+
+\begin{proof}
+	\begin{enumerate}
+        \item Since $3\equiv \inlineAnswer{3}\pmod{4},$\footnote{In this problem, this step is repetitive, but it is needed when $p\neq3$.} we need two cases for \nameref{quad-rec}. 
+            \begin{enumerate}
+                \item If $p\equiv 1\pmod{4},$ then $\legendre{3}{p}=\inlineAnswer{\legendre{p}{3}}$ by \nameref{quad-rec}, and $\legendre{p}{3}=1$ if and only if $p\equiv\inlineAnswer{1\pmod{3}}$. Then $p\equiv \inlineAnswer{1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+            
+                \item If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{3}{p}=\inlineAnswer{-\legendre{p}{3}}$ by \nameref{quad-rec}, and $\legendre{p}{3}=-1$ if and only if $p\equiv\inlineAnswer{ 2\equiv-1\pmod{3}}$. Then $p\equiv \inlineAnswer{-1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+            \end{enumerate}
+
+        Therefore, $\legendre{3}{p}=1$ if and only if $p\equiv \pm1\pmod{12}.$ 
+            
+        \item From Theorem 4.25\ref{legendre-mult}, $\legendre{-3}{p}= \inlineAnswer{\legendre{-1}{p}\legendre{3}{p}}.$
+        Again, we have two cases.
+            \begin{enumerate}
+                \item If $p\equiv 1\pmod{4},$ then $\legendre{-1}{p}=\inlineAnswer{1}$ by \nameref{thm:residue-neg1} and
+                $\legendre{3}{p}=\inlineAnswer{\legendre{p}{3}}$ by \nameref{quad-rec}. Thus, $\legendre{-3}{p}=\inlineAnswer{\legendre{p}{3}}=1$ if and only if $p\equiv \inlineAnswer{1\pmod{3}}.$ Then $p\equiv \inlineAnswer{1}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+            
+                \item If $p\equiv 3\equiv -1\pmod{4},$ then $\legendre{-1}{p}=\inlineAnswer{-1}$ by \nameref{thm:residue-neg1} and
+                $\legendre{3}{p}=\inlineAnswer{-\legendre{p}{3}}$ by \nameref{quad-rec}. Thus, $\legendre{-3}{p}=\inlineAnswer{\legendre{p}{3}}=1$ if and only if $p\equiv \inlineAnswer{1\pmod{3}}.$ Then $p\equiv \inlineAnswer{7}\pmod{12},$ and this is the unique equivalence class modulo $12$ by the Chinese Remainder Theorem.
+            \end{enumerate}
+        Therefore, $\legendre{-3}{p}=1$ if and only if $p\equiv \inlineAnswer{1,7}\pmod{12},$ which is equivalent to $p\equiv 1\pmod{6}.$ 
+    \end{enumerate}
+\end{proof}
+
+\begin{br}[Strayer Chapter 4, Exercise 36]
+	Find congruences characterizing all prime numbers $p$ for which the following integers are quadratic residues modulo $p,$ as done in the previous exercise. 
+	
+	Outline is provided for the first part.
+	\begin{enumerate}
+		\item $5$ 
+		\item $-5$	
+		\item $7$ 
+		\item $-7$	
+	\end{enumerate}
+
+
+
+    \begin{proof}
+        \begin{enumerate}
+            \item Since $5\equiv\inlineAnswer{1}\pmod{4},$ $\inlineAnswer[1.25 in]{\legendre{5}{p}=\legendre{p}{5}}$ by \nameref{quad-rec}. Then $\legendre{5}{p}=\inlineAnswer[1cm]{\legendre{p}{5}}=1$ if and only if $\inlineAnswer[1.25 in]{p\equiv 1, 4 \pmod{5}}.$
+
+            \pdfOnly{\ifhandout
+                \vfill\else\fi}
+        \end{enumerate}
+    \end{proof}
+\end{br}
+\end{document}

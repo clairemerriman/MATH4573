@@ -1,0 +1,78 @@
+\documentclass[handout,hints]{ximera}
+\input{handoutPreamble}
+
+
+\title{February 7, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+  \begin{center}%
+    {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work February 7}%
+    
+    {\large
+        Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	\par}%
+  \end{center}%
+  
+
+
+\begin{br}
+    \begin{enumerate}
+        \item Do there exist integers $x$ and $y$ such that $x + y = 100$ and $(x, y) = 8$?
+        \begin{solution}
+            No. By linear combination, $(x, y) \mid x+ y.$ Since $8\nmid 100,$ there does not exist integers $x$ and $y$ such that $x + y = 100$ and $(x, y) = 8$
+        \end{solution}
+	    \pdfOnly{\ifhandout{
+            \vfill}
+            \else
+            \fi}
+
+        \item Prove that there exist infinitely many pairs of integers $x$ and $y$ such that $x + y = 87$ and $(x, y) = 3$.
+        
+
+	    \begin{scratch}
+	        Note that $87=\inlineAnswer{3(29)}.$
+		    To ensure that $(x,y)=3,$ not just $3\mid x$ and $3\mid y,$ let $x=3n$ where $\inlineAnswer[1 cm]{29}\nmid n.$
+	    \end{scratch}
+
+        \begin{proof}
+            Let $x\in\Z$ with 
+            \begin{shortAnswer}[\hrulefill.\\]
+                $x=3n$ for some $n\in\Z$ where $29\nmid n.$
+            \end{shortAnswer}
+            Let $y=\inlineAnswer{87-3n}.$ Then $3\mid y$ by $\inlineAnswer[3 cm]{linear\ combination}.$
+            Then $(x,y)=3$ since $\inlineAnswer{29\nmid n}.$
+            Thus, there are infinitely many $x,y\in\Z$ 
+            \begin{shortAnswer}[\\]
+                where $x + y = 87$ and $(x, y) = 3$.
+            \end{shortAnswer}
+	   \end{proof}
+   
+   \end{enumerate}
+\end{br}
+ 
+
+\begin{br}[Strayer Chapter 1, Exercise 38]
+    Let $a$ and $b$ be relatively prime integers. Prove that $(a+b,a-b)$ is either $1$ or $2$.
+	
+    
+    \begin{hint}
+        From the back of Strayer: Let $(a+b,a-b)=d$ and note that $d\mid(a+b)+(a-b)$ and $d\mid (a +b) - (a - b).$
+    \end{hint}
+    \begin{hint}
+        Use Homework 3, Problem 2 which states $(ca,cb)=|c|(a,b)$ for all $a,b\in\Z,$ not both $0.$
+    \end{hint}
+
+    \begin{solution}
+        Let $(a+b,a-b)=d$ and note that $d\mid (a+b)+(a-b)$ and $d\mid (a+b)-(a-b)$ by linear combination.
+        Since $d\mid 2a$ and $d\mid 2b,$  $d\mid(2a,2b)=2(a,b).$ Since $(a,b)=1$ by assumption, $d\mid 2.$ Thus, $d=1,2.$
+    \end{solution}
+    \pdfOnly{\ifhandout{
+            \vfill
+            \vfill}
+            \else
+            \fi}
+\end{br}
+
+\end{document}

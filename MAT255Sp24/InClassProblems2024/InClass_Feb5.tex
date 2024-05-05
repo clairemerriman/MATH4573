@@ -1,0 +1,64 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{February 5, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+  \begin{center}%
+    {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work February 5}%
+    
+    {\large
+        Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
+	\par}%
+  \end{center}%
+  
+\begin{br}
+    Find integral solutions to the Diophantine equation \[8x_1-4x_2+6x_3=6.\]
+    
+    \begin{enumerate}
+        \item Since $(8,-4,6)=2,$ solutions exist
+        \item The linear Diophantine equation $8x_1-4x_2=4y$ has infinitely many solutions for all $y\in\Z$ by 
+        \begin{freeResponse}
+            Theorem 6.2.
+        \end{freeResponse}
+        \pdfOnly{\ifhandout{
+            \rule{2 cm}{0.4pt}}
+                \else
+                \fi}
+        Substituting into the original Diophantine equation gives $4y+6x_3=6,$ which has infinitely many solutions by 
+        \begin{freeResponse}
+            Theorem 6.2,
+        \end{freeResponse}
+        \pdfOnly{\ifhandout{
+            \rule{2 cm}{0.4pt}}
+                \else
+                \fi}
+        since $(4,6)=2\mid 6$. Find them.
+         
+        \begin{solution}
+            By inspection, $y=0,x_3=1$ is a particular solution. Then by Theorem 6.2, the solutions have the form 
+            \begin{align*}
+                y&=0+\frac{6n}{2},\quad x_3=1-\frac{4n}{2}, \quad \textnormal{ or }\\
+                y&=0+3n,\quad x_3=1-2n, \qquad n\in\Z. \qedhere
+            \end{align*}
+        \end{solution}
+        \item  For a particular value of $y$, the Diophantine equation $8x_1-4x_2=0$ has solutions, find them. 
+        
+        \item By inspection, $x_1=1,x_2=2$ is a particular solution. Then by Theorem 6.2, the solutions have the form 
+            \begin{align*}
+                x_1&=1+\inlineAnswer{\frac{-4m}{4}},\quad x_2=2-\inlineAnswer{\frac{8m}{4}}, \quad \textnormal{ or }\\
+                x_1&=\inlineAnswer{1-m},\quad x_2=\inlineAnswer{2-2m}, \qquad m\in\Z. \qedhere
+            \end{align*}
+            \begin{onlineOnly}
+                The first row should not have reduced fractions. Then simplify your answer for the second row.
+            \end{onlineOnly}
+
+
+        \item Then $x_1=\inlineAnswer{1-m}, x_2=\inlineAnswer{2-2m},x_3=\inlineAnswer{1}$ for $m\in\Z$.
+    \end{enumerate}
+\end{br}
+
+\end{document}

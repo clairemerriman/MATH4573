@@ -1,0 +1,92 @@
+\documentclass[handout]{ximera}
+\input{handoutPreamble}
+
+
+\title{April 3, 2024}
+
+\begin{document}
+\handoutAbstract
+\maketitle
+ 	\begin{center}%
+    	{\large \scshape MAT-255-- Number Theory 
+			\hfill Spring 2024 
+			\hfill In Class Work April 3}%
+    
+		{\large Your Name: \hrulefill \quad 
+			Group Members:\hrulefill \quad 
+			\hrulefill
+			\par}%
+ 	\end{center}%
+	 
+\begin{lemma}\label{lem:residues-gauss-lem}
+    Let $p$ be an odd prime number and like $a\in\Z$ with $p\nmid a.$ Consider  
+        \[a,2a,3a,\dots,\frac{p-1}{2}a,\frac{p+1}{2}a,\dots,(p-1)a.\] 
+    The least absolute residues of $ak$ and $a(p-k)$ differ by a negative sign. In other words, 
+        \[ak\equiv -a(p-k)\pmod{p}.\]
+        
+    Furthermore, for each $k=1,2,\dots,\frac{p-1}{2},$ the exactly one of $k$ and $-k$ is a least absolute residue of $\{a,2a,3a,\dots,\frac{p-1}{2}a\}.$
+\end{lemma}
+
+\begin{br}
+	Check \hyperref[lem:residues-gauss-lem]{Lemma 1} for 
+	\begin{enumerate}
+		\item $a=3, p=7$
+		\item $a=5, p=11$
+		\item $a=6, p=11$
+	\end{enumerate}
+    \begin{solution}
+		\begin{enumerate}
+
+		\item $a=3, p=7$ 
+			\begin{align*}
+				3\pmod{7},
+				\ 3(2)\equiv -1\pmod{7},
+				\ 3(3)\equiv 2\pmod{7},\\
+				\ 3(4)\equiv -2\pmod{7},
+				\ 3(5)\equiv 1\pmod{7},
+				\ 3(6)\equiv -3\pmod{7},
+			\end{align*}
+		\item $a=5, p=11$
+			\begin{align*}
+				5\pmod{11},
+				\ 5(2)\equiv -1\pmod{11},
+				\ 5(3)\equiv 4\pmod{11},\\
+				\ 5(4)\equiv -2\pmod{11},
+				\ 5(5)\equiv 3\pmod{11},\\
+				\ 5(6)\equiv -3\pmod{11},
+				\ 5(7)\equiv -2\pmod{11},
+				\ 5(8)\equiv -4\pmod{11},\\
+				\ 5(9)\equiv 1\pmod{11},
+				\ 5(10)\equiv -5\pmod{11},
+			\end{align*}
+		\item $a=11, p=23$
+			\begin{align*}
+				11\pmod{23},
+				\ 11(2)\equiv -1\pmod{23},
+				\ 11(3)\equiv 10\pmod{23},\\
+				\ 11(4)\equiv -2\pmod{23},
+				\ 11(5)\equiv 9\pmod{23},
+				\ 11(6)\equiv -3\pmod{23},\\
+				\ 11(7)\equiv 8\pmod{23},
+				\ 11(8)\equiv -4\pmod{23},
+				\ 11(9)\equiv 7\pmod{23},\\
+				\ 11(10)\equiv -5\pmod{23},
+				\ 11(11)\equiv 6\pmod{23},\\
+				\ 11(12)\equiv -6\pmod{23},
+				\ 11(13)\equiv 5\pmod{23},\\
+				\ 11(14)\equiv -7\pmod{23},
+				\ 11(15)\equiv 4\pmod{23},
+				\ 11(16)\equiv -8\pmod{23},\\
+				\ 11(17)\equiv 3\pmod{23},
+				\ 11(18)\equiv -9\pmod{23},
+				\ 11(19)\equiv 2\pmod{23},\\
+				\ 11(20)\equiv -10\pmod{23},
+				\ 11(21)\equiv 1\pmod{23},
+				\ 11(22)\equiv -11\pmod{23},
+			\end{align*}
+		\end{enumerate}
+	\end{solution}
+\end{br}
+
+
+\end{document}
