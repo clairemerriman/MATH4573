@@ -50,10 +50,10 @@
 \makeatletter
  \newcommand\handoutstyle{%
   \def\activitystyle{activity-handout}
-  \def\maketitle{\addcontentsline{toc}{section}{\@date}%
+  \def\maketitle{\addtocounter{titlenumber}{1}%
+  \addcontentsline{toc}{section}{\@date}%
         \setcounter{br}{0}}
-     }
-
+ }
 
 \newcommand{\handoutAbstract}{\begin{abstract}
 \end{abstract}}
@@ -212,18 +212,18 @@
 \problemEnvironmentEnd
 }
 
-\newcounter{br}%makes pointer correct
-\counterwithin{br}{section}
-
-\newenvironment{br}[1][2in]%
-{%Env start code
-\problemEnvironmentStart{#1}{In-class Problem}
-\refstepcounter{br}
-\stepcounter{problem}
-}
-{%Env end code
-\problemEnvironmentEnd
-}
+%\newcounter{br}%makes pointer correct
+%\counterwithin{br}{section}
+%
+%\newenvironment{br}[1][2in]%
+%{%Env start code
+%\problemEnvironmentStart{#1}{In-class Problem}
+%\refstepcounter{br}
+%\stepcounter{problem}
+%}
+%{%Env end code
+%\problemEnvironmentEnd
+%}
 
 \newcounter{ex}%makes pointer correct
 \providecommand{\exname}{Homework Problem}
@@ -260,6 +260,19 @@
     \end{freeResponse}
     }
 \fi
+
+\let\question\relax
+\let\endquestion\relax
+
+\newtheoremstyle{ExerciseStyle}{\topsep}{\topsep}%%% space between body and thm
+		{}                      %%% Thm body font
+		{}                              %%% Indent amount (empty = no indent)
+		{\bfseries}            %%% Thm head font
+		{}                              %%% Punctuation after thm head
+		{3em}                           %%% Space after thm head
+		{{#1}~\thmnumber{#2}\thmnote{ \bfseries(#3)}}%%% Thm head spec
+\theoremstyle{ExerciseStyle}
+\newtheorem{br}{In-class Problem}
 
 \newenvironment{sketch}
  {\begin{proof}[Sketch of Proof]}
