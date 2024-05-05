@@ -1,12 +1,16 @@
-\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings,multicol,hyperref,xr-hyper,aliascnt,enumitem}
+\usepackage{amssymb, latexsym, amsmath, amsthm, graphicx, amsthm,alltt,color, listings,multicol,xr-hyper,hyperref,aliascnt,enumitem}
 \usepackage{xfrac}
 
-
 \usepackage{parskip}
-\usepackage{graphicx}
 \usepackage[,margin=0.7in]{geometry}
 \setlength{\textheight}{8.5in}
- 
+
+\usepackage{epstopdf}
+
+\DeclareGraphicsExtensions{.eps}
+\usepackage{tikz}
+
+
 \usepackage{tkz-euclide}
 %\usetkzobj{all}
 \tikzstyle geometryDiagrams=[rounded corners=.5pt,ultra thick,color=black]
@@ -18,22 +22,9 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 \newcounter{includepdfpage}
+\usepackage{makecell}
 
 
-\newcommand{\semester}{%
-  \ifcase\month
-  \or Spring %1
-  \or Spring %2
-  \or Spring %3
-  \or Spring %4
-  \or Spring  %5
-  \or Fall %8
-  \or Fall %9
-  \or Fall %10
-  \or Fall %11
-  \or Fall %12
-  \fi
-}
 \usepackage{currfile}
 \usepackage{xstring}
 
@@ -41,7 +32,7 @@
 \lhead{\large{Number Theory: MAT-255}}
 %Put your Document Title (Camp: Topic) Here
 \chead{}
-\rhead{\semester 24}
+\rhead{Spring 2024}
 \lfoot{}
 \cfoot{}
 \rfoot{Page \thepage}
@@ -52,8 +43,21 @@
 \headsep 30pt
 
 \author{Claire Merriman}
-\date{Spring 2024}
 
+%%%%%%%%%%%%%%%%%%%%%
+% Create handoutstyle for in class assignments
+%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+ \newcommand\handoutstyle{%
+  \def\activitystyle{activity-handout}
+  \def\maketitle{\addcontentsline{toc}{section}{\@date}%
+        \setcounter{br}{0}}
+     }
+
+
+\newcommand{\handoutAbstract}{\begin{abstract}
+\end{abstract}}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%
 % Counters and autoref for unnumbered environments
@@ -128,6 +132,7 @@
 
 \theoremstyle{definition}
 \newtheorem*{annotation}{Annotation}
+\newtheorem*{rubric}{Rubric}
 
 \newtheorem*{innerrem}{Remark}
 \newcounter{rem}%makes pointer correct
@@ -199,14 +204,22 @@
 	\end{description}
 }
 
+\newenvironment{readingAssignment}[1][2in]%
+{%Env start code
+\problemEnvironmentStart{#1}{Turn in}
+}
+{%Env end code
+\problemEnvironmentEnd
+}
 
 \newcounter{br}%makes pointer correct
-\providecommand{\brname}{In-class Problem}
+\counterwithin{br}{section}
 
 \newenvironment{br}[1][2in]%
 {%Env start code
 \problemEnvironmentStart{#1}{In-class Problem}
 \refstepcounter{br}
+\stepcounter{problem}
 }
 {%Env end code
 \problemEnvironmentEnd
@@ -223,14 +236,35 @@
 \problemEnvironmentEnd
 }
 
+\newcommand{\inlineAnswer}[2][2 cm]{
+    \ifhandout{\pdfOnly{\rule{#1}{0.4pt}}}
+    \else{\answer{#2}}
+    \fi
+}
 
+\ifhandout
+\newenvironment{shortAnswer}[1][
+    \vfill]
+        {% Begin then result
+        #1
+            \begin{freeResponse}
+            }
+    {% Environment Ending Code
+    \end{freeResponse}
+    }
+\else
+\newenvironment{shortAnswer}[1][]
+        {\begin{freeResponse}
+            }
+    {% Environment Ending Code
+    \end{freeResponse}
+    }
+\fi
 
 \newenvironment{sketch}
  {\begin{proof}[Sketch of Proof]}
  {\end{proof}}
-%\newenvironment{hint}
-%  {\begin{proof}[Hint]}
-%  {\end{proof}}
+
 
 \newcommand{\gt}{>}
 \newcommand{\lt}{<}

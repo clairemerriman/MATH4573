@@ -50,18 +50,12 @@
 % Create handoutstyle for in class assignments
 %%%%%%%%%%%%%%%%%%%%%
 \makeatletter
-\newcommand\handoutstyle{%
-  \def\activitystyle{activity-section}
-  \def\maketitle{}{}{%
-    	\addtocounter{titlenumber}{1}%
-                {\setcounter{problem}{0}
-                 \setcounter{br}{0}
-                \setcounter{sectiontitlenumber}{0}}%
-                    \par\vspace{2em}
-                    \phantomsection\addcontentsline{toc}{section}
-                    {\thetitlenumber\hspace{1em}\textbf{\@title}}%
-        }}
-
+ \newcommand\handoutstyle{%
+  \def\activitystyle{activity-handout}
+  \def\maketitle{\addtocounter{titlenumber}{1}%
+  \addcontentsline{toc}{section}{\@date}%
+        \setcounter{br}{0}}
+ }
 
 \newcommand{\handoutAbstract}{\begin{abstract}
 \end{abstract}}
@@ -192,20 +186,35 @@
  }
 \makeatother
 
+%\let\br\relax
+%\let\endbr\relax
 
+%\newcounter{br}%makes pointer correct
+%\counterwithin{br}{section}
+%
+%\newenvironment{br}[1][2in]%
+%{%Env start code
+%\problemEnvironmentStart{#1}{In-class Problem}
+%\refstepcounter{br}
+%\stepcounter{problem}
+%}
+%{%Env end code
+%\problemEnvironmentEnd
+%}
 
-\newcounter{br}%makes pointer correct
-\counterwithin{br}{section}
+\let\question\relax
+\let\endquestion\relax
 
-\newenvironment{br}[1][2in]%
-{%Env start code
-\problemEnvironmentStart{#1}{In-class Problem}
-\refstepcounter{br}
-\stepcounter{problem}
-}
-{%Env end code
-\problemEnvironmentEnd
-}
+\newtheoremstyle{ExerciseStyle}{\topsep}{\topsep}%%% space between body and thm
+		{}                      %%% Thm body font
+		{}                              %%% Indent amount (empty = no indent)
+		{\bfseries}            %%% Thm head font
+		{}                              %%% Punctuation after thm head
+		{3em}                           %%% Space after thm head
+		{{#1}~\thmnumber{#2}\thmnote{ \bfseries(#3)}}%%% Thm head spec
+\theoremstyle{ExerciseStyle}
+\newtheorem{br}{In-class Problem}
+
 
 \newcounter{ex}%makes pointer correct
 \providecommand{\exname}{Homework Problem}

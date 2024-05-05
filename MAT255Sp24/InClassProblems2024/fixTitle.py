@@ -11,7 +11,7 @@ def replace_date_with_title(directory):
             with open(file_path, 'r') as file:
                 content = file.read()
             # Replace \date with \title
-            new_content = content.replace("\\date", "\\title")
+            new_content = content.replace("\\title", "\\date")
             # Write the modified content back to the file
             with open(file_path, 'w') as file:
                 file.write(new_content)
@@ -33,5 +33,5 @@ def find_and_replace(directory, environment):
 
 
 
-find_and_replace('InClassProblems2024/','br')
+replace_date_with_title('MAT255Sp24/InClassProblems2024/')
 
