@@ -1,0 +1,115 @@
+\documentclass[letterpaper, 11 pt,handout]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Gaussian Integers}
+
+
+\begin{document}
+\begin{abstract}
+ Project on Gaussian Integers.
+\end{abstract}
+\maketitle
+
+The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+	Read the scanned notes on Moodle. Present as much as necessarily for classmates to follow.
+	
+\begin{rubric}
+ 	Present as much as necessarily for classmates to follow: 4 points if individual, 3 points if pair.
+\end{rubric}
+
+\begin{exploration}
+Here I will use slightly more standard notation, which will match iwth the $\Z[\sqrt{d}]$ topic and complex analysis.
+ 	\begin{definition}
+ 		The set of \emph{Gaussian integers}, denoted $\Z[i]$ (read ``$\Z$ adjoin $i$") is defined by 
+ \[\Z[i]=\{a+bi : a,b\in\Z\},\]
+ where $i^2=-1$.
+ 
+ 	Let $z=a+bi$ be a Gaussian integer. The \emph{complex  conjugate of $z$} is $\overline{z}=a-bi$. Define the \emph{norm of $z$}, as
+ \[N(z)=|z|=z\overline{z}=(a+bi)(a-bi)=a^2+b^2.\]
+	\end{definition}
+
+\begin{lem*}[Lemma 13.1.4]\label{norm-mult}
+ 	Let $r$ and $s$ be Gaussian integers. Then 
+ 		\[N(rs)=N(r)N(s).\]
+ \end{lem*}
+
+\begin{problem}
+Prove \nameref{norm-mult}
+	\begin{rubric}
+ 		4 points if individual, 3 points if pair.
+	\end{rubric}
+\end{problem}
+
+\begin{problem}
+Let $d$ and $z$ be Gaussian integers. 
+\begin{enumerate}
+	\item Prove that if $d\mid z$, then $|d|\mid |z|$.
+		\item Prove or provide a counterexample for if $|d|\mid |z|,$ then $d\mid z.$ 
+\end{enumerate}
+	\begin{rubric}
+ 		4 points if individual, 3 points if pair.
+	\end{rubric}
+\end{problem}
+
+\begin{definition}
+ Let $p\in\Z[i]$ such that $p$ is not a unit. We say $p$ is \emph{prime} if for every $a,b\in\Z[i],$ $p=ab$ implies that $a$ is a unit or $b$ is a unit.
+\end{definition}
+
+\begin{lem*}[Lemma 13.2.6]\label{prime_norm}
+ Let $z$ be a Gaussian integer. If $N(z)$ is a prime in the (regular) integers, then $z$ is a prime as a Gaussian integer.
+ %
+\end{lem*}
+
+\begin{problem}
+Prove \nameref{prime_norm}.
+	\begin{rubric}
+ 		4 points if individual, 3 points if pair.
+	\end{rubric}
+\end{problem}
+
+
+
+\begin{definition}
+ Let $a,d\in\Z[i]$. We say $a$ and $b$ are \emph{relatively prime} if for all $d\in\Z[i],$ $d\mid a$ and $d\mid b$ implies that $d$ is a unit.
+\end{definition}
+
+\begin{thm*}[Division Theorem for Gaussian Integers]\label{div-gauss-int}
+ Let $a,d\in\Z[i]$ with $b\neq 0$. Then there exist Gaussian integers $q$ and $r$ such that $a=qb+r$ with $N(r)<N(b)$
+ %Exercises 15-17
+\end{thm*}
+
+\begin{problem}(If presenting as a pair)
+Prove \nameref{div-gauss-int} using Exercises 15-17 in the scanned notes.
+	\begin{rubric}
+ 		5 points.
+	\end{rubric}
+\end{problem}
+
+\begin{thm*}[Theorem 13.5.4]
+ Suppose $p\in\Z$ is prime. Then $p$ is a prime in $\Z[i]$ if and only if $p\equiv 3\pmod{4}$.
+ %
+\end{thm*}
+
+
+
+\begin{thm*}[Theorem 13.5.5]\label{thm:guass-primes}
+ Let $z\in\Z[i]$. Then $z$ is a prime Gaussian integer if and only if one of the following conditions holds:
+ 
+\begin{itemize}
+ \item $N(z)=2$,
+ \item $N(z)$ is a prime integer congruent to $1$ modulo $4$,
+ \item $z$ is a unit times a prime integer congruent to $3$ modulo $4$.
+\end{itemize}
+%
+\end{thm*}
+
+\begin{problem}
+Prove \nameref{thm:guass-primes}
+	\begin{rubric}
+ 		4 points if individual, 3 points if pair.
+	\end{rubric}
+\end{problem}
+\end{exploration}
+
+\end{document}

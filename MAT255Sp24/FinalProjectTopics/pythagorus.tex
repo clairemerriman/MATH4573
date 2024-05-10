@@ -1,0 +1,111 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Geometry Pythagorean Triples}
+
+
+\begin{document}
+\begin{abstract}
+ Project on geometry and Pythagorean Triples.
+\end{abstract}
+\maketitle
+
+
+\begin{exploration}
+ \begin{definition}
+ 	A \emph{rational point} is a point $(x,y)$ whose coordinates $x$ and $y$ are both rational numbers.
+\end{definition}
+
+Use rational points on the unit circle and trigonometry to derive the formula for generating Pythagorean triples. 
+
+\begin{problem}\label{prob:rational-form}
+ 	Let $(x,y)$ be a rational point on the unit circle. That is, there exists $a,b,c\in\Z$ such that $x=\frac{a}{c}$ and $y=\frac{b}{c}$.
+	
+	Explain why we can write $x$ and $y$ with the same denominator.
+\begin{rubric}
+ 2 points.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+Let $(x,y)$ be any point on the unit circle, ie $x^2+y^2=1.$
+	Consider the line segment between $(0,0)$ and $(x,y).$ As long as $(x,y)$ is not $(-1,0),$ the slope of this line is \[t=\frac{y}{1+x}=\tan\theta\] where $\theta$ is the angle between the line segment and the $x$-axis. 
+	\begin{enumerate}
+ 		\item Show that \[x=\frac{1-t^2}{1+t^2}, y=\frac{2t}{1+t^2}\] either using algebra or trig identities.
+		\item Show that $(x,y)$ is a rational point not equal to $(-1,0)$\footnote{$x=-1$ and $y=0$ is the limit as $t\to\infty$} if and only if $t$ is rational.
+		\item Let $t=\frac{m}{n}.$ Prove that if $x,y>0,$ then $m>n, (m,n)=1,$ exactly one of $m,n$ is even, and all nontrivial Pythagorean triples have the form $a=k(m^2-n^2), b=k(2mn), c=k(m^+n^2),$ for some $k\in\Z.$ 
+\begin{hint}
+Use that $k=\frac{c}{m^2+n^2}$.
+\end{hint}
+ 
+	\end{enumerate}
+\begin{rubric}
+ 4 points if individual, 3 if presenting as a pair.
+\end{rubric}
+\end{problem}
+
+\end{exploration}
+
+\begin{exploration}
+The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+\begin{theorem}[Fermat's Right Triangle Theorem]
+The does not exist a right triangle with rational side lengths and area a perfect square.
+\end{theorem}
+
+\begin{problem}
+ 	Let $x,y,z$ be positive integers be the side lengths of a triangle with hypotenuse $z$ and the area of the triangle is a perfect square.  Prove that if $z$ is the smallest such integer, then $(x,y,z)$ is a primitive Pythagorean triple.
+	
+\begin{rubric}
+ 4 points if individual, 3 if presenting as a pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+	Let $x,y,z$ as in the previous problem. Then there exists $m, n\in\Z$ with $m>n>0, (m,n)=1$ and exactly one of $m$ and $n$ even such that $x=m^2-n^2,\ y=2mn,\ $ and $z=m^2+n^2$. Furthermore, $m,\ n,\ m+n$ and $m-n$ are perfect squares. 
+	
+	\begin{enumerate}
+		\item\label{setup}  Prove that if $c,d\in\Z$ such that $c^2=m+n$, and $d^2=m-n$, then exactly one of $c+d$ and $c-d$ is divisible by $4$.
+		
+		\item\label{case1-part1} If $4\mid c+d,$ prove that $\frac{b^2}{4}=\frac{c+d}{4}\frac{c-d}{2},$ where the two factors on the right side of the equation are relatively prime. 
+		
+		\item Show that there exists $s,t\in\Z$ such that $\frac{c+d}{4}=s^2$ and $\frac{c-d}{2}=t^2$ 
+		
+		\item\label{case1-part3} Show that $(2s^2,t^2,a)$ is a Pythagorean triple and finish the proof of the right triangle theorem for this case. 
+		
+		\item Repeat parts \ref{case1-part1}-\ref{case1-part3} for $4\mid c-d.$ 
+	\end{enumerate}
+\begin{rubric}
+ Part \ref{setup} 4 points if individual, 3 if presenting as a pair.  Parts \ref{case1-part1}-\ref{case1-part3} 3 points per case if individual, 2 points per case if presenting as a pair.
+ 
+ Problem total: 10 points if individual, 7 points if pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+
+\begin{exploration}(If presenting as a pair)
+ \begin{definition}
+ A positive integer $n$ is a \emph{congruent number} if there exists a right triangle whose sides are all rational numbers and whose area is $n$. 
+\end{definition}
+
+\begin{problem}
+Show that the following are congruent numbers:
+\begin{itemize}
+ \item $6$.
+ \item $5$.
+\end{itemize} 
+\begin{rubric}
+ 2 points.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+Prove that there is no right triangle with \emph{integer} sides whose area is $5$.
+ There is no right triangle with \emph{integer} sides whose area is $1$.
+ \begin{rubric}
+ 3 points.
+\end{rubric}
+\end{problem}
+
+\end{exploration}
+\end{document}

@@ -1,0 +1,110 @@
+\documentclass[letterpaper, 11 pt,handout,hints]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Decimal expansions}
+
+
+\begin{document}
+\begin{abstract}
+ Project on decimal expansions.
+\end{abstract}
+\maketitle
+
+In this project, you will classify decimal (and duadecimal) expansions are finite, periodic, or aperiodic.
+
+Read Strayer Section 7.1.
+\begin{rubric}
+ Introducing topic, definitions, and any necessary results: 4 points 
+\end{rubric}
+
+\begin{exploration}
+	We say that the decimal expansion of a real number is \emph{finite} if it terminates after a finite number of digits. If the pattern of digits eventually repeats, such as $\frac{1}{3}=0.33333\dots=0.\overline{3}$ or $\frac{1}{28}=0.03571428571428\dots=0.03\overline{571428},$ we say the decimal is \emph{periodic}. We could also say that finite decimal expansions are periodic, where the periodic part is $\overline{0}.$ Otherwise, we say the decimal is \emph{aperiodic}.
+
+
+\begin{problem}\label{prob:dec-condition}
+ 
+	\begin{enumerate}
+		\item\label{decimal-ex} Find the decimal expansions of $\frac{3}{2}, \frac{2}{3},\frac{7}{25},\frac{2}{7},\frac{3}{20},\frac{2}{15}$ using WolframAlpha or another resource or method that will tell you if the decimal is periodic. These particular examples should be fine with a regular calculator. \emph{You do not need to present these answers, they are to help with the next part.}
+		\item Complete and prove the statement:		
+	\begin{conjecture}
+ 		Let $a,b\in\Z$ with $b\neq 0$ and $(a,b)=1.$ Then $\frac{a}{b}$ has a finite decimal expansion if and only if $b$ has no prime factors other than $\answer{2,5}.$
+	\end{conjecture}
+	\end{enumerate}
+\begin{rubric}
+ 4 points if individual, 3 points if pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+	Prove that if a real number has terminating decimal expansion, then it must be rational. Prove that if a real number has a periodic decimal expansion, then it must be rational. 
+\begin{hint}
+ Generalize the idea in Example 4 and the proof of Proposition 7.4.
+\end{hint}
+\begin{rubric}
+ 6 points if individual, 4 points if pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+
+\begin{exploration}
+ 
+\begin{definition}
+	Let $x\in\R$ with $0<x<1.$ Then the \emph{base 12} expansion of $x$ is \[\sum_{n=1}^\infty \frac{d_n}{12^n}=0.d_1 d_2\dots, \quad d_i\in\{1,2,\dots,11,12\}.\]
+	If there exist a positive integer $r$ and $N$ such that $d_n=d_{n+r}$ for all $n\geq N$, then $x$ is \emph{periodic} and $d_Nd_{N+1}\dots d_{N+r}$ is the periodic part of the base 12 expansion.
+	The base 12 expansion of $x$ is finite if the periodic part is $0.$
+	
+	If $m$ is a positive integer, then the base 12 expansion of $m$ is  
+	\[\sum_{k=1}^n {a_k}{12^k}, \quad a_i\in\{1,2,\dots,11,12\}.\]
+	Combining these definitions gives the base 12 expansion of any positive real number (the only reason to separate the definitions is dealing with the indices of the summation)
+\end{definition}
+
+\begin{example}\label{ex:duodec}
+	\begin{enumerate}
+ 		\item To find the base 12 expansion of $\frac{3}{2},$ first write $\frac{3}{2}=1+\frac{1}{2}.$ Since $1\in\{1,2,\dots,12\}$ the base 12 expansion of $1$ is still $1.$ Then we find the base $12$ expansion of $\frac{1}{2}:$
+			\begin{align*}
+ 				\frac{1}{2}&=\frac{a_1}{12}+\frac{a_2}{12^2}+\cdots\\
+				6(1)&={a_1}+\frac{a_2}{12}+\cdots\\
+			\end{align*}
+		Then we can make $a_1=6$ and the rest of the $a_i=0.$ So the base 12 expansion of $\frac{3}{2}$ is $1.6$
+
+		\item To find the base 12 expansion of $\frac{1}{10},$ 
+			\begin{align*}
+				\frac{1}{11}&=\frac{a_1}{12}+\frac{a_2}{12^2}+\cdots\\
+				12\left(\frac{1}{11}\right)&={a_1}+\frac{a_2}{12}+\cdots\\
+				1+\frac{1}{11}&={a_1}+\frac{a_2}{12}+\cdots\\
+			\end{align*}
+			So $a_1=1,$ and we are back to where we started, finding the base 12 expansion of $\frac{1}{11}.$ Thus $\frac{1}{11}=0.\overline{1}.$
+		\item Often $a$ is used to represent $10$ and $b$ is used to represent $11.$ The base 12 expansion of \[\frac{10}{11}=b\frac{1}{11}=b\left(\frac{1}{12}+\frac{1}{12^2}+\dots+\right)=0.\overline{b}.\]
+	\end{enumerate}
+	
+\end{example}
+
+\begin{problem}
+ 	Adjust the technique from Example \ref{ex:duodec} or check with \href{https://www.wolframalpha.com/input?i=1\%2F11+to+base+12}{WolframAlpha} to find the base 12 expansions of the fractions from Problem 1.1\ref{decimal-ex}. Present some of these in class: you do not need to present the work, only the expansion.
+\begin{rubric}
+ 2 points.
+\end{rubric}
+ \end{problem}
+ 
+ 
+\begin{problem}
+  	Complete and prove the statement:		
+		\begin{conjecture}
+ 			Let $a,b\in\Z$ with $b\neq 0$ and $(a,b)=1.$ Then $\frac{a}{b}$ has a finite base 12 expansion if and only if $b$ has no prime factors other than $\answer{2,3}.$
+		\end{conjecture}
+\begin{rubric}
+ 4 points if individual, 3 points if pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as a pair)
+	Prove that if a real number has terminating base 12 expansion, then it must be rational.
+\begin{hint}
+ Generalize the idea in Example 4 and the proof of Proposition 7.4.
+\end{hint}
+\begin{rubric}
+ 4 points.
+\end{rubric}
+\end{problem}
+\end{exploration}
+\end{document}

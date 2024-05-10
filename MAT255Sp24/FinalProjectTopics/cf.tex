@@ -1,0 +1,71 @@
+\documentclass[letterpaper, 11 pt,handout,hints]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Circle of fifths}
+
+
+\begin{document}
+\begin{abstract}
+ Project on frequency ratios for musical cords and continued fractions.
+\end{abstract}
+\maketitle
+
+Read Strayer Sections 7.2 and 7.3, paying particular attention to the examples. I will use more standard notation than Strayer.
+
+\begin{exploration}
+ Give an introduction to continued fraction expansions, with enough detail for classmates to follow the presented problems.
+
+\begin{rubric}
+ Present as much as necessarily for classmates to follow: 4 points if individual, 3 points if pair.
+\end{rubric}
+ 
+\begin{definition}
+ Let $x$ be a positive real number. Then the \emph{continued fraction expansion of $x$} is \[x=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\dots}}}=[a_0;a_1,a_2,\dots]\]
+ where $a_1,a_2,\dots$ are positive integers and $a_0$ is a nonnegative integer. 
+ 
+Define the \emph{convergents of $x$} to be the sequence of $\frac{p_n}{q_n}$ where \[\frac{p_n}{q_n}=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\dots+\cfrac{1}{a_n}}}}\]
+
+\begin{problem}
+	Use induction to show that $p_{n}=a_n p_{n-1} +p_{n-2}, q_{n}=a_n q_{n-1} +q_{n-2}.$ 
+\begin{hint}
+ Consider $\cfrac{1}{a_n+\cfrac{1}{a_{n+1}}}$ and use $a_n+\cfrac{1}{a_{n+1}}$ in the induction step.
+\end{hint}
+\begin{rubric}
+4 points if individual, 3 points if pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as a pair)
+ Chapter 7, Exercise 18
+ \begin{rubric}
+3 points.
+\end{rubric}
+\end{problem}
+\end{definition}
+\end{exploration}
+
+\begin{exploration}
+The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+	Read the scanned notes on Moodle. Present as much as necessarily for classmates to follow.
+	
+\begin{rubric}
+ Present as much as necessarily for classmates to follow: 4 points if individual, 3 points if pair.
+\end{rubric}
+
+\begin{problem}
+	An acoustically correct major third has frequency ratio $5:4$ 
+	\begin{enumerate}
+ 		\item Show that there do not exist natural numbers $m$ and $n$ such that \[\left(\frac{5}{4}\right)^m=2^n.\]
+		Thus, no number of acoustically correct major thirds that can make up a. whole number of octaves. 
+		\item Find the first four convergents of $\log_2\left(\frac{5}{4}\right)$
+		\item For each of your answer to part (b), find a pair of integers $m$ and $n$ for which $\left(\frac{5}{4}\right)^m=2^n$ is approximately correct.
+		\item In the equal-tempered scale, and octave consists of exactly 3 major thirds. To which convergent of $\log_2\left(\frac{5}{4}\right)$ does this correspond?
+
+	\end{enumerate}
+\begin{rubric}
+Each part: 2 points.
+\end{rubric}
+\end{problem}
+\end{exploration}
+\end{document}

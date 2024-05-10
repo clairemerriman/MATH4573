@@ -1,0 +1,147 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{../lessonplanheader.tex}
+\usepackage{tikz}
+
+\title{Platonic Solids}
+
+
+\begin{document}
+\begin{exploration}
+A mathematical \emph{graph} is a set of vertices connected by edges. Each edge connects two (not necessarily distinct) vertices. A graph is \emph{planar} if it can be drawn without any of the edges crossing. If it is possible to get from any vertex to any other vertex by traversing edges, the graph is \emph{connected.} Some examples of connected planar graphs are in \autoref{fig:graphs}.
+    
+    \begin{figure}
+    	\begin{subfigure}{0.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=1.5]
+    				% Vertices
+    				\foreach \x/\y/\name in {0/0/A, 1/0/B, 1/1/C, 0/1/D, 0/1/E, 2/1/F} {
+        				\coordinate (\name) at (\x,\y);
+        				\draw[fill=black] (\name) circle (1.5pt);
+    				}
+    
+    				% Edges
+    				\draw (A) -- (B) -- (C) -- (D) -- (A);
+    				\draw (D) -- (E) -- (F);
+				\end{tikzpicture}
+			\end{center}
+		\caption{A graph with $5$ vertices, $5$ edges, and $2$ faces.}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+    				% Vertices
+   			 	\foreach \x/\y/\name in {0/0/A, 1/0/B, 2/0/C, 1/.5/D, 0/1/E, 2/1/F} {
+        				\coordinate (\name) at (\x,\y);
+        				\draw[fill=black] (\name) circle (1.5pt);
+    				}
+    
+    				% Edges
+    				\draw (A) -- (B) -- (C) -- (F) -- (E) -- (A) -- (D) -- (B);
+    				\draw (D) -- (E);
+			\end{tikzpicture}
+             \end{center}
+            \caption{A graph with $6$ vertices, $8$ edges, and $4$ faces.}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+    				% Vertices
+   			 	\foreach \x/\y/\name in {0/0/A, 1/0/B, 2/0/C, 1/.5/D, 0/1/E} {
+        				\coordinate (\name) at (\x,\y);
+        				\draw[fill=black] (\name) circle (1.5pt);
+    				}
+    
+    				% Edges
+    				\draw (A) -- (B) -- (C) -- (E) -- (A) -- (D) -- (B);
+    				\draw (D) -- (E);
+			\end{tikzpicture}
+             \end{center}
+            \caption{A graph with $5$ vertices, $7$ edges, and $4$ faces.}
+        \end{subfigure}
+        \caption{Examples of connected planar graphs}\label{fig:graphs}
+    \end{figure}
+
+A connected planar graph divides the plane into disjoint enclosed areas called \emph{faces}. Note that the entire region outside of the graph is a face.
+
+
+\begin{theorem}[Euler's Formula]\label{thm:euler-form}
+	Call the number of vertices in a graph $V,$ the number of edges $E,$ and the number of faces $F.$ For a connected planar graph, \[V-E+F=2.\]
+\end{theorem}
+
+The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+\begin{problem}
+
+	\begin{enumerate}
+ 		\item The simplest graph consists of a single vertex with no edges. Verify that \nameref{thm:euler-form} is true for this graph.
+		\item We can construct any planar graph by starting with a single vertex and repeatedly doing one of two moves:
+		\begin{description}
+ 			\item[Move 1:] Starting at any vertex, draw a new edge that does not cross any existing edge, and then place a vertex at the end of your new edge.
+			\item[Move 2:] Connect any two existing vertices with a new edge that does not cross any existing edge.
+		\end{description}
+		Show that in doing either move, the value of $V-E+F$ does not change.
+	
+		\item Why does these facts lead to a proof that \nameref{thm:euler-form} holds true for all connected planar graphs?
+	\end{enumerate}
+ 
+\end{problem}	
+\end{exploration}
+
+
+\begin{exploration}
+A polyhedron is a closed, three-dimensional shape with flat polygonal faces and straight edges. 
+\begin{problem}
+ Explain why we can draw the vertices, edges, and faces of polyhedra as a planar graph, so \nameref{thm:euler-form} is also true for polyhedra. See \autoref{fig:cube} for an example.
+\end{problem}
+
+\begin{figure}
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+    		% Vertices
+    		\foreach \x/\y/\name in {0/0/A, 1/0/B, 1/1/C, 0/1/D, -.5/-.5/E, 1.5/-.5/F, 1.5/1.5/G, -.5/1.5/H} {
+        		\coordinate (\name) at (\x,\y);
+        		\draw[fill=black] (\name) circle (1.5pt);
+    		}
+    
+    		% Edges
+    		\draw (A) -- (B) -- (C) -- (D) -- (A);
+    		\draw (E) -- (F) -- (G) -- (H) -- (E);
+    		\draw (A) -- (E);
+    		\draw (B) -- (F);
+    		\draw (C) -- (G);
+    		\draw (D) -- (H);
+	\end{tikzpicture}
+ 	\caption{A cube drawn as a planar graph.}\label{fig:cube}
+ \end{center}
+\end{figure}
+
+
+
+A \emph{regular polygon} is a convex polygon where every side is the same length and every angle is the same size. 
+A \emph{platonic solid} is a convex polyhedron where every is the same regular polygon, and the same number of faces meet at each vertex.
+
+
+
+\begin{theorem}\label{thm:num-plat-solids}
+	 There are only five platonic solids. 
+\end{theorem}
+
+\begin{problem}
+Let $n$ be the number of edges for each face and $m$ be the number of faces that meet at a vertex.
+	\begin{enumerate}
+		\item Explain why $E= \frac{1}{2}(Fn)$ and $V=\frac{Fn}{m}.$
+		\item Use \nameref{thm:euler-form} to finish the proof of \autoref{thm:num-plat-solids}.
+	\end{enumerate}
+\end{problem}
+
+
+\begin{problem}(If presenting as a pair)
+	Prove that if every face of a polyhedron is a pentagon or a hexagon and if three faces meet at every vertex, then the polyhedron has exactly twelve pentagonal faces.
+\end{problem}
+
+\begin{problem}(If presenting as a pair)
+	Prove that if every face of a polyhedron is a triangle and five or six faces meet at every vertex, then the polyhedron has exactly twelve vertices where five faces meet.
+\end{problem}
+ 
+\end{exploration}
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[letterpaper, 11 pt,handout]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Other number systems: $\Z[\sqrt{d}]$}
+
+
+\begin{document}
+\begin{abstract}
+ Project on $\Z[\sqrt{d}].$
+\end{abstract}
+\maketitle
+
+\begin{definition}
+ Let $d\in\Z$ such that $d$ is not a perfect square. Define $\Z[\sqrt{d}]=\{a+b\sqrt{d}:a,b\in\Z\},$ pronounced ``$Z$ adjoin square-root $d$" If $d<0,$ then $\Z[\sqrt{d}]$ is a set of complex numbers. We will use the regular definition of addition and multiplication.
+\end{definition}
+
+\begin{definition}
+	 Let $d\in\Z$ such that $d$ is not a perfect square, and let $z\in\Z[\sqrt{d}]$ where $z=a+b\sqrt{d}.$ The \emph{conjugate of $z$} is $\overline{z}=a-b\sqrt{d},$ and the \emph{norm of $z$} is $|z|=z\overline{z}=a^2-db^2.$
+	 
+	 Strayer uses the notation $z^\prime$ for the conjugate.
+\end{definition}
+
+\begin{exploration}
+\begin{problem}
+ 	Strayer Chapter 1, Exercise 77 explores the case $d=-10.$ Then $\Z[\sqrt{d}]$ is not have unique factorization. Do this problem. 
+\begin{rubric}
+ Parts (a) and (b): 3 points each if individual, 2 points each if pair. Part (c): 2 points.
+ 
+ Problem total: 8 points if individual, 6 points if pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+	If $x,y\in\Z[\sqrt{d}],$ prove that $|xy|=|x||y|.$ If $\frac{x}{y}\in\Z[\sqrt{d}],$ prove that $\left|\frac{x}{y}\right|=\frac{|x|}{|y|}.$ 
+\begin{rubric}
+2 points.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as a pair) 
+	\begin{enumerate}
+ 		\item Prove that the norm of any nonzero element (ie, $a\neq 0$ or $b\neq 0$ of $\Z[\sqrt{-5}]$ is positive.
+		
+		\item When, if ever, does $|a+b\sqrt{-5}|=1$?
+		
+		\item When, if ever, does $|a+b\sqrt{-5}|=13$?
+	\end{enumerate}
+\begin{rubric}
+4 points.
+\end{rubric}	
+\end{problem}
+
+
+
+\begin{problem}
+	Strayer Chapter 8, Student Project 6.
+\begin{rubric}
+ Part (a): 2 points. Parts (b) and (c): 4 points each if individual, 3 points each if pair.
+ 
+ Problem total: 10 points if individual, 8 points if pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+
+
+
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Fibonacci Sequence}
+
+
+\begin{document}
+\begin{abstract}
+ Project on Fibonacci and Lucas sequence.
+\end{abstract}
+\maketitle
+
+\begin{exploration}
+ Start by reviewing the Fibonacci Sequence from Strayer Appendix A.2: 
+ $F_1=1, F_2=1, F_{k+1}=F_k+F_{k-1}$ for $k\geq3.$ 
+\begin{problem}
+	Prove that $\ds\lim_{k\to\infty}\frac{F_{k+1}}{F_k}=\phi$ where $\phi=\frac{1+\sqrt{5}}{2}.$
+	
+\begin{rubric} 5 points if individual project, 3 points if presenting as a pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}
+ 	Prove that for every positive integer $k,$ 
+	\[F_1+F_2+\cdots+F_k=F_{k+2}-1.\]
+	
+\begin{rubric} 5 points if individual project, 3 points if presenting as a pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as a pair)
+ 	Strayer Exercise Set A, Exercise 2.
+	\begin{rubric} 6 points.
+\end{rubric}
+\end{problem}
+
+	
+%\begin{problem}
+% 	Suppose $P_n$ is the sequence defined by $P_1=2, P_2=2, P_{n}=P_{n-1}P_{n-2}$ for $n\geq 3.$ Prove that $P_n=2^{F_n}$ for all positive integers $n.$
+%\end{problem}
+\end{exploration}
+
+The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+
+\begin{exploration}
+ 	The following problems are from \emph{Number Theory: A Lively Introduction with Proofs, Applications, and Stories} by Erica Flapan, Tim Marks, and James Pommersheim.
+
+	The Lucas numbers are similar to the Fibonacci numbers, where $L_1=1, L_2=3, L_{k+1}=L_k+L_{k-1}$ for $k\geq3.$ 
+
+	\begin{problem}
+ 		\begin{enumerate}
+ 			\item Make a table of the first $12$ Lucas numbers. \emph{You do not need to present this part}
+			\item Use your results from part (a) to calculate the ratios of pairs of consecutive Lucas numbers. \emph{You do not need to present this part}
+			\item Make a conjecture about the value of  $\ds\lim_{k\to\infty}\frac{L_{k+1}}{L_k}.$ \emph{You do not need to present this part}
+			\item Prove your conjecture is correct. \emph{You \textbf{do} need to present this part}
+		\end{enumerate}
+		\begin{rubric} 5 points if individual project, 3 points if presenting as a pair.
+\end{rubric}
+	\end{problem}
+	
+\begin{problem}(If presenting as a pair)
+ 		\begin{enumerate}
+ 			\item Calculate $L_1, L_1+L_2, L_1+L_2+L_3, L_1+L_2+L_3+L_4.$ \emph{You do not need to present this part}
+			\item Make a conjecture about the relationship between  $L_1+L_2+L_3 +\cdots+L_n$ and the number $L_{n+2}.$ \emph{You do not need to present this part}
+			\item Prove your conjecture is correct. \emph{You \textbf{do} need to present this part}
+		\end{enumerate}
+		\begin{rubric} 5 points if individual project, 3 points if presenting as a pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+\end{document}

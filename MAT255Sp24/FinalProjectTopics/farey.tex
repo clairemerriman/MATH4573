@@ -1,0 +1,103 @@
+\documentclass[letterpaper, 11 pt]{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Farey Fractions}
+
+
+\begin{document}
+\begin{abstract}
+ Project on Farey Fractions.
+\end{abstract}
+\maketitle
+
+The following problems are based on \emph{The Theory of Number} by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery.
+
+The subject of \emph{Diophantine Approximation} concerns approximating real numbers with rational numbers.  One way to do this is with \emph{Farey fractions}--which we can generate by adding ``wrong." However, there is a much simpler way to generate Farey fractions. One goal is to show these two methods give the same sequences.
+
+\begin{exploration}
+ \begin{definition}
+ The \emph{$N^{th}$ Farey sequence} is the list of all fractions, written from smallest to largest, between $0$ and $1$ where the denominator is less than or equal to $N$ when written as a reduced fraction. We write this sequence as $\mathcal{F}_N$.
+\end{definition}
+
+The first three Farey sequences are:
+\begin{align*}
+    \mathcal{F}_1 &= \left\{\frac 01, \frac 11 \right\}, \\
+    \mathcal{F}_2 &= \left\{ \frac 01, \frac 12, \frac 11 \right\}, \\
+    \mathcal{F}_3 &= \left\{ \frac 01, \frac 13, \frac 12, \frac 23, \frac 11 \right\}
+    \end{align*}
+
+
+\begin{problem}
+	Prove that for a positive integer $N\geq 2$, the number of elements of $\mathcal{F}_N$ with denominator $N$ is equal to $\phi(N)$.
+\begin{rubric}
+5 points if individual, 4 points if pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+
+
+\begin{exploration}
+ Another way to generate the Farey sequence is using a table. In the first row, write $\frac 01$ and $\frac 11$.
+
+To form the second row, copy the first row. Then insert $\frac{0+1}{1+1}$ between $\frac 01$ and $\frac 11$.
+
+To form the $n^{th}$ row, copy the $(n-1)^{st}$ row. Then for each $\frac ab, \frac cd$ in the $(n-1)$ row, if $b+d\leq n$, insert $\frac{a+c}{b+d}$ between $\frac ab$ and $\frac cd$.
+
+\begin{table}
+ \begin{tabular}{ c c c c c c c c c c c c c }
+ $\frac{0}{1}$ &&&&&&&&&&&& $\frac{1}{1}$\\
+ $\frac{0}{1}$ & & & & &$\frac{1}{2}$&&&&&&& $\frac{1}{1}$\\
+ $\frac{0}{1}$ & & & $\frac{1}{3}$& &$\frac{1}{2}$& & $\frac{2}{3}$&&&&& $\frac{1}{1}$\\
+  $\frac 01$ &  & & $ \frac 14$ & $ \frac 13$ & & $ \frac 12$ & $ \frac 35$ & $\frac 23$ & $ \frac 34$ &  &  & $ \frac 11 $\\
+  $\frac 01$ &  & $ \frac 15$ & $ \frac 14$ & $ \frac 13$ & $ \frac 25$ & $ \frac 12$ & $ \frac 35$ & $\frac 23$ & $ \frac 34$ & $ \frac 45$ &  & $ \frac 11 $\\
+ $\frac 01$ & $ \frac 16$ & $ \frac 15$ & $ \frac 14$ & $ \frac 13$ & $ \frac 25$ & $ \frac 12$ & $ \frac 35$ & $\frac 23$ & $ \frac 34$ & $ \frac 45$ & $\frac 56$ & $ \frac 11 $
+\end{tabular}
+\end{table}
+
+\begin{lemma}[Niven-Zukerman-Montgomery, Theorem 6.1]
+ If $\frac{a}{b}$ and $\frac{c}{d}$ are consecutive fractions in the $n^{th}$ row of the table, with $\frac ab$ to the left of $\frac cd$, then $bc-ad=1$.
+\end{lemma}
+This lemma matches with the definition of a \emph{Farey pair} from Strayer Chapter 7, Student Project 2.
+
+\begin{problem}
+	Prove this lemma.
+	
+	
+\begin{rubric}
+ 5 points if individual, 4 points if pair.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as a pair)
+	Strayer Chapter 7, Student Project 2.
+\begin{rubric}
+ Parts (a)-(c): 4 points.
+ Part (d): 4 points.
+\end{rubric}
+\end{problem}
+
+\begin{problem}(If presenting as an individual)
+  Prove \begin{corollary}[Niven-Zukerman-Montgomery, Corollary 6.2]
+ Every $\frac{a}{b}$ in the table is in reduced form.
+\end{corollary}
+
+\begin{corollary}[Niven-Zukerman-Montgomery, Corollary 6.3]
+ The fractions in each row are listed in order from smallest to largest.
+\end{corollary}
+
+\begin{rubric}
+ 5 points.
+\end{rubric}
+\end{problem}
+
+
+
+\begin{problem}
+	Prove that if $0\leq m \leq n$ and $(m,n)=1$, then fraction $\frac{m}{n}$ is in the $n^{th}$ row of the table. Therefore, algorithmic definition of the $n^{th}$ Farey sequence equivalent to the definition: The \emph{$N^{th}$ Farey sequence} is the list of all fractions, written from smallest to largest, between $0$ and $1$ where the denominator is less than or equal to $N$ when written as a reduced fraction.
+	
+\begin{rubric}
+ 5 points if individual, 4 points if pair.
+\end{rubric}
+\end{problem}
+\end{exploration}
+\end{document}
