@@ -146,7 +146,7 @@
 Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the theorem that the algorithm always generates the greatest common divisor of two (positive) integers.
 
 
-\begin{thm*}[Euclidean algorithm]\label{euclid-alg}
+\begin{theorem}[Euclidean algorithm]\label{euclid-alg}
 	Let $a,b\in\Z$ with $a\geq b>0$. By the \nameref{div-alg}, there exist $q_1,r_1\in\Z$ such that 
 	\[a=b q_1+r_1,\quad 0\leq r_1<b.\]
 	If $r_1>0$, there exist $q_2,r_2\in\Z$ such that 
@@ -166,7 +166,7 @@ Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the the
 	 \[\gcd(a,b)=\gcd(b,r_1)=\gcd(r_1,r_2)=\cdots=\gcd(r_{n-2},r_{n-1})\]
 	 Then $r_{n-2}=r_{n-1} q_n+0$. Thus $\gcd(r_{n-2},r_{n-1})=r_{n-1}$.
 \end{proof}
-\end{thm*}
+\end{theorem}
 
 When using the \nameref{euclid-alg}, it can be tricky to keep track of what is happening. Doing a lot of examples can help.
 	

@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obj}
-\item  Every integer greater than 1 has a prime divisor.
+\item  Prove every integer greater than 1 has a prime divisor.
 \item  Prove that there are infinitely many prime numbers
 \end{obj}
 
@@ -58,7 +58,7 @@ Why is $1$ not prime?
 
 %It has to do with units and invertibility. The number $1$ holds a special place. It is the multiplicative identity, i.e., anything multiplied by $1$ is just that thing again. Something is said to be invertible in a ``group" (more on that later) if there exist something, which, when multiplied to it, gives you $1$. How many invertible elements are there among the integers? Just two. $1$ and $-1$. And that's the key. If we want to extend our results from positive integers to non-zero integers, we often just need to take into account $\pm 1$. That sounds obvious, but it turns out to be surprisingly critical and yet non-intuitive when we start moving from real integers to complex ones.
 
-\begin{lemma}[Lemma 1.5]\label{lem:prime-composite}
+\begin{lemma}\label{lem:prime-composite}
  Every integer greater than 1 has a prime divisor.
 \end{lemma}
 
@@ -69,9 +69,9 @@ We will not go over this proof in class.
 \end{proof}
 
 
-\begin{thm*}[Euclid's Infinitude of Primes]\label{thm:inf-primes}(Theorem 1.6)
+\begin{theorem}[Euclid's Infinitude of Primes]\label{thm:inf-primes}(Theorem 1.6)
  There are infinitely many prime numbers.
-\end{thm*}
+\end{theorem}
 \begin{proof}
  Assume by way of contradiction, that there are only finitely many prime numbers, so $p_1,p_2,\dots,p_n$. Consider the number $N=p_1p_2\cdots p_n +1$. Now $N$ has a prime divisor, say, $p$, by \nameref{lem:prime-composite}. So $p=p_i$ for some $i$, $i=1,2,\dots,n$. Then $p\mid N-p_1p_2\dots p_n$, which implies that $p\mid 1$, a contradiction. Hence, there are infinitely many prime numbers.
 \end{proof}

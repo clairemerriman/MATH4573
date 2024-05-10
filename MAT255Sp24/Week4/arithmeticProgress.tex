@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Arithmetic progressions and introduction to Congruences}
@@ -11,83 +11,43 @@
 \begin{obj}
     \item State and prove facts about prime factorizations using the Fundamental Theorem of Arithmetic
     \item Prove there are infinitely many primes of the form $4n+3$.
-    \item Prove a given set is an equivalence relation
+    % \item Prove a given set is an equivalence relation
 \end{obj}
 
-\begin{pre}
-    \item[Reading] Strayer, Appendix B
-    \item[Turn in] Let $R$ be the equivalence relation on $\R$
-    defined by
-    \[
-   [a]=\{b\in\R:\sin(a)=\sin(b) \textnormal{ and }\cos(a)=\cos(b)\}.\]
-     Prove that $R$ is an equivalence relation on $\R.$
-   Describe the equivalence classes on $\R$
+% \begin{pre}
+%     \item[Reading] Strayer, Appendix B
+%     \item[Turn in] Let $R$ be the equivalence relation on $\R$
+%     defined by
+%     \[
+%    [a]=\{b\in\R:\sin(a)=\sin(b) \textnormal{ and }\cos(a)=\cos(b)\}.\]
+%      Prove that $R$ is an equivalence relation on $\R.$
+%    Describe the equivalence classes on $\R$
    
-   \begin{solution}
-        Since $\sin(a)=\sin(a)$ and $\cos(a)=\cos(a),$ the relation $R$ is reflexive.
+%    \begin{solution}
+%         Since $\sin(a)=\sin(a)$ and $\cos(a)=\cos(a),$ the relation $R$ is reflexive.
 
-        If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ the $\sin(b)=\sin(a)$ and $\cos(b)=\cos(a),$ so the relation is symmetric.
+%         If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ the $\sin(b)=\sin(a)$ and $\cos(b)=\cos(a),$ so the relation is symmetric.
 
-        If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ $\sin(b)=\sin(c)$ and $\cos(b)=\cos(c),$ then $\sin(a)=\sin(c)$ and $\cos(a)=\cos(c)$ is transitive.
+%         If $\sin(a)=\sin(b)$ and $\cos(a)=\cos(b),$ $\sin(b)=\sin(c)$ and $\cos(b)=\cos(c),$ then $\sin(a)=\sin(c)$ and $\cos(a)=\cos(c)$ is transitive.
 
-        Note that $\sin(a)=\sin(b)$ if $b=a+2\pi k$ or $b=-a+\pi+2\pi k$ for some $k\in\Z,$ and  $\cos(a)=\cos(b)$ if $b=a+2\pi k$ or $b=-a+2\pi k$ for some $k\in\Z.$ These conditions are both true with $b=a+2\pi k$. Thus, for $a\in[0,2\pi),$
-        \[
-            [a]=\{\dots,a-4\pi,a-2\pi,a,a+2\pi,a+4\pi,\dots\}.
-        \]
-       \end{solution}
-\end{pre}
+%         Note that $\sin(a)=\sin(b)$ if $b=a+2\pi k$ or $b=-a+\pi+2\pi k$ for some $k\in\Z,$ and  $\cos(a)=\cos(b)$ if $b=a+2\pi k$ or $b=-a+2\pi k$ for some $k\in\Z.$ These conditions are both true with $b=a+2\pi k$. Thus, for $a\in[0,2\pi),$
+%         \[
+%             [a]=\{\dots,a-4\pi,a-2\pi,a,a+2\pi,a+4\pi,\dots\}.
+%         \]
+%        \end{solution}
+% \end{pre}
 %%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% \begin{br}[Strayer Chapter 1, Exercise 36]
-%     \begin{enumerate}[label=(\alph*)] %enumerate creates a numbered list, label=(\alph*) says to use lower case numbers in parentheses
-%         \item Do there exist integers $x$ and $y$ such that $x + y = 100$ and $(x, y) = 8$?
-        
-        
-%         \begin{solution}
-%             On Homework 3.
-%         \end{solution}
- 
-%         \item Prove that there exist infinitely many pairs of integers $x$ and $y$ such that $x + y = 87$ and $(x, y) = 3$.
- 
-%         \begin{scratch}
-%          Note that $87=\answer{3(29)}$.
-%          To ensure that $(x,y)=3,$ not just $3\mid x$ and $3\mid y,$ let $x=3n$ where $\answer{29}\nmid n$.
-        
-%         \end{scratch}
- 
-%         \begin{proof}
-         
-%          Let $x\in\Z$ with $\answer{\textnormal{On Homework 3}}$. Let $y= \answer{}.$ Then $3\mid y$ by  $\answer{\textnormal{On Homework 3}}$. Then $(x,y)=3$ since $\answer{\textnormal{On Homework 3}}$. Thus, there are infinitely many $x,y\in\Z$ $\answer{\textnormal{On Homework 3}}$.
-         
-%         \end{proof}
-    
-%     \end{enumerate}
-% \end{br}
-
-
-
-% \begin{br}[Strayer Chapter 1, Exercise 38] Let $a$ and $b$ be relatively prime integers. Prove that $(a+b,a-b)$ is either $1$ or $2$.
-	
-
-%     Using the hint in the back of the book and Exercise 37, which states $(ca,cb)=|c|(a,b)$ for all $a,b\in\Z,$ not both $0.$ 
-% \begin{proof}
-% 	Let $(a+b,a-b)=d$ and note that $d\mid (a+b)+(a-b)$ and $d\mid (a+b)-(a-b)$ by $\answer{\textnormal{linear combination}}$
-%     $\answer{\textnormal{On Homework 3}}$
-% \end{proof}
-% \end{br}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Prime factorizations (20 minutes)}
+\subsection{Prime factorizations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 Note on $m^4-n^4=(m^2-n^2)(m^2+n^2)$: In order to sho w this is not prime, must prove that the factors cannot be $1$ and the number itself. Hint: show that if one of the factors is $1$ the other is $1$ or $0$ (or $-1$).
 
 
-\begin{cor*}[Corollary 1.20]\label{cor:lcm-gcd}
+\begin{corollary}[Corollary 1.20]\label{cor:lcm-gcd}
  Let $a,b\in\Z$ with $a,b>0$. Then $[a,b]=ab$ if and only if $(a,b)=1$.
-\end{cor*}
+\end{corollary}
 A note on ``if and only if" proofs: 
 \begin{itemize}
  \item You can do two directions: 
@@ -102,10 +62,10 @@ A note on ``if and only if" proofs:
 \end{itemize}
 \end{itemize}
 
-\begin{thm*}[Dirichlet's Theorem]\label{thm:dirichlet}
+\begin{theorem}[Dirichlet's Theorem]\label{thm:dirichlet}
  Let $a,b\in\Z$ with $a,b>0$ and $(a,b)=1$. Then the arithmetic progression \[a,a+b, a+2b, \dots, a+nb,\dots\]
  contains infinitely many primes.
-\end{thm*}
+\end{theorem}
 Surprisingly, this proof involves complex analysis. The statement that there are infinitely many prime numbers is the case $a=b=1$.
 
 
@@ -114,9 +74,9 @@ Surprisingly, this proof involves complex analysis. The statement that there are
 \end{warning}
 
 
-\begin{lem*}[Lemma 1.23]\label{lem:prod-goodprimes}
+\begin{lemma}[Lemma 1.23]\label{lem:prod-goodprimes}
  If $a,b\in\Z$ such that $a=4m+1$ and $b=4n+1$ for some integers $m$ and $n$, then $ab$ can also be written in that form.
-\end{lem*}
+\end{lemma}
 We will not go over the proof in class.
 \begin{proof}
  Let $a=4m+1$ and $b=4n+1$ for some integers $m$ and $n$. Then 
@@ -127,9 +87,9 @@ ab&=(4m+1)(4n+1)\\
 \end{align*}
 \end{proof}
 
-\begin{prop*}[Proposition 1.22]\label{prop:inf-badprimes}
+\begin{proposition}[Proposition 1.22]\label{prop:inf-badprimes}
  There are infinitely may prime numbers expressible in the form $4n+3$ where $n$ is a nonnegative integer.
-\end{prop*}
+\end{proposition}
 \begin{proof}
  (Similar to the proof that there are infinitely many prime numbers). Assume, by way of contradiction, that there are only finitely many prime numbers of the form $4n+3$, say $p_0=3, p_1,p_2,\dots, p_r$, where the $p_i$ are distinct. Let $N=4p_1 p_2 \cdots p_r+3$. If every prime factor of $N$ has the form $4n+1$, then so does $N$, by repeated applications of \nameref{lem:prod-goodprimes}. Thus, one of the prime factors of $N$, say $p$, have the for $4n+3$. We consider two cases:
  
@@ -142,29 +102,5 @@ Therefore, $N$ has a prime divisor of the form $4n+3$ which is not on the list $
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Equivalence Relation Practice (10 minutes)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{br}
-    Prove that \[[a]=\{b\in\Z: 3\mid(a-b)\}\] is an equivalence relation on $\Z.$
-  \end{br}
-  
-  \begin{proof}
-    Let $a,b\in\Z$. We must show that the relation is reflexive, symmetric, and transitive.
-  
-     To show the relation is reflexive, we must show $a\in \{b\in\Z: 3\mid(a-b)\}.$ Since $\answer{3\mid a-a=0}$,\\
-     $a\in \{b\in\Z: 3\mid(a-b)\}.$
-  
-     To show the relation is symmetric, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\},$ then $a\in \{b\in\Z: 3\mid(x-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then $\answer{\textnormal{there exists $k\in\Z$ such that $3k=a-x$}}$. Therefore, $\answer{-3k=b-a}$
-     and $a\in \{b\in\Z: 3\mid(x-b)\}.$
-  
-     To show the relation is transitive, we must show that if $x\in \{b\in\Z: 3\mid(a-b)\}$ and $y\in \{b\in\Z: 3\mid(x-b)\},$ then $x\in \{b\in\Z: 3\mid(a-b)\}.$ If $x\in \{b\in\Z: 3\mid(a-b)\},$ then $\answer{\textnormal{there exists $k\in\Z$ such that $3k=a-x$}}$. 
-     Similarly, if $y\in \{b\in\Z: 3\mid(x-b)\},$ then $\answer{\textnormal{there exists $m\in\Z$ such that $3m=x-y$}}$.
-     Therefore, $\answer{3(m+k)=a-k}$
-     and $y\in \{b\in\Z: 3\mid(a-b)\}.$ $\answer{\textnormal{Since the relation is reflexive, symmetric, and transitive, it is an equivalence relation.}}$
-  \end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \end{document}

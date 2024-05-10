@@ -45,9 +45,9 @@ First, let's define a \emph{lemma.} A lemma is a minor result whose sole purpose
   \end{proof}
 \end{lemma}
 
-\begin{thm*}[Division Algorithm]\label{div-alg}
+\begin{theorem}[Division Algorithm]\label{div-alg}
  Let $a,b\in\Z$ with $b>0$. Then there exists a unique $q,r\in\Z$ such that \[a=bq+r, \quad 0\leq r <b.\]
-\end{thm*}
+\end{theorem}
 
 Before proving this theorem, let's think about division with remainders, ie long division. The quotient $q$ should be the largest integer such that $bq\leq a$. If we divide both sides by $b$, we have $q\leq\frac{a}{b}$. We have a function to find the greatest integer less than or equal to $\frac{a}{b},$ namely $q=\floor{\frac{a}{b}}$. If we rearrange the equation $a=bq+r,$ we gave $r=a-bq$. This is our scratch work for existence.
 

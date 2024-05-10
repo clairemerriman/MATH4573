@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Wilson's Theorem}
@@ -23,14 +23,12 @@
     Does this match with your conjecture from Exercise 5? If not, what is the difference?
 \end{pre}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Wilson's Theorem (50 min)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{lem*}[Lemma 2.10]\label{lem:sqrt1}
+
+\begin{lemma}\label{lem:sqrt1}
     Let $p$ be a prime number and $a\in\Z.$ Then $a$ is its own inverse modulo $m$ if and only if $a\equiv \pm 1\pmod{p}.$
-\end{lem*}
+\end{lemma}
 
 \begin{proof}
     Let $p$ be a prime number and $a\in\Z.$ Then $a$ is its own inverse modulo $m$ if and only if $a^2\equiv 1 \pmod{p}$ if and only if $p\mid a^2-1=(a-1)(a+1).$ Since $p$ is prime, $p\mid a-1$ or $a+1$ by \nameref{lem:irreducible-prime}. Thus, $a\equiv\pm 1\pmod p.$
@@ -58,9 +56,9 @@
 \end{remark}
 
 
-\begin{thm*}[Wilson's Theorem]\label{Wilson}
+\begin{theorem}[Wilson's Theorem]\label{Wilson}
     Let $p$ be a prime number. Then \[(p-1)!\equiv -1\pmod{p}.\]
-\end{thm*}
+\end{theorem}
 
 \begin{proof}
     When $p=2,$ $(2-1)!=1\equiv -1 \pmod{2}.$ Now consider $p$ an odd prime. By \nameref{cor:condition-invertible}, each $a=1,2,\dots,p-1$ has a unique multiplicative inverse modulo $p.$ \nameref{lem:sqrt1} says the only elements that are their own multiplicative inverse are $1$ and $p-1$. Thus $(p-2)!$ is the product of $1$ and $\frac{p-3}{2}$ pairs of $a,a^\prime$ where $a a^\prime\equiv 1\pmod{p}.$ Therefore, 
@@ -71,9 +69,9 @@
 \end{proof}
 
 Wilson's Theorem is normally stated as above, but the converse is also true. It can also be a (very ineffective) prime test.
-\begin{prop*}[Proposition 2.12]\label{Wilson-converse}
+\begin{proposition}[Converse of Wilson's Theorem]\label{Wilson-converse}
     Let $n$ be a positive integer. If $(n-1)!\equiv 1\pmod{n},$ then $n$ is prime.
-\end{prop*}
+\end{proposition}
 
 \begin{proof}
     Let $a$ and $b$ be positive integers where $ab=n.$ It suffices to show that if $1\leq a < n,$ then $a=1.$ If $a=n,$ then $b=1.$ If  $1\leq a < n,$ then $a\mid (n-1)!$ by the definition of factorial. Then $(n-1)!\equiv -1\pmod{n}$ implies $a\mid (n-1)!+1$ by transitivity of division. Thus, $a\mid (n-1)!+1-(n-1)!=1$ by linear combination and $a=1.$ Therefore, the only positive factors of $n$ are $1$ and $n,$ so $n$ is prime.
@@ -105,9 +103,9 @@ Wilson's Theorem is normally stated as above, but the converse is also true. It 
 \end{br}
 
 
-\begin{thm*}[On Paper 2, Polynomial Factorization option]
-    Let $p$ be a prime number. The congruence $x^2\equiv -1 \pmod p$ has solutions if and only if $p=2$ or $p\equiv 1 \pmod 4.$
-\end{thm*}
+% \begin{theorem}[On Paper 2, Polynomial Factorization option]
+%     Let $p$ be a prime number. The congruence $x^2\equiv -1 \pmod p$ has solutions if and only if $p=2$ or $p\equiv 1 \pmod 4.$
+% \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 

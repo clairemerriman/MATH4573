@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Legendre symbol}
@@ -60,20 +60,20 @@ Technical difficults with printer and projector.
         \]
 \end{definition}
 
-\begin{thm*}[Euler's Criterion]\label{thm:euler-quads}
+\begin{theorem}[Euler's Criterion]\label{thm:euler-quads}
     Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ Then \[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}\]
-\end{thm*}
+\end{theorem}
 
 We will not prove this today, but we will use it to go over the solution to the reading assignment and to prove the following proposition.
 
-\begin{prop*}[Proposition 4.5]\label{prop:legendre-facts}
+\begin{proposition}[Proposition 4.5]\label{prop:legendre-facts}
 	Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then 
 	\begin{enumerate}[label=(\alph*)]
 		\item $\legendre{a^2}{p}=1$ \label{squares-are-square}
 		\item If $a\equiv b\pmod{p}$ then $\legendre{a}{p}=\legendre{b}{p}$ \label{legendre-respects-mod}
 		\item $\legendre{ab}{p}=\legendre{a}{p}\legendre{b}{p}$ \label{legendre-mult}
 	\end{enumerate}
-\end{prop*}
+\end{proposition}
 
 
 \begin{proof}

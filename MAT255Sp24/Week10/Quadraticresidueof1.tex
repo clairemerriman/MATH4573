@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Quadratic residue of $-1$}
@@ -25,9 +25,9 @@
 
 We will prove \nameref{thm:euler-quads}. 
 
-\begin{thm*}[Euler's Criterion]
+\begin{theorem}[Euler's Criterion]
     Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ Then \[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}\]
-\end{thm*}
+\end{theorem}
 
 \begin{proof}
 	Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ If there exists $b\in\Z$ such that $b^2\equiv a\pmod{p},$ then $\legendre{a}{p}=1$ by \hyperref[defn:legendre]{definition}.
@@ -50,7 +50,7 @@ We will prove \nameref{thm:euler-quads}.
 \subsection{When is $-1$ a quadratic residue?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{thm*}[Theorem 4.6]\label{thm:residue-neg1}
+\begin{theorem}[Theorem 4.6]\label{thm:residue-neg1}
 	Let $p$ be an odd prime number. Then 
 	\[
 		\legendre{-1}{p}=
@@ -59,7 +59,7 @@ We will prove \nameref{thm:euler-quads}.
 				-1, & p\equiv 3\pmod{4}
 			\end{cases}.
 	\]
-\end{thm*}
+\end{theorem}
 
 \begin{proof}
 	Let $p$ be an odd prime number. Then from \nameref{thm:euler-quads}, $\legendre{-1}{p}\equiv (-1)^{(p-1)/2}\pmod{p}.$ Since both values are $\pm1,$ we can say $\legendre{-1}{p}=(-1)^{(p-1)/2}.$
