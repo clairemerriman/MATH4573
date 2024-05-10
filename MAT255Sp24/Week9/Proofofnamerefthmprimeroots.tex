@@ -1,7 +1,7 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
-\title{Proof of \nameref{thm:prime-roots}
+\title{Proof of Primitive Root Theorem}
 \begin{document}
 \begin{abstract}
 \end{abstract}
@@ -20,7 +20,7 @@
 \end{pre}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Roots of unity (35 minutes)}
+\subsection*{Roots of unity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Finish proof of \nameref{prop:roots-unity}
@@ -59,9 +59,9 @@ Finish proof of \nameref{prop:roots-unity}
 
 We will now prove the existence of primivitive roots modulo a prime combining the two methods from the reading: we will show that when $d\mid p-1,$ there are $\phi(d)$ incongruent integers of order $d$ modulo $p,$ like Strayer. However, we will prove this using the method from \nameref{read-lem:prime-power-order} instead of results from Chapter 3.
 
-\begin{thm*}[Theorem 5.9]\label{thm:number-element-order-d}
+\begin{theorem}[Theorem 5.9]\label{thm:number-element-order-d}
     Let $p$ be a prime and let $d\in\Z$ with $d>0$ and $d\mid p-1.$ Then there are exactly $\phi(d)$ incongruent integers of order $d$ modulo $p.$
-\end{thm*}
+\end{theorem}
 
 
 \begin{proof}
@@ -89,9 +89,9 @@ We will now prove the existence of primivitive roots modulo a prime combining th
 \end{proof}
 
 
-\begin{cor*}[Corollary 5.10]\label{cor:number-prime-roots}
+\begin{corollary}[Corollary 5.10]\label{cor:number-prime-roots}
     Let $p$ be prime. There are exactly $\phi(p-1)$ primitive roots modulo $p.$
-\end{cor*}
+\end{corollary}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%

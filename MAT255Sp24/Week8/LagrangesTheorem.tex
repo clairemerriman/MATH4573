@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Lagrange's Theorem}
@@ -13,6 +13,8 @@
 \end{obj}
 
 
+\begin{instructorNotes}
+    
 \begin{pre}
     \item[Reading] Strayer Section 5.2
     \item[Turn in:] 
@@ -37,19 +39,19 @@
             \end{solution}
     \end{enumerate}
 \end{pre}
+\end{instructorNotes}
 
-\subsection{Quiz (10 minutes)}
-\subsection{Lagrange's Theorem}
-    The goal is to finish proving the \nameref{thm:prime-roots} with a look at polynomials.
 
-    \begin{thm*}[Theorem 5.7 (Lagrange)]\label{thm:lagrange}
-        Let $p$ be a prime number and let 
-        \[f(x)=a_n x^n +a_{n-1} x^{n-1}+\cdots +a_1 x+a_0\]
-        for integers $a_0,a_1,\dots,a_n.$ Let $d$ be the greatest integer such that $a_d\not\equiv 0\pmod{p}t$ then $d$ is the \emph{degree of $f(x)$ modulo $p.$}
-        Then the congruence 
-        \[f(x)\equiv 0\pmod{p}\]
-        has at most $d$ incongruent solutions. We call these solutions \emph{roots of $f(x)$ modulo $p.$}
-    \end{thm*}
+The goal is to finish proving the \nameref{thm:prime-roots} with a look at polynomials.
+
+\begin{theorem}[Lagrange]\label{thm:lagrange}
+    Let $p$ be a prime number and let 
+    \[f(x)=a_n x^n +a_{n-1} x^{n-1}+\cdots +a_1 x+a_0\]
+    for integers $a_0,a_1,\dots,a_n.$ Let $d$ be the greatest integer such that $a_d\not\equiv 0\pmod{p}t$ then $d$ is the \emph{degree of $f(x)$ modulo $p.$}
+    Then the congruence 
+    \[f(x)\equiv 0\pmod{p}\]
+    has at most $d$ incongruent solutions. We call these solutions \emph{roots of $f(x)$ modulo $p.$}
+    
 
     \begin{proof}[Proof from class]
         We proceed by induction on the degree $d.$
@@ -105,14 +107,15 @@
         where $q(x)$ is a polynomial of degree $d-1$ modulo $p.$
         Since $q(x)$ has at most $d-1$ roots modulo $p$ by the induction hypothesis, there are at most $d-1$ incongruent additional roots of $f(x)$ modulo $p$. Thus, there are a total of at most $d$ incongruent roots modulo $p.$
     \end{proof}
+\end{theorem}
 
-    \begin{prop*}[Proposition 5.8]\label{prop:roots-unity}
+    \begin{proposition}\label{prop:roots-unity}
         Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then 
         \[
             x^m\equiv 1\pmod{p}
         \]
         has $m$ incongruent solutions modulo $p.$
-    \end{prop*}
+    
 
 
     \begin{proof}
@@ -127,13 +130,14 @@
         By \nameref{thm:lagrange}, there are at most $(k-1)m$ solutions to $x^{(k-1)m}+x^{(k-2)m}+\cdots+x^{2m}+x^m+1\equiv 0\pmod{p}.$ Thus, there are at least $p-1-(k-1)m=m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}.$ 
         Since there are also at least $m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}$ by \nameref{thm:lagrange}, there are exactly $m$ incongruent solutions to $x^m-1\equiv 0\pmod{p}$ and thus $x^m\equiv 1\pmod{p}.$
     \end{proof}
+\end{proposition}
 
-    \begin{definition}[Roots of unity]\label{def:root-unity}
+\begin{definition}[Roots of unity]\label{def:root-unity}
     
-        Let $p$ be prime and $m$ a positive integer. We call the solutions to  
+    Let $p$ be prime and $m$ a positive integer. We call the solutions to  
         \[x^m\equiv 1\pmod{p}\]
-        the \emph{$m^{th}$ roots of unity modulo $p.$}
-    \end{definition}
+    the \emph{$m^{th}$ roots of unity modulo $p.$}
+\end{definition}
 
 
 \end{document}

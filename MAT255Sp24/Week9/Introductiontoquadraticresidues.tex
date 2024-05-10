@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Introduction to quadratic residues}
@@ -99,9 +99,9 @@
     \end{solution}
 \end{br}
 
-\begin{lem*}[Generalized Porism 4.2]\label{lem:roots-pairs}
+\begin{lemma}[Generalized Porism 4.2]\label{lem:roots-pairs}
     Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0,$ then  $m-x_0$ is also a solution. If $m\gt 2,$ then $x_0\not\equiv m-x_0\pmod{m},$ and solutions occur in pairs.
-\end{lem*}
+\end{lemma}
 
 \begin{proof}
     Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0.$ Then 
@@ -115,9 +115,9 @@
     Since $x_0\equiv m-x_0\pmod{m}$ implies $x_0\equiv \frac{m}{2},$ we can say that if $x^2\equiv a\pmod{m}$ is solvable and $\frac{m}{2}$ is \emph{not} a solution, then solutions occur in pairs.
 \end{remark}
 
-\begin{prop*}[Proposition 4.1]\label{prop:number-sqrts}
+\begin{proposition}[Proposition 4.1]\label{prop:number-sqrts}
     Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Then the quadratic congruence $x^2\equiv a\pmod{p}$ has either no solutions or exactly two incongruent solutions modulo $p$.
-\end{prop*}
+\end{proposition}
 
 \begin{proof}
 	Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Consider the quadratic congruence $x^2\equiv a\pmod{p}.$ If no solutions exist, we are done.
@@ -125,9 +125,9 @@
 	If solutions to the quadratic congruence exist, then \nameref{lem:roots-pairs} says that there are at least two solutions, since $p>2.$ \nameref{thm:lagrange} says that there are at most two solutions to $x^2-a\equiv 0\pmod{p}$ and therefore $x^2\equiv a\pmod{p}.$ Thus, there are exactly two incongruent solutions modulo $p.$
 \end{proof}
 
-\begin{prop*}[Proposition 4.3]\label{prop:number-quad-residues}
+\begin{proposition}[Proposition 4.3]\label{prop:number-quad-residues}
 	Let $p$ be an odd prime number. Then there are exactly $\frac{p-1}{2}$ incongruent quadratic residues modulo $p$ and exactly $\frac{p-1}{2}$ incongruent quadratic nonresidues modulo $p.$
-\end{prop*}
+\end{proposition}
 \begin{proof}
 	Consider the $p-1$ quadratic congruences
 	\begin{align*}

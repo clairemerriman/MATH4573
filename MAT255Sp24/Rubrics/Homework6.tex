@@ -24,12 +24,14 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
 
 \begin{writeRubric}
     \item \textbf{Does not demonstrate understanding}
-     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+     Proof contains enough of the relevant concepts to provide feedback, but does not meet the criteria for 2 points. Or contains circular reasoning.
     \item \textbf{Needs revisions}
+    Work shows understanding of the definition of $\operatorname{ord}_n(a),$ but it has significant gaps or errors. Proves that $\ord_m(ab)\mid(\ord_m(a))(\ord_m(b)),$ but not that $\ord_m(a)\mid(\ord_m(ab))(\ord_m(b))$ (or other case), with mathematically correct answer and example for part (b). Or some missing details in proof for part (a) with no example in part (b). Writing may be difficult to follow. It needs further review and significant revisions.
      
     \item \textbf{Demonstrates understanding}
+    Mathematically correct proof, with some gaps or errors in one direction, possibly with minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
     
-    \item \textbf{Exemplary}
+    \item \textbf{Exemplary} Mathematically correct solutions for both parts, using the definition of $\operatorname{ord}_n(a)$ and exponent rules. Gives and example for part (b) with an answer related to the results in this section. Work is easy to follow with formal mathematical writing.
         
 \end{writeRubric}
                                        	
@@ -48,12 +50,17 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
 \begin{writeRubric}
     \item \textbf{Does not demonstrate understanding}
      Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+     
     \item \textbf{Needs revisions}
+    Proof contains enough of the relevant concepts to provide feedback, but does not meet the criteria for 2 points. Or contains circular reasoning.
+ \item Work shows understanding of the relationship between $\ord_m (a)$ and $\phi(m)$, with significant missing details. Example is incorrect.
      
     \item \textbf{Demonstrates understanding}
-    
+    Example of $m$ and $d\mid\phi(m)$ where there are no elements of order $d$, but no justification for the fact there are no elements of order $d$.
+ Or uses informal mathematical writing.
+
     \item \textbf{Exemplary}
-        
+       Mathematically correct solutions for both parts, using the definition of $\operatorname{ord}_n(a)$ and exponent rules. Work is easy to follow with formal mathematical writing.
 \end{writeRubric}
                                        	
 \begin{solution}
@@ -69,13 +76,16 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
 
 \begin{writeRubric}
     \item \textbf{Does not demonstrate understanding}
-     Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
+          Proof contains enough of the relevant concepts to provide feedback, but does not meet the criteria for 2 points. Proofs that use Fermat's Little Theorem to conclude $m$ is prime cannot receive more than 1 point--pseudoprimes are a counterexample to this statement.
+          
     \item \textbf{Needs revisions}
-     
+	Work shows understanding of the relationship between $\ord_m (a)$ and $\phi(m)$, with significant missing details. Proves that $\ord_m(a^x)\mid y,$ but not that $\ord_m(a^x)=y$, with mathematically correct proof for part (b).
+ 
     \item \textbf{Demonstrates understanding}
+    Mathematically correct proof, with some gaps or errors in one part, possibly with minor arithmetic, spelling, or grammatical errors. Or uses informal mathematical writing.
     
     \item \textbf{Exemplary}
-        
+    Mathematically correct solutions for both parts, using the definition of $\operatorname{ord}_n(a)$ and exponent rules. Work is easy to follow with formal mathematical writing.
 \end{writeRubric}
                                        	
 \begin{proof}
@@ -93,6 +103,9 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
     \item \textbf{Does not demonstrate understanding}
      Contains a reasonable attempt to prove each part, but does not meet the criteria for two points.
     \item \textbf{Needs revisions}
+    States that $n=\ord_{a^n-1}a$, but only proves that $n\mid \ord_{a^n-1}a$. Does not explain
+ the relationship between $\ord_{a^n-1}a$ and $\phi(a^n-1)$. 
+
      
     \item \textbf{Demonstrates understanding}
     
@@ -107,10 +120,10 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
 
 \begin{ex}
     Prove the following statement, which is the converse of Proposition 5.3 (restricted to primes): 
-	\begin{prop*}
+	\begin{proposition}
  	    Let $p$ be prime, and let $a\in\Z.$ If every $b\in\Z$ such that $p\nmid b$ is congruent to a power of $a$ modulo $p,$ then ${a}$ is a primitive root modulo $p$.
 
-	\end{prop*}
+	\end{proposition}
 \end{ex}
 
 \begin{writeRubric}
@@ -132,9 +145,9 @@ Exercise Set 5.1, Exercises 5, 6, 7, 8 (check transcribed problems for mistakes)
     Prove the following generalization of \nameref{order_mult}\ref{order_mult}:
     
     
-    \begin{lem*}
+    \begin{lemma}
         Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
-    \end{lem*}
+    \end{lemma}
 \end{ex}
 
 \begin{writeRubric}

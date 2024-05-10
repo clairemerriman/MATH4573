@@ -1,0 +1,50 @@
+\lhead{\large{Number Theory: MAT-255}}
+%Put your Document Title (Camp: Topic) Here
+\chead{}
+\rhead{Spring 2024}
+\lfoot{}
+\cfoot{}
+\rfoot{Page \thepage}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+
+\headheight 50pt
+\headsep 30pt
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Create a chapter divider where there is not an intro file
+% Should be a place holder until there is a file
+%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\chapter}[1]{\addtocounter{titlenumber}{1}%
+{\flushleft\LARGE\sffamily\bfseries\thetitlenumber\hspace{1em}#1 \par }%
+{\vskip .6em\noindent\textit\theabstract\setcounter{problem}{0}\setcounter{sectiontitlenumber}{0}}%
+\par\vspace{2em}
+\phantomsection\addcontentsline{toc}{section}{\textbf{\thetitlenumber\hspace{1em}#1}}%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Create handoutstyle for in class assignments
+%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+ \newcommand\handoutstyle{%
+    \addtocounter{titlenumber}{1}%
+    \phantomsection\addcontentsline{toc}{section}{\@date}%
+        \setcounter{br}{0}}
+%
+%
+%\newcommand{\handoutTitle}{\title[%
+%\textnormal{\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work \classday}%
+%
+%\textnormal{\large
+%Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill}%
+%\vspace{-5em}]{}}
+
+\newcommand{\handoutAbstract}{\begin{abstract}
+\end{abstract}}
+
+\makeatother

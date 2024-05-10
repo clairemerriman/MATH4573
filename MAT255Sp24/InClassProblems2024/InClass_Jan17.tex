@@ -1,26 +1,24 @@
-\documentclass[handout]{ximera}
-\input{handoutPreamble}
+\documentclass[handout,nooutcomes]{ximera}
+% \input{handoutPreamble}
+\input{../lessonplanheader.tex}
+\input{../printstyles.tex}
 
+\classday{January 17}
 
-\date{January 17, 2024}
+\handoutTitle
+
+\date{\classday, 2024}
 
 \begin{document}
 \handoutAbstract
 \maketitle
-    \begin{center}%
-        {\large \scshape MAT-255-- Number Theory \hfill Spring 2024 \hfill In Class Work January 17}%
-    
-        {\large
-        Your Name: \hrulefill \quad Group Members:\hrulefill \quad \hrulefill
-	    \par}%
-  \end{center}%
 
 
 \begin{br}
     Prove
-        \begin{thm*}[Ernst, Theorem 2.2]
+        \begin{theorem}[Ernst, Theorem 2.2]
             If $n$ is an even integer, then $n^2$ is even.
-        \end{thm*}
+        \end{theorem}
 
         \begin{solution}
             If $n$ is an even integer, then by definition, there is some $k\in\Z$ such that $n=2k$. Then \[n^2=(2k)^2=2(2k^2).\] Since $2(k^2)$ is an integer, we have written $n^2$ in the desired form. Thus, $n^2$ is even.
@@ -36,10 +34,10 @@
 
 \begin{br}
     Prove
-        \begin{thm*}[Strayer, Proposition 1.2]
+        \begin{theorem}[Strayer, Proposition 1.2]
             Let $a,b,c,m,n\in\Z$.
             If $c\mid a$ and $c\mid b$ then $c\mid ma+nb$.
-        \end{thm*}
+        \end{theorem}
 \end{br}
 \end{document}
 

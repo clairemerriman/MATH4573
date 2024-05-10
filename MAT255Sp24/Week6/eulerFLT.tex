@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Euler's Theorem and Fermat's Little Theorem}
@@ -15,6 +15,9 @@
 	\item Prove Euler's Generalization of Fermat's Little Theorem
 \end{obj}
 
+
+\begin{instructorNotes}
+
 \begin{pre} \item[Read] Strayer, Section 2.5
 
     \item[Turn in]  
@@ -25,16 +28,13 @@
         Consider the $10$ integers given by $9,2(9), 3(9),\dots, 9(10).$ Note that $11\mid 9i$ for $i=1,2,\dots,10$ since $11$ is prime and $11\nmid 10$ and $11\nmid i.$ By \nameref{cor:condition-invertible}, since $(9,11)=1$ if $9i\equiv 9j\pmod{11}$ implies $i\equiv j\pmod{11}.$ Therefore, no two of $9,2(9), 3(9),\dots, 9(10)$ are congruent modulo $11.$ So the least nonnegative residues modulo $11$ of the integers $9,2(9), 3(9),\dots, 9(10),$ taken in some order, must be $1,2,\dots, p-1.$ Then \[(9)(2(9)) (3(9))\cdots (9(10))\equiv (1)(2)\cdots (10)\pmod{11}\] or, equivalently, \[9^{10}10!\equiv 10!\pmod{11}.\] By \nameref{Wilson}, the congruence above becomes $-9^{10}\equiv -1\pmod{11},$ which is equivalent to $9^{10}\equiv 1\pmod{11}.$
     \end{solution}
 \end{pre}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Quiz (10 min)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\end{instructorNotes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Euler's Generalization of Fermat's Little Theorem (40 min)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-There are several different ways to present the material in Sections 2.4 through 2.6. In class, we will do the other order: Fermat's Little Theorem to prove Wilson's Theorem. I will keep the result numbering from the book, so they will be out of order.
-
+\begin{instructorNotes}
+    There are several different ways to present the material in Sections 2.4 through 2.6. In class, we will do the other order: Fermat's Little Theorem to prove Wilson's Theorem. I will keep the result numbering from the book, so they will be out of order.
+\end{instructorNotes}
 
 \begin{defn}[reduced residue system modulo $m$]\label{defn:reduced-res-sys}
     Let $m$ be a positive integer. We say that $\{r_1,r_2,\dots,r_k\}$ is a \emph{reduced residue system modulo $m$} if 
@@ -57,9 +57,9 @@ There are several different ways to present the material in Sections 2.4 through
 \end{example}
 
 
-\begin{lem*}[Porism 2.18]\label{lem:reduced-sys}
+\begin{lemma}\label{lem:reduced-sys}
     Let $m$ be a positive integer and let $\{r_1,r_2,\dots,r_k\}$ be a reduced residue system modulo $m.$ If $a\in\Z$ with $(a,m)=1,$ then $\{ar_1,ar_2,\dots,ar_k\}$ is a reduced residue system modulo $m.$
-\end{lem*}
+\end{lemma}
 This result is also implicitly used in the proof of \nameref{FlT} since $\{1,2,\dots,p-1\}$ is a reduced residue system.
 
 \begin{proof}
@@ -88,19 +88,19 @@ This result is also implicitly used in the proof of \nameref{FlT} since $\{1,2,\
     \end{itemize}
 \end{example}
 
-\begin{thm*}[Euler's Generalization of \nameref{FlT}]\label{thm:euler-FlT}
+\begin{theorem}[Euler's Generalization of \nameref{FlT}]\label{thm:euler-FlT}
     Let $a,m\in\Z$ with $m>0.$ If $(a,m)=1,$ then \[a^{\phi(m)}\equiv 1\pmod{m}.\]
-\end{thm*}
+\end{theorem}
 
 
 
-\begin{cor*}[Fermat's Little Theorem]\label{FlT}
+\begin{corollary}[Fermat's Little Theorem]\label{FlT}
     Let $p$ be prime and $a\in\Z.$ If $p\nmid a,$ then \[a^{p-1}\equiv 1\pmod{p}.\]
-\end{cor*}
 
-\begin{proof}
-    Let $p$ be prime and $a\in\Z,$ then $(a,p)=1$ if and only if $p\nmid a.$ Since $\phi(p)=p-1,$ $a^{p-1}\equiv 1\pmod{p}.$
-\end{proof}
+    \begin{proof}
+        Let $p$ be prime and $a\in\Z,$ then $(a,p)=1$ if and only if $p\nmid a.$ Since $\phi(p)=p-1,$ $a^{p-1}\equiv 1\pmod{p}.$
+    \end{proof}
+\end{corollary}
 
 \begin{warning}
     The converse of both of these theorems is false. The easiest example is $1^k\equiv 1\pmod{m}$ for all positive integers $k, m$. Also note that $2^{341}\equiv 2\pmod{341}$. Since $(2,341)=1,$ there exists an integer $a$ such that $2a\equiv 1\pmod{341}.$ Thus \[a2^{341}\equiv (2a)2^{340}\equiv 2^{340}\equiv 2a\equiv 1\pmod{341}.\]

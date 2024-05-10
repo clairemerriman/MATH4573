@@ -1,0 +1,117 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{The Euler $\phi$-function}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+\item Use Euler's Theorem to find the least nonnegative residue modulo a composite
+\item Use Euler's Theorem to find the multiplicative inverse of an integer modulo $m$
+\item Prove $\phi(4)\phi(5)=\phi(20)$ using an outline that mirrors the proof that $\phi(m)\phi(n)=\phi(mn)$ when $(m,n)=1$
+\end{obj}
+
+
+We will also find a formula for $\phi(n)$ in general. The following exercise will outline the general proof:
+
+\begin{br}
+  Let us prove that $\phi(20)=\phi(4)\phi(5)$. First, note that $\phi(4)=\inlineAnswer[1 cm]{2}$ and $\phi(5)=\inlineAnswer[1 cm]{4}$, so we will prove $\phi(20)=\inlineAnswer[1 cm]{8}$.
+  \begin{enumerate}
+      \item A number $a$ is relatively prime to $20$ if and only if $a$ is relatively prime to $\inlineAnswer[1 cm]{4}$ and $\inlineAnswer[1 cm]{5}.$ 
+      \begin{onlineOnly}
+          The first blank should be smaller than second blank for the automatic grading to work.
+      \end{onlineOnly}
+      \begin{hint}
+          The number in each blank should be relevant to what we are trying to show.
+      \end{hint}
+      \item  
+      We can partition the positive integers less that or equal to $20$ into 
+      \begin{align*}
+      & 1\equiv\inlineAnswer[1 cm]{5}   
+          \equiv\inlineAnswer[1 cm]{9}
+          \equiv\inlineAnswer[1 cm]{13}
+          \equiv\inlineAnswer[1 cm]{17}\pmod 4\\
+      & 2\equiv\inlineAnswer[1 cm]{6}
+          \equiv\inlineAnswer[1 cm]{10}
+          \equiv\inlineAnswer[1 cm]{14}
+          \equiv\inlineAnswer[1 cm]{18}\pmod 4\\
+      & 3\equiv\inlineAnswer[1 cm]{7} 
+          \equiv\inlineAnswer[1 cm]{11}
+          \equiv\inlineAnswer[1 cm]{15}
+          \equiv\inlineAnswer[1 cm]{19}\pmod 4\\
+      & 4\equiv\inlineAnswer[1 cm]{8}
+          \equiv\inlineAnswer[1 cm]{12} \equiv\inlineAnswer[1 cm]{16} \equiv\inlineAnswer[1 cm]{20}\pmod 4
+      \end{align*}
+
+      For any $b$ in the range $1,2,3,4,$ define $s_b$ to be the number of integers $a$ in the range $1,2,\dots, 20$ such that $a\equiv b \pmod 4$ and $\gcd(a,20)=1$. Thus, $s_1=\inlineAnswer[1 cm]{4}, s_2=\inlineAnswer[1 cm]{0},s_3=\inlineAnswer[1 cm]{4},$ and $s_4=\inlineAnswer[1 cm]{0}.$
+
+      We can see that when $(b,4)=1$, $s_b=\phi(\inlineAnswer[1 cm]{4})$ and when $(b,4)>1$, $s_b=\inlineAnswer[1 cm]{0}$.
+
+      \item $\phi(20)=s_1+s_2+s_3+s_4$. Why? 
+      \begin{shortAnswer}
+          Every positive integers less that or equal to $20$ is counted by exactly one $s_b.$
+      \end{shortAnswer}
+      
+      \item We have seen that $\phi(20)=s_1+s_2+s_3+s_4$, that when $(b,4)=1$, $s_b=\inlineAnswer[1 cm]{\phi(5)},$
+      \pdfOnly{\ifhandout
+      \footnote{This blank is asking for a function, not a numbers.}\else\fi} 
+      \begin{onlineOnly}
+          This blank is asking for a function, not a number.
+      \end{onlineOnly}
+      and that when $(b,4)>1$, $s_b=\inlineAnswer[1 cm]{0}$. To finish the 	``proof" we show that there are $\phi(\inlineAnswer[1 cm]{4})$ integers $b$ where $(b,4)=1$. 
+      Thus, we can say that $\phi(20)=\inlineAnswer{\phi(4)\phi(5)}.$ 
+  \end{enumerate}
+
+\end{br}
+
+\begin{br}
+Repeat the same proof for $m$ and $n$ where $(m,n)=1.$
+
+  \begin{solution}
+      Let $m$ and $m$ be relatively prime positive integers. A number $a$ is relatively prime to $mn$ if and only if $a$ is relatively prime to $\inlineAnswer[1 cm]{m}$ and $\inlineAnswer[1 cm]{n}.$ 
+      
+      
+      We can partition the positive integers less that or equal to $mn$ into 
+      \begin{align*}
+      & 1\equiv\inlineAnswer[1 cm]{m+1}   
+          \equiv\inlineAnswer[1 cm]{2m+1}
+          \equiv \cdots
+          \equiv\inlineAnswer[1 cm]{(n-1)m+1}\pmod m\\
+      & 2 \equiv\inlineAnswer[1 cm]{m+2}   
+          \equiv\inlineAnswer[1 cm]{2m+2}
+          \equiv \cdots
+          \equiv\inlineAnswer[1 cm]{(n-1)m+2}\pmod m\\
+      & \vdots\\
+      & m\equiv\inlineAnswer[1 cm]{2m}   
+          \equiv\inlineAnswer[1 cm]{3m}
+          \equiv \cdots
+          \equiv\inlineAnswer[1 cm]{nm}\pmod m
+      \end{align*}
+
+      For any $b$ in the range $1,2,3,\dots,m,$ define $s_b$ to be the number of integers $a$ in the range $1,2,\dots, mn$ such that $a\equiv b \pmod m$ and $\gcd(a,mn)=1$. Thus, when $(b,m)=1$, $s_b=\phi(\inlineAnswer[1 cm]{m})$ and when $(b,m)>1$, $s_b=\inlineAnswer[1 cm]{0}$.
+
+      \begin{shortAnswer}
+          Since every positive integers less that or equal to $mn$ is counted by exactly one $s_b,$ $\phi(mn)=s_1+s_2+\cdots+s_m.$
+      \end{shortAnswer}
+
+      
+      We have seen that $\phi(mn)=s_1+s_2+\dots+s_m$, that when $(b,m)=1$, $s_b=\inlineAnswer[1 cm]{\phi(n)},$
+      \pdfOnly{\ifhandout
+      \footnote{This blank is asking for a function, not a value.}\else\fi} 
+      \begin{onlineOnly}
+          This blank is asking for a function, not a value.
+      \end{onlineOnly}
+      and that when $(b,m)>1$, $s_b=\inlineAnswer[1 cm]{0}$. Since there are $\phi(\inlineAnswer[1 cm]{m})$ integers $b$ where $(b,m)=1$. 
+      Thus, we can say that $\phi(mn)=\inlineAnswer{\phi(m)\phi(n)}.$ 
+  \end{solution}
+\end{br}
+
+\begin{br}\label{br:arithmetic-progression}
+    Complete the proof of \nameref{thm:phi-multiplicative} by proving that, if $m, n,$ and $i$ are positive integers with ($m, n) = (m, i) = 1,$ then the integers $i, m + i, 2m +i,..., (n - 1)m +i$ form a complete system of residues modulo $n.$
+\end{br}
+
+\end{document}

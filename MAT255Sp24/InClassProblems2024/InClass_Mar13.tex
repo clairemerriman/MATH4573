@@ -15,20 +15,20 @@
     \end{center}%
  
 
-\begin{prop*}[Proposition 5.4]\label{prop:compare-order}
+\begin{proposition}[Proposition 5.4]\label{prop:compare-order}
     Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If $i$ is a positive integer, then 
     \[\ord_m(a^i)=\frac{\ord_m a}{\gcd(\ord_m a,i)}.\]
-\end{prop*}
+\end{proposition}
 
 \begin{br}
     Use only the results through Proposition 5.3/Reading Lemma 10.3.5 (ie, not Proposition 5.4) to prove the primitive root version:
 
 
-    \begin{prop*}
+    \begin{proposition}
         Let $r,m\in\Z$ with $m>0$ and $r$ a primitive root modulo $m.$
         If $i$ is a positive integer, then 
     \[\ord_m(r^i)=\frac{\phi(m)}{\gcd(\phi(m),i)}.\]
-    \end{prop*}
+    \end{proposition}
     \begin{solution}
         Let $r$ be a primitive root modulo $m.$ Then by Proposition 5.3, $\{r,r^2,\dots,r^{\phi(m)}\}$ is a complete residue system modulo $m.$
         By Proposition 5.1, $\ord_m(r^i)\mid \phi(m)$ and by Proposition 5.3, $r,r^2,\dots,r^{\phi(m)}$ is a complete residue system modulo $m$ 
@@ -40,14 +40,14 @@
 
 
 \begin{br} Prove
-    \begin{prop*}[Proposition 10.2.2]\label{read-prop:roots-unity}
+    \begin{proposition}[Proposition 10.2.2]\label{read-prop:roots-unity}
         Let $p$ be prime, and let $m$ be a positive integer. Consider \[x^m\equiv 1\pmod{p}.\]
         
         \begin{enumerate}
             \item If $m\mid p-1,$ then there are exactly $m$ incongruent solutions modulo $p.$
             \item For any positive integer $m,$ there are $\gcd(m,p-1)$ incongruent solutions modulo $p.$
         \end{enumerate}
-    \end{prop*}
+    \end{proposition}
 
     \begin{solution}
         Let $p$ be prime, and let $m$ be a positive integer. By Fermat's Little Theorem, $a^{p-1}\equiv 1\pmod{p}.$
@@ -82,9 +82,9 @@
     Prove the following generalization of Reading Lemma 10.3.5
     
     
-    \begin{lem*}
+    \begin{lemma}
         Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
-    \end{lem*}
+    \end{lemma}
     \pdfOnly{\ifhandout
         \vfill
         \else\fi}

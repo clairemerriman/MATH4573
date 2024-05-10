@@ -29,45 +29,25 @@
 \usepackage{xstring}
 
 
-\lhead{\large{Number Theory: MAT-255}}
-%Put your Document Title (Camp: Topic) Here
-\chead{}
-\rhead{Spring 2024}
-\lfoot{}
-\cfoot{}
-\rfoot{Page \thepage}
-\renewcommand\headrulewidth{0pt}
-\renewcommand\footrulewidth{0pt}
 
-\headheight 50pt
-\headsep 30pt
+
+\graphicspath{  
+{./otherDocuments/}
+}
 
 \author{Claire Merriman}
-
-%%%%%%%%%%%%%%%%%%%%%
-% Create handoutstyle for in class assignments
-%%%%%%%%%%%%%%%%%%%%%
-\makeatletter
- \newcommand\handoutstyle{%
-  \def\activitystyle{activity-handout}
-  \def\maketitle{\addtocounter{titlenumber}{1}%
-  \addcontentsline{toc}{section}{\@date}%
-        \setcounter{br}{0}}
- }
-
-\newcommand{\handoutAbstract}{\begin{abstract}
-\end{abstract}}
-\makeatother
+\newcommand{\classday}[1]{\def\classday{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Counters and autoref for unnumbered environments
+% Not needed??
 %%%%%%%%%%%%%%%%%%%%%
 \theoremstyle{plain}
 
 
 \newtheorem*{namedthm}{Theorem}
 \newcounter{thm}%makes pointer correct
-\providecommand{\thmname}{Proposition}
+\providecommand{\thmname}{Theorem}
 
 \makeatletter
 \NewDocumentEnvironment{thm*}{o}
@@ -186,11 +166,7 @@
 
 \newtheorem*{poll}{Poll question}
 \newtheorem{tps}{Think-Pair-Share}[section]
-%\newtheorem{br}{In-class Problem}[section]
-\newtheorem*{cs}{Crowd Sourced Proof}
 
-\newlist{checklist}{itemize}{2}
-\setlist[checklist]{label=$\square$}
 
 \newenvironment{obj}{
 	\textbf{Learning Objectives.} By the end of class, students will be able to:
@@ -204,26 +180,6 @@
 	\end{description}
 }
 
-\newenvironment{readingAssignment}[1][2in]%
-{%Env start code
-\problemEnvironmentStart{#1}{Turn in}
-}
-{%Env end code
-\problemEnvironmentEnd
-}
-
-%\newcounter{br}%makes pointer correct
-%\counterwithin{br}{section}
-%
-%\newenvironment{br}[1][2in]%
-%{%Env start code
-%\problemEnvironmentStart{#1}{In-class Problem}
-%\refstepcounter{br}
-%\stepcounter{problem}
-%}
-%{%Env end code
-%\problemEnvironmentEnd
-%}
 
 \newcounter{ex}%makes pointer correct
 \providecommand{\exname}{Homework Problem}
@@ -241,6 +197,7 @@
     \else{\answer{#2}}
     \fi
 }
+
 
 \ifhandout
 \newenvironment{shortAnswer}[1][

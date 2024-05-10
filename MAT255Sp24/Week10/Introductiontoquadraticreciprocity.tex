@@ -1,4 +1,4 @@
-\documentclass{../ximera}
+\documentclass{ximera}
 \input{../lessonplanheader.tex}
 
 \title{Introduction to quadratic reciprocity}
@@ -37,18 +37,18 @@
 \subsection{Quadratic reciprocity (20 minutes)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{thm*}[Quadratic Reciprocity (first statement)]\label{quad-rec-useful-form}
+\begin{theorem}[Quadratic Reciprocity (first statement)]\label{quad-rec-useful-form}
 	Let $p$ and $q$ be distinct primes.  
 	\begin{enumerate}[label=(\alph*)]
 		\item If $p\equiv 1 \pmod{4}$ or $q\equiv 1\pmod{4},$ then $\legendre{p}{q}=\legendre{q}{p}.$
  		\item If $p\equiv q \equiv 3 \pmod{4},$ then $\legendre{p}{q}=-\legendre{q}{p}.$
 	\end{enumerate}
-\end{thm*}
+\end{theorem}
 
 It will take time to prove the lemmas for quadratic reciprocity, but we can immediately prove some results. 
 The first is that this initial statement is equivalent to the more standard statement. This is our first example where one statement of a result (\nameref{quad-rec-useful-form}) is more useful in calculations and proofs, but the proof involves proving an equivalent statement (\nameref{quad-rec-standard-form}).
 
-\begin{thm*}[Law of Quadratic Reciprocity]\label{quad-rec-standard-form} (Theorem 4.9)
+\begin{theorem}[Law of Quadratic Reciprocity]\label{quad-rec-standard-form} (Theorem 4.9)
 	Let $p$ and $q$ be distinct primes.  Then
 	\[
 		\legendre{p}{q}\legendre{q}{p}=(-1)^{(p-1)/2\ (q-1)/2}=
@@ -57,7 +57,7 @@ The first is that this initial statement is equivalent to the more standard stat
 				-1, & \textnormal{ if } p\equiv q\equiv 3\pmod{4}.
 			\end{cases}
 	\]
-\end{thm*}
+\end{theorem}
 
 \begin{remark}
 	We can quickly prove the second equality, 
