@@ -17,16 +17,28 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
+<<<<<<< Updated upstream
 \subsection*{Review of $\phi$-function}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{remark}
     From before break, \nameref{thm:phi-multiplicative} states if $(m,n)=1$ for positive integers $m$ and $n$, then $\phi(mn)=\phi(m)\phi(n).$ 
+=======
+\section{Review of $\phi$-function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+    From before break, \cref{thm:phi-multiplicative} states if $(m,n)=1$ for positive integers $m$ and $n$, then $\phi(mn)=\phi(m)\phi(n).$ 
+>>>>>>> Stashed changes
 
     Thus, $\phi(63)=\phi(9(7))=\phi(9)\phi(7)=6(6).$
 \end{remark}
 
+<<<<<<< Updated upstream
 \begin{ex} Using \nameref{thm:euler-FlT} and the \nameref{CRT}
+=======
+\begin{br} Using \nameref{thm:euler-FlT} and the \nameref{CRT}
+>>>>>>> Stashed changes
 	\begin{enumerate}
  		\item\label{ex:proof-with-euler-crt} Let $n$ be an integer not divisible by $3$. Prove that $n^7\equiv n\pmod{63}$.
  		
@@ -47,10 +59,17 @@
             \nameref{cor:a_power_prime_mod} only requires the modulus is prime. \nameref{thm:euler-FlT} does require $(n,m)=1,$ so you cannot use it for this problem, but $n\equiv 0\pmod{9}.$
         \end{remark}
 	\end{enumerate}
+<<<<<<< Updated upstream
 \end{ex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Order of $a$ modulo $m$}
+=======
+\end{br}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Order of $a$ modulo $m$}
+>>>>>>> Stashed changes
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{definition}[order of $a$ modulo $m$]\label{defn:order}
@@ -109,10 +128,17 @@ There are many patterns in this table that we will talk about in the future, but
         Let $a=2$ and $m=7.$ Without loss of generality, assume that $i\geq j.$ 
 
         \begin{description}
+<<<<<<< Updated upstream
             \item[($\Rightarrow$)] Assume that $2^i\equiv 2^j\pmod{7}.$ Then by exponent rules, $2^j 2^{i-j}\equiv 2^j\pmod{7}.$ Since $(2^i,7)=1,$ there exists a multiplicative inverse of $2^i$ modulo $7$ by \nameref{cor:condition-invertible}, say $(2^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[2^{i-j}\equiv (2^j)^\prime 2^j 2^{i-j}\equiv (2^j)^\prime 2^j\equiv 1\pmod{7}.\]
             By \nameref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
 
             \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{3}.$ Then $3\mid i-j$ by definition. Since $\ord_7 2=3,$ \nameref{prop:order_divides_phi} states that $2^{i-j}\equiv 1\pmod{7}.$ Multiplying both sides of the congruence by $2^j$ gives $2^i\equiv 2^j\pmod{7}.$ 
+=======
+            \item[($\Rightarrow$)] Assume that $2^i\equiv 2^j\pmod{7}.$ Then by exponent rules, $2^j 2^{i-j}\equiv 2^j\pmod{7}.$ Since $(2^i,7)=1,$ there exists a multiplicative inverse of $2^i$ modulo $7$ by \cref{cor:condition-invertible}, say $(2^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[2^{i-j}\equiv (2^j)^\prime 2^j 2^{i-j}\equiv (2^j)^\prime 2^j\equiv 1\pmod{7}.\]
+            By \cref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
+
+            \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{3}.$ Then $3\mid i-j$ by definition. Since $\ord_7 2=3,$ \cref{prop:order_divides_phi} states that $2^{i-j}\equiv 1\pmod{7}.$ Multiplying both sides of the congruence by $2^j$ gives $2^i\equiv 2^j\pmod{7}.$ 
+>>>>>>> Stashed changes
         \end{description}
     \end{sketch}
 \end{example}
@@ -122,10 +148,17 @@ There are many patterns in this table that we will talk about in the future, but
     Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ Without loss of generality, assume that $i\geq j$ for nonnegative integers $i$ and $j.$ 
 
         \begin{description}
+<<<<<<< Updated upstream
             \item[($\Rightarrow$)] Assume that $a^i\equiv a^j\pmod{m}.$ Then by exponent rules, $a^j a^{i-j}\equiv a^j\pmod{m}.$ Since $(a^i,m)=1$ by assumption, there exists a multiplicative inverse of $a^i$ modulo $m$ by \nameref{cor:condition-invertible}, say $(a^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[a^{i-j}\equiv (a^j)^\prime a^j a^{i-j}\equiv (a^j)^\prime a^j\equiv 1\pmod{m}.\]
             By \nameref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
 
             \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{\ord_m a}.$ Then $\ord_m a\mid i-j$ by definition, and \nameref{prop:order_divides_phi} states that $a^{i-j}\equiv 1\pmod{m}.$ Multiplying both sides of the congruence by $a^j$ gives $a^i\equiv a^j\pmod{m}.$ 
+=======
+            \item[($\Rightarrow$)] Assume that $a^i\equiv a^j\pmod{m}.$ Then by exponent rules, $a^j a^{i-j}\equiv a^j\pmod{m}.$ Since $(a^i,m)=1$ by assumption, there exists a multiplicative inverse of $a^i$ modulo $m$ by \cref{cor:condition-invertible}, say $(a^j)^\prime$. Multiplying both sides of the congruence by this inverse, we get, \[a^{i-j}\equiv (a^j)^\prime a^j a^{i-j}\equiv (a^j)^\prime a^j\equiv 1\pmod{m}.\]
+            By \cref{prop:order_divides_phi}, $\ord_m a\mid i-j.$ Thus, $i\equiv j\pmod{\ord_m a}$ by definition.
+
+            \item[($\Leftarrow$)] Assume that $i\equiv j\pmod{\ord_m a}.$ Then $\ord_m a\mid i-j$ by definition, and \cref{prop:order_divides_phi} states that $a^{i-j}\equiv 1\pmod{m}.$ Multiplying both sides of the congruence by $a^j$ gives $a^i\equiv a^j\pmod{m}.$ 
+>>>>>>> Stashed changes
         \end{description}
 \end{proof}
 

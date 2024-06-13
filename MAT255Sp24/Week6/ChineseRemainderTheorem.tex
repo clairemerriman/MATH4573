@@ -34,7 +34,11 @@
     \end{align*}
     and see what integers are on all three lists. In addition to being tedius, we this doesn't help find \emph{all} such integers.
 
+<<<<<<< Updated upstream
     To find all such integers, define $M=5(7)(8)=280,$ and $M_1=\frac{M}{5}=7(8),M_2=\frac{M}{7}=5(8),M_3=\frac{M}{8}=5(7).$ Then each $M_i$ is relatively prime to $M$ by construction. Thus, by \nameref{cor:condition-invertible} the congruences
+=======
+    To find all such integers, define $M=5(7)(8)=280,$ and $M_1=\frac{M}{5}=7(8),M_2=\frac{M}{7}=5(8),M_3=\frac{M}{8}=5(7).$ Then each $M_i$ is relatively prime to $M$ by construction. Thus, by \cref{cor:condition-invertible} the congruences
+>>>>>>> Stashed changes
     \begin{align*}
         M_1x_1 & \equiv 1\pmod 5, & 7(8)x_1&\equiv x_1 \equiv 1\pmod 5\\
         M_2x_2 & \equiv 1\pmod 7, & 5(8)x_2 &\equiv 5x_2 \equiv 1\pmod 7\\
@@ -65,7 +69,11 @@
    \[x=M_1x_1b_1+M_2x_2b_2+\cdot+M_kx_kb_k,\] where $M_i=\frac{M}{m_i}$ and $M_i x_i\equiv 1 \pmod{m_i}$.
    
    \begin{proof} Let $m_1,m_2,\dots m_k$ be pairwise relatively prime positive integers.
+<<<<<<< Updated upstream
     We start by constructing a solution modulo $M=m_1m_2\dots m_k$. By construction, $M_i=\frac{M}{m_i}$ is an integer. Since each the $m_i$ are pairwise relatively prime, $\left(M_i, m_i\right)=1$. Thus, by \nameref{cor:condition-invertible}, for each $i$ there is an integer $x_i$ where $M_i x_i\equiv 1 \pmod{m_i}$. Thus $M_i x_i b_i\equiv b_i\pmod{m_i}$. We also have that $(M_i, m_j)=m_j$ when $i\neq j$, so $M_i b_i\equiv 0 \pmod{m_j}$ when $i\neq j$.  Let 
+=======
+    We start by constructing a solution modulo $M=m_1m_2\dots m_k$. By construction, $M_i=\frac{M}{m_i}$ is an integer. Since each the $m_i$ are pairwise relatively prime, $\left(M_i, m_i\right)=1$. Thus, by \cref{cor:condition-invertible}, for each $i$ there is an integer $x_i$ where $M_i x_i\equiv 1 \pmod{m_i}$. Thus $M_i x_i b_i\equiv b_i\pmod{m_i}$. We also have that $(M_i, m_j)=m_j$ when $i\neq j$, so $M_i b_i\equiv 0 \pmod{m_j}$ when $i\neq j$.  Let 
+>>>>>>> Stashed changes
     \[x=M_1x_1b_1+M_2x_2b_2+\cdot+M_kx_kb_k.\] 
     Then $x\equiv M_i x_i b_i\equiv b_i\pmod{m_i}$ for each $i=1,2,\dots,k$ and $x\equiv M_i x_i b_i\equiv 0\pmod{m_j}$ when $i\neq j.$ Thus, we have found a solution to the system of equivalences.
     

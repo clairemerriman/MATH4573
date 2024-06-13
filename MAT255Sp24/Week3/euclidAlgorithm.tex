@@ -160,9 +160,15 @@ Typically by \emph{Euclidean Algorithm}, we mean  both the algorithm and the the
 	 
 	 When $n=1$, $a=bq+0$ and $\gcd(a,b)=b$.
 	 
+<<<<<<< Updated upstream
 	 \nameref{lem:gcd-remainders} states that for $a=bq_1+r_1$, $\gcd(a,b)=\gcd(b,r_1)$. This is because any common divisor of $a$ and $b$  is also a divisor of $r_1=a-bq_1$. 
 	 
 	 If $n>1$, then by repeated application of the \nameref{lem:gcd-remainders}, we have 
+=======
+	 \Cref{lem:gcd-remainders} states that for $a=bq_1+r_1$, $\gcd(a,b)=\gcd(b,r_1)$. This is because any common divisor of $a$ and $b$  is also a divisor of $r_1=a-bq_1$. 
+	 
+	 If $n>1$, then by repeated application of the \cref{lem:gcd-remainders}, we have 
+>>>>>>> Stashed changes
 	 \[\gcd(a,b)=\gcd(b,r_1)=\gcd(r_1,r_2)=\cdots=\gcd(r_{n-2},r_{n-1})\]
 	 Then $r_{n-2}=r_{n-1} q_n+0$. Thus $\gcd(r_{n-2},r_{n-1})=r_{n-1}$.
 \end{proof}

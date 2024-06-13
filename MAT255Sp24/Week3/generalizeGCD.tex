@@ -1,7 +1,11 @@
 \documentclass{ximera}
 \input{../lessonplanheader.tex}
 
+<<<<<<< Updated upstream
 \title{Greatest Common Divisors and Diophantine Equations}
+=======
+\title{Greatest common divisors and Diophantine equations}
+>>>>>>> Stashed changes
 \begin{document}
 \begin{abstract}
 \end{abstract}
@@ -11,11 +15,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obj}
+<<<<<<< Updated upstream
 	\item Prove the formula for integer solutions to $ax+by=c$.
+=======
+	\item Proof various facts about the greatest common divisor of three or more integers
+	\item Find the solutions to a specific Diophantine equation in three variables
+    \item Prove that when a Diophantine equation in three variables has a solutions, it has infinitely many.
+>>>>>>> Stashed changes
 	\item State when integer solution exist for $a_1x_1+\cdots+a_kx_k=c$.
 \end{obj}
 
 
+<<<<<<< Updated upstream
 \begin{instructorNotes}
 	\begin{pre}
 		\item[Read] Strayer, Section 6.1
@@ -28,15 +39,34 @@
 \end{instructorNotes}
 
 
+=======
+\begin{pre}
+	\item[Read:] Strayer, Section 6.1
+	\item[Turn in:] Exercise 2a.
+		%Find all integer solutions to $18x+28y=10$
+	   % \begin{solution}
+	   % Notice that $18(-1)+28(1)=10$. This can be done by inspection or the \nameref{euclid-alg}. Then our specific solution is $x_0=-1, y_0=1$ and all solutions have the form \[x=-1+\frac{28n}{2}=-1+14n,\quad y=1-\frac{18n}{2}=1-9n \qquad \textnormal{for all $n\in\Z$.}\]
+	   % \end{solution}
+\end{pre}
+
+
+\section{Greatest Common Divisors of three or more integers}
+>>>>>>> Stashed changes
 \begin{lemma}\label{lem:gcd_3case}
 	Let $a,b,c\in\Z,$ with $a\neq 0$. Then $(a,b,c)=((a,b),c).$
 
  	\begin{proof}
  		Let $a,b,c\in\Z,$ with $a\neq 0$. Define $d=(a,b,c)$ and $e=((a,b),c).$ We will show that $d\mid e$ and $e\mid d$. Since the greatest common divisor is positive, we can conclude that $d=e$\footnote{This is not true in general and a common mistake. In general $d=\pm e$}.
 
+<<<<<<< Updated upstream
  		Since $d=(a,b,c),$ we know $d\mid a, d\mid b,$ and $d\mid c$. By Lemma \ref{lem:gcd_mult}, which we are about to prove, $d\mid (a,b)$. Thus, $d$ is a common divisor of $(a,b)$ and $c$, so $d\mid e$.
 
  		Since $e=((a,b),c)$, $e\mid  (a,b)$ and $e\mid c$. Since $e\mid (a,b),$ we know $e\mid a$ and $e\mid b$ by Lemma \ref{lem:gcd_mult}. Thus, $e$ is a common divides of $a,b$ and $c$
+=======
+ 		Since $d=(a,b,c),$ we know $d\mid a, d\mid b,$ and $d\mid c$. By \cref{lem:gcd_mult}, which we are about to prove, $d\mid (a,b)$. Thus, $d$ is a common divisor of $(a,b)$ and $c$, so $d\mid e$.
+
+ 		Since $e=((a,b),c)$, $e\mid  (a,b)$ and $e\mid c$. Since $e\mid (a,b),$ we know $e\mid a$ and $e\mid b$ by \cref{lem:gcd_mult}. Thus, $e$ is a common divides of $a,b$ and $c$
+>>>>>>> Stashed changes
  	\end{proof}
 \end{lemma}
 
@@ -81,12 +111,74 @@
 		$e=((a_1,a_2,a_3,\dots,a_{k}),a_{k+1})=(d,a_{k+1}),$ and $f= (a_1,a_2,a_3,\dots,a_{k},a_{k+1}).$ We will show that $e\mid f$ and $f\mid e$. Since both $e$ and $f$ are positive, this will prove that $e=f$.
 
 		Note that $e\mid (a_1,a_2,a_3,\dots,a_{k})$ and $e\mid a_{k+1}$ by definition. 
+<<<<<<< Updated upstream
 		Since $(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k)$ by the induction hypothesis, $e\mid(a_1,a_2,a_3,\dots,a_{k-1})$ and $e\mid a_k$ by Lemma \ref{lem:gcd_trans}. Again, by the induction hypothesis, $(a_1,a_2,a_3,\dots,a_{k-1})=((a_1,a_2,a_3,\dots,a_{k-2}),a_{k-1}),$ so $e\mid a_{k-1}$ and $e\mid (a_1,a_2,a_3,\dots,a_{k-2})$ by Lemma \ref{lem:gcd_trans}. Repeat this process until we get $(a_1,a_2,a_3)=((a_1,a_2),a_3)$, so $e\mid a_3$ and $e\mid (a_1,a_2)$ by Lemma \ref{lem:gcd_trans}. Thus $e\mid a_1,a_2,\dots,a_{k+1}$ by repeated applications of Lemma \ref{lem:gcd_trans}. By the generalized version of the Lemma \ref{lem:gcd_mult} on Homework 3, $e\mid f.$
 
 		To show that $f\mid e,$ we note that $f\mid a_1,a_2,\dots, a_k,a_{k+1}$ by definition. Then $f\mid d$ by the generalized version of the Lemma \ref{lem:gcd_mult} on Homework 3. Since $e=(d,a_k),$ we have that $f\mid e$ by Lemma \ref{lem:gcd_mult}.
+=======
+		Since $(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k)$ by the induction hypothesis, $e\mid(a_1,a_2,a_3,\dots,a_{k-1})$ and $e\mid a_k$ by \cref{lem:gcd_trans}. Again, by the induction hypothesis, $(a_1,a_2,a_3,\dots,a_{k-1})=((a_1,a_2,a_3,\dots,a_{k-2}),a_{k-1}),$ so $e\mid a_{k-1}$ and $e\mid (a_1,a_2,a_3,\dots,a_{k-2})$ by \cref{lem:gcd_trans}. Repeat this process until we get $(a_1,a_2,a_3)=((a_1,a_2),a_3)$, so $e\mid a_3$ and $e\mid (a_1,a_2)$ by \cref{lem:gcd_trans}. Thus $e\mid a_1,a_2,\dots,a_{k+1}$ by repeated applications of \cref{lem:gcd_trans}. By the generalized version of the \cref{lem:gcd_mult} (\cref{prop:common-div-gcd}), $e\mid f.$
+
+		To show that $f\mid e,$ we note that $f\mid a_1,a_2,\dots, a_k,a_{k+1}$ by definition. Then $f\mid d$ by \cref{prop:common-div-gcd}. Since $e=(d,a_k),$ we have that $f\mid e$ by \cref{lem:gcd_mult}.
+>>>>>>> Stashed changes
 	\end{proof}
 \end{proposition}
 
 
+<<<<<<< Updated upstream
+=======
+\section{Linear Diophanitine equations in three variables}
+
+\begin{proposition}\label{prop:3diophantine}
+    Let $a,b,c,d\in\Z$ and let $ax+by+cz=d$ be a linear Diophantine equation. If $(a,b,c)\nmid d$, then the equation has no solutions. If $(a,b,c)\mid d,$ then there are infinitely many solutions.
+\end{proposition}
+
+\begin{br}
+Find integral solutions to the Diophantine equation \[8x_1-4x_2+6x_3=6.\]
+
+\begin{enumerate}
+    \item Since $(8,-4,6)=2,$ solutions exist
+    \item The linear Diophantine equation $8x_1-4x_2=4y$ has infinitely many solutions for all $y\in\Z$ by \cref{thm:linear-dioph}. Substituting into the original Diophantine equation gives $4y+6x_3=6,$ which has infinitely many solutions by \cref{thm:linear-dioph}, since $(4,6)=2\mid 6$. Find them.
+     
+    \begin{solution}
+        By inspection, $y=0,x_3=1$ is a particular solution. Then by \cref{thm:linear-dioph}, the solutions have the form 
+        \begin{align*}
+            y&=0+\frac{6n}{2},\quad x_3=1-\frac{4n}{2}, \quad \textnormal{ or }\\
+            y&=0+3n,\quad x_3=1-2n, \qquad n\in\Z. \qedhere
+        \end{align*}
+        \end{solution}
+    \item  For a particular value of $y$, the Diophantine equation $8x_1-4x_2=0$ has solutions, find them. 
+    \begin{solution}
+        By inspection, $x_1=1,x_2=2$ is a particular solution. Then by \cref{thm:linear-dioph}, the solutions have the form 
+        \begin{align*}
+            x_1&=1+\frac{-4m}{4},\quad x_2=2-\frac{8m}{4}, \quad \textnormal{ or }\\
+            x_1&=1-m,\quad x_2=2-2m, \qquad m\in\Z. \qedhere
+        \end{align*}
+        \end{solution}
+    \item Then $x_1=1-m, x_2=2-2m,x_3=1$ for $m\in\Z$.
+\end{enumerate}
+\end{br}
+
+
+\begin{proof}[Proof of \cref{prop:3diophantine}]
+    Let $a,b,c,d\in\Z$ and let $ax+by+cz=d$ be a linear Diophantine equation. If $(a,b,c)\mid d,$ let $e=(a,b).$ 
+    Then \begin{equation}\label{eq:interDioph1}ax+by=ew\end{equation} has a solution for all $w\in\Z$ by \cref{thm:linear-dioph}.
+    Similarly, the linear Diophantine equation \begin{equation}\label{eq:interDioph2}
+        ew+cz=d
+    \end{equation} has infinitely many solutions by \cref{thm:linear-dioph}, since $(e,c)=(a,b,c)$ by the \cref{lem:gcd_3case} and $(a,b,c)\mid d$ by assumption. These solutions have the form 
+    \[w=w_0+\frac{cn}{(a,b,c)},\quad z=z_0-\frac{en}{(a,b,c)},\qquad n\in\Z,\]
+    where $w_0,z_0$ is a particular solution. Let $x_0,y_0$ be a particular solution to \[ax+by=ew_0.\] Then the general solution is 
+    \[x=x_0+\frac{bm}{e},\quad y=y_0-\frac{am}{e},\qquad m\in\Z.\]
+
+    To verify that these formulas for $x,y,$ and $z$ give solutions to $ax+by+cz=d$, we substitute into equation \ref{eq:interDioph2} then \ref{eq:interDioph1}
+    \begin{align*}
+        e\left(w_0+\frac{cn}{(a,b,c)}\right)+c\left(z_0-\frac{en}{(a,b,c)}\right)&=d\\
+        e w_0 + c z_0 & =d\\
+        a\left(x_0+\frac{bm}{e}\right)+b\left(y_0-\frac{am}{e}\right)+cz _0 &=d\\
+        ax_0+by_0+c z_0&=d.
+    \end{align*}
+
+    When $(a,b,c)\nmid d$, $\frac{a}{(a,b,c)},\frac{b}{(a,b,c)},\frac{c}{(a,b,c)}\in\Z$ by definition, but $\frac{d}{(a,b,c)}$ is not an integer. Therefore, there are no integers such that \[\frac{a}{(a,b,c)}x+\frac{b}{(a,b,c)}y+\frac{c}{(a,b,c)}z=\frac{d}{(a,b,c)}. \qedhere\] 
+\end{proof}
+>>>>>>> Stashed changes
 
 \end{document}

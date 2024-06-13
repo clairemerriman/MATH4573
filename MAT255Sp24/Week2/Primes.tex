@@ -16,8 +16,11 @@
 \end{obj}
 
 
+<<<<<<< Updated upstream
 \begin{instructorNotes}
 
+=======
+>>>>>>> Stashed changes
 \begin{pre}
  \item[Read] Strayer, Section 1.2
  \item[Turn in] 
@@ -45,12 +48,19 @@
 \end{itemize}
 \end{pre}
   
+<<<<<<< Updated upstream
 \end{instructorNotes}
+=======
+>>>>>>> Stashed changes
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
+<<<<<<< Updated upstream
 \begin{defn}[prime and composite]
+=======
+\begin{defn}[prime and composite]\label{defn:prime-composite}
+>>>>>>> Stashed changes
 An integer $p>1$ is \emph{prime} if the only positive divisors of $p$ are $1$ and itself. An integer $n$ which is not prime is \emph{composite}. 
 \end{defn}
 
@@ -59,11 +69,19 @@ Why is $1$ not prime?
 %It has to do with units and invertibility. The number $1$ holds a special place. It is the multiplicative identity, i.e., anything multiplied by $1$ is just that thing again. Something is said to be invertible in a ``group" (more on that later) if there exist something, which, when multiplied to it, gives you $1$. How many invertible elements are there among the integers? Just two. $1$ and $-1$. And that's the key. If we want to extend our results from positive integers to non-zero integers, we often just need to take into account $\pm 1$. That sounds obvious, but it turns out to be surprisingly critical and yet non-intuitive when we start moving from real integers to complex ones.
 
 \begin{lemma}\label{lem:prime-composite}
+<<<<<<< Updated upstream
  Every integer greater than 1 has a prime divisor.
+=======
+  Every integer greater than 1 has a prime divisor.
+  \begin{proof} 
+    Assume by contradiction that there exists $n\in\Z$ greater than 1 with no prime divisor. By the \nameref{well-order}, we may assume $n$ is the least such integer. By definition, $n\mid n$, so $n$ is not prime. Thus, $n$ is composite and there exists $a,b\in\Z$ such that $n=ab$ and $1<a<n$, $1<b<n$. Since $a<n$, then it has a prime divisor $p$. But since $p\mid a$ and $p\mid n$, $p\mid n$. This contradicts our assumption, so no such integer exists.
+  \end{proof}
+>>>>>>> Stashed changes
 \end{lemma}
 
 We will not go over this proof in class.
 
+<<<<<<< Updated upstream
 \begin{proof} 
  Assume by contradiction that there exists $n\in\Z$ greater than 1 with no prime divisor. By the \nameref{well-order}, we may assume $n$ is the least such integer. By definition, $n\mid n$, so $n$ is not prime. Thus, $n$ is composite and there exists $a,b\in\Z$ such that $n=ab$ and $1<a<n$, $1<b<n$. Since $a<n$, then it has a prime divisor $p$. But since $p\mid a$ and $p\mid n$, $p\mid n$. This contradicts our assumption, so no such integer exists.
 \end{proof}
@@ -75,6 +93,18 @@ We will not go over this proof in class.
 \begin{proof}
  Assume by way of contradiction, that there are only finitely many prime numbers, so $p_1,p_2,\dots,p_n$. Consider the number $N=p_1p_2\cdots p_n +1$. Now $N$ has a prime divisor, say, $p$, by \nameref{lem:prime-composite}. So $p=p_i$ for some $i$, $i=1,2,\dots,n$. Then $p\mid N-p_1p_2\dots p_n$, which implies that $p\mid 1$, a contradiction. Hence, there are infinitely many prime numbers.
 \end{proof}
+=======
+
+
+
+\begin{theorem}[Euclid's Infinitude of Primes]\label{thm:inf-primes}
+  There are infinitely many prime numbers.
+
+  \begin{proof}
+    Assume by way of contradiction, that there are only finitely many prime numbers, so $p_1,p_2,\dots,p_n$. Consider the number $N=p_1p_2\cdots p_n +1$. Now $N$ has a prime divisor, say, $p$, by \cref{lem:prime-composite}. So $p=p_i$ for some $i$, $i=1,2,\dots,n$. Then $p\mid N-p_1p_2\dots p_n$, which implies that $p\mid 1$, a contradiction. Hence, there are infinitely many prime numbers.
+  \end{proof}
+\end{theorem}
+>>>>>>> Stashed changes
 
 One famous open problem is the Twin Primes Conjecture. A \emph{conjecture} is a proposition you (or in this case, the mathematical community) believe to be true, but have not proven.
 
@@ -85,12 +115,22 @@ One famous open problem is the Twin Primes Conjecture. A \emph{conjecture} is a 
 Another important fact is there are arbitrarily large sequences of composite numbers. Put another way, there are arbitrarily large gaps in the primes. Another important proof method, which is a \emph{constructive proof}:
 
 \begin{theorem}\label{prop:gaps-primes}
+<<<<<<< Updated upstream
  For any positive integer $n$, there are at least $n$ consecutive positive integers.
 \end{theorem}
 \begin{proof}
  Given the positive integer $n$, consider the $n$ consecutive positive integers \[(n+1)!+2, (n+1)!+3,\dots, (n+1)!+n+1.\]
  Let $i$ be a positive integer such that $2\leq i\leq n+1$. Since $i\mid (n+1)!$ and $i\mid i$, we have \[i\mid(n+1)! +i,\quad 2\leq i\leq n+1\] by linear combination (\nameref{lem:linear-combo}). So each of the $n$ consecutive positive integers is composite.
 \end{proof}
+=======
+  For any positive integer $n$, there are at least $n$ consecutive positive integers.
+  \begin{proof}
+    Given the positive integer $n$, consider the $n$ consecutive positive integers \[(n+1)!+2, (n+1)!+3,\dots, (n+1)!+n+1.\]
+    Let $i$ be a positive integer such that $2\leq i\leq n+1$. Since $i\mid (n+1)!$ and $i\mid i$, we have \[i\mid(n+1)! +i,\quad 2\leq i\leq n+1\] by \hyperref[lem:linear-combo]{linear combination}. So each of the $n$ consecutive positive integers is composite.
+  \end{proof}
+\end{theorem}
+
+>>>>>>> Stashed changes
 
   \begin{br} Let $n$ be a positive integer with $n\neq 1$. Prove that if $n^2+1$ is prime, then $n^2+1$ can be written in the form $4k+1$ with $k\in\Z$.
   \begin{solution}

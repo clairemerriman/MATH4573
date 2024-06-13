@@ -1,7 +1,11 @@
 \documentclass{ximera}
 \input{../lessonplanheader.tex}
 
+<<<<<<< Updated upstream
 \title{Euler's Theorem and Fermat's Little Theorem}
+=======
+\title{Euler's Theorem and Fermat's Little Theorem}\label{sec:FlT-eulerFLT}
+>>>>>>> Stashed changes
 \begin{document}
 \begin{abstract}
 \end{abstract}
@@ -16,20 +20,33 @@
 \end{obj}
 
 
+<<<<<<< Updated upstream
 \begin{instructorNotes}
 
 \begin{pre} \item[Read] Strayer, Section 2.5
+=======
+
+\begin{pre} 
+    \item[Read] Strayer, Section 2.5
+>>>>>>> Stashed changes
 
     \item[Turn in]  
     
     Exercise 50. Prove that $9^{10} = 1\pmod{11}$ by following the steps of the proof of Fermat's Little Theorem.
     
     \begin{solution}
+<<<<<<< Updated upstream
         Consider the $10$ integers given by $9,2(9), 3(9),\dots, 9(10).$ Note that $11\mid 9i$ for $i=1,2,\dots,10$ since $11$ is prime and $11\nmid 10$ and $11\nmid i.$ By \nameref{cor:condition-invertible}, since $(9,11)=1$ if $9i\equiv 9j\pmod{11}$ implies $i\equiv j\pmod{11}.$ Therefore, no two of $9,2(9), 3(9),\dots, 9(10)$ are congruent modulo $11.$ So the least nonnegative residues modulo $11$ of the integers $9,2(9), 3(9),\dots, 9(10),$ taken in some order, must be $1,2,\dots, p-1.$ Then \[(9)(2(9)) (3(9))\cdots (9(10))\equiv (1)(2)\cdots (10)\pmod{11}\] or, equivalently, \[9^{10}10!\equiv 10!\pmod{11}.\] By \nameref{Wilson}, the congruence above becomes $-9^{10}\equiv -1\pmod{11},$ which is equivalent to $9^{10}\equiv 1\pmod{11}.$
     \end{solution}
 \end{pre}
     
 \end{instructorNotes}
+=======
+        Consider the $10$ integers given by $9,2(9), 3(9),\dots, 9(10).$ Note that $11\mid 9i$ for $i=1,2,\dots,10$ since $11$ is prime and $11\nmid 10$ and $11\nmid i.$ By \cref{cor:condition-invertible}, since $(9,11)=1$ if $9i\equiv 9j\pmod{11}$ implies $i\equiv j\pmod{11}.$ Therefore, no two of $9,2(9), 3(9),\dots, 9(10)$ are congruent modulo $11.$ So the least nonnegative residues modulo $11$ of the integers $9,2(9), 3(9),\dots, 9(10),$ taken in some order, must be $1,2,\dots, p-1.$ Then \[(9)(2(9)) (3(9))\cdots (9(10))\equiv (1)(2)\cdots (10)\pmod{11}\] or, equivalently, \[9^{10}10!\equiv 10!\pmod{11}.\] By \nameref{Wilson}, the congruence above becomes $-9^{10}\equiv -1\pmod{11},$ which is equivalent to $9^{10}\equiv 1\pmod{11}.$
+    \end{solution}
+\end{pre}
+    
+>>>>>>> Stashed changes
 
 
 \begin{instructorNotes}
@@ -63,9 +80,15 @@
 This result is also implicitly used in the proof of \nameref{FlT} since $\{1,2,\dots,p-1\}$ is a reduced residue system.
 
 \begin{proof}
+<<<<<<< Updated upstream
     Let $\{r_1,r_2,\dots,r_k\}$ be a reduced residue system modulo $m$ and $a\in\Z$ with $(a,m)=1.$ Since $\{r_1,r_2,\dots,r_k\}$ and $\{ar_1,ar_2,\dots,ar_k\}$ have the same number of elements, it suffices to show that $(ar_i,m)=1$ and  $ar_i\not\equiv ar_j\pmod{m}$ for $i\neq j.$ If there exist some prime $p$ such that $p\mid(ar_i,m)$ then $p\mid ar_i$ and $p\mid m$ by \autoref{defn:gcd}. By \nameref{lem:irreducible-prime}, $p\mid a$ or $p\mid r_i$, so either $p\mid (a,m)$ or $p\mid (r_i,m).$ which is a contradiction. Thus, $(ar_i,m)=1.$
 
     By \nameref{prop-equiv-gcd}, $ar_i\equiv ar_j\pmod{m}$ if and only $r_i\equiv r_j \pmod{\tfrac{m}{(a,m)}}.$ Since $(a,m)=1,$ $ar_i\not\equiv ar_j\pmod{m}$ when $i\neq j$.
+=======
+    Let $\{r_1,r_2,\dots,r_k\}$ be a reduced residue system modulo $m$ and $a\in\Z$ with $(a,m)=1.$ Since $\{r_1,r_2,\dots,r_k\}$ and $\{ar_1,ar_2,\dots,ar_k\}$ have the same number of elements, it suffices to show that $(ar_i,m)=1$ and  $ar_i\not\equiv ar_j\pmod{m}$ for $i\neq j.$ If there exist some prime $p$ such that $p\mid(ar_i,m)$ then $p\mid ar_i$ and $p\mid m$ by definition of \nameref{defn:gcd}. By \nameref{lem:irreducible-prime}, $p\mid a$ or $p\mid r_i$, so either $p\mid (a,m)$ or $p\mid (r_i,m).$ which is a contradiction. Thus, $(ar_i,m)=1.$
+
+    By \nameref{prop:equiv-gcd}, $ar_i\equiv ar_j\pmod{m}$ if and only $r_i\equiv r_j \pmod{\tfrac{m}{(a,m)}}.$ Since $(a,m)=1,$ $ar_i\not\equiv ar_j\pmod{m}$ when $i\neq j$.
+>>>>>>> Stashed changes
 \end{proof}
 
 
@@ -108,7 +131,11 @@ This result is also implicitly used in the proof of \nameref{FlT} since $\{1,2,\
 \end{warning}
 
 \begin{proof}[Proof of \nameref{thm:euler-FlT}]
+<<<<<<< Updated upstream
     Let $m$ be a positive integer and let $\{r_1,r_2,\dots,r_{\phi(m)}\}$ be a reduced residue system modulo $m.$ If $a\in\Z$ with $(a,m)=1,$ then $\{ar_1,ar_2,\dots,ar_{\phi(m)}\}$ is a reduced residue system modulo $m$ by \nameref{lem:reduced-sys}. Thus, for all $i=1,2,\dots, \phi(m),$ then $r_i\equiv a r_j\pmod{m}$ for some $j=1,2,\dots,\phi(m).$ Thus \[r_1 r_2\cdots r_{\phi(min)}\equiv ar_1 ar_2\cdots ar_{\phi(min)}\equiv a^{\phi(m)}r_1 r_2\cdots r_{\phi(m)} \pmod{m}.\]
+=======
+    Let $m$ be a positive integer and let $\{r_1,r_2,\dots,r_{\phi(m)}\}$ be a reduced residue system modulo $m.$ If $a\in\Z$ with $(a,m)=1,$ then $\{ar_1,ar_2,\dots,ar_{\phi(m)}\}$ is a reduced residue system modulo $m$ by \cref{lem:reduced-sys}. Thus, for all $i=1,2,\dots, \phi(m),$ then $r_i\equiv a r_j\pmod{m}$ for some $j=1,2,\dots,\phi(m).$ Thus \[r_1 r_2\cdots r_{\phi(min)}\equiv ar_1 ar_2\cdots ar_{\phi(min)}\equiv a^{\phi(m)}r_1 r_2\cdots r_{\phi(m)} \pmod{m}.\]
+>>>>>>> Stashed changes
 
     Since $(r_i,m)=1,$ there exists $x_i\in\Z$ such that $r_i x_i\equiv 1\pmod{m}.$ Thus, 
     \begin{align*}

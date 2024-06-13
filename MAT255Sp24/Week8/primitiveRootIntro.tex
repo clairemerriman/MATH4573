@@ -13,6 +13,7 @@
     \item Find the order of an element modulo $m$ using primitive roots
 \end{obj}
 
+<<<<<<< Updated upstream
 \begin{instructorNotes}
 \begin{pre}
     \item[Reading] Uploaded notes
@@ -21,6 +22,14 @@
 \end{pre}
     
 \end{instructorNotes}
+=======
+\begin{pre}
+    \item[Read:] Uploaded notes
+    \item[Turn in:] For each result in the scanned notes, identify the result in our textbook. If it is a special case of the theorem in the textbook, (ie, the reading only proves the theorem for primes or $d=q^s$), also note this.
+
+\end{pre}
+    
+>>>>>>> Stashed changes
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -28,7 +37,16 @@
     Let $r,m\in\Z$ with $m>0$ and $(r,m)=1.$ Then $r$ is said to be a \emph{primitive root modulo $m$} if $\ord_m r=\phi(r).$
 \end{definition}
 
+<<<<<<< Updated upstream
 We saw in the reading that primitive roots always exist modulo a prime. What about composites?
+=======
+We saw in the reading that primitive roots always exist modulo a prime. 
+\begin{theorem}[Primitive Root Theorem]\label{thm:prime-roots}
+    Let $p$ be prime. Then there exists a primitive root modulo $p.$
+\end{theorem}
+
+What about composites?
+>>>>>>> Stashed changes
 \begin{example}
     
     \begin{itemize}
@@ -44,7 +62,11 @@ We saw in the reading that primitive roots always exist modulo a prime. What abo
         \begin{align*}
             4^1&=4, &4^2&=2^4\equiv 7\pmod{9}, &4^3&=2^6\equiv1\pmod{9}
         \end{align*}
+<<<<<<< Updated upstream
         We can also use exponent rules and \nameref{prop:exponents_mod_order} to simplify some calculuations. For example, $5\equiv 2^5\pmod{9},$ so $5^i\equiv 2^{5i}\equiv 2^j\pmod{9}$ if and only if $5i\equiv j\pmod{6}.$
+=======
+        We can also use exponent rules and \cref{prop:exponents_mod_order} to simplify some calculuations. For example, $5\equiv 2^5\pmod{9},$ so $5^i\equiv 2^{5i}\equiv 2^j\pmod{9}$ if and only if $5i\equiv j\pmod{6}.$
+>>>>>>> Stashed changes
 
         \begin{align*}
             5^1&\equiv 5\pmod{9}, 
@@ -73,7 +95,11 @@ We saw in the reading that primitive roots always exist modulo a prime. What abo
     Let $r$ be a primitive root modulo $m.$ Then \[\{r,r^2,\dots,r^{\phi(m)}\}\]
     is a set of reduced residues modulo $m.$
 \end{proposition}
+<<<<<<< Updated upstream
 This is the general version of \nameref{read-prop:prime-root-generates}, using exponents $1,2,\dots,\phi(m)$ instead of $0,1,\dots,\phi(m)-1$. Since Strayer's statement of \nameref{prop:exponents_mod_order} is already stated and proved for composites, and both lists have the same number of elements, the only changes to the proof is replacing $p-1$ with $\phi(m).$ Note $a^0\equiv a^{\phi(m)}\equiv 1\pmod{m}$ when $(a,m)=1.$
+=======
+This is the general version of Reading Proposition 10.3.2, using exponents $1,2,\dots,\phi(m)$ instead of $0,1,\dots,\phi(m)-1$. Since Strayer's statement of \nameref{prop:exponents_mod_order} is already stated and proved for composites, and both lists have the same number of elements, the only changes to the proof is replacing $p-1$ with $\phi(m).$ Note $a^0\equiv a^{\phi(m)}\equiv 1\pmod{m}$ when $(a,m)=1.$
+>>>>>>> Stashed changes
 
 
 \begin{proposition}\label{prop:compare-order}
@@ -82,7 +108,11 @@ This is the general version of \nameref{read-prop:prime-root-generates}, using e
 \end{proposition}
 
 \begin{br}
+<<<<<<< Updated upstream
     Use only the results through \nameref{prop:prime-roots-generate}/\nameref{read-lem:order-multiplicative} to prove the primitive root version:
+=======
+    Use only the results through \cref{prop:prime-roots-generate}/Reading Lemma 10.3.5 to prove the primitive root version:
+>>>>>>> Stashed changes
 
 
     \begin{proposition}
@@ -113,17 +143,28 @@ Exercises cited in the reading, also on Homework 6:
 
 
 \begin{br}
+<<<<<<< Updated upstream
     Prove the following statement, which is the converse of \nameref{read-prop:prime-root-generates}:
+=======
+    Prove the following statement, which is the converse of Reading Proposition 10.3.2:
+>>>>>>> Stashed changes
 
     Let $p$ be prime, and let $a\in\Z.$ If every $b\in\Z$ such that $p\nmid b$ is congruent to a power of $a$ modulo $p,$ then ${a}$ is a primitive root modulo $p$.
     
 \end{br}
 
 \begin{br}
+<<<<<<< Updated upstream
     Prove the following generalization of \nameref{read-lem:order-multiplicative}
     
     
     \begin{lemma}
+=======
+    Prove the following generalization of Reading Lemma 10.3.5
+    
+    
+    \begin{lemma}\label{lem-order-mult}
+>>>>>>> Stashed changes
         Let $n\in\Z$ and let $x_1,x_2,\dots,x_m$ be reduced residues modulo $n$.  Suppose that for all $i\neq j,$ $\ord_n(x_i)$ and $\ord_n(x_j)$ are relatively prime. Then \[\ord_n(x_1 x_2\cdots x_m)=(\ord_n x_1)(\ord_n x_2)\cdots (\ord_n x_m).\]
     \end{lemma}
 \end{br}
