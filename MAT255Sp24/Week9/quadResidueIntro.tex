@@ -1,0 +1,30 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Introduction to quadratic residues}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{obj}
+%     \item Define a quadratic residue modulo $m$
+%     \item Prove that the quadratic congruence $x^2\equiv a\pmod{p}$ has zero or one solution modulo a prime when $p\nmid a$
+%     \item Use the solution to a quadratic congruence modulo a prime to find the other solution
+% \end{obj}
+
+
+\begin{definition}[quadratic residue]\label{defn:quad-residue}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ The $a$ is said to be a \emph{quadratic residue modulo $m$} if the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable in $\Z.$ Otherwise, $a$ is said to be a \emph{quadratic nonresidue modulo $m$}.
+\end{definition}
+
+\begin{remark}
+    When finding squares modulo $m,$ we only need to check up to $\frac{m}{2},$ since $(-a)^2=a^2$ and $m-a\equiv -a\pmod{m}$
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

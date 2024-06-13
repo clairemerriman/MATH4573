@@ -1,0 +1,116 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Introduction to quadratic residues}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Define a quadratic residue modulo $m$
+    \item Prove that the quadratic congruence $x^2\equiv a\pmod{p}$ has zero or one solution modulo a prime when $p\nmid a$
+    \item Use the solution to a quadratic congruence modulo a prime to find the other solution
+\end{obj}
+
+
+\begin{defn}[quadratic residue]\label{defn:quad-residue}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ The $a$ is said to be a \emph{quadratic residue modulo $m$} if the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable in $\Z.$ Otherwise, $a$ is said to be a \emph{quadratic nonresidue modulo $m$}.
+\end{defn}
+
+\begin{remark}
+    When finding squares modulo $m,$ we only need to check up to $\frac{m}{2},$ since $(-a)^2=a^2$ and $m-a\equiv -a\pmod{m}$
+\end{remark}
+
+\begin{br}
+    Find all incongruent quadratic residues and nonresidues modulo $2,3,4,5,6,7,8,$ and $9$.
+
+    \begin{solution}
+        I also included solutions modulo $10,11,12$
+
+        \begin{tabular}{p{1.5cm}|p{4cm}p{3cm}p{3cm}}
+            Modulus & least nonnegative reduced residues & quadratic residues & quadratic nonresidues \\\hline
+            $2$ & $1$   
+                & $1$ 
+                & N/A \\
+            $3$ & $\answer{1,2}$ 
+                & $\answer{1}$
+                & $\answer{2}$\\
+            $4$ & $\answer{1,3}$ 
+                & $\answer{1}$
+                & $\answer{3}$\\
+            $5$ & $\answer{1,2,3,4}$
+                & $\answer{1,4}$
+                & $\answer{2,3}$\\
+            $6$ & $\answer{1,5}$
+                & $\answer{1}$
+                & $\answer{5}$\\
+            $7$ & $\answer{1,2,3,4,5}$
+                & $\answer{1,2,4}$
+                & $\answer{3,5,6}$\\
+            $8$ & $\answer{1,3,5,7}$
+                & $\answer{1}$
+                & $\answer{3,5,7}$\\
+            $9$ & $\answer{1,2,4,5,7,8}$
+                & $\answer{1,4,7}$
+                & $\answer{2,4,8}$\\
+            $10$ & $\answer{1,3,7,9}$
+                & $\answer{1,9}$
+                & $\answer{3,7}$\\
+            $11$ & $\answer{1,2,3,4,5,6,7,8,9,10}$
+                & $\answer{1,3,4,5,9}$
+                & $\answer{2,6,7,8,10}$\\
+            $12$ & $\answer{1,5,7,11}$
+                & $\answer{1}$
+                & $\answer{5,7,11}$\\
+        \end{tabular}
+    \end{solution}
+\end{br}
+
+\begin{lemma}\label{lem:roots-pairs}
+    Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0,$ then  $m-x_0$ is also a solution. If $m\gt 2,$ then $x_0\not\equiv m-x_0\pmod{m},$ and solutions occur in pairs.
+
+
+    \begin{proof}
+        Let $a,m\in\Z$ with $m>0$ and $(a,m)=1.$ If the quadratic congruence $x^2\equiv a\pmod{m}$ is solvable, say with $x=x_0.$ Then 
+        \[(m-x_0)^2\equiv (-x_0)^2\equiv x_0^2\equiv a\pmod{m}.\]
+        
+        If $x_0\equiv m-x_0\pmod{m},$ then $2x_0\equiv m\equiv 0 \pmod{m}$ and $m\mid 2x_0$ by definition. Since $(a,m)=1,$ it must be that $(x_0,m)=1$ since $(x_0,m)\mid(a,m).$ Thus, $m\mid 2,$ so $m=2.$ Therefore, when  $m\gt 2,$ then $x_0\not\equiv m-x_0\pmod{m},$ and solutions occur in pairs.
+    \end{proof}
+\end{lemma}
+
+\begin{remark}
+    Since $x_0\equiv m-x_0\pmod{m}$ implies $x_0\equiv \frac{m}{2},$ we can say that if $x^2\equiv a\pmod{m}$ is solvable and $\frac{m}{2}$ is \emph{not} a solution, then solutions occur in pairs.
+\end{remark}
+
+\begin{proposition}\label{prop:number-sqrts}
+    Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Then the quadratic congruence $x^2\equiv a\pmod{p}$ has either no solutions or exactly two incongruent solutions modulo $p$.
+
+
+    \begin{proof}
+        Let $p$ be an odd prime number and let $a\in\Z$ with $p\mid a.$ Consider the quadratic congruence $x^2\equiv a\pmod{p}.$ If no solutions exist, we are done.
+        
+        If solutions to the quadratic congruence exist, then \cref{lem:roots-pairs} says that there are at least two solutions, since $p>2.$ \nameref{thm:lagrange} says that there are at most two solutions to $x^2-a\equiv 0\pmod{p}$ and therefore $x^2\equiv a\pmod{p}.$ Thus, there are exactly two incongruent solutions modulo $p.$
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}\label{prop:number-quad-residues}
+	Let $p$ be an odd prime number. Then there are exactly $\frac{p-1}{2}$ incongruent quadratic residues modulo $p$ and exactly $\frac{p-1}{2}$ incongruent quadratic nonresidues modulo $p.$
+
+    \begin{proof}
+        Consider the $p-1$ quadratic congruences
+        \begin{align*}
+            x^2&\equiv 1\pmod{p}\\
+            x^2&\equiv 2\pmod{p}\\
+            &\vdots\\
+            x^2&\equiv p-1\pmod{p}.
+        \end{align*}
+        Since each congruence has either zero or two incongruent solutions modulo $p$ by \cref{prop:number-sqrts}, and no integer is a solution to more than one of the congruences, exactly half are solvable. Therefore,  there are exactly $\frac{p-1}{2}$ incongruent quadratic residues modulo $p$ and exactly $\frac{p-1}{2}$ incongruent quadratic nonresidues modulo $p.$
+    \end{proof}
+\end{proposition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Quadratic residue of $-1$}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Prove \nameref{thm:euler-quads}
+	\item Classify when $-1$ is a quadratic residue modulo an odd prime
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Euler's Criterion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will prove \nameref{thm:euler-quads}. 
+
+\begin{theorem}[Euler's Criterion]
+    Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ Then \[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}\]
+\end{theorem}
+
+\begin{proof}
+	Let $p$ be an odd prime and $a\in\Z$ with $p\nmid a.$ If there exists $b\in\Z$ such that $b^2\equiv a\pmod{p},$ then $\legendre{a}{p}=1$ by \hyperref[defn:legendre]{definition}.
+	Note that \[a^{(p-1)/2}\equiv (b^2){(p-1)/2}\equiv b^{p-1}\equiv 1\pmod{p}\]
+	by \nameref{FlT}. Thus $\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}.$
+	
+	If $a$ is a quadratic nonresidue modulo $p,$ consider the \hyperref[defn:reduced-res-sys]{reduced residue system} $\{1,2,\dots,p-1\}.$ For each element $c$ of the list, there exists a unique element $d$, also on the list, such that $cd\equiv a\pmod{p}$ by \hyperref[thm:lin-cong-solutions]{Theorem 2.6} since $(a,p)=1$. Since $a$ is a quadratic nonresidue by assumption, $c\not\equiv d\pmod{p}.$ Thus, there are $\frac{p-1}{2}$ pairs $c,d$ where $cd\equiv a\pmod{p}.$ Thus, 
+		\[
+			-1\equiv (p-1)! \equiv a^{(p-1)/2}\pmod{p}
+		\]
+	by \nameref{Wilson}. Since $a$ is a quadratic nonresidue modulo $p,$ $\legendre{a}{p}=-1\equiv a^{(p-1)/2}\pmod{p}.$
+\end{proof}
+
+
+
+\end{document}

@@ -17,7 +17,11 @@
 
 
 \begin{pre}
+<<<<<<< Updated upstream
     \item[Reading:] Strayer Section 4.2 through Example 4
+=======
+    \item[Read:] Strayer Section 4.2 through Example 4
+>>>>>>> Stashed changes
     \item[Turn in:] Exercise 12
      Use Euler's Criterion to evaluate the following Legendre symbols 
 	\begin{enumerate}
@@ -37,6 +41,7 @@
 	\end{enumerate}
  
 
+<<<<<<< Updated upstream
     \end{pre}
 
 
@@ -48,6 +53,11 @@ Technical difficults with printer and projector.
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Legendre symbol (35 minutes)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
+=======
+\end{pre}
+
+
+>>>>>>> Stashed changes
 
 \begin{definition}[Legendre symbol]\label{defn:legendre}
     Let $p$ be an odd prime number and let $a\in\Z$ with $p\nmid a$. The \emph{Legendre symbol}, denoted $\legendre{a}{p}$, is
@@ -66,9 +76,15 @@ Technical difficults with printer and projector.
 
 We will not prove this today, but we will use it to go over the solution to the reading assignment and to prove the following proposition.
 
+<<<<<<< Updated upstream
 \begin{proposition}[Proposition 4.5]\label{prop:legendre-facts}
 	Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then 
 	\begin{enumerate}[label=(\alph*)]
+=======
+\begin{proposition}\label{prop:legendre-facts}
+	Let $p$ be an odd prime number and $a,b\in\Z$ with $p\nmid a$ and $p\nmid b.$ Then 
+	\begin{enumerate}
+>>>>>>> Stashed changes
 		\item $\legendre{a^2}{p}=1$ \label{squares-are-square}
 		\item If $a\equiv b\pmod{p}$ then $\legendre{a}{p}=\legendre{b}{p}$ \label{legendre-respects-mod}
 		\item $\legendre{ab}{p}=\legendre{a}{p}\legendre{b}{p}$ \label{legendre-mult}
@@ -84,6 +100,41 @@ We will not prove this today, but we will use it to go over the solution to the 
     For the last part, \nameref{thm:euler-quads} gives \[\legendre{ab}{p}\equiv (ab)^{(p-1)/2}\equiv (a^{(p-1)/2})(b^{(p-1)/2})\equiv \legendre{a}{p}\legendre{b}{p}\pmod{p}\]
 \end{proof}
 
+<<<<<<< Updated upstream
+=======
+\begin{remark}
+	Some sources define $\legendre{a}{p}=0$ when $p\mid a.$ In this case,  Let $p$ be an odd prime and $a\in\Z$.
+	If $p\mid a,$ then $a^{(p-1)/2}\equiv 0^{(p-1)/2}\equiv 0\equiv\legendre{a}{p}\pmod{p}.$
+\end{remark}
+
+
+\begin{theorem}\label{thm:residue-neg1}
+	Let $p$ be an odd prime number. Then 
+	\[
+		\legendre{-1}{p}=
+			\begin{cases}
+ 				1, & p\equiv 1\pmod{4}\\
+				-1, & p\equiv 3\pmod{4}
+			\end{cases}.
+	\]
+	\begin{proof}
+		Let $p$ be an odd prime number. Then from \nameref{thm:euler-quads}, $\legendre{-1}{p}\equiv (-1)^{(p-1)/2}\pmod{p}.$ Since both values are $\pm1,$ we can say $\legendre{-1}{p}=(-1)^{(p-1)/2}.$
+	
+		If $p\equiv 1\pmod{4},$ then there exists $k\in\Z$ such that $p=4k+1.$ Thus, $\frac{p-1}{2}=2k$ and 
+			\[
+				\legendre{-1}{p}=(-1)^{(p-1)/2}=(-1)^{2k}=1.
+			\]
+		
+		If $p\equiv 3\pmod{4},$ then there exists $k\in\Z$ such that $p=4k+3.$ Thus, $\frac{p-1}{2}=2k+1$ and 
+			\[
+				\legendre{-1}{p}=(-1)^{(p-1)/2}=(-1)^{2k+1}=-1.
+			\]
+	\end{proof}
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+>>>>>>> Stashed changes
 
 
 \end{document}

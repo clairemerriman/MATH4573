@@ -1,0 +1,309 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Gauss's Lemma}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{obj}
+    \item Find the Legendre symbol using \nameref{lem:gauss}
+	\item Find the Legendre symbol using several different methods
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statement of Guass's Lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}[Gauss's Lemma]\label{lem:gauss}
+	Let $p$ be an odd prime number and like $a\in\Z$ with $p\nmid a$. Let $n$ be the number of least positive residues of the integers $a,2a,3a,\dots,\frac{p-1}{a}$ modulo $p$ that are greater than $\frac{p}{2}.$ Then \[\legendre{a}{p}=(-1)^n.\]
+\end{lemma}
+
+\begin{example}
+	Find $\legendre{6}{11}$ 
+		
+	\begin{enumerate}
+		\item Using \nameref{lem:gauss}
+		\begin{solution}
+			Note that $\frac{11-1}{2}=5$.
+
+			First, we list $6,2(6),3(6),4(6),5(6)$ and find the least nonnegative residues modulo $11:$
+			\[ 6,\ 2(6)\equiv 1\pmod{11},\ 3(6)\equiv 7\pmod{11},
+			\ 4(6)\equiv 2\pmod{11},\ 5(6)\equiv 8\pmod{11}. \]
+
+			Now we count $n=3$ of the least nonnegative residues modulo $11$ are greater than $\frac{11}{2}=5.5$
+
+			Thus, $\legendre{6}{11}=(-1)^3=-1.$
+		\end{solution}
+
+		\item Factoring and using \hyperref[quad-rec-standard-form]{quadratic reciprocity}
+			
+		\begin{solution}
+			Using \cref{thm:residue-neg1} and the fact that $2\equiv -9\pmod{11},$ 
+			\begin{align*}
+				\legendre{6}{11}&=\legendre{2}{11}\legendre{3}{11}
+					=\legendre{-9}{11}\legendre{3}{11}=\legendre{-1}{11}\legendre{9}{11}\legendre{3}{11}=\legendre{-1}{11}(1)\legendre{3}{11}
+			\end{align*}
+			Since $11\equiv 3\pmod{4},$ $\legendre{-1}{11}=-1$ by \nameref{thm:residue-neg1} and $\legendre{3}{11}=-\legendre{11}{3}$. Thus, 
+			\begin{align*}
+				\legendre{6}{11}&=\legendre{-1}{11}\legendre{3}{11}=(-1)(-1)\legendre{11}{3}=\legendre{-1}{3}=-1.
+			\end{align*}
+		\end{solution}
+	\end{enumerate}
+\end{example}
+
+
+\begin{example}
+	Find $\legendre{-11}{7}$
+		
+	\begin{enumerate}
+		\item Using \nameref{lem:gauss}
+			
+		\begin{solution}
+			Since $\frac{7-1}{2}=3,$ we need to find the least nonnegative residues of $-11,2(-11),3(-11)$ modulo $7.$ These are \[-11\equiv 3\pmod{7},\ 2(-11)\equiv 6\pmod{7},\ 3(-11)\equiv 2\pmod{7}.\]
+			Then $n=1$ is greater than $\frac{7}{2}=3.5$ and $\legendre{-11}{7}=(-1)^1=-1.$
+		\end{solution}
+
+		\item By reducing modulo $7$ then using \nameref{lem:gauss}
+			
+		\begin{solution}
+			By \hyperref[legendre-respects-mod]{Theorem 4.5(b)} $\legendre{-11}{7}=\legendre{3}{11}.$
+			Since $\frac{7-1}{2}=3,$ we need to find the least nonnegative residues of $3,2(3),3(3)$ modulo $7.$ These are \[3\pmod{7},\ 6\pmod{7},\ 3(3)\equiv 2\pmod{7}.\]
+			Then $n=1$ is greater than $\frac{7}{2}=3.5$ and $\legendre{-11}{7}=(-1)^1=-1.$
+		\end{solution}
+
+		\item By reducing modulo $7$ and using \hyperref[quad-rec-useful-form]{quadratic reciprocity}
+			
+		\begin{solution}
+			By \hyperref[legendre-respects-mod]{Theorem 4.5(b)} $\legendre{-11}{7}=\legendre{3}{11}.$ Since $11\equiv 3\equiv 3\pmod{4},$ $\legendre{3}{11}=-\legendre{11}{3}$ By \hyperref[legendre-respects-mod]{Theorem 4.5(b)} $-\legendre{11}{3}=-\legendre{-1}{3}=1$ using \nameref{thm:residue-neg1}.
+		\end{solution}
+	\end{enumerate}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Practice Problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can combine these results to find the Legendre symbol many different ways.
+
+\begin{br}
+	Use the following methods to find $\legendre{-6}{11}$:
+ 
+	\begin{enumerate}
+		\item Euler's Criterion, from March 22: 
+		
+        $\left(\frac{-6}{11}\right)\equiv (-6)^{(11-1)/2}\equiv (-6)^{5}\pmod{11}$ By Euler's Criterion. Then
+				\[
+					(-6)^{5}\equiv ((6)^{2})^{2}(-6)\equiv 3^2(-6)\equiv -54 \equiv 1\pmod{11}\qedhere
+				\]
+		
+		
+		\item Factor into $\legendre{-6}{11}=\legendre{-1}{11}\legendre{2}{11}\legendre{3}{11}=(\inlineAnswer[1cm]{-1})\legendre{2}{11}\legendre{3}{11}$. From here, we will explore the various was to find $\legendre{2}{11}$ and $\legendre{3}{11}$.
+		\pdfOnly{\ifhandout
+        \pagebreak
+        \else\fi}
+		
+		\begin{enumerate}
+ 			\item Find $\legendre{2}{11}$ using the specified method:
+			\begin{itemize}
+			    \item Using \nameref{thm:euler-quads}.
+				\begin{solution} 
+					From  \nameref{thm:euler-quads}, 
+						\[
+							\legendre{2}{11}\equiv 2^{(11-1)/2}\equiv 32\equiv -1\pmod{11}.
+						\]
+				\end{solution}
+        \pdfOnly{\ifhandout
+            \vfill
+            \else\fi}
+					
+			
+				\item Using \nameref{lem:gauss}.
+				\begin{solution} 
+					First, find the least nonnegative residues of $2, 2(2), 3(2),4(2), 5(2)$ modulo $11.$ 
+					These are \[2,4,6,8,10,\] 
+					and $n=\inlineAnswer{3}$ are greater than $\frac{11}{2}.$ Thus, by \nameref{lem:gauss}, \[\legendre{2}{11}=(-1)^{\inlineAnswer{3}}=\inlineAnswer{3}.\qedhere\]
+				\end{solution}
+                \pdfOnly{\ifhandout
+                    \vfill
+                    \else\fi}
+			\end{itemize}
+				
+			\item Find $\legendre{3}{11}$ using the specified method:
+			\begin{itemize}
+				\item Using \nameref{thm:euler-quads}.
+				\begin{solution} 
+					From  \nameref{thm:euler-quads}, 
+						\[
+							\legendre{3}{11}\equiv 3^{(11-1)/2}
+							\equiv (-2)^2(3)\equiv 
+							1\pmod{11}.\qedhere
+						\]
+				\end{solution}
+                \pdfOnly{\ifhandout
+                    \vfill
+                    \else\fi}
+                                
+			
+				\item Using \nameref{quad-rec}
+				\begin{solution}
+					Since $11\equiv 3\pmod{4},$ $\legendre{3}{11}=-\legendre{11}{3}=-\legendre{2}{3}=1.$
+			 	\end{solution}
+                \pdfOnly{\ifhandout
+                    \vfill
+                    \else\fi}
+							
+
+				\item Using \nameref{lem:gauss}.
+				\begin{solution} 
+					First, find the least nonnegative residues of $3, 2(3), 3(3),4(3), 5(3)$ modulo $11.$ 
+					These are \[\inlineAnswer{3,6,9,1,4}\] and $n=\inlineAnswer{2}$ are greater than $\frac{11}{2}.$ Thus, by \nameref{lem:gauss}, \[\legendre{3}{11}=(-1)^{\inlineAnswer{2}}=\inlineAnswer{1}.\qedhere\]
+				\end{solution}
+        \pdfOnly{\ifhandout
+            \vfill
+            \else\fi}
+			\end{itemize}
+
+
+		\end{enumerate}
+		Thus, $\legendre{-6}{11}=\inlineAnswer[1cm]{1}$
+
+		\item Use that $-6\equiv 5\pmod{11},$ so $\legendre{-6}{11}=\legendre{5}{11}.$ Then find $\legendre{5}{11}$ the specified method:
+			
+		\begin{enumerate}
+			\item Using \nameref{thm:euler-quads}.
+			\begin{solution} 
+				From  \nameref{thm:euler-quads}, 
+				\[
+                    \legendre{5}{11}\equiv 5^{(11-1)/2}
+                    \equiv (3)^2(5)\equiv
+                    1\pmod{11}.
+                \]
+			\end{solution}
+        \pdfOnly{\ifhandout
+            \vfill
+            \else\fi}
+				
+	
+			\item Using \nameref{quad-rec}
+			\begin{solution}
+                Since $5\equiv 1\pmod{4},$ $\legendre{5}{11}=\legendre{11}{5}=\legendre{1}{5}=1.$
+			\end{solution}
+        \pdfOnly{\ifhandout
+            \vfill
+            \else\fi}
+					
+
+			\item Using \nameref{lem:gauss}.
+				\begin{solution} 
+					First, find the least nonnegative residues of $5, 2(5), 3(5),4(5), 5(5)$ modulo $11.$ 
+					These are \[\inlineAnswer{5,10,4,9,2},\]
+                    and $n=\inlineAnswer{2}$ are greater than $\frac{11}{2}.$ Thus, by \nameref{lem:gauss}, \[\legendre{5}{11}=(-1)^{\inlineAnswer{2}}=\inlineAnswer{1}.\]
+				\end{solution}
+        \pdfOnly{\ifhandout
+            \vfill
+            \else\fi}
+		\end{enumerate}
+    \end{enumerate}
+\end{br}
+
+
+\begin{br}
+	Now we will examine the Legendre symbol of $2$ using Gauss's Lemma. First, note that $2,2(2),3(2),\dots,2(\frac{p-1}{2})$ are already least nonnegative residues modulo $p.$ It will be slightly easier to count how many are \emph{less than} $\frac{p}{2},$ then subtract from the total number, $\frac{p-1}{2}.$
+
+	Let $k\in\Z$ with $1\leq k\leq \frac{p-1}{2}.$ Then $2k< \frac{p}{2}$ if and only if $k <\inlineAnswer[1cm]{\floor{\frac{p}{4}}}.$ Thus, $\frac{p-1}{2}-\floor{\inlineAnswer[1cm]{\frac{p}{4}}}$ of $2,2(2),3(2),\dots,2(\frac{p-1}{2})$ are greater than $\frac{p}{2}.$ 
+    \begin{hint}
+        The two blanks should be the same, and also go in the blanks below
+    \end{hint}
+
+	Now complete this table
+
+	\pdfOnly{\renewcommand{\arraystretch}{2}}
+	\begin{tabular}{c|p{1.5cm}|p{2.5cm}|p{7cm}|p{3cm}}
+        $p$ & $\floor{\inlineAnswer[1 cm]{\frac{p}{4}}}$ & $\frac{p-1}{2}-\floor{\inlineAnswer[1 cm]{\frac{p}{4}}}$ & $2,2(2),3(2),\dots,2(\frac{p-1}{2})$ & $\legendre{2}{p}$\\\hline
+        $3$ & \begin{prompt}
+        $\answer{0}$\end{prompt}	& \begin{prompt}
+        $\answer{1}$\end{prompt}
+            & \makecell[l]{Less than $\tfrac{3}{2}:$ \begin{prompt}
+        $\answer{N/A}$\end{prompt}
+            \\Greater than $\tfrac{3}{2}:$ \begin{prompt} 
+            $\answer{2}$\end{prompt}} 
+            & \begin{prompt}
+            $(-1)^{\answer{1}}=\answer{-1}$
+            \end{prompt} \\\hline
+        $5$ & \begin{prompt}
+        $\answer{1}$\end{prompt}	& \begin{prompt}
+            $\answer{1}$\end{prompt}
+            & \makecell[l]{Less than $\tfrac{5}{2}:$ \begin{prompt}
+            $\answer{2}$\end{prompt}
+                \\Greater than $\tfrac{5}{2}:$ \begin{prompt}
+            $\answer{4}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{1}}=\answer{-1}$\end{prompt}\\\hline
+        $7$ & \begin{prompt}
+            $\answer{1}$\end{prompt}	& \begin{prompt}
+            $\answer{2}$\end{prompt} 
+                & \makecell[l]{Less than $\tfrac{7}{2}:$ \begin{prompt}
+            $\answer{2}$\end{prompt}
+                \\Greater than $\tfrac{7}{2}:$ \begin{prompt}
+            $\answer{4,6}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{2}}=\answer{1}$\end{prompt}\\\hline
+        $11$ & \begin{prompt}
+            $\answer{2}$\end{prompt}	& \begin{prompt}
+            $\answer{3}$\end{prompt}
+                & \makecell[l]{Less than $\tfrac{11}{2}:$ \begin{prompt}
+            $\answer{2,4}$\end{prompt}
+                \\Greater than $\tfrac{11}{2}:$ \begin{prompt}
+            $\answer{6,8,10}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{3}}=\answer{-1}$\end{prompt}\\\hline
+        $13$ & \begin{prompt}
+            $\answer{3}$\end{prompt}	& \begin{prompt}
+            $\answer{3}$\end{prompt}
+                & \makecell[l]{Less than $\tfrac{13}{2}:$ \begin{prompt}
+            $\answer{2,4,6}$\end{prompt}
+                \\Greater than $\tfrac{13}{2}:$ \begin{prompt}
+            $\answer{8,10,12}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{3}}=\answer{-1}$\end{prompt}\\\hline
+        $17$ & \begin{prompt}
+            $\answer{4}$\end{prompt}	& \begin{prompt}
+            $\answer{4}$\end{prompt}
+                & \makecell[l]{Less than $\tfrac{17}{2}:$ \begin{prompt}
+            $\answer{2,4,6,8}$\end{prompt}
+                \\Greater than $\tfrac{17}{2}:$ \begin{prompt}
+            $\answer{10,12,14,16}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{4}}=\answer{1}$\end{prompt}\\\hline
+        $19$ & \begin{prompt}
+            $\answer{4}$\end{prompt}	& \begin{prompt}
+            $\answer{5}$\end{prompt}
+                & \makecell[l]{Less than $\tfrac{19}{2}:$ \begin{prompt}
+            $\answer{2,4,6,8}$\end{prompt}
+            \\Greater than $\tfrac{17}{2}:$ \begin{prompt}
+            $\answer{10,12,14,16,18}$\end{prompt}}
+            & \begin{prompt}
+            $(-1)^{\answer{5}}=\answer{-1}$\end{prompt}\\\hline
+            $p$ & \begin{prompt}
+            $\answer{5}$\end{prompt}	& \begin{prompt}
+            $\answer{6}$\end{prompt}
+                & \makecell[l]{Less than $\tfrac{17}{2}:$ \begin{prompt}
+            $\answer{2,4,6,8,10}$\end{prompt}
+                \\Greater than $\tfrac{17}{2}:$ \begin{prompt}
+            $\answer{12,14,16,18,20,22}$\end{prompt}}
+                & \begin{prompt}
+            $(-1)^{\answer{6}}=\answer{1}$\end{prompt}\\\hline
+    \end{tabular}
+\end{br}
+
+
+
+\end{document}
