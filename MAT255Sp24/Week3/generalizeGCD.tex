@@ -1,11 +1,7 @@
 \documentclass{ximera}
 \input{../lessonplanheader.tex}
 
-<<<<<<< Updated upstream
-\title{Greatest Common Divisors and Diophantine Equations}
-=======
 \title{Greatest common divisors and Diophantine equations}
->>>>>>> Stashed changes
 \begin{document}
 \begin{abstract}
 \end{abstract}
@@ -15,31 +11,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obj}
-<<<<<<< Updated upstream
-	\item Prove the formula for integer solutions to $ax+by=c$.
-=======
 	\item Proof various facts about the greatest common divisor of three or more integers
 	\item Find the solutions to a specific Diophantine equation in three variables
     \item Prove that when a Diophantine equation in three variables has a solutions, it has infinitely many.
->>>>>>> Stashed changes
 	\item State when integer solution exist for $a_1x_1+\cdots+a_kx_k=c$.
 \end{obj}
 
 
-<<<<<<< Updated upstream
-\begin{instructorNotes}
-	\begin{pre}
-		\item[Read] Strayer, Section 6.1
-		\item[Turn in] Exercise 2a.
-		Find all integer solutions to $18x+28y=10$
-	   % \begin{solution}
-	   % Notice that $18(-1)+28(1)=10$. This can be done by inspection or the \nameref{euclid-alg}. Then our specific solution is $x_0=-1, y_0=1$ and all solutions have the form \[x=-1+\frac{28n}{2}=-1+14n,\quad y=1-\frac{18n}{2}=1-9n \qquad \textnormal{for all $n\in\Z$.}\]
-	   % \end{solution}
-	   \end{pre}
-\end{instructorNotes}
-
-
-=======
 \begin{pre}
 	\item[Read:] Strayer, Section 6.1
 	\item[Turn in:] Exercise 2a.
@@ -51,22 +29,15 @@
 
 
 \section{Greatest Common Divisors of three or more integers}
->>>>>>> Stashed changes
 \begin{lemma}\label{lem:gcd_3case}
 	Let $a,b,c\in\Z,$ with $a\neq 0$. Then $(a,b,c)=((a,b),c).$
 
  	\begin{proof}
  		Let $a,b,c\in\Z,$ with $a\neq 0$. Define $d=(a,b,c)$ and $e=((a,b),c).$ We will show that $d\mid e$ and $e\mid d$. Since the greatest common divisor is positive, we can conclude that $d=e$\footnote{This is not true in general and a common mistake. In general $d=\pm e$}.
 
-<<<<<<< Updated upstream
- 		Since $d=(a,b,c),$ we know $d\mid a, d\mid b,$ and $d\mid c$. By Lemma \ref{lem:gcd_mult}, which we are about to prove, $d\mid (a,b)$. Thus, $d$ is a common divisor of $(a,b)$ and $c$, so $d\mid e$.
-
- 		Since $e=((a,b),c)$, $e\mid  (a,b)$ and $e\mid c$. Since $e\mid (a,b),$ we know $e\mid a$ and $e\mid b$ by Lemma \ref{lem:gcd_mult}. Thus, $e$ is a common divides of $a,b$ and $c$
-=======
  		Since $d=(a,b,c),$ we know $d\mid a, d\mid b,$ and $d\mid c$. By \cref{lem:gcd_mult}, which we are about to prove, $d\mid (a,b)$. Thus, $d$ is a common divisor of $(a,b)$ and $c$, so $d\mid e$.
 
  		Since $e=((a,b),c)$, $e\mid  (a,b)$ and $e\mid c$. Since $e\mid (a,b),$ we know $e\mid a$ and $e\mid b$ by \cref{lem:gcd_mult}. Thus, $e$ is a common divides of $a,b$ and $c$
->>>>>>> Stashed changes
  	\end{proof}
 \end{lemma}
 
@@ -111,21 +82,13 @@
 		$e=((a_1,a_2,a_3,\dots,a_{k}),a_{k+1})=(d,a_{k+1}),$ and $f= (a_1,a_2,a_3,\dots,a_{k},a_{k+1}).$ We will show that $e\mid f$ and $f\mid e$. Since both $e$ and $f$ are positive, this will prove that $e=f$.
 
 		Note that $e\mid (a_1,a_2,a_3,\dots,a_{k})$ and $e\mid a_{k+1}$ by definition. 
-<<<<<<< Updated upstream
-		Since $(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k)$ by the induction hypothesis, $e\mid(a_1,a_2,a_3,\dots,a_{k-1})$ and $e\mid a_k$ by Lemma \ref{lem:gcd_trans}. Again, by the induction hypothesis, $(a_1,a_2,a_3,\dots,a_{k-1})=((a_1,a_2,a_3,\dots,a_{k-2}),a_{k-1}),$ so $e\mid a_{k-1}$ and $e\mid (a_1,a_2,a_3,\dots,a_{k-2})$ by Lemma \ref{lem:gcd_trans}. Repeat this process until we get $(a_1,a_2,a_3)=((a_1,a_2),a_3)$, so $e\mid a_3$ and $e\mid (a_1,a_2)$ by Lemma \ref{lem:gcd_trans}. Thus $e\mid a_1,a_2,\dots,a_{k+1}$ by repeated applications of Lemma \ref{lem:gcd_trans}. By the generalized version of the Lemma \ref{lem:gcd_mult} on Homework 3, $e\mid f.$
-
-		To show that $f\mid e,$ we note that $f\mid a_1,a_2,\dots, a_k,a_{k+1}$ by definition. Then $f\mid d$ by the generalized version of the Lemma \ref{lem:gcd_mult} on Homework 3. Since $e=(d,a_k),$ we have that $f\mid e$ by Lemma \ref{lem:gcd_mult}.
-=======
 		Since $(a_1,\dots,a_k)=((a_1,a_2,a_3,\dots,a_{k-1}),a_k)$ by the induction hypothesis, $e\mid(a_1,a_2,a_3,\dots,a_{k-1})$ and $e\mid a_k$ by \cref{lem:gcd_trans}. Again, by the induction hypothesis, $(a_1,a_2,a_3,\dots,a_{k-1})=((a_1,a_2,a_3,\dots,a_{k-2}),a_{k-1}),$ so $e\mid a_{k-1}$ and $e\mid (a_1,a_2,a_3,\dots,a_{k-2})$ by \cref{lem:gcd_trans}. Repeat this process until we get $(a_1,a_2,a_3)=((a_1,a_2),a_3)$, so $e\mid a_3$ and $e\mid (a_1,a_2)$ by \cref{lem:gcd_trans}. Thus $e\mid a_1,a_2,\dots,a_{k+1}$ by repeated applications of \cref{lem:gcd_trans}. By the generalized version of the \cref{lem:gcd_mult} (\cref{prop:common-div-gcd}), $e\mid f.$
 
 		To show that $f\mid e,$ we note that $f\mid a_1,a_2,\dots, a_k,a_{k+1}$ by definition. Then $f\mid d$ by \cref{prop:common-div-gcd}. Since $e=(d,a_k),$ we have that $f\mid e$ by \cref{lem:gcd_mult}.
->>>>>>> Stashed changes
 	\end{proof}
 \end{proposition}
 
 
-<<<<<<< Updated upstream
-=======
 \section{Linear Diophanitine equations in three variables}
 
 \begin{proposition}\label{prop:3diophantine}
@@ -179,6 +142,5 @@ Find integral solutions to the Diophantine equation \[8x_1-4x_2+6x_3=6.\]
 
     When $(a,b,c)\nmid d$, $\frac{a}{(a,b,c)},\frac{b}{(a,b,c)},\frac{c}{(a,b,c)}\in\Z$ by definition, but $\frac{d}{(a,b,c)}$ is not an integer. Therefore, there are no integers such that \[\frac{a}{(a,b,c)}x+\frac{b}{(a,b,c)}y+\frac{c}{(a,b,c)}z=\frac{d}{(a,b,c)}. \qedhere\] 
 \end{proof}
->>>>>>> Stashed changes
 
 \end{document}

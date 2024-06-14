@@ -13,34 +13,20 @@
 \end{obj}
 
 
-<<<<<<< Updated upstream
-\begin{instructorNotes}
-    
-\begin{pre}
-    \item[Reading] Strayer Section 5.2
-=======
 \begin{pre}
     \item[Read:] Strayer Section 5.2
->>>>>>> Stashed changes
     \item[Turn in:] 
     
     \begin{enumerate}
         \item Exercise 10a: Determine the number of incongruent primitive roots modulo $41$
         \begin{solution}
-<<<<<<< Updated upstream
             Since $41$ is prime, \nameref{read-thm:number-prime-roots} says there are $\phi(41)=40$ primitive roots modulo $41.$
         \end{solution}
         \item Exercise 11a: Find all incongruent integers having order $6$ modulo $31.$
         \begin{solution}
-                From Appendix E, Table 3, $3$ is a primitive root modulo $31.$ By \nameref{prop:compare-order}, the elements of order $6$ modulo $31$ are those where \[6=\ord_{31}(3^i)=\frac{\phi(31)}{(\phi(31),i)}=\frac{30}{5}.\] The positive integers less than $31$ where $(30,i)=5$ are $i=5,25.$ So the elements of order $6$ are $3^5, 3^{25}.$
-=======
-            Since $41$ is prime, Reading Theorem 10.3.7 says there are $\phi(41)=40$ primitive roots modulo $41.$
-        \end{solution}
-        \item Exercise 11a: Find all incongruent integers having order $6$ modulo $31.$
-        \begin{solution}
-                From Appendix E, Table 3, $3$ is a primitive root modulo $31.$ By \cref{prop:compare-order}, the elements of order $6$ modulo $31$ are those where \[6=\ord_{31}(3^i)=\frac{\phi(31)}{(\phi(31),i)}=\frac{30}{5}.\] The positive integers less than $31$ where $(30,i)=5$ are $i=5,25.$ So the elements of order $6$ are $3^5, 3^{25}.$
->>>>>>> Stashed changes
-                
+                From Appendix E, Table 3, $3$ is a primitive root modulo $31.$ By \nameref{prop:compare-order}, the elements of order $6$ modulo $31$ are those where 
+                \[6=\ord_{31}(3^i)=\frac{\phi(31)}{(\phi(31),i)}=\frac{30}{5}.\] 
+                The positive integers less than $31$ where $(30,i)=5$ are $i=5,25.$ So the elements of order $6$ are $3^5, 3^{25}.$
 
                 The problem does not ask for the least nonnegative residues. However, we can also find those:
                     \[
@@ -52,11 +38,6 @@
             \end{solution}
     \end{enumerate}
 \end{pre}
-<<<<<<< Updated upstream
-\end{instructorNotes}
-
-=======
->>>>>>> Stashed changes
 
 The goal is to finish proving the \nameref{thm:prime-roots} with a look at polynomials.
 
@@ -78,11 +59,7 @@ The goal is to finish proving the \nameref{thm:prime-roots} with a look at polyn
         \begin{description}
                 
             \item[Base Case: $d=1$.] 
-<<<<<<< Updated upstream
-            Then $f(x)\equiv a_1 x+a_0\pmod{p}$. Since $a_1\not\equiv 0\pmod{p}$ by assumption, $p\nmid a_1.$ Since $p$ is prime, $(a_1,p)=1.$ Thus, by \nameref{cor:condition-invertible}, there is a unique solution modulo $p$ to $a_1\not\equiv 0\pmod{p}.$
-=======
             Then $f(x)\equiv a_1 x+a_0\pmod{p}$. Since $a_1\not\equiv 0\pmod{p}$ by assumption, $p\nmid a_1.$ Since $p$ is prime, $(a_1,p)=1.$ Thus, by \cref{cor:condition-invertible}, there is a unique solution modulo $p$ to $a_1\not\equiv 0\pmod{p}.$
->>>>>>> Stashed changes
 
             \item[Induction Hypothesis:]
             Assume that for all $k\lt d,$ if $f(x)$ has degree $k$ modulo $p,$ then 
@@ -101,11 +78,7 @@ The goal is to finish proving the \nameref{thm:prime-roots} with a look at polyn
         \[g(r_{1})\equiv g(r_2)\equiv\cdots\equiv g(r_{d+1})\equiv 0\pmod{p}.\]
         That is, 
         \[a_d(r_{d+1}-r_1)(r_{d+1}-r_2)\cdots(r_{d+1}-r_d)\equiv 0\pmod{p}.\]
-<<<<<<< Updated upstream
-        Since $p$ is prime, repeated applications of Homework 4, Problem 9a gives that one of $a_d,r_{d+1}-r_1,r_{d+1}-r_2,\dots,r_{d+1}-r_d$ is $0$ modulo $p.$ Now, $a_d\not\equiv0\pmod{p}$ by assumption, and the $r_i$ are distinct modulo $p,$ so we have a contradiction. Thus, $h(x)$ is not the $0$ polynomial. 
-=======
         Since $p$ is prime, repeated applications of \cref{prop:zero-divisors} gives that one of $a_d,r_{d+1}-r_1,r_{d+1}-r_2,\dots,r_{d+1}-r_d$ is $0$ modulo $p.$ Now, $a_d\not\equiv0\pmod{p}$ by assumption, and the $r_i$ are distinct modulo $p,$ so we have a contradiction. Thus, $h(x)$ is not the $0$ polynomial. 
->>>>>>> Stashed changes
 
         Since $r_1,r_2,\dots,r_d$ are roots of both $f(x)$ and $g(x),$ they are also roots of $h(x).$ This contradicts the induction hypothesis, since $h(x)$ has degree less than $d$ by construction.
 
@@ -133,23 +106,12 @@ The goal is to finish proving the \nameref{thm:prime-roots} with a look at polyn
     \end{proof}
 \end{theorem}
 
-<<<<<<< Updated upstream
-    \begin{proposition}\label{prop:roots-unity}
-        Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then 
-        \[
-            x^m\equiv 1\pmod{p}
-        \]
-        has $m$ incongruent solutions modulo $p.$
-    
-
-=======
 \begin{proposition}\label{prop:roots-unity}
     Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then 
     \[
         x^m\equiv 1\pmod{p}
     \]
     has $m$ incongruent solutions modulo $p.$
->>>>>>> Stashed changes
 
     \begin{proof}
         Let $p$ be prime and $m$ a positive integer where $m\mid p-1$. Then there exists $k\in\Z$ such that $mk=p-1.$
@@ -173,8 +135,6 @@ The goal is to finish proving the \nameref{thm:prime-roots} with a look at polyn
 \end{definition}
 
 
-<<<<<<< Updated upstream
-=======
 \begin{br}\label{br:condition-root-unity}
     Let $p$ be prime, $m$ a positive integer, and $d=(m,p-1).$ Prove that $a^m\equiv 1\pmod{p}$ if and only if $a^d\equiv 1\pmod{p}.$
 
@@ -205,5 +165,4 @@ The goal is to finish proving the \nameref{thm:prime-roots} with a look at polyn
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
->>>>>>> Stashed changes
 \end{document}

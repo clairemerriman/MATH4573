@@ -15,18 +15,11 @@
 	\item Find the number of incongruent solutions to a linear congruence
 \end{obj}
 
-<<<<<<< Updated upstream
-\begin{instructorNotes}
-	\begin{pre} \item Paper 1 due
-	\end{pre}
-\end{instructorNotes}
-=======
 
 	\begin{pre} 
         \item Paper 1 due
 	\end{pre}
 
->>>>>>> Stashed changes
 
 
 
@@ -40,15 +33,9 @@
 	Let $a,b,m\in\Z$ with $m>0,$ and $d=(a,m)$. The linear congruence in one variable $ax\equiv b\pmod m$ has a solution if and only if $d\mid b$. When $d\mid b,$ there are exactly $d$ incongruent solutions modulo $m$ corresponding to the congruence classes \[x_0, x_0+\frac{m}{d},\dots,x_0+\frac{(d-1)m}{d} \pmod m.\]
 
 	\begin{proof}
-<<<<<<< Updated upstream
-		Let $a,b,m\in\Z$ with $m>0$, and $d=(a,m)$. From the definition of congruence modulo $m$, $ax\equiv b \pmod m$ if and only if $m\mid (ax-b)$. That is, $ax\equiv b \pmod m$ if and only if $my=ax-b$ for some $y\in\Z$ from the definition of divisibility. Sine $ax-my=b$ is a linear Diophantine equation, \nameref{thm:linear-dioph} says solutions exist if and only if $(a,-m)=d\mid b.$
-		
-		In the case that solutions exist, let $x_0, y_0$ be a particular solution to the linear Diophantine equation. Then $x_0$ is also a solution to the linear congruence in one variable, since $a x_0-my_0=b,$ implies $ax_0\equiv b\pmod m$. From \nameref{thm:linear-dioph}, all solutions have the from $x=x_0+\frac{mn}{d}$ for all $n\in\Z.$  We need to show that these solutions are in exactly $d$ distinct congruence classes modulo $m.$
-=======
 		Let $a,b,m\in\Z$ with $m>0$, and $d=(a,m)$. From the definition of congruence modulo $m$, $ax\equiv b \pmod m$ if and only if $m\mid (ax-b)$. That is, $ax\equiv b \pmod m$ if and only if $my=ax-b$ for some $y\in\Z$ from the definition of divisibility. Sine $ax-my=b$ is a linear Diophantine equation, \cref{thm:linear-dioph} says solutions exist if and only if $(a,-m)=d\mid b.$
 		
 		In the case that solutions exist, let $x_0, y_0$ be a particular solution to the linear Diophantine equation. Then $x_0$ is also a solution to the linear congruence in one variable, since $a x_0-my_0=b,$ implies $ax_0\equiv b\pmod m$. From \cref{thm:linear-dioph}, all solutions have the from $x=x_0+\frac{mn}{d}$ for all $n\in\Z.$  We need to show that these solutions are in exactly $d$ distinct congruence classes modulo $m.$
->>>>>>> Stashed changes
 		
 		Consider the solutions $x_0+\frac{mi}{d}$ and $x_0+\frac{mj}{d}$ for some integers $i$ and $j.$ Then $x_0+\frac{mj}{d}\equiv x_0+\frac{mk}{d} \pmod m$ if and only if $m\mid \left(\frac{mi}{d}-\frac{mj}{d}\right).$ That is, if and only if there exists $k\in\Z$ such that $mk=\frac{mi}{d}-\frac{mj}{d}$. Rearranging this equation, we get that $x_0+\frac{mj}{d}\equiv x_0+\frac{mk}{d} \pmod m$ if and only if $dk=i-j.$ Thus, $i\equiv j\pmod$ by definition of equivalence modulo $d.$ Thus, the incongruent solutions to $ax\equiv b\pmod m$ are the congruence classes \[x_0, x_0+\frac{m}{d},\dots,x_0+\frac{(d-1)m}{d} \pmod m.\qedhere\]
 	\end{proof}
@@ -73,11 +60,7 @@
 
 
 
-<<<<<<< Updated upstream
-\begin{corollary}\label{cor:condition-invertible}[Corollary of \autoref{thm:lin-cong-solutions}]
-=======
 \begin{corollary}\label{cor:condition-invertible}[Corollary of \cref{thm:lin-cong-solutions}]
->>>>>>> Stashed changes
     Let $a,m\in\Z$ with $m>0.$ The linear congruence in one variable $ax\equiv 1\pmod{m}$ has a solution if and only if $(a,m)=1$. If $(a,m)=1,$ then the solution is unique modulo $m$. 
 \end{corollary}
 
