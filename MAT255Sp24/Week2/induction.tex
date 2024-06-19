@@ -43,18 +43,18 @@ Now assume $k\geq 1$ and the desired statement is true for $n=k$. Then the induc
 By the definition of \nameref{defn:divides}, there exists $m\in\Z$ such that $3m=4^k-1.$ In other words, $3m+1=4^k$. Multiplying both sides by $4$ gives $12m+4=4^{k+1}$. Rewriting this equation gives $3(4m+1)=4^{k+1}-1$. Thus, $3\mid 4^{k+1}-1$, and the desired statement is true for $n=k+1$. By the (first) principle of mathematical induction, the statement is true for all positive integers, and the proof is complete.
 \end{solution}
 
- \begin{theorem}[Ernst Theorem 4.7]
- Let $p_{1}, p_{2}, \ldots, p_{n}$ be $n$ distinct points arranged on a circle.  Then the number of line segments joining all pairs of points is $\frac{n^{2}-n}{2}$.
- \end{theorem}
-\begin{solution}
- We proceed by induction. When $n=1$, there is only one point, so there are no lines connecting pairs of points. Additionally, $\frac{1^2-1}{2}=0$.\footnote{Alternately, you could use $n=2$ for the base case. Then there is one line connecting the only pair of points and $\frac{2^2-2}{2}=1$}
+%  \begin{theorem}[Ernst Theorem 4.7]
+%  Let $p_{1}, p_{2}, \ldots, p_{n}$ be $n$ distinct points arranged on a circle.  Then the number of line segments joining all pairs of points is $\frac{n^{2}-n}{2}$.
+%  \end{theorem}
+% \begin{solution}
+%  We proceed by induction. When $n=1$, there is only one point, so there are no lines connecting pairs of points. Additionally, $\frac{1^2-1}{2}=0$.\footnote{Alternately, you could use $n=2$ for the base case. Then there is one line connecting the only pair of points and $\frac{2^2-2}{2}=1$}
  
- Now assume $k\geq 1$ and the desired statement is true for $n=k$. Then the induction hypothesis is for $k$ distinct points arranged in a circle, the number of line segments joining all pairs of points is $\frac{k^{2}-k}{2}$. Adding a $(k+1)^{st}$ point on the circle will add an additional $k$ line segments joining pairs of points, one for each existing point. Note that 
- \[ 
- 	\frac{k^{2}-k}{2}+k=\frac{k^{2}+k}{2}=
-	\frac{k^2+k+k+1-(k+1)}{2}=\frac{(k+1)^{2}-(k+1)}{2}\qedhere
- \]
-\end{solution}
+%  Now assume $k\geq 1$ and the desired statement is true for $n=k$. Then the induction hypothesis is for $k$ distinct points arranged in a circle, the number of line segments joining all pairs of points is $\frac{k^{2}-k}{2}$. Adding a $(k+1)^{st}$ point on the circle will add an additional $k$ line segments joining pairs of points, one for each existing point. Note that 
+%  \[ 
+%  	\frac{k^{2}-k}{2}+k=\frac{k^{2}+k}{2}=
+% 	\frac{k^2+k+k+1-(k+1)}{2}=\frac{(k+1)^{2}-(k+1)}{2}\qedhere
+%  \]
+% \end{solution}
 \end{br}
 
 \begin{br}
