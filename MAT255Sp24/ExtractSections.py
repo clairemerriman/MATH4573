@@ -55,4 +55,4 @@ def extract_all_sections(input_file):
             # extracted_lines.append(line)
 
 
-sections = extract_all_sections('../NumberTheory/XimeraMAT255Sp24/Week11Spring24.tex')
+sections = extract_all_sections('XimeraMAT255Sp24/Week13Spring24.tex')
