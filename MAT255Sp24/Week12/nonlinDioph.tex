@@ -1,0 +1,48 @@
+\documentclass{ximera}
+\input{../lessonplanheader.tex}
+
+\title{Nonlinear Diophantine equations}
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\begin{obj}
+    \item Define a nonlinear Diophantine equation
+\end{obj}
+
+
+\begin{pre}
+    \item[Reading] None
+\end{pre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}
+	A Diophantine equation is \emph{nonlinear} if it is not linear.
+\end{definition}
+ 
+\begin{example}
+  
+	\begin{enumerate}
+ 		\item The Diophantine equation $x^2+y^2=z^2$ is our next section. Solutions are called Pythagorean triples.
+ 		\item Let $n\in\mathbb{Z}$ with $n\geq 3$. The Diophantine equation $x^n+y^n=z^n$ is the subject of the famous Fermat's Last Theorem. We will also prove one case of this.
+ 		\item Let $n\in\mathbb{Z}$. The Diophantine equation $x^2+y^2=n$ tells us which integers can be represented as the sum of two squares.
+ 		\item Let $d,n\in\mathbb{Z}$. The Diophantine equation $x^2-dy^2=n$ is known as Pell's equation.
+	\end{enumerate}
+\end{example}
+ 
+Sometimes we can use congruences to show that a particular nonlinear Diophantine equation has no solutions.
+ 
+\begin{example}
+	Prove that $3x^2+2=y^2$ is not solvable.
+
+	\begin{solution}
+		Assume that there is a solution. Then any solution to the Diophantine equation is also a solution to the congruence $3x^2+2\equiv y^2 \mod 3$, which implies $2\equiv y^2 \mod 3$, which we know is false. Thus there are no integer solutions to $3x^2+2=y^2$.
+	\end{solution}
+ \end{example}
+ 
+Note: viewing the same equation modulo $2$ says $x^2\equiv y^2 \mod 2$, which does not give us enough information to prove a solution does not exist--it also is not enough information to conclude a solution exists.
+ 
+
+\end{document}

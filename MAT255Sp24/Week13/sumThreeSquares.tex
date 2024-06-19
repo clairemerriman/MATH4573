@@ -1,0 +1,50 @@
+\documentclass{ximera}
+
+%\newtheorem{theorem}{Theorem}%[section] % reset theorem numbering for each section
+%\newtheorem*{theorem*}{Theorem}%[section] % reset theorem numbering for each section
+% \newtheorem{prop}[theorem]{Proposition}
+% \newtheorem{lem}[theorem]{Lemma}
+% \newtheorem{ex}{Example}
+
+
+\title{Sums of three squares}  
+\begin{document}  
+\begin{abstract}  We prove which integers cannot be written as the sum of four squares.
+\end{abstract}
+\maketitle  
+
+We finish out the sums of squares section by classifying which integers can be written as the sum of three squares and sum of four squares. These cases are more difficult than the sum of two squares since there is no formula analogous to the April 8 participation assignment.
+
+\begin{theorem}[Sum of three squares necessary condition]
+Let $m,n\in\mathbb{Z}$ with $m,n\geq0$. If $N=4^m(8n+7)$, then $N$ can not be written as the sum of $3$ squares.
+\end{theorem}
+\begin{proof}
+ We start by proving the $m=0$ case. In order to get a contradiction, assume that $N=8n+7$ can be written as the sum of three squares. Thus, there exists $x,y,z\in\mathbb{Z}$ such that \[8n+7=x^2+y^2+z^2.\]
+ Now, $8n+7\equiv 7\pmod8$ and $x^2+y^2+z^2\not\equiv7\pmod 8$ (by participation assignment), which gives the contradiction we are looking for.
+
+Now we assume $m>0$. and again assume $N=4^m(8n+7)$ can be written as the sum of three squares. As before, there exist $x,y,z\in\mathbb{Z}$ such that \[4^m(8n+7)=x^2+y^2+z^2\] and $x,y,z$ are even (by participation assignment). So there exists $x',y'$ and $z'$ such that $x=2x', y=2y',$ and $z=2z'$. Substituting into our definition of $N$, we get \[4^{m-1}(8n+7)=(x')^2+(y')^2+(z')^2.\]
+
+Repeating  this process $m-1$ times, we find $8n+7$ is expressible as a sum of three squares, a contradiction. Thus, $N=4^m(8n+7)$ cannot be written as the sum of three squares.
+\end{proof}
+
+Now, the converse is true. Legendre proved this in 1798, but is much harder to prove, due to the lack of formula like the one from April 8 participation assignment. Note that any integer that cannot be written as the sum of three squares cannot be written as the sum of two squares.
+
+\begin{example}
+ Determine whether $1584$ is expressible as the sum of three squares. 
+ 
+ The highest power of $4$ that divides $1584$ evenly is $\answer{16}$, leaving $\answer{99}\equiv\answer{3} \pmod 8.$ Thus, $1584$ can be written as the sum of three squares:
+\begin{multipleChoice}
+ \choice[correct]{True}
+ \choice{False}
+ \choice{Not enough information}
+\end{multipleChoice}
+
+Since this also allows us to factor $1584$, we  also know $1584$ can be written as the sum of two squares:
+\begin{multipleChoice}
+ \choice{True}
+ \choice[correct]{False}
+ \choice{Not enough information}
+\end{multipleChoice}
+\end{example}
+
+\end{document}
